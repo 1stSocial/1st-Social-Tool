@@ -27,7 +27,7 @@
 
 header {
 	color: white;
-	background-color: #887eb0; /*Primary Color*/
+	background-color: #5b566b; /*Primary Color*/
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff666666',endColorstr='#ff222222',GradientType=0);
 	-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
@@ -44,7 +44,7 @@ header {
 }
 
 .menu-topbar {
-	background-color: #887eb0; /*Primary Color*/
+	background-color: #5b566b; /*Primary Color*/
 	height: auto;
 	padding: 0px;
 	color: #ffffff;
