@@ -52,7 +52,8 @@ header {
 }
 
 .menu-logo img {
-	padding-left: 5px;
+	padding-left: 7px;
+	margin: 3px;
 	position: relative;
 	top: 3px;
 }
