@@ -6,22 +6,22 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <?php echo form_open('verifylogin'); ?>
-                <label for="username" class="text-white">Username:</label>
+                <label for="username">Username:</label>
                 <input class="span12" type="text" size="20" id="username" name="username"/>
                 <br/>
-                <label for="password" class="text-white">Password:</label>
+                <label for="password">Password:</label>
                 <input class="span12" type="password" size="20" id="password" name="password"/>
                 <br/>
                 <br/>
-                <input class="btn span12" type="submit" value="Login"/>
+                <input class="btn btn-1st span12" type="submit" value="Login"/>
                 <div class="text-error text-center"><?php echo validation_errors(); ?></div>
             </form>
         </div>
-        <p class="text-right text-info">Beta 1.0</p>
+        <p class="text-right text-white">Beta 1.0</p>
     </div>
 </div>
 <br/>
-<p class="text-center muted">&#169; Copyright 1st Social 2013</p>
+<p class="text-center text-info">&#169; Copyright 1st Social 2013</p>
 
 
 
