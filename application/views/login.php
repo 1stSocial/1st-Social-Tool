@@ -21,7 +21,7 @@
     </div>
 </div>
 <br/>
-<p class="text-center muted">&#169; Copyright 2013 1stSocial.com.au</p>
+<p class="text-center muted">&#169; Copyright 1st Social 2013</p>
 
 
 

@@ -1,7 +1,7 @@
 <div class="menu-topbar row-fluid">
 	<div class="pull-left menu-logo">
 		<a href="/">
-			<img alt="logo" src="<?= base_url(); ?>assets/img/internal/logo_mini.png"/>
+			<img alt="logo" src="<?= base_url(); ?>assets/img/internal/logo.png"/>
 		</a>
 	</div>
 	<div class="account-box pull-right">
