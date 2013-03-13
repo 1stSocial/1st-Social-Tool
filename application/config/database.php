@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.0.0.1';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '558505';
-$db['default']['database'] = 'CCC';
+$db['default']['hostname'] = '217.199.160.116';
+$db['default']['username'] = 'gkodikara';
+$db['default']['password'] = 'gregory55jB';
+$db['default']['database'] = 'ccc-line';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
