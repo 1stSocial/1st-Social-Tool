@@ -108,7 +108,7 @@ $(document).ready(function () {
 </table>
 
 
-<?php include("http://1stsocial.com.au/fbapps/footer.txt"); ?> 
+<?php //include("http://1stsocial.com.au/fbapps/footer.txt"); ?> 
 
 <div id="fb-root"></div>
 
