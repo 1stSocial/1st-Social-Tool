@@ -6,6 +6,13 @@ class Theme extends CI_Controller {
 		parent::__construct();
 	}
 
+	function create_theme() {
+		mkdir(base_url() . "assets/something", 0700);
+		die(base_url() . "assets/something");
+	}
+
+
+
 }
 
 ?>
