@@ -5,11 +5,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="en" />
 
-<link href="stylesheet.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url(); ?>assets/css/internal/rss_board.css" rel="stylesheet" type="text/css" />
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js" type="text/javascript"></script>
-<script src="jquery.zrssfeed.min.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/js/lib/jquery.zrssfeed.min.js" type="text/javascript"></script>
 <script src="http://connect.facebook.net/en_US/all.js#appId=242689285769435&amp;xfbml=1"></script>
 <title>All Jobs</title>
 
