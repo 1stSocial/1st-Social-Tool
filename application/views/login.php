@@ -6,10 +6,10 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <?php echo form_open('verifylogin'); ?>
-                <label for="username">Username:</label>
+                <label for="username" class="text-white">Username:</label>
                 <input class="span12" type="text" size="20" id="username" name="username"/>
                 <br/>
-                <label for="password">Password:</label>
+                <label for="password" class="text-white">Password:</label>
                 <input class="span12" type="password" size="20" id="password" name="password"/>
                 <br/>
                 <br/>
