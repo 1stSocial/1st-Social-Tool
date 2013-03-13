@@ -7,7 +7,7 @@ class Theme extends CI_Controller {
 	}
 
 	function create_theme() {
-	    $path = base_url() . "/assets/path";
+	    $path = base_url() . "assets/path";
 
 	    if(!is_dir($path)) {
 	      mkdir($path,0755,TRUE);
