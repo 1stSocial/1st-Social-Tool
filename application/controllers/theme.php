@@ -4,16 +4,24 @@ class Theme extends CI_Controller {
 	
 	function __construct() {
 		parent::__construct();
+		$this->load->helper('file');
 	}
 
-	function create_theme() {
-	    $path = base_url() . "assets/path";
+	function index() {
+		
+	}
 
-	    if(!is_dir($path)) {
-	      mkdir($path,0755,TRUE);
-	    } else {
-	    	die($path);
-	    }
+	private function create_theme($theme_name, $file_data) {
+
+		if (!is_file('./themes/' . $theme_name)) {
+			if (!write_file('./themes/' . $theme_name, $file_data)) {
+	     		//File Not Written
+	     		die("Theme not created");
+			}	
+		} else {
+			//File already exists
+			die("Theme already exists");
+		}
 
 	}
 
