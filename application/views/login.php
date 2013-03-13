@@ -1,5 +1,5 @@
 <div class="logo-box">
-    <img src="<?= base_url(); ?>assets/img/internal/logo.jpg"/>
+    <img src="<?= base_url(); ?>assets/img/internal/logo.png"/>
 </div>
 <div class="login-box">
     <header><h4>Sign In</h4></header>
