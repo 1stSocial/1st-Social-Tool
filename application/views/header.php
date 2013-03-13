@@ -6,7 +6,7 @@
  	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
 
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
- 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/internal/main.css"/>
+ 	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>
 
    <title></title>
  </head>
