@@ -7,7 +7,14 @@ class Theme extends CI_Controller {
 	}
 
 	function create_theme() {
-		 fopen(base_url() . 'themes/something.css', 'w') or die("can't open file");
+	    $path = base_url() . "/assets/path";
+
+	    if(!is_dir($path)) {
+	      mkdir($path,0755,TRUE);
+	    } else {
+	    	die($path);
+	    }
+
 	}
 
 
