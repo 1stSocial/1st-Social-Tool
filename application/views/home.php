@@ -9,4 +9,6 @@
 		<a class="btn" href="home/logout"><i class="icon-off"></i> Logout</a>
 	</div>
 </div>
+<div class="row-fluid">
+	<div class="span10 offset1">
 

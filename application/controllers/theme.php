@@ -8,20 +8,19 @@ class Theme extends CI_Controller {
 	}
 
 	function index() {
-		
+
+		$this->load->view("theme_frame");
+
 	}
 
 	private function create_theme($theme_name, $file_data) {
 
-		if (!is_file('./themes/' . $theme_name)) {
-			if (!write_file('./themes/' . $theme_name, $file_data)) {
-	     		//File Not Written
-	     		die("Theme not created");
-			}	
-		} else {
-			//File already exists
-			die("Theme already exists");
-		}
+		//Create file if it doesn't exist, otherwise write to it
+		if (!write_file('./themes/' . $theme_name, $file_data)) {
+     		//File Not Written
+     		die("Theme not created");
+		}	
+
 
 	}
 
