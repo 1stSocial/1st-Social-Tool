@@ -8,9 +8,12 @@
 }
 
 
-.box-background(@shadow-blur: 7px) {
+.box-borders(@shadow-blur: 7px) {
 	box-shadow: 0px 0px @shadow-blur #ffffff inset;
 	border: 1px solid #ffffff;
+}
+
+.box-background() {
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(94,88,118,0.23) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(94,88,118,0.23))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(94,88,118,0.23) 100%); /* Chrome10+,Safari5.1+ */
@@ -41,6 +44,28 @@ body {
 	background-image: -ms-linear-gradient(top,  rgba(94,88,118,0.65) 0%,rgba(0,0,0,0) 100%), url(../img/internal/texture_bg.png); /* IE10+ */
 	background-image: linear-gradient(to bottom,  rgba(94,88,118,0.65) 0%,rgba(0,0,0,0) 100%), url(../img/internal/texture_bg.png); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a65e5876', endColorstr='#00000000',GradientType=0 ), url(../img/internal/texture_bg.png); /* IE6-9 */
+}
+
+.modal {
+	background: transparent;
+}
+
+.modal-body {
+	background: white;
+}
+
+
+.modal-header, .modal-footer {
+	background: @primary_purple;
+}
+
+.modal-header h3 {
+	text-align: center;
+	color: #ffffff;
+}
+
+.modal-body textarea {
+	height: 300px;
 }
 
 .btn {
@@ -105,6 +130,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .login-box {
 	z-index: 1;
 	.box-background;
+	.box-borders;
 	.border-radius;
 }
 
@@ -177,20 +203,29 @@ header {
 	overflow: hidden;
 	padding: 40px;
 	min-width: 500px;
+/*	.box-background;
+	.box-borders;
+	.border-radius;*/
 }
 
-table {
-	height: 90%;
+.table-container table {
+	max-height: 600px;
+	.box-background;
 }
 
 tr {
 
 }
 
-td, th {
+.table-container td, th {
 	width: 20%;
-	.box-background(0px);
+	.box-background;
+	.box-borders(0px);
 	text-align: center;
+}
+
+.table-container .small-col {
+	width: 10%;
 }
 
 thead {
@@ -204,6 +239,7 @@ table input {
 
 table span {
 	max-height: 100px;
+	color: #ffffff;
 }
 
 .dataTables_length {
