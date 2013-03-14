@@ -12,19 +12,19 @@
 	<?php foreach($boards as $board) { ?>
 			<tr style="max-height:100px;">
 				<td class="odd">
-					<span class="entry-static"><?= $board->board_name; ?></span>
+					<span class="entry-static board-name-holder"><?= $board->board_name; ?></span>
 					<input type="text" size="50" class="span12 entry-editable" placeholder="Enter a board name" value="<?= $board->board_name; ?>"/></td>
 				<td class="even">
-					<span class="entry-static"><?= $board->board_url; ?></span>
+					<span class="entry-static board-url-holder"><?= $board->board_url; ?></span>
 					<input type="text" size="1000" class="span12 entry-editable" placeholder="Enter a Feed URL" value="<?= $board->board_url; ?>" /></td>
 				<td class="odd small-col">
-					<button class="btn btn-mini html-modal-open"><i class="icon-eye-open"></i> View/Edit</button>
-
+					<button class="btn btn-mini html-modal-open" board-name="<?= $board->board_name; ?>"><i class="icon-eye-open"></i> View/Edit</button>
+					<span id="<?= $board->board_name; ?>" style="display:none;"><?= $board->board_html; ?></span>
 				<td class="even">
-					<button class="btn btn-mini edit-button"><i class="icon-edit "></i> Edit</button>
-					<button class="btn btn-mini entry-editable"><i class="icon-file"></i> Save</button>
-										<button class="btn btn-mini html-modal-open"><i class="icon-eye-open"></i> Preview Board</button>
-					<button class="btn btn-mini btn-danger delete-button"><i class="icon-trash icon-white"></i> Delete</button>
+					<button class="btn btn-mini board-edit"><i class="icon-edit "></i> Edit</button>
+					<button class="btn btn-mini entry-editable board-save"><i class="icon-file"></i> Save</button>
+					<button class="btn btn-mini board-preview"><i class="icon-eye-open"></i> Preview Board</button>
+					<button class="btn btn-mini btn-danger board-delete"><i class="icon-trash icon-white"></i> Delete</button>
 				</td>
 			</tr>
 	<?php } ?>
@@ -44,17 +44,17 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="preview">
-  	<?= $board->board_html; ?>
+  	
   </div>
   <div class="tab-pane" id="edit">
   	<textarea class="span12">
-  		<?= $board->board_html; ?>
+  		
   	</textarea>
   </div>
 </div>
 </div>
   <div class="modal-footer">
-    <a href="#" class="btn"><i class="icon-cancel"></i> Close</a>
+    <a href="#" class="btn"><i class="icon-remove"></i> Close</a>
     <a href="#" class="btn"><i class="icon-file"></i> Save</a>
   </div>
 </div>

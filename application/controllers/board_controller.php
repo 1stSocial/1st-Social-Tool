@@ -23,6 +23,18 @@ class Board_controller extends CI_Controller {
 		$this->load->view("footer");
 	}
 
+	function create_board() {
+
+	}
+
+	function modify_board() {
+
+	}
+
+	function delete_board() {
+
+	}
+
 	function show_board($board_name, $board_style = "rss_board") {
 		$board_data = $this->board_model->get_board($board_name);
 
@@ -35,8 +47,6 @@ class Board_controller extends CI_Controller {
 
 		$this->load->view("rss_board", $data);
 	}
-
-
 
 }
 

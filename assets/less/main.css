@@ -263,9 +263,16 @@ thead {
 table input {
   text-align: right;
 }
-table span {
+.table-container table span {
   max-height: 100px;
   color: #ffffff;
+}
+.create-board {
+  /*float: right;*/
+
+}
+.dataTables_filter {
+  float: left;
 }
 .dataTables_length {
   display: none;
