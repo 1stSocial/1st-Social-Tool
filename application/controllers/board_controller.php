@@ -6,14 +6,18 @@ class Board_controller extends CI_Controller {
 
 		$this->load->model("board_model");
 		$this->load->model("login_model");
-		$this->load->library("table");
 	}
 
 	function index() {
 		$this->load->view("header");
 		$this->login_model->check_login();
 
-		$data["boards"] = $this->board_model->get_all_boards();
+		$boards_data = $this->board_model->get_all_boards();
+		
+		$data = array(
+			"boards" => $boards_data->result(), 
+		);
+		
 		$this->load->view("board_frame", $data);
 		
 		$this->load->view("footer");
@@ -26,7 +30,7 @@ class Board_controller extends CI_Controller {
 			"board_name" => $board_name,
 			"board_url" => $board_data->board_url,
 			"board_html" => $board_data->board_html,
-			"board_style" => $board_style
+			"board_style" => $board_style,
 		);
 
 		$this->load->view("rss_board", $data);

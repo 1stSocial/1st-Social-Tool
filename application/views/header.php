@@ -4,6 +4,8 @@
  	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-1.9.1.js"></script>
  	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-ui-1.10.1.custom.js"></script>
  	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.dataTables.min.js"></script>
+
 
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>

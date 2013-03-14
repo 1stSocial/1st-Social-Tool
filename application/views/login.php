@@ -13,7 +13,7 @@
                 <input class="span12" type="password" size="20" id="password" name="password"/>
                 <br/>
                 <br/>
-                <input class="btn btn-1st span12" type="submit" value="Login"/>
+                <input class="btn btn-inverse span12" type="submit" value="Login"/>
                 <div class="text-error text-center"><?php echo validation_errors(); ?></div>
             </form>
         </div>

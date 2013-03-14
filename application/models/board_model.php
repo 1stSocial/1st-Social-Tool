@@ -13,7 +13,7 @@ Class Board_model extends CI_Model {
 
 	function get_all_boards() {
 		$query = $this->db->query("SELECT * FROM rss_board");
-		return $query->result();
+		return $query;
 	}
 
 	function create_board($board_name, $board_url, $board_html) {

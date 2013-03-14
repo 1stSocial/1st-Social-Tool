@@ -6,7 +6,7 @@
 	</div>
 	<div class="account-box pull-right">
 		<span>Welcome <?php echo $username; ?>!</span>
-		<a class="btn btn-inverted" href="home/logout"><i class="icon-off"></i> Logout</a>
+		<a class="btn btn-inverse" href="home/logout"><i class="icon-off icon-white"></i> Logout</a>
 	</div>
 </div>
 <div class="row-fluid">
