@@ -39,7 +39,7 @@
   </div>
   <div class="modal-body">
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#preview" data-toggle="tab">Preview</a></li>
+  <li class="active"><a href="#preview" class="save-board-html" data-toggle="tab">Preview</a></li>
   <li><a href="#edit" data-toggle="tab">Edit</a></li>
 </ul>
 <div class="tab-content">
@@ -54,7 +54,7 @@
 </div>
 </div>
   <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
+    <a href="#" class="btn"><i class="icon-cancel"></i> Close</a>
+    <a href="#" class="btn"><i class="icon-file"></i> Save</a>
   </div>
 </div>
