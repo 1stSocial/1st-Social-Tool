@@ -39,18 +39,26 @@
   </div>
   <div class="modal-body">
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#preview" class="save-board-html" data-toggle="tab">Preview</a></li>
-  <li><a href="#edit" data-toggle="tab">Edit</a></li>
+	<li class="active"><a href="#edit" data-toggle="tab">Edit</a></li>
+  	<li><a href="#preview" class="save-board-html" data-toggle="tab">Preview</a></li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="preview">
-  	
-  </div>
-  <div class="tab-pane" id="edit">
-  	<textarea class="span12">
-  		
-  	</textarea>
-  </div>
+	<div class="tab-pane active" id="edit">
+		<div class="pull-left span4">
+			<label for="modal-name">Board Name:</label>
+			<input name="modal-name" type="text" class="html-modal-name span12" placeholder="Enter a board name" value=""/>
+		</div>
+		<div class="pull-left span8">
+	  	<label for="modal-name">Board URL:</label>
+	  	<input name="modal-url" type="text" class="html-modal-url span12" placeholder="Enter a board name" value=""/>
+	</div>
+	<br/>
+		<label for="modal-name">Board HTML:</label>
+		<textarea name="modal-html" class="span12">
+		</textarea>
+	</div>
+	<div class="tab-pane" id="preview">
+  	</div>
 </div>
 </div>
   <div class="modal-footer">

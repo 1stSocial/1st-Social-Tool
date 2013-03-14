@@ -28,6 +28,9 @@ body {
   /* IE6-9 */
 
 }
+textarea {
+  resize: none;
+}
 .modal {
   background: transparent;
 }

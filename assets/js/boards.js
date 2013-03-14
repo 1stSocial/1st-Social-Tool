@@ -20,9 +20,15 @@ function fnCreateDataTable(sTableName) {
 
 	$(".table-container").undelegate(".html-modal-open", "click");
 	$(".table-container").delegate(".html-modal-open", "click", function(){
+		var oTableRow = $(this).parent("td").parent("tr");
+
 		var sBoardHtml = $("#" + $(this).attr("board-name")).html();
+		var sBoardName = oTableRow.find(".board-name-holder").text();
+		var sBoardUrl = oTableRow.find(".board-url-holder").text();
 
 		$(".html-modal .modal-body #preview").html(sBoardHtml);
+		$(".html-modal .modal-body #edit .html-modal-name").val(sBoardName);
+		$(".html-modal .modal-body #edit .html-modal-url").val(sBoardUrl);
 		$(".html-modal .modal-body #edit textarea").val(sBoardHtml);
 		
 		$(".html-modal").modal();
