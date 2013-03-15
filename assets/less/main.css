@@ -2,6 +2,7 @@ html {
   height: 100%;
 }
 body {
+  border-bottom: 50px;
   background: rgba(94, 88, 118, 0.65);
   background-image: url(../img/internal/texture_bg.png);
   /* fallback */
