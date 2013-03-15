@@ -14,3 +14,6 @@
    <title></title>
  </head>
  <body>
+
+<div class="loader">
+</div>
