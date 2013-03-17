@@ -67,22 +67,26 @@ function fnCreateDataTable() {
 			"board_html": $(".html-modal .modal-body #edit textarea").val()
 		};
 
-		$.ajax({
-			url: "board_controller/modify_board",
-			data: oData,
-			type: "POST",
-			dataType: "json",
-			beforeSend: function(){
-				fnShowLoader();
-			},
-			success: function(response){
-				fnRefreshTable();
-				$(".html-modal").modal("hide");
-			},
-			error: function(error){
-				fnHideLoader();
-			}
-		});
+		fnModifyBoard(oData);
 	});
 
+}
+
+function fnModifyBoard(oData) {
+	$.ajax({
+		url: "board_controller/modify_board",
+		data: oData,
+		type: "POST",
+		dataType: "json",
+		beforeSend: function(){
+			fnShowLoader();
+		},
+		success: function(response){
+			fnRefreshTable();
+			$(".html-modal").modal("hide");
+		},
+		error: function(error){
+			fnHideLoader();
+		}
+	});
 }

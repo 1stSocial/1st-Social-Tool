@@ -35,7 +35,12 @@ class Board_controller extends CI_Controller {
 	}
 	
 	function create_board() {
+		$board_name = $this->input->post("board_name");
+		$board_url = $this->input->post("board_url");
+		$board_html = $this->input->post("board_html");
+		$fb_app_id = $this->input->post("fb_app_id");
 
+		$this->board_model->modify_board($board_name, $board_url, $board_html, $fb_app_id);
 	}
 
 	function modify_board() {
@@ -43,12 +48,16 @@ class Board_controller extends CI_Controller {
 		$board_url = $this->input->post("board_url");
 		$board_html = addslashes($this->input->post("board_html"));
 
-		$this->board_model->modify_board($board_name, $board_url, $board_html);
-		echo json_encode(array("success" => true));
+		$query = $this->board_model->create_board($board_name, $board_url, $board_html);
+		echo json_encode(array("result" => $query));
 	}
 
 	function delete_board() {
+		$board_name = $this->input->post("board_name");
 
+		$query = $this->board_model->modify_board($board_name, $board_url, $board_html);
+
+		echo json_encode(array("result" => $query));
 	}
 
 	function show_board($board_name, $board_style = "rss_board") {
