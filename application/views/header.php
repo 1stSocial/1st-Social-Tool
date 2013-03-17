@@ -8,10 +8,10 @@
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/redactor.min.js"></script>
 
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
- 	 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
+ 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>
 
-   <title></title>
+   <title>1st Social</title>
  </head>
  <body>
 

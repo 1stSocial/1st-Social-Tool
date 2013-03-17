@@ -11,24 +11,40 @@ class Board_controller extends CI_Controller {
 	function index() {
 		$this->load->view("header");
 		$this->login_model->check_login();
-
-		$boards_data = $this->board_model->get_all_boards();
 		
 		$data = array(
-			"boards" => $boards_data->result(), 
+			"board_table_html" => $this->get_board_table_html()
 		);
-		
+
 		$this->load->view("board_frame", $data);
 		
 		$this->load->view("footer");
 	}
 
+	function get_board_table_html($ajax = false) {
+		$board_data = $this->board_model->get_all_boards()->result();
+ 		
+ 		$board_table_html = $this->load->view("board_table", 
+									array("boards" => $board_data), true);
+
+		if ($ajax) {
+			echo json_encode($board_table_html);
+		} else {
+			return $board_table_html;
+		}
+	}
+	
 	function create_board() {
 
 	}
 
 	function modify_board() {
+		$board_name = $this->input->post("board_name");
+		$board_url = $this->input->post("board_url");
+		$board_html = addslashes($this->input->post("board_html"));
 
+		$this->board_model->modify_board($board_name, $board_url, $board_html);
+		echo json_encode(array("success" => true));
 	}
 
 	function delete_board() {

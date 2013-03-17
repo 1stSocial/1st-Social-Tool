@@ -15,7 +15,7 @@
 			<td class="even">
 				<span class="entry-static board-url-holder"><?= $board->board_url; ?></span>
 			<td class="odd small-col">
-				<button class="btn btn-mini board-preview" title="Opens in new Tab/Window" rel="tooltip"><i class="icon-eye-open"></i> Preview Board</button>
+				<button class="btn btn-mini board-preview" title="Opens in new Tab/Window" rel="tooltip"><i class="icon-eye-open"></i> Preview</button>
 				<span id="<?= $board->board_name; ?>" style="display:none;"><?= $board->board_html; ?></span>
 			<td class="even">
 				<button class="btn btn-mini html-modal-open" board-name="<?= $board->board_name; ?>"><i class="icon-eye-open"></i> Edit</button>

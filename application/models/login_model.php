@@ -8,6 +8,11 @@ Class Login_model extends CI_Model {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
+
+             //Render Settings
+             $data['settings'] = $session_data['user_level'] === 'super-admin' || $session_data['user_level'] === 'admin' ? 'Settings' : '';
+
+
             $this->load->view('home', $data);
         } else {
             //If no session, redirect to login page

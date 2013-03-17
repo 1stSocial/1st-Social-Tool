@@ -17,11 +17,24 @@ Class Board_model extends CI_Model {
 	}
 
 	function create_board($board_name, $board_url, $board_html) {
-
+		$sql = "INSERT into rss_board";
+		
+		return $this->db->query($sql);
 	}
 
 	function modify_board($board_name = "", $board_url = "", $board_html = "") {
-		
+		$sql = "UPDATE rss_board 
+				SET board_url = '$board_url', 
+				board_html = '$board_html' 
+				WHERE board_name = '$board_name'";
+
+		return $this->db->query($sql);
+	}
+
+	function delete_board($board_name) {
+		$sql = "DELETE from rss_board";
+
+		return $this->db->query($sql);
 	}
 }
 

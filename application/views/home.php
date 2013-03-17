@@ -4,8 +4,9 @@
 			<img alt="logo" src="<?= base_url(); ?>assets/img/internal/logo_mini.png"/>
 		</a>
 	</div>
+	<?= $settings; ?>
 	<div class="account-box pull-right">
-		<span>Welcome <?php echo $username; ?>!</span>
+		<span>Welcome <?= $username; ?>!</span>
 		<a class="btn btn-inverse" href="home/logout"><i class="icon-off icon-white"></i> Logout</a>
 	</div>
 </div>

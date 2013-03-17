@@ -38,7 +38,6 @@ class VerifyLogin extends CI_Controller {
 
    //query the database
    $result = $this->user->login($username, $password);
-
    if($result)
    {
      $sess_array = array();
@@ -46,7 +45,8 @@ class VerifyLogin extends CI_Controller {
      {
        $sess_array = array(
          'id' => $row->id,
-         'username' => $row->username
+         'username' => $row->username, 
+         'user_level' => $row->user_level
        );
        $this->session->set_userdata('logged_in', $sess_array);
      }
@@ -59,4 +59,3 @@ class VerifyLogin extends CI_Controller {
    }
  }
 }
-?>

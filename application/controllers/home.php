@@ -11,10 +11,16 @@ class Home extends CI_Controller {
  {
    if($this->session->userdata('logged_in'))
    {
+    $this->load->view('header');
      $session_data = $this->session->userdata('logged_in');
+
      $data['username'] = $session_data['username'];
-     $this->load->view('header');
+
+     //Render Settings
+     $data['settings'] = $session_data['user_level'] === 'super-admin' || $session_data['user_level'] === 'admin' ? 'Settings' : '';
+
      $this->load->view('home', $data);
+
      $this->load->view('footer');
    }
    else
@@ -27,11 +33,10 @@ class Home extends CI_Controller {
  function logout()
  {
    $this->session->unset_userdata('logged_in');
+   
    session_destroy();
-   redirect('home', 'refresh');
+   
+   redirect('login', 'refresh');
  }
 
 }
-
-?>
-
