@@ -7,7 +7,6 @@
 	-o-border-radius: @radius;
 }
 
-
 .box-borders(@shadow-blur: 7px) {
 	box-shadow: 0px 0px @shadow-blur #ffffff inset;
 	border: 1px solid #ffffff;
@@ -35,7 +34,7 @@ html {
 }
 
 body {
-	border-bottom: 50px;
+	margin-bottom: 30px;
 	background: rgba(94,88,118,0.65);
 	background-image: url(../img/internal/texture_bg.png); /* fallback */
 	background-image: -moz-linear-gradient(top,  rgba(94,88,118,0.65) 0%, rgba(0,0,0,0) 100%), url(../img/internal/texture_bg.png); /* FF3.6+ */
@@ -50,6 +49,18 @@ body {
 textarea { 
     resize: none; 
 }
+
+.loader {
+	background: rgba(0,0,0,0.7) url(../img/internal/loader.gif) 50% 50% no-repeat;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: none;
+	z-index: 99999;
+}
+
 
 .modal {
 	background: transparent;
@@ -73,6 +84,10 @@ textarea {
 	height: 300px;
 }
 
+textarea.modal-html {
+	max-height: 225px;
+}
+
 .btn {
 	margin: 0px 2px 0px 2px;
 }
@@ -87,13 +102,13 @@ textarea {
 .btn-1st.active,
 .btn-1st.disabled,
 .btn-1st[disabled] {
-	/*color: #ffffff;*/
-	/*background: rgba(94,88,118,0.5); /*Primary Color*/
+	color: #ffffff;
+	background: rgba(94,88,118,0.5); 
 }
 
 .btn-1st:active,
 .btn-1st.active {
-  background-color: #003399 \9;
+  	background-color: #003399 \9;
 }
 
 .text-white {
@@ -289,7 +304,7 @@ table input {
 	color: #ffffff;
 }
 
-.entry-editable {
-	display: none;
+.html-modal-name {
+	font-weight: bold;
 }
 
