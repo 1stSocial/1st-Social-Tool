@@ -19,7 +19,7 @@
 				<span id="<?= $board->board_name; ?>" style="display:none;"><?= $board->board_html; ?></span>
 			<td class="even">
 				<button class="btn btn-mini html-modal-open" board-name="<?= $board->board_name; ?>"><i class="icon-eye-open"></i> Edit</button>
-				<button class="btn btn-mini btn-danger board-delete"><i class="icon-trash icon-white"></i> Delete</button>
+				<button class="btn btn-mini btn-danger delete-board"><i class="icon-trash icon-white"></i> Delete</button>
 			</td>
 		</tr>
 <?php } ?>

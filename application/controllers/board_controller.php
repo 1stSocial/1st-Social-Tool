@@ -56,7 +56,6 @@ class Board_controller extends CI_Controller {
 		$board_name = $this->input->post("board_name");
 
 		$query = $this->board_model->modify_board($board_name, $board_url, $board_html);
-
 		echo json_encode(array("result" => $query));
 	}
 

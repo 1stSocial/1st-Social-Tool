@@ -50,8 +50,7 @@ textarea {
     resize: none; 
 }
 
-.loader {
-	background: rgba(0,0,0,0.7) url(../img/internal/loader.gif) 50% 50% no-repeat;
+.overlay() {
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -61,6 +60,15 @@ textarea {
 	z-index: 99999;
 }
 
+.loader {
+	background: rgba(0,0,0,0.7) url(../img/internal/loader.gif) 50% 50% no-repeat;
+	.overlay;
+}
+
+.new-alert {
+	width: 70%;
+	margin: 0 auto;
+}
 
 .modal {
 	background: transparent;

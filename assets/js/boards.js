@@ -70,6 +70,14 @@ function fnCreateDataTable() {
 		fnModifyBoard(oData);
 	});
 
+	$(".table-container").undelegate(".delete-board", "click");
+	$(".table-container").delegate(".delete-board", "click", function(){
+		var oTableRow = $(this).parent("td").parent("tr");
+		var sBoardName = oTableRow.find(".board-name-holder").text();
+
+		fnDeleteBoard(sBoardName);
+	});
+
 }
 
 function fnModifyBoard(oData) {
@@ -89,4 +97,28 @@ function fnModifyBoard(oData) {
 			fnHideLoader();
 		}
 	});
+}
+
+function fnCreateBoard() {
+
+}
+
+function fnDeleteBoard(sBoardName) {
+
+	var sAlertHtml = '<div class="alert alert-block alert-error alert-delete-board fade in">'
+	+ '<button type="button" class="close" data-dismiss="alert">&times;</button>'
+	+ '<h4 class="alert-heading">Are you sure you want to delete <span>'+sBoardName+'</span></h4>'
+	+ '<p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>'
+	+ '<p>'
+  	+ '<a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#">Or do this</a>'
+	+ '</p>'
+	+ '</div>'
+
+	fnCreateAlert(sAlertHtml);
+}
+
+function fnCreateAlert(sAlertHtml) {
+	console.debug("here")
+	$("body").append("<div class='new-alert'>" + sAlertHtml + "</div>");
+	$(".new-alert").alert();
 }
