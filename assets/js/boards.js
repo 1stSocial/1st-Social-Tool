@@ -24,7 +24,10 @@ function fnRefreshTable() {
 function fnInitTable(sTableName, bDestroyInstance) {
 	oDataTable = $(sTableName).dataTable({
 		"sPaginationType": "full_numbers",
-		"bPaginate": true
+		"bPaginate": true,
+		"aoColumnDefs": [ 
+         { "bSortable": false, "aTargets": [2, 3] }
+       ]
 	});
 
 	var sAddBoardButton = "<button class='btn create-board'><i class='icon-plus'></i> Create New Board</button>";
@@ -130,7 +133,7 @@ function fnCreateBoard(oData) {
 		type: "POST",
 		dataType: "json",
 		beforeSend: function(){
-			$(".create-board-modal").button('loading');
+			$(".create-board").button('loading');
 		},
 		success: function(response){
 			fnRefreshTable();

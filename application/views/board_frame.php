@@ -80,7 +80,7 @@
 	</div>
 </div>
 	<div class="modal-footer">
-			<a href="#" class="btn create-board" data-loading-text="Creating board..."><i class="icon-plus"></i> Create Board</a>
+		<a href="#" class="btn create-board" data-loading-text="Creating board..."><i class="icon-plus"></i> Create Board</a>
 		<a href="#" class="btn" data-dismiss="modal" ><i class="icon-remove"></i> Cancel</a>
 	</div>
 </div>
