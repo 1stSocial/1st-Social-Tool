@@ -34,9 +34,33 @@ function sizeChangeCallback() {
 FB.Canvas.setSize({ width: 810, height: 1400 });
 }
 
- FB.login(function(response) {
-   // handle the response
- }, {scope: 'email,user_likes'});
+// FB.login(function(response) {
+// // handle the response
+// }, {scope: 'email,user_likes,read_friendlists,user_birthday,user_about_me,user_education_history,user_interests,user_work_history'});
+
+FB.login(function(response) {
+   if (response.authResponse) {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+        $.ajax({
+            url: "social_controller/fb_set_user_data",
+            data: {"me_object": response},
+            dataType: "json",
+            type: "POST",
+            success: function(){
+
+            },
+            error: function(){
+                
+            }
+        });
+       
+     });
+   } else {
+     console.log('User cancelled login or did not fully authorize.');
+   }
+ });
+
 </script>
 
 

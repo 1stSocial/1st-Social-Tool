@@ -5,7 +5,7 @@
 <div class="modal hide fade html-modal">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" style="color:white;" aria-hidden="true">&times;</button>
-    <h3>Edit Board Data: <span></span></h3>
+    <h3>Edit Board: <span></span></h3>
   </div>
   <div class="modal-body">
 <ul class="nav nav-tabs">
@@ -16,18 +16,16 @@
 </ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="edit">
-		<form>
-			<fieldset>
-				<label >Board Name:</label>
-				<span class="html-modal-name span12" placeholder="Type board name..."></span>
 
-				<label for="board-url">Board URL:</label>
-				<input type="text" name="board-url" class="span12 html-modal-url" placeholder="Type board URL...">
+		<label >Board Name:</label>
+		<span class="html-modal-name span12" placeholder="Type board name..."></span>
 
-				<label for="board-fb-id">Facebook application ID (optional): </label>
-				<input type="text" name="board-fb-id" class="span6 html-modal-fb-id" placeholder="Type Facebook application ID...">
-			</fieldset>
-		</form>
+		<label for="board-url">Board URL:</label>
+		<input type="text" name="board-url" class="span12 html-modal-url" placeholder="Type board URL...">
+
+		<label for="board-fb-id">Facebook application ID (optional): </label>
+		<input type="text" name="board-fb-id" class="span6 html-modal-fb-id" placeholder="Type Facebook application ID...">
+
 	</div>
 	<div class="tab-pane" id="html">
 			<textarea class="span12 modal-html" placeholder="Enter your html code here..."></textarea>
@@ -52,33 +50,31 @@
   </div>
   <div class="modal-body">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#settings" data-toggle="tab"><i class="icon-wrench"></i> Board Settings</a></li>
-	  	<li><a href="#html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
-  		<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
+		<li class="active"><a href="#create_settings" data-toggle="tab"><i class="icon-wrench"></i> Board Settings</a></li>
+	  	<li><a href="#create_html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
+  		<li><a href="#create_preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 	</ul>
 	<div class="tab-content">
-		<div class="tab-pane active" id="settings">
-			<form>
-			  <fieldset>
-			    <label for="board-name">Board Name:</label>
-			    <input type="text" name="board-name" class="span6 create-modal-name" placeholder="Type board name...">
-			    <span class="help-block">The name of your board.</span>
-			    
-			    <label for="board-url">Board URL:</label>
-			    <input type="text" name="board-url" class="span12 create-modal-url" placeholder="Type board URL...">
-			    <span class="help-block">The URL of your board.</span>
-			    
-			    <label for="board-fb-id">Facebook application ID (optional): </label>
-			    <input type="text" name="board-fb-id" class="span6 create-modal-fb-id" placeholder="Type Facebook application ID...">
-			    <span class="help-block">The Facebook application the board will link to.</span>
-			  </fieldset>
-			</form>
+		<div class="tab-pane active" id="create_settings">
+
+		    <label for="board-name">Board Name:</label>
+		    <input type="text" name="board-name" class="span6 create-modal-name" placeholder="Type board name...">
+		    <span class="help-block">The name of your board.</span>
+		    
+		    <label for="board-url">Board URL:</label>
+		    <input type="text" name="board-url" class="span12 create-modal-url" placeholder="Type board URL...">
+		    <span class="help-block">The URL of your board.</span>
+		    
+		    <label for="board-fb-id">Facebook application ID (optional): </label>
+		    <input type="text" name="board-fb-id" class="span6 create-modal-fb-id" placeholder="Type Facebook application ID...">
+		    <span class="help-block">The Facebook application the board will link to.</span>
+
 		</div>
 
-		<div class="tab-pane" id="html">
+		<div class="tab-pane" id="create_html">
 			<textarea class="span12" placeholder="Enter your html code here..."></textarea>
 		</div>
-		<div class="tab-pane" id="preview">
+		<div class="tab-pane" id="create_preview">
   		</div>
 	</div>
 </div>

@@ -115,6 +115,15 @@ function fnCreateBoard() {
 
 	$(".create-board-modal").modal();
 
+	$(".create-board-modal").undelegate(".create-board", "click");
+	$(".create-board-modal").delegate(".create-board", "click", function(){
+		var oData = {
+			"board_name": $(".html-modal .modal-body #edit .html-modal-name").text(),
+			"board_url": $(".html-modal .modal-body #edit .html-modal-url").val(),
+			"fb_app_id": $(".html-modal .modal-body #edit .html-modal-fb-id").val(),
+			"board_html": $(".html-modal .modal-body #html textarea").val()
+		};
+
 }
 
 function fnDeleteBoard(sBoardName) {
