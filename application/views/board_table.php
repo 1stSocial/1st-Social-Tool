@@ -16,7 +16,8 @@
 				<span class="entry-static board-url-holder"><?= $board->board_url; ?></span>
 			<td class="odd small-col">
 				<button class="btn btn-mini board-preview" title="Opens in new Tab/Window" rel="tooltip"><i class="icon-eye-open"></i> Preview</button>
-				<span id="<?= $board->board_name; ?>" style="display:none;"><?= $board->board_html; ?></span>
+				<span id="<?= $board->board_name; ?>_html" style="display:none;"><?= $board->board_html; ?></span>
+				<span id="<?= $board->board_name; ?>_fb_id" style="display:none;"><?= $board->fb_app_id; ?></span>
 			<td class="even">
 				<button class="btn btn-mini html-modal-open" board-name="<?= $board->board_name; ?>"><i class="icon-eye-open"></i> Edit</button>
 				<button class="btn btn-mini btn-danger delete-board"><i class="icon-trash icon-white"></i> Delete</button>

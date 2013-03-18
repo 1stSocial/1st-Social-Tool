@@ -9,30 +9,35 @@
   </div>
   <div class="modal-body">
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#edit" data-toggle="tab"><i class="icon-edit"></i> Edit</a></li>
+	<li class="active"><a href="#edit" data-toggle="tab"><i class="icon-edit"></i> Board Settings</a></li>
+  	<li><a href="#html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
   	<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Preview</a></li>
+
 </ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="edit">
-		<div class="pull-left span4">
-			<label for="modal-name">Board Name:</label>
-			<span name="modal-name"  class="html-modal-name span12"></span>
+		<form>
+			<fieldset>
+				<label >Board Name:</label>
+				<span class="html-modal-name span12" placeholder="Type board name..."></span>
+
+				<label for="board-url">Board URL:</label>
+				<input type="text" name="board-url" class="span12 html-modal-url" placeholder="Type board URL...">
+
+				<label for="board-fb-id">Facebook application ID (optional): </label>
+				<input type="text" name="board-fb-id" class="span6" placeholder="Type Facebook application ID...">
+			</fieldset>
+		</form>
+	</div>
+	<div class="tab-pane" id="html">
+			<textarea class="span12 modal-html" placeholder="Enter your html code here..."></textarea>
 		</div>
-		<div class="pull-left span8">
-	  	<label for="modal-name">Board URL:</label>
-	  	<input name="modal-url" type="text" class="html-modal-url span12" placeholder="Enter a board name" value=""/>
-	</div>
-	<br/>
-		<label for="modal-name">Board HTML:</label>
-		<textarea name="modal-html" class="span12 modal-html">
-		</textarea>
-	</div>
 	<div class="tab-pane" id="preview">
   	</div>
 </div>
 </div>
 	<div class="modal-footer">
-		<a href="#" class="btn save-board"><i class="icon-file"></i> Save</a>
+		<a href="#" class="btn save-board" data-loading-text="Saving..."><i class="icon-file"></i> Save</a>
 		<a href="#" class="btn" data-dismiss="modal" ><i class="icon-remove"></i> Cancel</a>
 	</div>
 </div>
@@ -72,7 +77,7 @@
 	</div>
 </div>
 	<div class="modal-footer">
-				<a href="#" class="btn create-board"><i class="icon-file"></i> Create Board</a>
+				<a href="#" class="btn create-board" data-loading-text="Creating..."><i class="icon-file"></i> Create Board</a>
 		<a href="#" class="btn" data-dismiss="modal" ><i class="icon-remove"></i> Cancel</a>
 	</div>
 </div>

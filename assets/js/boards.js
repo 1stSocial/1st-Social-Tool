@@ -34,14 +34,15 @@ function fnCreateDataTable() {
 	$(".table-container").delegate(".html-modal-open", "click", function(){
 		var oTableRow = $(this).parent("td").parent("tr");
 
-		var sBoardHtml = $("#" + $(this).attr("board-name")).html();
+		var sBoardHtml = $("#" + $(this).attr("board-name") + "_html").html();
 		var sBoardName = oTableRow.find(".board-name-holder").text();
 		var sBoardUrl = oTableRow.find(".board-url-holder").text();
+		var sBoardFbId = oTableRow.find("#" + $(this).attr("board-name") + "_fb_id").text();
 
 		$(".html-modal .modal-body #preview").html(sBoardHtml);
 		$(".html-modal .modal-body #edit .html-modal-name, .html-modal .modal-header h3 span").text(sBoardName);
 		$(".html-modal .modal-body #edit .html-modal-url").val(sBoardUrl);
-		$(".html-modal .modal-body #edit textarea").val(sBoardHtml);
+		$(".html-modal .modal-body #html textarea").val(sBoardHtml);
 		
 		$(".html-modal").modal();
 		$("#jobs").html("<span class='text-center'>Jobs will not appear until you preview the feed</span>")
@@ -56,7 +57,7 @@ function fnCreateDataTable() {
 
 	$(".html-modal").undelegate(".save-board-html", "click");
 	$(".html-modal").delegate(".save-board-html", "click", function(){
-		$("#preview").html($("#edit textarea").val());
+		$(".html-modal #preview").html($("#html textarea").val());
 	});
 
 	$(".html-modal").undelegate(".save-board", "click");
