@@ -40,7 +40,9 @@ class Board_controller extends CI_Controller {
 		$board_html = $this->input->post("board_html");
 		$fb_app_id = $this->input->post("fb_app_id");
 
-		$this->board_model->create_board($board_name, $board_url, $board_html, $fb_app_id);
+		$query = $this->board_model->create_board($board_name, $board_url, $board_html, $fb_app_id);
+	
+		echo json_encode(array("result" => $query));
 	}
 
 	function modify_board() {

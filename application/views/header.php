@@ -6,6 +6,7 @@
  	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/redactor.min.js"></script>
+		<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/couch.js"></script>
 
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>

@@ -19,7 +19,7 @@
 				<span id="<?= $board->board_name; ?>_html" style="display:none;"><?= $board->board_html; ?></span>
 				<span id="<?= $board->board_name; ?>_fb_id" style="display:none;"><?= $board->fb_app_id; ?></span>
 			<td class="even">
-				<button class="btn btn-mini html-modal-open" board-name="<?= $board->board_name; ?>"><i class="icon-eye-open"></i> Edit</button>
+				<button class="btn btn-mini html-modal-open" board-name="<?= $board->board_name; ?>"><i class="icon-edit"></i> Edit</button>
 				<button class="btn btn-mini btn-danger delete-board"><i class="icon-trash icon-white"></i> Delete</button>
 			</td>
 		</tr>

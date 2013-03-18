@@ -40,11 +40,9 @@ textarea {
   top: 0px;
   display: none;
   z-index: 99999;
-  background-color: rgba(0, 0, 0, 0.7);
   display: block;
 }
 .loader {
-  background-image: url(../img/internal/loader.gif) 50% 50% no-repeat;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -52,7 +50,7 @@ textarea {
   top: 0px;
   display: none;
   z-index: 99999;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7) url(../img/internal/loader.gif) 50% 50% no-repeat;
 }
 .new-alert {
   width: 70%;

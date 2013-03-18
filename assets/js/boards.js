@@ -12,9 +12,9 @@ function fnHideLoader() {
 }
 
 function fnRefreshTable() {
+	fnShowLoader();
 	$.get("board_controller/get_board_table_html/true", function(response){
 		fnHideLoader();
-		console.debug(response)
 		$(".table-container table").html(response);
 	}, "json");
 	
@@ -86,7 +86,19 @@ function fnCreateDataTable() {
 
 	$(".table-container").undelegate(".create-board", "click");
 	$(".table-container").delegate(".create-board", "click", function(){
-		fnCreateBoard();
+		$(".create-board-modal").modal();
+	});
+
+	$(".create-board-modal").undelegate(".create-board", "click");
+	$(".create-board-modal").delegate(".create-board", "click", function(){
+		var oData = {
+			"board_name": $(".create-board-modal .modal-body #create_settings .create-modal-name").val(),
+			"board_url": $(".create-board-modal .modal-body #create_settings .create-modal-url").val(),
+			"fb_app_id": $(".create-board-modal .modal-body #create_settings .create-modal-fb-id").val(),
+			"board_html": $(".create-board-modal .modal-body #create_html textarea").val()
+		};
+
+		fnCreateBoard(oData);
 	});
 
 }
@@ -111,18 +123,23 @@ function fnModifyBoard(oData) {
 	});
 }
 
-function fnCreateBoard() {
-
-	$(".create-board-modal").modal();
-
-	$(".create-board-modal").undelegate(".create-board", "click");
-	$(".create-board-modal").delegate(".create-board", "click", function(){
-		var oData = {
-			"board_name": $(".html-modal .modal-body #edit .html-modal-name").text(),
-			"board_url": $(".html-modal .modal-body #edit .html-modal-url").val(),
-			"fb_app_id": $(".html-modal .modal-body #edit .html-modal-fb-id").val(),
-			"board_html": $(".html-modal .modal-body #html textarea").val()
-		};
+function fnCreateBoard(oData) {
+		$.ajax({
+		url: "board_controller/create_board",
+		data: oData,
+		type: "POST",
+		dataType: "json",
+		beforeSend: function(){
+			$(".create-board-modal").button('loading');
+		},
+		success: function(response){
+			fnRefreshTable();
+			$(".create-board-modal").button('reset');
+			$(".create-board-modal").modal("hide");
+		},
+		error: function(error){
+		}
+	});
 
 }
 
@@ -148,11 +165,10 @@ function fnDeleteBoard(sBoardName) {
 				$(".board-delete-confirm").button('loading');
 			},
 			success: function(response){
-				console.debug(response);
 				$(".board-delete-confirm").button('reset');
 				if (response) {
 					fnRefreshTable();
-					// $(".new-alert").alert("close");
+					$(".alert").alert('close');
 				}
 			},
 			error: function(reponse){

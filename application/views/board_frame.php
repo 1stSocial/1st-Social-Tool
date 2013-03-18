@@ -31,9 +31,8 @@
 			<textarea class="span12 modal-html" placeholder="Enter your html code here..."></textarea>
 		</div>
 	<div class="tab-pane" id="preview">
-		<div class="text-center">RSS contents will not appear until you "Save and Preview" the board.</div>
-		<div class="preview-box"></div>
-
+		<div class="alert text-center text-info">RSS contents will not appear until you "Save and Preview" the board.</div>
+  		<div class="preview-box"></div>
   	</div>
 </div>
 </div>
@@ -75,11 +74,13 @@
 			<textarea class="span12" placeholder="Enter your html code here..."></textarea>
 		</div>
 		<div class="tab-pane" id="create_preview">
+			<div class="alert text-center text-info">RSS contents will not appear until you "Save and Preview" the board.</div>
+			<div class="preview-box"></div>
   		</div>
 	</div>
 </div>
 	<div class="modal-footer">
-				<a href="#" class="btn create-board" data-loading-text="Creating..."><i class="icon-file"></i> Create Board</a>
+			<a href="#" class="btn create-board" data-loading-text="Creating board..."><i class="icon-plus"></i> Create Board</a>
 		<a href="#" class="btn" data-dismiss="modal" ><i class="icon-remove"></i> Cancel</a>
 	</div>
 </div>

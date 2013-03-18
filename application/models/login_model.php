@@ -10,7 +10,7 @@ Class Login_model extends CI_Model {
             $data['username'] = $session_data['username'];
 
              //Render Settings
-             $data['settings'] = $session_data['user_level'] === 'super-admin' || $session_data['user_level'] === 'admin' ? 'Settings' : '';
+             $data['settings'] = $session_data['user_level'] === 'super-admin' || $session_data['user_level'] === 'admin' ? true : false;
 
 
             $this->load->view('home', $data);

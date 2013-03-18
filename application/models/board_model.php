@@ -16,7 +16,7 @@ Class Board_model extends CI_Model {
 		return $query;
 	}
 
-	function create_board($board_name, $board_url, $board_html, $fb_app_id = "") {
+	function create_board($board_name, $board_url = "", $board_html = "", $fb_app_id = "") {
 		$sql = "INSERT INTO rss_board (board_name, board_url, board_html, fb_app_id)
 		VALUES ('$board_name', '$board_url', '$board_html', '$fb_app_id')";
 		
