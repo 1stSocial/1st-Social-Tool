@@ -341,3 +341,6 @@ table input {
 .html-modal-name {
   font-weight: bold;
 }
+.create-board-modal .modal-body {
+  overflow: hidden;
+}
