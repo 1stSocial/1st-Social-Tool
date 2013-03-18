@@ -14,21 +14,25 @@ function fnHideLoader() {
 function fnRefreshTable() {
 	$.get("board_controller/get_board_table_html/true", function(response){
 		fnHideLoader();
-		$(".table-container").html(response);
+		console.debug(response)
+		$(".table-container table").html(response);
 	}, "json");
+	
+	oDataTable.fnDraw(); 
 }
 
-function fnInitTable(sTableName) {
-	$("#" + sTableName).dataTable({
-		"sPaginationType": "full_numbers"
+function fnInitTable(sTableName, bDestroyInstance) {
+	oDataTable = $(sTableName).dataTable({
+		"sPaginationType": "full_numbers",
+		"bPaginate": true
 	});
-}
-
-function fnCreateDataTable() {
-	fnInitTable("board_table");
 
 	var sAddBoardButton = "<button class='btn create-board'><i class='icon-plus'></i> Create New Board</button>";
 	$(".dataTables_filter").after(sAddBoardButton);
+}
+
+function fnCreateDataTable() {
+	fnInitTable(".table-container table");
 
 	$(".table-container").undelegate(".html-modal-open", "click");
 	$(".table-container").delegate(".html-modal-open", "click", function(){
@@ -37,15 +41,15 @@ function fnCreateDataTable() {
 		var sBoardHtml = $("#" + $(this).attr("board-name") + "_html").html();
 		var sBoardName = oTableRow.find(".board-name-holder").text();
 		var sBoardUrl = oTableRow.find(".board-url-holder").text();
-		var sBoardFbId = oTableRow.find("#" + $(this).attr("board-name") + "_fb_id").text();
+		var sBoardFbId = $("#" + $(this).attr("board-name") + "_fb_id").text();
 
-		$(".html-modal .modal-body #preview").html(sBoardHtml);
+		$(".html-modal .modal-body #preview .preview-box").html(sBoardHtml);
 		$(".html-modal .modal-body #edit .html-modal-name, .html-modal .modal-header h3 span").text(sBoardName);
 		$(".html-modal .modal-body #edit .html-modal-url").val(sBoardUrl);
+		$(".html-modal .modal-body #edit .html-modal-fb-id").val(sBoardFbId);
 		$(".html-modal .modal-body #html textarea").val(sBoardHtml);
 		
 		$(".html-modal").modal();
-		$("#jobs").html("<span class='text-center'>Jobs will not appear until you preview the feed</span>")
 	});
 
 	$(".table-container").undelegate(".board-preview", "click");
@@ -57,7 +61,7 @@ function fnCreateDataTable() {
 
 	$(".html-modal").undelegate(".save-board-html", "click");
 	$(".html-modal").delegate(".save-board-html", "click", function(){
-		$(".html-modal #preview").html($("#html textarea").val());
+		$(".html-modal #preview .preview-box").html($("#html textarea").val());
 	});
 
 	$(".html-modal").undelegate(".save-board", "click");
@@ -65,7 +69,8 @@ function fnCreateDataTable() {
 		var oData = {
 			"board_name": $(".html-modal .modal-body #edit .html-modal-name").text(),
 			"board_url": $(".html-modal .modal-body #edit .html-modal-url").val(),
-			"board_html": $(".html-modal .modal-body #edit textarea").val()
+			"fb_app_id": $(".html-modal .modal-body #edit .html-modal-fb-id").val(),
+			"board_html": $(".html-modal .modal-body #html textarea").val()
 		};
 
 		fnModifyBoard(oData);
@@ -93,10 +98,11 @@ function fnModifyBoard(oData) {
 		type: "POST",
 		dataType: "json",
 		beforeSend: function(){
-			fnShowLoader();
+			$(".save-board").button('loading');
 		},
 		success: function(response){
 			fnRefreshTable();
+			$(".save-board").button('reset');
 			$(".html-modal").modal("hide");
 		},
 		error: function(error){
@@ -134,9 +140,10 @@ function fnDeleteBoard(sBoardName) {
 			},
 			success: function(response){
 				console.debug(response);
+				$(".board-delete-confirm").button('reset');
 				if (response) {
 					fnRefreshTable();
-					$(".new-alert").alert("close");
+					// $(".new-alert").alert("close");
 				}
 			},
 			error: function(reponse){

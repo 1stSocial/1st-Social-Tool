@@ -15,8 +15,11 @@
  -->
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
+
+var sFacebookAppId = '<?= $fb_app_id; ?>';
+
 FB.init({
-appId : '148292165338722',
+appId : sFacebookAppId,
 status : true, // check login status
 cookie : true, // enable cookies to allow the server to access the session
 xfbml : true // parse XFBML
@@ -30,6 +33,10 @@ FB.Canvas.setAutoGrow();
 function sizeChangeCallback() {
 FB.Canvas.setSize({ width: 810, height: 1400 });
 }
+
+ FB.login(function(response) {
+   // handle the response
+ }, {scope: 'email,user_likes'});
 </script>
 
 
@@ -53,10 +60,10 @@ FB.Canvas.setSize({ width: 810, height: 1400 });
 <body>
 
 <script type="text/javascript">
-var sBoard_url = "<?= $board_url; ?>";
+var sBoardUrl = '<?= $board_url; ?>';
 
 $(document).ready(function () {
-	$('#jobs').rssfeed(sBoard_url, {
+	$('#jobs').rssfeed(sBoardUrl, {
 		limit: 100,
 		header: false,
 		linktarget: '_blank'

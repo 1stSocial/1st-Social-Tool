@@ -40,15 +40,17 @@ class Board_controller extends CI_Controller {
 		$board_html = $this->input->post("board_html");
 		$fb_app_id = $this->input->post("fb_app_id");
 
-		$this->board_model->modify_board($board_name, $board_url, $board_html, $fb_app_id);
+		$this->board_model->create_board($board_name, $board_url, $board_html, $fb_app_id);
 	}
 
 	function modify_board() {
 		$board_name = $this->input->post("board_name");
 		$board_url = $this->input->post("board_url");
+		$fb_app_id = $this->input->post("fb_app_id");
 		$board_html = addslashes($this->input->post("board_html"));
 
-		$query = $this->board_model->create_board($board_name, $board_url, $board_html);
+
+		$query = $this->board_model->modify_board($board_name, $board_url, $board_html, $fb_app_id);
 		echo json_encode(array("result" => $query));
 	}
 
@@ -65,6 +67,7 @@ class Board_controller extends CI_Controller {
 			"board_name" => $board_name,
 			"board_url" => $board_data->board_url,
 			"board_html" => $board_data->board_html,
+			"fb_app_id" => $board_data->fb_app_id,
 			"board_style" => $board_style,
 		);
 

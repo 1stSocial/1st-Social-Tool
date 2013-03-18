@@ -11,7 +11,7 @@
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#edit" data-toggle="tab"><i class="icon-edit"></i> Board Settings</a></li>
   	<li><a href="#html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
-  	<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Preview</a></li>
+  	<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 
 </ul>
 <div class="tab-content">
@@ -25,7 +25,7 @@
 				<input type="text" name="board-url" class="span12 html-modal-url" placeholder="Type board URL...">
 
 				<label for="board-fb-id">Facebook application ID (optional): </label>
-				<input type="text" name="board-fb-id" class="span6" placeholder="Type Facebook application ID...">
+				<input type="text" name="board-fb-id" class="span6 html-modal-fb-id" placeholder="Type Facebook application ID...">
 			</fieldset>
 		</form>
 	</div>
@@ -33,6 +33,9 @@
 			<textarea class="span12 modal-html" placeholder="Enter your html code here..."></textarea>
 		</div>
 	<div class="tab-pane" id="preview">
+		<div class="text-center">RSS contents will not appear until you "Save and Preview" the board.</div>
+		<div class="preview-box"></div>
+
   	</div>
 </div>
 </div>
@@ -51,21 +54,22 @@
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#settings" data-toggle="tab"><i class="icon-wrench"></i> Board Settings</a></li>
 	  	<li><a href="#html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
+  		<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="settings">
 			<form>
 			  <fieldset>
 			    <label for="board-name">Board Name:</label>
-			    <input type="text" name="board-name" class="span6" placeholder="Type board name...">
+			    <input type="text" name="board-name" class="span6 create-modal-name" placeholder="Type board name...">
 			    <span class="help-block">The name of your board.</span>
 			    
 			    <label for="board-url">Board URL:</label>
-			    <input type="text" name="board-url" class="span12" placeholder="Type board URL...">
+			    <input type="text" name="board-url" class="span12 create-modal-url" placeholder="Type board URL...">
 			    <span class="help-block">The URL of your board.</span>
 			    
 			    <label for="board-fb-id">Facebook application ID (optional): </label>
-			    <input type="text" name="board-fb-id" class="span6" placeholder="Type Facebook application ID...">
+			    <input type="text" name="board-fb-id" class="span6 create-modal-fb-id" placeholder="Type Facebook application ID...">
 			    <span class="help-block">The Facebook application the board will link to.</span>
 			  </fieldset>
 			</form>
@@ -74,6 +78,8 @@
 		<div class="tab-pane" id="html">
 			<textarea class="span12" placeholder="Enter your html code here..."></textarea>
 		</div>
+		<div class="tab-pane" id="preview">
+  		</div>
 	</div>
 </div>
 	<div class="modal-footer">

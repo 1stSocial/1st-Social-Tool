@@ -1,4 +1,4 @@
-<table class="span12" cellpadding="10" id="board_table">
+<table class="span12 board-table" cellpadding="10" id="board_table">
 	<thead>
 		<tr>
 			<th>Board Name</th>
