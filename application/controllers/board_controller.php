@@ -54,8 +54,7 @@ class Board_controller extends CI_Controller {
 
 	function delete_board() {
 		$board_name = $this->input->post("board_name");
-
-		$query = $this->board_model->modify_board($board_name, $board_url, $board_html);
+		$query = $this->board_model->delete_board($board_name);
 		echo json_encode(array("result" => $query));
 	}
 

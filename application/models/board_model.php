@@ -27,7 +27,7 @@ Class Board_model extends CI_Model {
 		$sql = "UPDATE rss_board 
 				SET board_url = '$board_url', 
 				board_html = '$board_html' 
-
+				fb_app_id = '$fb_app_id'
 				WHERE board_name = '$board_name'";
 
 		return $this->db->query($sql);
@@ -36,7 +36,6 @@ Class Board_model extends CI_Model {
 	function delete_board($board_name) {
 		$sql = "DELETE FROM rss_board
 				WHERE board_name = '$board_name'";
-
 		return $this->db->query($sql);
 	}
 }

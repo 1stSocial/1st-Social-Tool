@@ -78,6 +78,11 @@ function fnCreateDataTable() {
 		fnDeleteBoard(sBoardName);
 	});
 
+	$(".table-container").undelegate(".create-board", "click");
+	$(".table-container").delegate(".create-board", "click", function(){
+		fnCreateBoard();
+	});
+
 }
 
 function fnModifyBoard(oData) {
@@ -101,24 +106,46 @@ function fnModifyBoard(oData) {
 
 function fnCreateBoard() {
 
+	$(".create-board-modal").modal();
+
 }
 
 function fnDeleteBoard(sBoardName) {
 
 	var sAlertHtml = '<div class="alert alert-block alert-error alert-delete-board fade in">'
 	+ '<button type="button" class="close" data-dismiss="alert">&times;</button>'
-	+ '<h4 class="alert-heading">Are you sure you want to delete <span>'+sBoardName+'</span></h4>'
-	+ '<p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>'
-	+ '<p>'
-  	+ '<a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#">Or do this</a>'
+	+ '<h4 class="alert-heading">Are you sure you want to delete the board: <span>'+sBoardName+'</span></h4><br/>'
+  	+ '<a class="btn btn-danger board-delete-confirm" data-loading-text="Deleting..." href="#"><i class="icon-trash icon-white"></i> Delete</a> <a class="btn" data-dismiss="alert" href="#"><i class="icon-remove"></i> Cancel</a>'
 	+ '</p>'
 	+ '</div>'
 
 	fnCreateAlert(sAlertHtml);
+
+	$("body").undelegate(".board-delete-confirm", "click");
+	$("body").delegate(".board-delete-confirm", "click", function(){
+		$.ajax({
+			url: "board_controller/delete_board",
+			data: {"board_name": sBoardName},
+			type: "POST",
+			dataType: "json",
+			beforeSend: function(){
+				$(".board-delete-confirm").button('loading');
+			},
+			success: function(response){
+				console.debug(response);
+				if (response) {
+					fnRefreshTable();
+					$(".new-alert").alert("close");
+				}
+			},
+			error: function(reponse){
+
+			}
+		});
+	});
 }
 
 function fnCreateAlert(sAlertHtml) {
-	console.debug("here")
 	$("body").append("<div class='new-alert'>" + sAlertHtml + "</div>");
 	$(".new-alert").alert();
 }
