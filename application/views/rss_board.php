@@ -13,16 +13,18 @@
 <!-- <script src="http://connect.facebook.net/en_US/all.js#appId=242689285769435&amp;xfbml=1"></script>
 <title>All Jobs</title>
  -->
-<script src="http://connect.facebook.net/en_US/all.js"></script>
+
 <script type="text/javascript">
 
 var sFacebookAppId = '<?= $fb_app_id; ?>';
+var sChannelFileUrl = '<?= base_url(); ?>assets/social_lib/channels.html'
 
 FB.init({
-appId : sFacebookAppId,
-status : true, // check login status
-cookie : true, // enable cookies to allow the server to access the session
-xfbml : true // parse XFBML
+    appId : sFacebookAppId,
+    channelsUrl: sChannelFileUrl,
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml : true // parse XFBML
 });
 </script>
 
