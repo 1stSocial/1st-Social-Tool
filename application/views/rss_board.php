@@ -40,9 +40,11 @@ FB.Canvas.setSize({ width: 810, height: 1400 });
 // // handle the response
 // }, {scope: 'email,user_likes,read_friendlists,user_birthday,user_about_me,user_education_history,user_interests,user_work_history'});
 FB.login(function(response) {
+    console.debug(reponse);
    if (response.authResponse) {
     FB.api('/me', function(response) {
         response.type = "fb_user";
+        console.debug(response);
         $.ajax({
             url: "<?= base_url(); ?>index.php/social_controller/fb_set_user_data",
             data: {"me_object": response},
