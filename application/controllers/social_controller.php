@@ -27,7 +27,7 @@ class Social_controller extends CI_Controller {
 			$data = curl_exec($ch); 
 			curl_close($ch);
 
-			var_dump(json_encode($data));	
+			echo json_encode($data);	
 		}
 
 	}

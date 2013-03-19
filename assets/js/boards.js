@@ -59,6 +59,8 @@ function fnCreateDataTable() {
 	$(".table-container").delegate(".board-preview", "click", function(){
 		var oTableRow = $(this).parent("td").parent("tr");
 		var sBoardName = oTableRow.find(".board-name-holder").text();
+		
+//Below needs to change depending on environment
 		window.open("/1st-Social-Tool/index.php/board_controller/show_board/" + sBoardName, '_newtab');
 	});
 
