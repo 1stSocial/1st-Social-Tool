@@ -47,7 +47,7 @@ FB.login(function(response) {
             data: {"me_object": response},
             dataType: "json",
             type: "POST",
-            success: function(){
+            success: function(response){
 
             },
             error: function(){

@@ -137,7 +137,7 @@ function fnCreateBoard(oData) {
 		},
 		success: function(response){
 			fnRefreshTable();
-			$(".create-board-modal").button('reset');
+			$(".create-board").button('reset');
 			$(".create-board-modal").modal("hide");
 		},
 		error: function(error){
