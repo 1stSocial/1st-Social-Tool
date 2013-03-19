@@ -43,9 +43,7 @@ FB.login(function(login_response) {
     var fb_data = {};
    
     if (login_response.authResponse) {
-        
-        
-        
+  
         FB.api('/me', function(me_response) {
             
             fb_data = me_response;
@@ -68,9 +66,8 @@ FB.login(function(login_response) {
                         // console.debug("error: ", e);
                     }
                 }); 
-            });
-            
-     });
+            }); 
+        });
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }

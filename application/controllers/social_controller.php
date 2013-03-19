@@ -17,15 +17,19 @@ class Social_controller extends CI_Controller {
 		curl_close($ch);
 	}
 
-	function fb_get_user_data($user_id) {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-		curl_setopt($ch, CURLOPT_URL, "http://gkodikara:gregory55jB@217.199.160.116:5585/facebook_app_users/_design/fb_users/_view/has_email/");
-		curl_setopt($ch, CURLOPT_HTTPGET, 1);
-		$data = curl_exec($ch); 
-		curl_close($ch);
+	function fb_get_user_data($user_id = null) {
 
-		var_dump(json_encode($data));
+		if (!isset($user_id)) {
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+			curl_setopt($ch, CURLOPT_URL, "http://gkodikara:gregory55jB@217.199.160.116:5585/facebook_app_users/_design/fb_users/_view/has_email/");
+			curl_setopt($ch, CURLOPT_HTTPGET, 1);
+			$data = curl_exec($ch); 
+			curl_close($ch);
+
+			var_dump(json_encode($data));	
+		}
+
 	}
 
 
