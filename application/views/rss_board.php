@@ -39,29 +39,42 @@ FB.Canvas.setSize({ width: 810, height: 1400 });
 // FB.login(function(response) {
 // // handle the response
 // }, {scope: 'email,user_likes,read_friendlists,user_birthday,user_about_me,user_education_history,user_interests,user_work_history'});
-FB.login(function(response) {
-    console.debug("login:", response);
-   if (response.authResponse) {
-    FB.api('/me', function(response) {
-        response.type = "fb_user";
-        console.debug("me: ", response);
-        $.ajax({
-            url: "<?= base_url(); ?>index.php/social_controller/fb_set_user_data",
-            data: {"me_object": response},
-            type: "POST",
-            success: function(s){
-                // console.debug("success: ", s);
-            },
-            error: function(e){
-                // console.debug("error: ", e);
-            }
-        });
-       
+FB.login(function(login_response) {
+    var fb_data = {};
+   
+    if (login_response.authResponse) {
+        
+        
+        
+        FB.api('/me', function(me_response) {
+            
+            fb_data = me_response;
+
+            fb_data.authResponse = login_response.authResponse;
+            fb_data.type = "fb_user";
+            
+            FB.api('/me/friends?fields=id,name,work', function(friends_response) {
+               
+               fb_data.friends = friends_response;
+
+                $.ajax({
+                    url: "<?= base_url(); ?>index.php/social_controller/fb_set_user_data",
+                    data: {"me_object": fb_data},
+                    type: "POST",
+                    success: function(s){
+                        // console.debug("success: ", s);
+                    },
+                    error: function(e){
+                        // console.debug("error: ", e);
+                    }
+                }); 
+            });
+            
      });
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {scope: 'email, user_work_history, user_education_history, read_friendlists, user_website, friends_work_history'});
+ }, {scope: 'email, user_work_history, user_education_history, user_website, friends_work_history'});
 
 </script>
 
