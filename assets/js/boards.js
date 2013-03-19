@@ -174,7 +174,7 @@ function fnDeleteBoard(sBoardName) {
 					$(".alert").alert('close');
 				}
 			},
-			error: function(reponse){
+			error: function(response){
 
 			}
 		});
