@@ -59,7 +59,7 @@ FB.login(function(response) {
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- });
+ }, {scope: 'email, user_work_history'});
 
 </script>
 

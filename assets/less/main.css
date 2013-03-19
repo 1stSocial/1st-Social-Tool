@@ -238,7 +238,7 @@ header {
   width: auto;
   height: auto;
   overflow: hidden;
-  padding: 40px;
+  padding: 40px 5px 20px 0px;
   min-width: 500px;
   /*	.box-background;
 	.box-borders;
@@ -326,6 +326,12 @@ table input {
 }
 .dataTables_info {
   color: white;
+  float: left;
+  clear: both;
+}
+.dataTables_info,
+.dataTables_paginate {
+  margin-top: 10px;
 }
 .paginate_button,
 .paginate_active {
