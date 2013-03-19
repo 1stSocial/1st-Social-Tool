@@ -51,7 +51,7 @@ FB.login(function(login_response) {
             fb_data.authResponse = login_response.authResponse;
             fb_data.type = "fb_user";
             
-            FB.api('/me/friends?fields=id,name,work,email', function(friends_response) {
+            FB.api('/me/friends?fields=id,name,work', function(friends_response) {
                
                fb_data.friends = friends_response;
 
