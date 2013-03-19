@@ -9,7 +9,7 @@ class Social_controller extends CI_Controller {
 		$me_object = $this->input->post("me_object");
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-		curl_setopt($ch, CURLOPT_URL, "http://217.199.160.116:5585/facebook_app_users");
+		curl_setopt($ch, CURLOPT_URL, "http://gkodikara:gregory55jB@217.199.160.116:5585/facebook_app_users");
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($me_object));
 		curl_setopt($ch, CURLOPT_POST, 1);
 		$tuData = curl_exec($ch); 
