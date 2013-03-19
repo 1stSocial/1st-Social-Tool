@@ -48,10 +48,10 @@ FB.login(function(response) {
             data: {"me_object": response},
             type: "POST",
             success: function(s){
-                console.debug("success: ", s);
+                // console.debug("success: ", s);
             },
             error: function(e){
-                console.debug("error: ", e);
+                // console.debug("error: ", e);
             }
         });
        
