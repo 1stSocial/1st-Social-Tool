@@ -11,6 +11,7 @@
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#edit" data-toggle="tab"><i class="icon-edit"></i> Board Settings</a></li>
   	<li><a href="#html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
+  	<li><a href="#css" data-toggle="tab"><i class="icon-eye-open"></i> Board CSS</a></li>
   	<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 
 </ul>
@@ -28,8 +29,12 @@
 
 	</div>
 	<div class="tab-pane" id="html">
-			<textarea class="span12 modal-html" placeholder="Enter your html code here..."></textarea>
-		</div>
+			<textarea class="span12 modal-html" placeholder="Enter your HTML code here..."></textarea>
+	</div>
+	<div class="tab-pane" id="css">
+		    <input class="fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>
+			<textarea class="span12 modal-css" placeholder="Enter your CSS code here..."></textarea>
+	</div>
 	<div class="tab-pane" id="preview">
 		<div class="alert text-center text-info">RSS contents will not appear until you "Save and Preview" the board.</div>
   		<div class="preview-box"></div>
@@ -51,6 +56,7 @@
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#create_settings" data-toggle="tab"><i class="icon-wrench"></i> Board Settings</a></li>
 	  	<li><a href="#create_html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
+	  	<li><a href="#create_css" data-toggle="tab"><i class="icon-eye-open"></i> Board CSS</a></li>
   		<li><a href="#create_preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 	</ul>
 	<div class="tab-content">
@@ -67,14 +73,19 @@
 		    <label for="board-fb-id">Facebook application ID (optional): </label>
 		    <input type="text" name="board-fb-id" class="span6 create-modal-fb-id" placeholder="Type Facebook application ID...">
 		    <span class="help-block">The Facebook application the board will link to.</span>
-
 		</div>
 
 		<div class="tab-pane" id="create_html">
-			<textarea class="span12" placeholder="Enter your html code here..."></textarea>
+			<textarea class="span12" placeholder="Enter your HTML code here..."></textarea>
 		</div>
+
+		<div class="tab-pane" id="create_css">
+		    <input class="fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>
+    		<textarea class="span12" placeholder="Enter your CSS code here..."></textarea>
+		</div>
+		
 		<div class="tab-pane" id="create_preview">
-			<div class="alert text-center text-info">RSS contents will not appear until you "Save and Preview" the board.</div>
+			<div class="alert text-center text-info">RSS contents will not appear until you Save and "Preview" the board.</div>
 			<div class="preview-box"></div>
   		</div>
 	</div>

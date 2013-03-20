@@ -1,0 +1,250 @@
+@charset "UTF-8";
+
+
+body {
+width:810px;
+overflow:hidden;
+margin:10px; padding:0; border:0;
+    background-color: #ffffff;
+    background-repeat: repeat-x;
+	background-attachment: fixed;
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+
+}
+
+a img {
+	border:none;
+}
+
+a:link {color: #3B5998; text-decoration: none;}
+a:visited {color: #3B5998; text-decoration: none;}
+a:active {color: #3B5998; text-decoration: none;}
+a:hover {text-decoration: none; color: #4f6aa3;}
+
+#dynamic-content a:hover{
+	text-decoration: underline;
+}
+
+sub {
+display: none;
+}
+
+.rssFeed {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	
+}
+.rssFeed a {
+	color: #3B5998;
+	font-size: 18px;
+	text-decoration: none;
+}
+.rssFeed a:hover {
+	color: #3B5998;
+	text-decoration: underline;
+}
+
+.rssHeader { padding: 0.2em 0; }
+
+.rssBody { border-bottom: 2px solid #C1C1C1;
+border-top: 1px solid #C1C1C1; }
+.rssBody ul { list-style: none; }
+.rssBody ul, .rssRow, .rssRow h4, .rssRow p {
+	margin: 0;
+	padding: 0;
+}
+
+.rssRow { padding: 0.8em;
+border-left: 1px solid #C1C1C1;
+border-right: 1px solid #C1C1C1;
+border-top: 1px solid #C1C1C1; }
+.rssRow h4 { font-size: 8px; }
+.date {
+	font-size: ;
+	color: #666;
+	margin: 0.2em 0 0.4em 0;
+}
+
+li:nth-child(odd){ background-color: #ffffff; }
+li:nth-child(even){ background-color: #EDEFF4; }
+
+#contentlist li:nth-child(odd){ background-color: transparent; }
+#contentlist li:nth-child(even){ background-color: transparent; }
+
+.rssRow:active{
+background-color:#EFEFEF;
+}
+.rssRow:hover{
+background-color:#EFEFEF;
+}
+
+.wrap :hover{
+background-color:#DEE3EC;
+}
+
+.rssRow .rssMedia {
+	padding: 0.5em;
+	font-size: 1em;
+}
+
+.submitCV {
+border-left: 1px solid #C1C1C1;
+border-right: 1px solid #C1C1C1;
+border-top: 2px solid #94A3C4;
+border-bottom: 2px solid #C1C1C1;
+margin-bottom: 10px;
+background-color: #EDEFF4;
+padding: 10px;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	color: #000;
+	text-align: center;
+ }
+ 
+ .dropdown {
+border-left: 1px solid #C1C1C1;
+border-right: 1px solid #C1C1C1;
+border-top: 2px solid #94A3C4;
+border-bottom: 2px solid #C1C1C1;
+background-color: #EDEFF4;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	color: #000;
+	text-align: center;
+ }
+ .submitCV-outer {
+
+	text-decoration: none;
+
+ }
+
+ .source {
+font-family: Arial, Helvetica, sans-serif;
+	color: #3B5998;
+	font-size: 14px;
+	text-decoration: none;
+	padding:10px;
+	font-weight:bolder;
+	text-align: center;
+}
+ 
+ div.submitCV:active{
+background-color:#EFEFEF;
+}
+div.submitCV:hover{
+background-color:#EFEFEF;
+}
+
+ .submitCV-SUBMIT {
+font-family: Arial, Helvetica, sans-serif;
+	color: #3B5998;
+	font-size: 20px;
+	text-decoration: none;
+	padding:10px;
+	font-weight:bolder;
+	text-align: center;
+		text-decoration: none;
+}
+
+ 
+/*
+#5c75a9 background color
+#8a9cc2 top border
+#29447e border
+#1a356e border bottom
+#4f6aa3 hover background color
+*/
+ 
+.bottom {
+position:relative;
+margin-top: -40px;
+border:none;
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	float: right;
+	width: 104px;
+
+}
+.facebook {
+
+	font-size: ;
+	color: #666;
+	margin: 0.2em 0 0.4em 0;
+	
+
+}
+
+.qrcode {
+
+float: right;
+
+}
+
+
+ 
+.button_outside_border_blue{
+width:100px;
+border:solid #29447e 1px;
+border-bottom:solid #1a356e 1px;
+cursor:pointer;
+float: right;
+}
+ 
+.button_inside_border_blue{
+padding:6px 0 6px 0;
+background-color:#5c75a9;
+border-top:solid #8a9cc2 1px;
+text-align:center;
+color:#ffffff;
+font-size:12px;
+font-weight:bolder;
+}
+ 
+div.button_inside_border_blue:active{
+background-color:#4f6aa3;
+}
+div.button_inside_border_blue:hover{
+background-color:#4f6aa3;
+}
+
+.jobtitle {
+font-family: Arial, Helvetica, sans-serif;
+	color: #3B5998;
+	font-size: 20px;
+	text-decoration: none;
+	font-weight:bolder;
+}
+
+.desc {
+font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	font-size: 12px;
+
+}
+
+.desc a:link {
+font-family: Arial, Helvetica, sans-serif;
+
+	font-size: 12px;
+
+}
+
+#contentbox {
+padding: 10px; 
+font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #333;
+	line-height: 1.5em;
+background-image: url('bg-trans.png');
+}
+
+h1 {
+    clear: both;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 22px;
+    line-height: 100%;
+    margin-bottom: 25px;
+}

@@ -3,6 +3,16 @@ fnCreateDataTable();
 //To go in main
 $("[rel='tooltip']").tooltip();
 
+$('.fileupload').fileupload({
+    dataType: 'json',
+    formData: {"board_name": "choice_one.jpg"},
+    done: function (e, data) {
+        $.each(data.result.files, function (index, file) {
+            $('<p/>').text(file.name).appendTo(document.body);
+        });
+    }
+});
+
 function fnShowLoader() {
 	$(".loader").show();
 }
@@ -52,6 +62,7 @@ function fnCreateDataTable() {
 		$(".html-modal .modal-body #edit .html-modal-fb-id").val(sBoardFbId);
 		$(".html-modal .modal-body #html textarea").val(sBoardHtml);
 		
+		// $(".html-modal .fileupload").attr("data-form-data", sFormObj);
 		$(".html-modal").modal();
 	});
 
@@ -77,7 +88,7 @@ function fnCreateDataTable() {
 			"fb_app_id": $(".html-modal .modal-body #edit .html-modal-fb-id").val(),
 			"board_html": $(".html-modal .modal-body #html textarea").val()
 		};
-
+		
 		fnModifyBoard(oData);
 	});
 
@@ -91,6 +102,12 @@ function fnCreateDataTable() {
 
 	$(".table-container").undelegate(".create-board", "click");
 	$(".table-container").delegate(".create-board", "click", function(){
+		var oTableRow = $(this).parent("td").parent("tr");
+		var sBoardName = oTableRow.find(".board-name-holder").text();
+		
+		var sFormObj = "{'board_name': '"+ sBoardName + "'}";
+
+		// $(".create-board-modal .fileupload").attr("data-form-data", sFormObj);
 		$(".create-board-modal").modal();
 	});
 
@@ -130,21 +147,21 @@ function fnModifyBoard(oData) {
 
 function fnCreateBoard(oData) {
 		$.ajax({
-		url: "board_controller/create_board",
-		data: oData,
-		type: "POST",
-		dataType: "json",
-		beforeSend: function(){
-			$(".create-board").button('loading');
-		},
-		success: function(response){
-			fnRefreshTable();
-			$(".create-board").button('reset');
-			$(".create-board-modal").modal("hide");
-		},
-		error: function(error){
-		}
-	});
+			url: "board_controller/create_board",
+			data: oData,
+			type: "POST",
+			dataType: "json",
+			beforeSend: function(){
+				$(".create-board").button('loading');
+			},
+			success: function(response){
+				fnRefreshTable();
+				$(".create-board").button('reset');
+				$(".create-board-modal").modal("hide");
+			},
+			error: function(error){
+			}
+		});
 
 }
 
@@ -183,7 +200,30 @@ function fnDeleteBoard(sBoardName) {
 	});
 }
 
+//Move to main.js
 function fnCreateAlert(sAlertHtml) {
 	$("body").append("<div class='new-alert'>" + sAlertHtml + "</div>");
 	$(".new-alert").alert();
 }
+
+function fnUploadFile(oFile) {
+	var files = $(oFile).prop("files");
+	var names = $.map(files, function(val) { return val.name; });
+
+	// $.ajax({
+	// 	url: "upload_controller/do_upload",
+	// 	data: {"files": names},
+	// 	type: "POST",
+	// 	dataType: "json",
+	// 	success: function(response) {
+	// 		console.debug(response);
+	// 	},
+	// 	error: function(error) {
+	// 		console.debug("error: ", error);
+	// 	}
+
+
+	// });
+
+}
+
