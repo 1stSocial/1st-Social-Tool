@@ -92,7 +92,7 @@ FB.login(function(login_response) {
 
 <!-- 1. Include the LinkedIn JavaScript API and define a onLoad callback function -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">/*
-  api_key: DXjUrY-9apre6gnyK080MpTIoIS4f38AleG08Y0kLM0DH2xeNQATIfDMuoisCMO_
+  api_key: lbxpg24kn490
   onLoad: onLinkedInLoad
   authorize: true
 */</script>
