@@ -96,6 +96,7 @@ FB.login(function(login_response) {
   authorize: true
 
     $(".linked-in").click(function(){
+        console.debug("click")
         onLinkedInLoad();
     });
 
