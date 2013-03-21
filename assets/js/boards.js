@@ -124,7 +124,7 @@ function fnCreateDataTable() {
 		    done: function (e, data) {
 		    	fnHideLoader();
 		    	var sChangedFileName = sBoardName + "." + data.result.extension;
-		    	$(".create-board-modal .file-name").html("<span class='actual-file-name'>" + data.result.file_name + "</span>" + " uploaded as <span class='changed-file-name'>"+sChangedFileName+"</span>!");
+		    	$(".create-board-modal .file-name").html("<span class='actual-file-name'>" + data.result.file_name + "</span> uploaded!");
 		    }
 		})
 
