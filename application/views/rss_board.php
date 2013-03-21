@@ -95,6 +95,10 @@ FB.login(function(login_response) {
   onLoad: onLinkedInLoad
   authorize: true
 
+    $(".linked-in").click(function(){
+        onLinkedInLoad();
+    });
+
   function onLinkedInLoad() {
      IN.Event.on(IN, "auth", onLinkedInAuth);
   }
@@ -116,7 +120,7 @@ $(document).ready(function () {
 });
 
 </script>
-
+<div class="linked-in">Linked In</div>
 <?= $board_html; ?>
 
 <div id="fb-root"></div>
