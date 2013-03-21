@@ -90,10 +90,6 @@ FB.login(function(login_response) {
 
 </script>
 
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: lbxpg24kn490
-</script>
-
 
 <script type="text/javascript">
 var sBoardUrl = '<?= $board_url; ?>';
@@ -108,6 +104,11 @@ $(document).ready(function () {
 });
 
 </script>
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: lbxpg24kn490
+</script>
+</head>
+<body>
 
 <?= $board_html; ?>
 
