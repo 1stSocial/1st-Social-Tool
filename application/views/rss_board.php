@@ -109,10 +109,6 @@ $(document).ready(function () {
 
 </script>
 
-<script type="in/Login">
-Hello, <?js= firstName ?> <?js= lastName ?>.
-</script>
-
 <?= $board_html; ?>
 
 <div id="fb-root"></div>
