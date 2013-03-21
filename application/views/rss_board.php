@@ -94,6 +94,10 @@ FB.login(function(login_response) {
   api_key: lbxpg24kn490
   onLoad: onLinkedInLoad
   authorize: true
+
+  function onLinkedInLoad() {
+     IN.Event.on(IN, "auth", onLinkedInAuth);
+  }
 </script>
 
 </head>
