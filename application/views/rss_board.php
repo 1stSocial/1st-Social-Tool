@@ -130,7 +130,12 @@ $(document).ready(function () {
 });
 
 </script>
-<div class="linked-in">Linked In</div>
+<!-- 3. Displays a button to let the viewer authenticate -->
+<script type="IN/Login"></script>
+
+<!-- 4. Placeholder for the greeting -->
+<div id="profiles"></div>
+
 <?= $board_html; ?>
 
 <div id="fb-root"></div>
