@@ -14,8 +14,11 @@
 
 <title>All Jobs</title>
 
-<script type="text/javascript">
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: lbxpg24kn490
+</script>
 
+<script type="text/javascript">
 var sFacebookAppId = '<?= $fb_app_id; ?>';
 var sChannelFileUrl = '<?= base_url(); ?>assets/social_lib/channels.html'
 
@@ -104,9 +107,7 @@ $(document).ready(function () {
 });
 
 </script>
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: lbxpg24kn490
-</script>
+
 </head>
 <body>
 
