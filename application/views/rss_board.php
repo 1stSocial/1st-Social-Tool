@@ -90,23 +90,32 @@ FB.login(function(login_response) {
 
 </script>
 
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: lbxpg24kn490
+<!-- 1. Include the LinkedIn JavaScript API and define a onLoad callback function -->
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">/*
+  api_key: DXjUrY-9apre6gnyK080MpTIoIS4f38AleG08Y0kLM0DH2xeNQATIfDMuoisCMO_
   onLoad: onLinkedInLoad
   authorize: true
+*/</script>
 
-    $(".linked-in").click(function(){
-        console.debug("click")
-        onLinkedInLoad();
-    });
-
+<script type="text/javascript">
+  // 2. Runs when the JavaScript framework is loaded
   function onLinkedInLoad() {
-     IN.Event.on(IN, "auth", onLinkedInAuth);
+    IN.Event.on(IN, "auth", onLinkedInAuth);
+  }
+
+  // 2. Runs when the viewer has authenticated
+  function onLinkedInAuth() {
+    IN.API.Profile("me").result(displayProfiles);
+  }
+
+  // 2. Runs when the Profile() API call returns successfully
+  function displayProfiles(profiles) {
+    member = profiles.values[0];
+    document.getElementById("profiles").innerHTML = 
+      "<p id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "</p>";
   }
 </script>
 
-</head>
-<body style="background-image:url(<?= base_url(); ?>themes/board_styling/client_images/<?= $board_background; ?>);">
 
 <script type="text/javascript">
 var sBoardUrl = '<?= $board_url; ?>';
