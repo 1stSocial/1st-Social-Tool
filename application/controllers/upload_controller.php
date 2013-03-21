@@ -12,14 +12,19 @@ class Upload_controller extends CI_Controller {
 	}
 
 	function upload_image() {
-		// $file_name = $this->input->post("board_name");
-		if ($file_name == "") {
+
+		$extension = end(explode(".", $_FILES["files"]["name"][0]));
+
+		//Rename the file to the name of the board - so that one board can only have one file associated (for now)
+		$file_name = $this->input->post("board_name");
+		if ($file_name == "" || $file_name == false) {
 			$file_name = $_FILES["files"]["name"][0];
+		} else {
+			$file_name = $file_name . "." . $extension;
 		}
 
 
 		$allowedExts = array("gif", "jpeg", "jpg", "png");
-		$extension = end(explode(".", $_FILES["files"]["name"][0]));
 		if ((($_FILES["files"]["type"][0] == "image/gif")
 		|| ($_FILES["files"]["type"][0] == "image/jpeg")
 		|| ($_FILES["files"]["type"][0] == "image/jpg")
@@ -31,9 +36,10 @@ class Upload_controller extends CI_Controller {
 			} else {
 	 			move_uploaded_file($_FILES["files"]["tmp_name"][0],
 	  			"themes/board_styling/client_images/" . $file_name);
+		    	echo json_encode(array("status"=>"success","file_name"=>$_FILES["files"]["name"][0],"extension"=>$extension));
 		    }
 	  	} else {
-		  echo "Invalid file";
+		 	echo json_encode(array("status"=>"error"));
 	  	}
 	}
 }

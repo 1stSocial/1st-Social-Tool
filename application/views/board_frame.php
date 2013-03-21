@@ -29,11 +29,18 @@
 
 	</div>
 	<div class="tab-pane" id="html">
+			<label>HTML: </label>
 			<textarea class="span12 modal-html" placeholder="Enter your HTML code here..."></textarea>
 	</div>
 	<div class="tab-pane" id="css">
-		    <input class="fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>
-			<textarea class="span12 modal-css" placeholder="Enter your CSS code here..."></textarea>
+   		    <div class="input-container span12">
+   		    	<label>Upload Background Image: </label>
+		    	<input id="edit_fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
+    			<div class="file-name"></div>
+    		</div>
+    		<br/>
+    		<label>CSS: </label>
+		   <textarea class="span12 modal-css" placeholder="Enter your CSS code here..."></textarea>
 	</div>
 	<div class="tab-pane" id="preview">
 		<div class="alert text-center text-info">RSS contents will not appear until you "Save and Preview" the board.</div>
@@ -76,11 +83,18 @@
 		</div>
 
 		<div class="tab-pane" id="create_html">
+			<label>HTML: </label>
 			<textarea class="span12" placeholder="Enter your HTML code here..."></textarea>
 		</div>
 
 		<div class="tab-pane" id="create_css">
-		    <input class="fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>
+		    <div class="input-container span12">
+		    	<label>Upload Background Image: </label>
+		    	<input id="create_fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
+    			<div class="file-name"></div>
+    		</div>
+    		<br/>
+    		<label>CSS: </label>
     		<textarea class="span12" placeholder="Enter your CSS code here..."></textarea>
 		</div>
 		

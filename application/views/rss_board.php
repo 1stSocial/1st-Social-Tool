@@ -90,7 +90,11 @@ FB.login(function(login_response) {
 
 </script>
 
-
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: lbxpg24kn490
+  onLoad: onLinkedInLoad
+  authorize: true
+</script>
 
 </head>
 <body style="background-image:url(<?= base_url(); ?>themes/board_styling/client_images/<?= $board_background; ?>);">

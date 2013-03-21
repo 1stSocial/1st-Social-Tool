@@ -1,17 +1,10 @@
 fnCreateDataTable();
 
+//Globals are BAD! mAKE THIS OO ASAP
+var sBoardName = "";
+
 //To go in main
 $("[rel='tooltip']").tooltip();
-
-$('.fileupload').fileupload({
-    dataType: 'json',
-    formData: {"board_name": "choice_one.jpg"},
-    done: function (e, data) {
-        $.each(data.result.files, function (index, file) {
-            $('<p/>').text(file.name).appendTo(document.body);
-        });
-    }
-});
 
 function fnShowLoader() {
 	$(".loader").show();
@@ -52,7 +45,7 @@ function fnCreateDataTable() {
 		var oTableRow = $(this).parent("td").parent("tr");
 
 		var sBoardHtml = $("#" + $(this).attr("board-name") + "_html").html();
-		var sBoardName = oTableRow.find(".board-name-holder").text();
+		sBoardName = oTableRow.find(".board-name-holder").text();
 		var sBoardUrl = oTableRow.find(".board-url-holder").text();
 		var sBoardFbId = $("#" + $(this).attr("board-name") + "_fb_id").text();
 
@@ -63,13 +56,28 @@ function fnCreateDataTable() {
 		$(".html-modal .modal-body #html textarea").val(sBoardHtml);
 		
 		// $(".html-modal .fileupload").attr("data-form-data", sFormObj);
+		
+		$('#edit_fileupload').fileupload({
+		    dataType: 'json',
+		    formData: {"board_name": sBoardName},
+		    change: function(e, data) {
+		    	fnShowLoader();
+		    },
+		    done: function (e, data) {
+		    	fnHideLoader();
+		    	var sChangedFileName = sBoardName + "." + data.result.extension;
+		    	$(".html-modal .file-name").html("<span class='actual-file-name'>" + data.result.file_name + "</span>" + " uploaded as <span class='changed-file-name'>"+sChangedFileName+"</span>!");
+		    }
+		});
+
+		$(".file-name").html();
 		$(".html-modal").modal();
 	});
 
 	$(".table-container").undelegate(".board-preview", "click");
 	$(".table-container").delegate(".board-preview", "click", function(){
 		var oTableRow = $(this).parent("td").parent("tr");
-		var sBoardName = oTableRow.find(".board-name-holder").text();
+		sBoardName = oTableRow.find(".board-name-holder").text();
 		
 //Below needs to change depending on environment
 		window.open("/1st-Social-Tool/index.php/board_controller/show_board/" + sBoardName, '_newtab');
@@ -86,7 +94,9 @@ function fnCreateDataTable() {
 			"board_name": $(".html-modal .modal-body #edit .html-modal-name").text(),
 			"board_url": $(".html-modal .modal-body #edit .html-modal-url").val(),
 			"fb_app_id": $(".html-modal .modal-body #edit .html-modal-fb-id").val(),
-			"board_html": $(".html-modal .modal-body #html textarea").val()
+			"board_html": $(".html-modal .modal-body #html textarea").val(),
+			"board_css": $(".html-modal .modal-body #css textarea").val(),
+			"board_background": $(".html-modal .modal-body #css .file-name .changed-file-name").html()
 		};
 		
 		fnModifyBoard(oData);
@@ -95,7 +105,7 @@ function fnCreateDataTable() {
 	$(".table-container").undelegate(".delete-board", "click");
 	$(".table-container").delegate(".delete-board", "click", function(){
 		var oTableRow = $(this).parent("td").parent("tr");
-		var sBoardName = oTableRow.find(".board-name-holder").text();
+		sBoardName = oTableRow.find(".board-name-holder").text();
 
 		fnDeleteBoard(sBoardName);
 	});
@@ -103,11 +113,22 @@ function fnCreateDataTable() {
 	$(".table-container").undelegate(".create-board", "click");
 	$(".table-container").delegate(".create-board", "click", function(){
 		var oTableRow = $(this).parent("td").parent("tr");
-		var sBoardName = oTableRow.find(".board-name-holder").text();
+		sBoardName = oTableRow.find(".board-name-holder").text();
 		
-		var sFormObj = "{'board_name': '"+ sBoardName + "'}";
+		$('#create_fileupload').fileupload({
+		    dataType: 'json',
+		    // formData: {"board_name": sBoardName},
+		    change: function(e, data) {
+		    	fnShowLoader();
+		    },
+		    done: function (e, data) {
+		    	fnHideLoader();
+		    	var sChangedFileName = sBoardName + "." + data.result.extension;
+		    	$(".create-board-modal .file-name").html("<span class='actual-file-name'>" + data.result.file_name + "</span>" + " uploaded as <span class='changed-file-name'>"+sChangedFileName+"</span>!");
+		    }
+		})
 
-		// $(".create-board-modal .fileupload").attr("data-form-data", sFormObj);
+		$(".file-name").html();
 		$(".create-board-modal").modal();
 	});
 
@@ -117,12 +138,19 @@ function fnCreateDataTable() {
 			"board_name": $(".create-board-modal .modal-body #create_settings .create-modal-name").val(),
 			"board_url": $(".create-board-modal .modal-body #create_settings .create-modal-url").val(),
 			"fb_app_id": $(".create-board-modal .modal-body #create_settings .create-modal-fb-id").val(),
-			"board_html": $(".create-board-modal .modal-body #create_html textarea").val()
+			"board_html": $(".create-board-modal .modal-body #create_html textarea").val(),
+			"board_css": $(".create-board-modal .modal-body #create_css textarea").val(),
+			"board_background": $(".create-board-modal .modal-body #create_css .file-name .changed-file-name").html()
 		};
 
 		fnCreateBoard(oData);
 	});
+}
 
+function fnGetFileName(oTargetInput) {
+	var aFiles = $(oTargetInput).prop("files");
+	var aNames = $.map(aFiles, function(val) { return val.name; });
+	return aNames;
 }
 
 function fnModifyBoard(oData) {
