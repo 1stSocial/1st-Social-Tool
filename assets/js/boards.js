@@ -44,18 +44,21 @@ function fnCreateDataTable() {
 	$(".table-container").delegate(".html-modal-open", "click", function(){
 		var oTableRow = $(this).parent("td").parent("tr");
 
-		var sBoardHtml = $("#" + $(this).attr("board-name") + "_html").html();
 		sBoardName = oTableRow.find(".board-name-holder").text();
+
+		var sBoardHtml = $("#" + $(this).attr("board-name") + "_html").html();
 		var sBoardUrl = oTableRow.find(".board-url-holder").text();
 		var sBoardFbId = $("#" + $(this).attr("board-name") + "_fb_id").text();
+		var sBoardCss = $("#" + $(this).attr("board-name") + "_css").html();
+		var sBoardBackground = $("#" + $(this).attr("board-name") + "_background").html();
 
 		$(".html-modal .modal-body #preview .preview-box").html(sBoardHtml);
 		$(".html-modal .modal-body #edit .html-modal-name, .html-modal .modal-header h3 span").text(sBoardName);
 		$(".html-modal .modal-body #edit .html-modal-url").val(sBoardUrl);
 		$(".html-modal .modal-body #edit .html-modal-fb-id").val(sBoardFbId);
 		$(".html-modal .modal-body #html textarea").val(sBoardHtml);
-		
-		// $(".html-modal .fileupload").attr("data-form-data", sFormObj);
+		$(".html-modal .modal-body #css textarea").val(sBoardCss);
+		$(".html-modal .modal-body #css .file-name").html(sBoardBackground);
 		
 		$('#edit_fileupload').fileupload({
 		    dataType: 'json',
@@ -145,6 +148,19 @@ function fnCreateDataTable() {
 
 		fnCreateBoard(oData);
 	});
+
+	//Use buttons in place of file input
+	$(".html-modal").undelegate(".edit-upload", "click");
+	$(".html-modal").delegate(".edit-upload", "click", function(){
+		console.debug('here', $(".html-modal .css #edit_fileupload")	)
+		$(".html-modal #css #edit_fileupload").trigger("click");
+	});
+
+	$(".create-board-modal").undelegate(".create-upload", "click");
+	$(".create-board-modal").delegate(".create-upload", "click", function(){
+		$(".create-board-modal #create_css #create_fileupload").trigger("click");
+	});
+
 }
 
 function fnGetFileName(oTargetInput) {
@@ -232,26 +248,5 @@ function fnDeleteBoard(sBoardName) {
 function fnCreateAlert(sAlertHtml) {
 	$("body").append("<div class='new-alert'>" + sAlertHtml + "</div>");
 	$(".new-alert").alert();
-}
-
-function fnUploadFile(oFile) {
-	var files = $(oFile).prop("files");
-	var names = $.map(files, function(val) { return val.name; });
-
-	// $.ajax({
-	// 	url: "upload_controller/do_upload",
-	// 	data: {"files": names},
-	// 	type: "POST",
-	// 	dataType: "json",
-	// 	success: function(response) {
-	// 		console.debug(response);
-	// 	},
-	// 	error: function(error) {
-	// 		console.debug("error: ", error);
-	// 	}
-
-
-	// });
-
 }
 

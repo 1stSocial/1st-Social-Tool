@@ -154,6 +154,11 @@ input[type="file"] {
 	font-weight: bold;
 }
 
+.input-container {
+	min-height: 75px !important;
+	height: auto;
+}
+
 .login-section {
 	margin-top: 15%;
 }
@@ -204,7 +209,6 @@ header {
 
 .menu-topbar {
 	background-color: rgba(0,0,0,0.15);
-	height: auto;
 	padding: 0px;
 	color: #ffffff;
 	box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
@@ -215,6 +219,47 @@ header {
 
 .menu-topbar:hover {
 	background-color: rgba(0,0,0,0.30);
+}
+
+.menu-topbar, .menu-topbar .nav, .menu-topbar .nav li {
+	height: 52px;
+}
+
+.menu-topbar .nav a {
+	height: 37px;
+	padding-bottom: 0px !important;
+	padding-top: 15px !important;
+}
+
+.menu-topbar .nav {
+	margin-left: 3px;
+	width: 70%;
+}
+
+.nav i {
+	margin-top: 2px;
+}
+
+.menu-topbar .nav li a {
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #555555;
+	border-left: 1px solid rgba(255,255,255,0.1);
+	border-right: 1px solid rgba(255,255,255,0.1);
+	min-width: 100px;
+	text-align: center;
+}
+
+.menu-topbar .nav li a:hover, .menu-topbar .nav li.active a:hover {
+	color: #ffffff;
+	text-shadow: 0px 0px 0px #ffffff; 
+	border-color: rgba(255,255,255,0.1);	
+	background: rgba(255,255,255,0.1) !important;
+}
+
+.menu-topbar .nav li.active a, .menu-topbar .nav li.active a:hover {
+	background: rgba(255,255,255,0.4) !important;
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #555555;
 }
 
 .menu-logo img {
@@ -246,7 +291,7 @@ header {
 }
 
 .account-box {
-	margin: 5px;
+	margin: 7px;
 }
 
 .account-box .btn {
