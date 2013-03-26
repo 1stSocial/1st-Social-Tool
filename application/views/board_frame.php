@@ -75,7 +75,7 @@
 		    <input type="text" name="board-name" class="span6 create-modal-name" placeholder="Type board name...">
 		    <span class="help-block">The name of your board.</span>
 		    
-		    <label for="board-url">Board URL:</label>
+		    <label for="board-url">Board RSS URL:</label>
 		    <input type="text" name="board-url" class="span12 create-modal-url" placeholder="Type board URL...">
 		    <span class="help-block">The URL of your board.</span>
 		    
