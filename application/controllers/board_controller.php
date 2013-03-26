@@ -6,6 +6,7 @@ class Board_controller extends CI_Controller {
 
 		$this->load->model("board_model");
 		$this->load->model("login_model");
+		$this->load->helper('file');
 	}
 
 	function index() {
@@ -43,7 +44,7 @@ class Board_controller extends CI_Controller {
 		$fb_app_id = $this->input->post("fb_app_id");
 
 		$query = $this->board_model->create_board($board_name, $board_url, $board_html, $board_css, $board_background, $fb_app_id);
-	
+
 		echo json_encode(array("result" => $query));
 	}
 
@@ -56,6 +57,7 @@ class Board_controller extends CI_Controller {
 		$fb_app_id = $this->input->post("fb_app_id");
 
 		$query = $this->board_model->modify_board($board_name, $board_url, $board_html, $board_css, $board_background, $fb_app_id);
+	
 		echo json_encode(array("result" => $query));
 	}
 
@@ -73,8 +75,8 @@ class Board_controller extends CI_Controller {
 			"board_url" => $board_data->board_url,
 			"board_html" => $board_data->board_html,
 			"fb_app_id" => $board_data->fb_app_id,
-			"board_style" => $board_css,
-			"board_background" => $board_background
+			"board_style" => $board_data->board_css,
+			"board_background" => $board_data->board_background
 		);
 
 		$this->load->view("rss_board", $data);

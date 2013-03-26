@@ -214,7 +214,7 @@ header {
 	box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
 	margin-bottom: 15px;
 	border-bottom: 1px solid rgba(255,255,255,0.8);
-	.transition(0.5s, background-color);
+	.transition(1.5s, background-color);
 }
 
 .menu-topbar:hover {
@@ -240,6 +240,10 @@ header {
 	margin-top: 2px;
 }
 
+.menu-topbar .nav li {
+	margin: 0px;
+}
+
 .menu-topbar .nav li a {
 	color: #ffffff;
 	text-shadow: 1px 1px 1px #555555;
@@ -249,17 +253,32 @@ header {
 	text-align: center;
 }
 
-.menu-topbar .nav li a:hover, .menu-topbar .nav li.active a:hover {
-	color: #ffffff;
+.dropdown-menu {
+	background: @primary_purple;
+	.transition(0.5, background-color);
+}
+
+.dropdown-menu li:hover {
+	background-color: rgba(0,0,0,0.2);
+}
+
+
+.menu-topbar .nav > li > .dropdown-menu:after {
+	border-bottom: 6px solid #555555;
+}
+
+.menu-topbar .nav li a:hover, .menu-topbar .nav li.active a:hover,
+.menu-topbar .nav li a:active, .menu-topbar .nav li.active a {
+	color: #ffffff !important;
 	text-shadow: 0px 0px 0px #ffffff; 
 	border-color: rgba(255,255,255,0.1);	
 	background: rgba(255,255,255,0.1) !important;
 }
 
-.menu-topbar .nav li.active a, .menu-topbar .nav li.active a:hover {
+.menu-topbar .nav li.active, .menu-topbar .nav li.active a:hover {
 	background: rgba(255,255,255,0.4) !important;
-	color: #ffffff;
-	text-shadow: 1px 1px 1px #555555;
+	color: #ffffff !important;
+	text-shadow: 1px 1px 1px #555555 !important;
 }
 
 .menu-logo img {

@@ -6,12 +6,16 @@
 			</a>
 		</div>
 		<ul class="nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Link</a></li>
-			<li><a href="#">Link</a></li>
-		
+			<li class="<?= $this->uri->segment(1) == "home" ? "active" : ""; ?>"><a href="<?= base_url(); ?>index.php/home">Home</a></li>
+			<li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?= base_url(); ?>index.php/board_controller/new_board">Board Management</a></li>
+					<li><a href="<?= base_url(); ?>index.php/board_controller">Board App Management</a></li>
+				</ul>
+			</li>
 			<?php if ($settings): ?>
-				<li class="pull-right"><?= $settings; ?></li>
+				<li><?= $settings; ?></li>
 			<?php endif; ?>
 		</ul>
 		<div class="account-box pull-right">

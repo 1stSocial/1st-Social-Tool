@@ -9,9 +9,9 @@
   </div>
   <div class="modal-body">
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#edit" data-toggle="tab"><i class="icon-wrench"></i> Board Settings</a></li>
-  	<li><a href="#html" data-toggle="tab"><i class="icon-edit"></i> Board HTML</a></li>
-  	<li><a href="#css" data-toggle="tab"><i class="icon-picture"></i> Board Styling</a></li>
+	<li class="active"><a href="#edit" data-toggle="tab"><i class="icon-edit"></i> Board Settings</a></li>
+  	<li><a href="#html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
+  	<li><a href="#css" data-toggle="tab"><i class="icon-eye-open"></i> Board CSS</a></li>
   	<li><a href="#preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 
 </ul>
@@ -35,17 +35,15 @@
 	<div class="tab-pane" id="css">
    		    <div class="input-container span12">
    		    	<label>Upload Background Image: </label>
-   		    	<button class="edit-upload btn"><i class="icon-file"></i> Upload File</button>
-		    	<input id="edit_fileupload" type="file" style="display:none;" name="files[]" data-url="upload_controller/upload_image/" multiple>		
+		    	<input id="edit_fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
     			<div class="file-name"></div>
     		</div>
-    		<br/>
     		<br/>
     		<label>CSS: </label>
 		   <textarea class="span12 modal-css" placeholder="Enter your CSS code here..."></textarea>
 	</div>
 	<div class="tab-pane" id="preview">
-		<div class="alert text-center text-info">RSS contents will not appear until you Save and "Preview" the board.</div>
+		<div class="alert text-center text-info">RSS contents will not appear until you "Save and Preview" the board.</div>
   		<div class="preview-box"></div>
   	</div>
 </div>
@@ -64,8 +62,8 @@
   <div class="modal-body">
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#create_settings" data-toggle="tab"><i class="icon-wrench"></i> Board Settings</a></li>
-	  	<li><a href="#create_html" data-toggle="tab"><i class="icon-edit"></i> Board HTML</a></li>
-	  	<li><a href="#create_css" data-toggle="tab"><i class="icon-picture"></i> Board Styling</a></li>
+	  	<li><a href="#create_html" data-toggle="tab"><i class="icon-eye-open"></i> Board HTML</a></li>
+	  	<li><a href="#create_css" data-toggle="tab"><i class="icon-eye-open"></i> Board CSS</a></li>
   		<li><a href="#create_preview" class="save-board-html" data-toggle="tab"><i class="icon-eye-open"></i> Board Preview</a></li>
 	</ul>
 	<div class="tab-content">
@@ -92,11 +90,9 @@
 		<div class="tab-pane" id="create_css">
 		    <div class="input-container span12">
 		    	<label>Upload Background Image: </label>
-   		    	<button class="create-upload btn"><i class="icon-file"></i> Upload File</button>
-		    	<input id="create_fileupload" type="file" name="files[]" style="display:none;" data-url="upload_controller/upload_image/" multiple>		
+		    	<input id="create_fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
     			<div class="file-name"></div>
     		</div>
-    		<br/>
     		<br/>
     		<label>CSS: </label>
     		<textarea class="span12" placeholder="Enter your CSS code here..."></textarea>
