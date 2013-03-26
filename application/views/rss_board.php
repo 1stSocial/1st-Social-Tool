@@ -6,9 +6,7 @@
 <meta http-equiv="content-language" content="en" />
 
 <?php if (isset($board_style) && $board_style != ""): ?>
-    <style type="text/css">
-        <link href="<?= base_url(); ?>themes/board_styling/<?= $board_name; ?>.css" rel="stylesheet" type="text/css" />
-    </style>
+    <link href="<?= base_url(); ?>themes/board_styling/<?= $board_name; ?>.css" rel="stylesheet" type="text/css" />
 <?php else: ?>
         <link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
 <?php endif; ?>
