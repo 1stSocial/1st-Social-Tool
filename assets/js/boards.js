@@ -152,7 +152,6 @@ function fnCreateDataTable() {
 	//Use buttons in place of file input
 	$(".html-modal").undelegate(".edit-upload", "click");
 	$(".html-modal").delegate(".edit-upload", "click", function(){
-		console.debug('here', $(".html-modal .css #edit_fileupload")	)
 		$(".html-modal #css #edit_fileupload").trigger("click");
 	});
 
