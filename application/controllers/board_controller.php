@@ -73,8 +73,8 @@ class Board_controller extends CI_Controller {
 			"board_url" => $board_data->board_url,
 			"board_html" => $board_data->board_html,
 			"fb_app_id" => $board_data->fb_app_id,
-			"board_style" => $board_css,
-			"board_background" => $board_background
+			"board_style" => $board_data->board_css,
+			"board_background" => $board_data->board_background
 		);
 
 		$this->load->view("rss_board", $data);
