@@ -6,6 +6,7 @@ class Board_controller extends CI_Controller {
 
 		$this->load->model("board_model");
 		$this->load->model("login_model");
+		$this->load->helper('file');
 	}
 
 	function index() {

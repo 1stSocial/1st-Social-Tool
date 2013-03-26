@@ -7,7 +7,7 @@
 
 <?php if (isset($board_style) && $board_style != ""): ?>
     <style type="text/css">
-        <?= $board_style; ?>
+        <link href="<?= base_url(); ?>themes/board_styling/<?= $board_name; ?>.css" rel="stylesheet" type="text/css" />
     </style>
 <?php else: ?>
         <link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
