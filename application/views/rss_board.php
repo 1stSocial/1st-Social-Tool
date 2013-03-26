@@ -106,7 +106,7 @@ $(document).ready(function () {
         <?= $board_style; ?>
     </style>
 <?php else: ?>
-        <link href="<?= base_url(); ?>themes/board_styling/<?= $board_style; ?>.css" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
 <?php endif; ?>
 
 </head>
