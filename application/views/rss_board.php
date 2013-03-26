@@ -5,6 +5,15 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="en" />
 
+<?php if (isset($board_style) && $board_style != ""): ?>
+    <style type="text/css">
+        <?= $board_style; ?>
+    </style>
+<?php else: ?>
+        <link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
+<?php endif; ?>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url(); ?>assets/js/lib/jquery.zrssfeed.min.js" type="text/javascript"></script>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -100,14 +109,6 @@ $(document).ready(function () {
 });
 
 </script>
-
-<?php if (isset($board_style) && $board_style != ""): ?>
-    <style type="text/css">
-        <?= $board_style; ?>
-    </style>
-<?php else: ?>
-        <link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
-<?php endif; ?>
 
 </head>
 <body style="background-image:url(<?= base_url(); ?>themes/board_styling/client_images/<?= $board_background; ?>);">
