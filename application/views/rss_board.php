@@ -5,12 +5,12 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="en" />
 
+<link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
+
 <?php if (isset($board_style) && $board_style != ""): ?>
     <style type="text/css">
         <?= $board_style; ?>
     </style>
-<?php else: ?>
-        <link href="<?= base_url(); ?>themes/board_styling/rss_board.css" rel="stylesheet" type="text/css" />
 <?php endif; ?>
 
 
