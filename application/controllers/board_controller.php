@@ -44,6 +44,11 @@ class Board_controller extends CI_Controller {
 
 		$query = $this->board_model->create_board($board_name, $board_url, $board_html, $board_css, $board_background, $fb_app_id);
 	
+		if (!write_file('./themes/board_styling/' . $board_name . '.css', $board_css)) {
+     		//File Not Written
+     		die("Theme not created");
+		}	
+
 		echo json_encode(array("result" => $query));
 	}
 
@@ -56,6 +61,12 @@ class Board_controller extends CI_Controller {
 		$fb_app_id = $this->input->post("fb_app_id");
 
 		$query = $this->board_model->modify_board($board_name, $board_url, $board_html, $board_css, $board_background, $fb_app_id);
+		
+		//Create file if it doesn't exist, otherwise write to it
+		if (!write_file('./themes/board_styling/' . $board_name . '.css', $board_css)) {
+     		//File Not Written
+     		die("Theme not created");
+		}	
 		echo json_encode(array("result" => $query));
 	}
 
