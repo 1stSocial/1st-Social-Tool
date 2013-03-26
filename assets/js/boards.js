@@ -20,7 +20,7 @@ function fnRefreshTable() {
 		fnHideLoader();
 		$(".table-container table").html(response);
 	}, "json");
-	
+
 	oDataTable.fnDraw(); 
 }
 
@@ -29,13 +29,22 @@ function fnInitTable(sTableName, bDestroyInstance) {
 		"sPaginationType": "full_numbers",
 		"bPaginate": true,
 		"aoColumnDefs": [ 
-         { "bSortable": false, "aTargets": [2, 3] }
+         { 		
+         	"bSortable": false, "aTargets": [2, 3]
+         }
        ]
 	});
 
 	var sAddBoardButton = "<button class='btn create-board'><i class='icon-plus'></i> Create New Board</button>";
 	$(".dataTables_filter").after(sAddBoardButton);
 }
+
+function fnRemoveComments(sHtml) {
+	sHtml = sHtml.replace("<!--", "");
+	sHtml = sHtml.replace("-->", "");
+	return sHtml;
+}
+
 
 function fnCreateDataTable() {
 	fnInitTable(".table-container table");
@@ -56,7 +65,7 @@ function fnCreateDataTable() {
 		$(".html-modal .modal-body #edit .html-modal-name, .html-modal .modal-header h3 span").text(sBoardName);
 		$(".html-modal .modal-body #edit .html-modal-url").val(sBoardUrl);
 		$(".html-modal .modal-body #edit .html-modal-fb-id").val(sBoardFbId);
-		$(".html-modal .modal-body #html textarea").val(sBoardHtml);
+		$(".html-modal .modal-body #html textarea").val($.trim(fnRemoveComments(sBoardHtml)));
 		$(".html-modal .modal-body #css textarea").val(sBoardCss);
 		$(".html-modal .modal-body #css .file-name").html(sBoardBackground);
 		
