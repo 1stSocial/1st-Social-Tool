@@ -6,7 +6,7 @@
 <meta http-equiv="content-language" content="en" />
 
 <?php if (isset($board_style) && $board_style != ""): ?>
-    <style>
+    <style type="text/css">
         <?= $board_style; ?>
     </style>
     <?php else: ?>
