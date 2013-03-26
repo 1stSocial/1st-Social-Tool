@@ -110,7 +110,7 @@ $(document).ready(function () {
 </script>
 
 </head>
-<body style="background:url(<?= base_url(); ?>themes/board_styling/client_images/<?= $board_background; ?>);">
+<body style="background-image:url(<?= base_url(); ?>themes/board_styling/client_images/<?= $board_background; ?>);">
 
 <?= $board_html; ?>
 
