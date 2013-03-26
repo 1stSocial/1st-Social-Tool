@@ -83,7 +83,7 @@ function fnCreateDataTable() {
 		sBoardName = oTableRow.find(".board-name-holder").text();
 		
 //Below needs to change depending on environment
-		window.open("/1st-Social-Tool/index.php/board_controller/show_board/" + sBoardName, '_newtab');
+		window.open("/index.php/board_controller/show_board/" + sBoardName, '_newtab');
 	});
 
 	$(".html-modal").undelegate(".save-board-html", "click");
