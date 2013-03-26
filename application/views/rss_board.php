@@ -110,9 +110,16 @@ $(document).ready(function () {
 
 </script>
 
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: lbxpg24kn490
+  authorize: true
+</script>
+
 </head>
 <body style="background-image:url(<?= base_url(); ?>themes/board_styling/client_images/<?= $board_background; ?>);">
-
+<script type="in/Login">
+"Hello, " + firstName + lastName 
+</script>
 <?= $board_html; ?>
 
 <div id="fb-root"></div>
