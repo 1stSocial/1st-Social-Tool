@@ -35,7 +35,8 @@
 	<div class="tab-pane" id="css">
    		    <div class="input-container span12">
    		    	<label>Upload Background Image: </label>
-		    	<input id="edit_fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
+		    	<button class="btn edit-upload"><i class="icon-folder-open"></i> Upload File</button>
+		    	<input id="edit_fileupload" style="display:none;" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
     			<div class="file-name"></div>
     		</div>
     		<br/>
@@ -90,7 +91,8 @@
 		<div class="tab-pane" id="create_css">
 		    <div class="input-container span12">
 		    	<label>Upload Background Image: </label>
-		    	<input id="create_fileupload" type="file" name="files[]" data-url="upload_controller/upload_image/" multiple>		
+		    	<button class="btn create-upload"><i class="icon-folder-open"></i> Upload File</button>
+		    	<input id="create_fileupload" type="file" style="display:none;" name="files[]" data-url="upload_controller/upload_image/" multiple>		
     			<div class="file-name"></div>
     		</div>
     		<br/>

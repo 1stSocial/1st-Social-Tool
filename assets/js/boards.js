@@ -1,4 +1,4 @@
-fnCreateDataTable();
+fnCreateAppDataTable();
 
 //Globals are BAD! mAKE THIS OO ASAP
 var sBoardName = "";
@@ -45,8 +45,7 @@ function fnRemoveComments(sHtml) {
 	return sHtml;
 }
 
-
-function fnCreateDataTable() {
+function fnCreateAppDataTable() {
 	fnInitTable(".table-container table");
 
 	$(".table-container").undelegate(".html-modal-open", "click");
@@ -159,6 +158,7 @@ function fnCreateDataTable() {
 	});
 
 	//Use buttons in place of file input
+
 	$(".html-modal").undelegate(".edit-upload", "click");
 	$(".html-modal").delegate(".edit-upload", "click", function(){
 		$(".html-modal #css #edit_fileupload").trigger("click");
