@@ -27,5 +27,3 @@ class Theme extends CI_Controller {
 
 
 }
-
-?>
