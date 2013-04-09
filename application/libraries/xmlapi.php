@@ -747,7 +747,7 @@ class CI_Xmlapi
             }
         }
 
-        return $response . "yes";
+        return $response;
     }
 
     private function curl_query( $url, $postdata, $authstr )

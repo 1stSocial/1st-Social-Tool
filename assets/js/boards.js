@@ -252,6 +252,19 @@ function fnDeleteBoard(sBoardName) {
 	});
 }
 
+function fnCreateSubDomain(sSubdomainName) {
+	$.ajax({
+		url: "cpanel/create_subdomain/" + sSubdomainName,
+		dataType: "json",
+		success: function(){
+
+		},
+		error: function(){
+			
+		}
+	});
+}
+
 //Move to main.js
 function fnCreateAlert(sAlertHtml) {
 	$("body").append("<div class='new-alert'>" + sAlertHtml + "</div>");
