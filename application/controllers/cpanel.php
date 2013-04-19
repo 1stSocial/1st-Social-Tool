@@ -5,7 +5,6 @@ class Cpanel extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper("url");
-
 	}
 
 	function index() {
@@ -40,7 +39,4 @@ class Cpanel extends CI_Controller {
 		var_dump($output);
 		//var_dump(shell_exec('mysqldump -h 127.0.0.1 -u root -p558505 greg_db | mysql -h 127.0.0.1 -u root -p558505 ccc'));
 	}
-
-
-
 }
