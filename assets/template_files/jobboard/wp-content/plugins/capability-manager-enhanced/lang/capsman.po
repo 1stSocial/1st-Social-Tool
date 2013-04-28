@@ -1,0 +1,877 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Capability Manager Enhanced\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-10 15:00-0500\n"
+"PO-Revision-Date: 2012-08-10 15:00-0500\n"
+"Last-Translator: Kevin Behrens <kevin@agapetry.net>\n"
+"Language-Team: Agapetry Creations LLC <kevin@agapetry.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_c;__ngettext;_n;pp_po_trigger;_x\n"
+"X-Poedit-Basepath: E:\\www\\wp34\\wp-content\\plugins\\capsman-enhanced\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: E:\\www\\wp34\\wp-content\\plugins\\capsman-enhanced\n"
+"X-Poedit-SearchPath-1: E:\\www\\wp34\\wp-content\\plugins\\capsman-enhanced\\includes\n"
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:40
+msgid "<strong>Error:</strong> Capability Manager Extended cannot function because another copy of Capability Manager is active."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:57
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:344
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:363
+msgid "Warning:"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:58
+#, php-format
+msgid "The active plugin %s is not compatible with your PHP version."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:60
+#, php-format
+msgid "%s is required for this plugin."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:88
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:90
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:94
+msgid "Capability Manager"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:88
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/capsman-enhanced.php:94
+msgid "Role Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/template.php:90
+msgid "Template class: Received template paths are not valid directories."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/template.php:98
+msgid "Template class: Received config paths are not valid directories."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/template.php:174
+#, php-format
+msgid "Template class: %s is a reserved template variable."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/template.php:338
+#, php-format
+msgid "Template file %1$s not found. Default template %2$s not found."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/module.php:614
+msgid "Option blocked by administrator."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:345
+#, php-format
+msgid "The active plugin %s is not compatible with your WordPress version."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:347
+#, php-format
+msgid "WordPress %s is required to run this plugin."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:364
+msgid "Standard sidebar functions are not present."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:365
+#, php-format
+msgid "It is required to use the standard sidebar to run %s"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:418
+msgid "Activate Components"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:427
+msgid "Yes"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/classes/abstract/plugin.php:428
+msgid "No"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/formating.php:52
+msgid "Settings saved."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/formating.php:160
+msgid "Just Now"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/formating.php:163
+msgid "1 minute ago"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/formating.php:166
+msgid "1 hour ago"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/formating.php:170
+#, php-format
+msgid "Today at %s"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/formating.php:170
+#, php-format
+msgid "Yesterday at %s"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:162
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:170
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/author-widget.php:33
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/author-widget.php:33
+msgid "Plugin Homepage"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:163
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:178
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/author-widget.php:34
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/author-widget.php:34
+msgid "Documentation"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:164
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:182
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/author-widget.php:35
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/author-widget.php:35
+msgid "Support Forum"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:165
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:186
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/author-widget.php:36
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/author-widget.php:36
+msgid "Author Homepage"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:166
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/author-widget.php:37
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/author-widget.php:37
+msgid "Help donating"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:174
+msgid "Theme Homepage"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/lib/themes.php:190
+msgid "Donate to project"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2195
+msgid "File error. Please try again."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2196
+msgid "Local file doesn't exist."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2197
+msgid "Local file is not readable."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2198
+msgid "File upload error (the uploaded file exceeds the upload_max_filesize directive in php.ini)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2199
+msgid "File upload error (the uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2200
+msgid "File upload error (the uploaded file was only partially uploaded)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2201
+msgid "File upload error (no file was uploaded)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2202
+msgid "File upload error (missing a temporary folder)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2203
+msgid "File upload error (failed to write file to disk)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2204
+msgid "File upload error (file upload stopped by extension)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2205
+msgid "File upload error (unknown error code)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2206
+msgid "File upload error. Please try again."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2207
+msgid "File too big."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2208
+msgid "MIME type can't be detected."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2209
+msgid "Incorrect type of file."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2210
+msgid "Image too wide."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2211
+msgid "Image too narrow."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2212
+msgid "Image too high."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2213
+msgid "Image too short."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2214
+msgid "Image ratio too high (image too wide)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2215
+msgid "Image ratio too low (image too high)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2216
+msgid "Image has too many pixels."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2217
+msgid "Image has not enough pixels."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2218
+msgid "File not uploaded. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2219
+#, php-format
+msgid "%s already exists. Please change the file name."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2220
+msgid "No correct temp source file. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2221
+msgid "No correct uploaded source file. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2222
+msgid "Destination directory can't be created. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2223
+msgid "Destination directory doesn't exist. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2224
+msgid "Destination path is not a directory. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2225
+msgid "Destination directory can't be made writeable. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2226
+msgid "Destination path is not a writeable. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2227
+msgid "Can't create the temporary file. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2228
+msgid "Source file is not readable. Can't carry on a process."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2229
+#, php-format
+msgid "No create from %s support."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2230
+#, php-format
+msgid "Error in creating %s image from source."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2231
+msgid "Can't read image source. Not an image?."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2232
+msgid "GD doesn't seem to be present."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2233
+#, php-format
+msgid "No create from %s support, can't read watermark."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2234
+#, php-format
+msgid "No %s read support, can't create watermark."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2235
+msgid "Unknown image format, can't read watermark."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2236
+#, php-format
+msgid "No %s create support."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2237
+msgid "No conversion type defined."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2238
+msgid "Error copying file on the server. copy() failed."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/framework/vendor/upload/class.upload.php:2239
+msgid "Error reading the file."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:67
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:67
+msgid "Roles and Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:76
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:76
+#, php-format
+msgid "Capabilities for %s"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:82
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:82
+msgid "Use this form to view and modify the capabilities WordPress natively associates with each role.  Note:"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:87
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:87
+#, php-format
+msgid "see %1$sRole Usage%2$s: \"Pattern Roles\""
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:89
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:89
+#, php-format
+msgid "activate %1$sAdvanced settings%2$s, see Role Usage"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:91
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:91
+#, php-format
+msgid "\"Posts\" capabilities selected here also define type-specific role assignment for Permit Groups (%s)."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:93
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:93
+msgid "Capabilities for custom statuses can be manually added to a role here (see Conditions > Capability Mapping for applicable names). However, it is usually more convenient to use Permit Groups to assign a supplemental status-specific role."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:98
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:98
+msgid "Interested in further customizing editing or viewing access? Consider stepping up to <a href='#pp-more'>Press Permit</a>."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:118
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:118
+msgid "Automatically define type-specific capabilities for your custom post types and taxonomies"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:121
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:121
+msgid "Supplemental per-type, per-category or per-page role assignments"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:124
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:124
+msgid "Custom Visibility statuses (require read_member_posts, read_premium_posts, etc.)"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:127
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:127
+msgid "Custom Editability \"statuses\" - set alongside Visibility in Post and Category edit forms"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:130
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:130
+msgid "Custom Moderation statuses, enabling access-limited three tier moderation (Pending / Approved / Published)"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:133
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:133
+msgid "Grant Participant or Moderator access to specific bbPress forums or topics"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:136
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:136
+msgid "Grant supplemental page or category access to all members of a BuddyPress group"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:139
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:139
+msgid "WPML integration to mirror permissions to translations"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:142
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:142
+msgid "Professional support available"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:188
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:188
+msgid "&nbsp;"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:189
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:189
+msgid "Reading"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:190
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:190
+msgid "Editing Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:191
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:191
+msgid "Deletion Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:199
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:199
+msgid "can read posts which are currently published with private visibility"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:200
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:200
+msgid "has basic editing capability (but may need other capabilities based on post status and ownership)"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:201
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:201
+msgid "can edit posts which were created by other users"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:202
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:202
+msgid "can edit posts which are currently published"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:203
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:203
+msgid "can edit posts which are currently published with private visibility"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:204
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:204
+msgid "can make a post publicly visible"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:205
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:205
+msgid "has basic deletion capability (but may need other capabilities based on post status and ownership)"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:206
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:206
+msgid "can delete posts which were created by other users"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:207
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:207
+msgid "can delete posts which are currently published"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:208
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:208
+msgid "can delete posts which are currently published with private visibility"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:282
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:356
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:405
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:282
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:356
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:405
+#, php-format
+msgid "%s: assigned by Permit Group"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:339
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:339
+msgid "Other WordPress Core Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:375
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:375
+msgid "Additional Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:442
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:442
+msgid "Level:"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:463
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:463
+msgid "Note: Underscores replace spaces in stored capability name (\"edit users\" => \"edit_users\")."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:481
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:522
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:538
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:481
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:522
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:538
+msgid "Make role available for supplemental assignment to Permit Groups only"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:481
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:481
+msgid "supplemental assignment only"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:488
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:403
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:488
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:403
+msgid "Save Changes"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:491
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:491
+msgid "Delete this role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:491
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:491
+#, php-format
+msgid ""
+"You are about to delete the %s role.\n"
+" 'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:491
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:491
+msgid "Delete Role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:503
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:503
+msgid "Select New Role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:503
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:503
+msgid "Select Role to View / Edit"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:511
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:511
+msgid "Change"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:511
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:357
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:374
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:511
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:357
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:374
+msgid "Load"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:516
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:516
+msgid "Create New Role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:519
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:519
+msgid "Name of new role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:522
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:538
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:522
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:538
+msgid "supplemental"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:526
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:378
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:526
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:378
+msgid "Create"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:532
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:532
+msgid "Copy this role to"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:532
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:532
+#, php-format
+msgid "Copy %s Role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:535
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:535
+msgid "Name of copied role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:542
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:390
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:542
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:390
+msgid "Copy"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:548
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:548
+msgid "Add Capability"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:550
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:550
+msgid "capability name"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:551
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:407
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:551
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:407
+msgid "Add to role"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:557
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:557
+msgid "Force Type-Specific Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:560
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:560
+msgid "Force unique capability names for:"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:601
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:601
+msgid "(PP Filtered Post Types, Taxonomies)"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/admin.php:606
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:417
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/admin.php:606
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:417
+msgid "Update"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:33
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:33
+msgid "Backup Tool for Capability Manager"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:42
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:42
+msgid "Backup and Restore"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:46
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:46
+msgid "Select action:"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:49
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:49
+msgid "Backup roles and capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:50
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:50
+msgid "Restore last saved backup"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:52
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:52
+msgid "Do Action"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:60
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:60
+msgid "Reset WordPress Defaults"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:62
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:62
+msgid "WARNING:"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:62
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:62
+msgid "Reseting default Roles and Capabilities will set them to the WordPress install defaults."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:63
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:63
+msgid "If you have installed any plugin that adds new roles or capabilities, these will be lost."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:64
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:64
+msgid "It is recommended to use this only as a last resource!"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:65
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:65
+msgid "Reset Roles and Capabilities to WordPress defaults"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:65
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:65
+msgid ""
+"You are about to reset Roles and Capabilities to WordPress defaults.\n"
+" 'Cancel' to stop, 'OK' to reset."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/backup.php:65
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/backup.php:65
+msgid "Reset to WordPress defaults"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:198
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:198
+msgid "Capabilities"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:285
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:321
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:285
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:321
+msgid "What do you think you're doing?!?"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:348
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:348
+msgid "Bad form Received"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:380
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:393
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:380
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:393
+msgid "New role created."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:384
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:397
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:384
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:397
+msgid "Error: No role name specified."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:386
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:399
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:386
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:399
+msgid "Error: Failed creating the new role."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:404
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:404
+msgid "New capabilities saved."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:412
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:412
+msgid "New capability added to role."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:414
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:414
+msgid "Incorrect capability name."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:419
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:419
+msgid "Capability settings saved."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:421
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:421
+msgid "Error saving capability settings."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:425
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:425
+msgid "Bad form received."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:452
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:452
+msgid "New backup saved."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:458
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:458
+msgid "Roles and Capabilities restored from last backup."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:460
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:460
+msgid "Restore failed. No backup found."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:482
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:482
+#, php-format
+msgid "Cannot delete default role. You <a href=\"%s\">have to change it first</a>."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:503
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:503
+#, php-format
+msgid "Role has been deleted. %1$d users moved to default role %2$s."
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:517
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:517
+msgid "Needed function to create default roles not found!"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:529
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:529
+msgid "Roles and Capabilities reset to WordPress defaults"
+msgstr ""
+
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced/includes/manager.php:720
+#: E:\www\wp34\wp-content\plugins\capsman-enhanced\includes/manager.php:720
+msgid "You cannot remove Manage Capabilities from Administrators"
+msgstr ""
+

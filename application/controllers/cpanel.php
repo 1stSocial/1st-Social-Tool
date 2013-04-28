@@ -18,6 +18,16 @@ class Cpanel extends CI_Controller {
 		return $this->xmlapi->api1_query('accountname','SubDomain','addsubdomain',array($subdomain_name,'domain.com',0,0,'/public_html/'));  
 	}
 
+        function copy_files($subdomain) {
+            $location_from_root = '../../' . $subdomain;
+            if (is_dir($location_from_root)) {
+                shell_exec("cp -r assets/template_files/jobboard/ " . $location_from_root);
+            } else {
+                echo "Subdomain doesn't exist!";
+            }
+
+        }
+
 	function create_database($db_name) {
 		$this->cpanel_authenticate();
 		$api_query = $this->xmlapi->api1_query('accountname', 'Mysql', 'adddb', array($db_name)); 

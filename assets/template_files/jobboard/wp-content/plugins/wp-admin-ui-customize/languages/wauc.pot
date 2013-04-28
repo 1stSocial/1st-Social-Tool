@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Admin UI Customize\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-04-06 19:53+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Last-Translator: Gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
+
+msgid "It is an excellent plugin to customize the management screen."
+msgstr ""
+
+msgid "Customize the UI of the management screen for all users."
+msgstr ""
+
+msgid "Authority to apply the setting is not selected. <a href=\"%s\">From here</a>, please select the permissions you want to set."
+msgstr ""
+
+msgid "Please select the user role you want to apply the settings."
+msgstr ""
+
+msgid "Would initialize?"
+msgstr ""
+
+msgid "Site Settings"
+msgstr ""
+
+msgid "Tag to be output"
+msgstr ""
+
+msgid "Please display when using the Windows Live Writer."
+msgstr ""
+
+msgid "Information of XML-rpc"
+msgstr ""
+
+msgid "Sitewide feed"
+msgstr ""
+
+msgid "Extra feed"
+msgstr ""
+
+msgid "Account Title"
+msgstr ""
+
+msgid "Wordpress Logo"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "Update Menu"
+msgstr ""
+
+msgid "Profile Edit"
+msgstr ""
+
+msgid "General screen setting"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Not notified"
+msgstr ""
+
+msgid "Wordpress core update notice"
+msgstr ""
+
+msgid "Plugin update notice"
+msgstr ""
+
+msgid "Theme update notice"
+msgstr ""
+
+msgid "Footer text"
+msgstr ""
+
+msgid "Screen Options and Help tab"
+msgstr ""
+
+msgid "Admin bar Menu"
+msgstr ""
+
+msgid "Notice: When you set up the same menu more, you will not display properly."
+msgstr ""
+
+msgid "can be more than one custom menu."
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Menu that can be added"
+msgstr ""
+
+msgid "Custom Menu"
+msgstr ""
+
+msgid "Side Menu"
+msgstr ""
+
+msgid "Please change the menu by drag and drop."
+msgstr ""
+
+msgid "The current menu"
+msgstr ""
+
+msgid "Sepalator"
+msgstr ""
+
+msgid "Menu Title"
+msgstr ""
+
+msgid "Sub Menus"
+msgstr ""
+
+msgid "Remove meta box"
+msgstr ""
+
+msgid "Add New Post and Edit Post screen setting"
+msgstr ""
+
+msgid "Only appears when you have settings to the default permalink."
+msgstr ""
+
+msgid "Appearance's Menus screen setting"
+msgstr ""
+
+msgid "Add a new menu"
+msgstr ""
+
+msgid "This is useful when you want to use only the menus have been created."
+msgstr ""
+
+msgid "Login Screen"
+msgstr ""
+
+msgid "Login Screen Settings"
+msgstr ""
+
+msgid "Is not possible to check the login form if you do not log out in the case of MultiSite."
+msgstr ""
+
+msgid "Show Login Screen"
+msgstr ""
+
+msgid "Login Form"
+msgstr ""
+
+msgid "The link after clicking on the logo"
+msgstr ""
+
+msgid "Logo title"
+msgstr ""
+
+msgid "Logo Image path"
+msgstr ""
+
+msgid "Css file to load"
+msgstr ""
+

@@ -1,0 +1,1 @@
+[04-Apr-2013 02:13:31] PHP Warning:  call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'sl_dashboard_tweaks_install' was given in /home/firstexe/public_html/jobboard/wp-includes/plugin.php on line 406

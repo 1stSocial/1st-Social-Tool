@@ -1,0 +1,126 @@
+/**
+ * Settings for admin dashboard.
+ * Based on the styles for Maintenance Mode plugin by Michael Wöhrer
+ *
+ * @version		$Rev: 198515 $
+ * @author		Jordi Canals
+ * @copyright   Copyright (C) 2009, 2010 Jordi Canals
+ * @license		GNU General Public License version 2
+ * @link		http://alkivia.org
+ * @package		Alkivia
+ * @subpackage	CapsMan
+ *
+
+	Copyright 2009, 2010 Jordi Canals <devel@jcanals.cat>
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	version 2 as published by the Free Software Foundation.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* =========================================================== SETTINGS */
+
+#icon-capsman-admin {
+	background: transparent url('images/cman32.png') no-repeat;
+	}
+
+/* ====================================================== SIDEBAR ICONS */
+
+td.sidebar a.capsman {
+	background-image: url('images/capsman.png');
+	}
+
+a.cap_type {
+	text-decoration: none;
+}
+
+a.cap_type:hover {
+	text-decoration: underline;
+}
+	
+ul.cme-listhoriz li {
+text-align: center;
+padding-right: 2em;
+}
+
+ul.cme-listhoriz li table{
+text-align: center;
+}
+
+
+ul.cme-listhoriz {
+width: 100%;
+clear: both;
+float: left;
+margin: 0;
+padding: 0;
+}
+
+ul.cme-listhoriz li {
+list-style: none;
+float: left;
+margin: 0;
+}
+
+	
+div.cme-listhoriz h3 {
+margin: 0.2em;
+}
+
+table .cme-typecaps {
+border: 1px solid black;
+}
+
+table .cme-typecaps td {
+text-align: center;
+height: 2em;
+}
+
+table .cme-typecaps th {
+padding-left: 0.5em;
+padding-right: 0.5em;
+}
+
+td.cap_yes {
+color:green;font-weight:bold;
+}
+
+td.cap_no {
+color:red;
+}
+
+#akmin input.button {
+margin-top: 5px;
+}
+
+#akmin td.sidebar {
+width: 300px;
+}
+
+#akmin input.regular-text {
+width: 200px;
+}
+
+#akmin input.tight-text {
+width: 125px;
+}
+
+.cme-subtext {
+color: #686868;
+font-style: italic;
+margin-top:5px;
+}
+
+#wpbody-content{
+padding-bottom: 30px;
+}
+
+/* EOF */
