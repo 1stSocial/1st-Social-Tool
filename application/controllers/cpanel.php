@@ -34,14 +34,28 @@ class Cpanel extends CI_Controller {
 		// $this->xmlapi->set_debug(1); 
 	}
 
-	function import_db() {
+	function import_db($db_name) {
 		$username = "firstexe";
 		$password = "SDCjJDAWmLow";
 		$hostname = "localhost"; 
 
 		$dbhandle = mysql_connect($hostname, $username, $password) 
 		  or die("Unable to connect to MySQL");
-	  	var_dump($dbhandle);
+                
+                mysql_select_db($db_name);
+                
+                $result = mysql_list_tables($db_name);
+                
+                if (!mysql_fetch_row($result)) {
+                    $sql = explode(";",file_get_contents(base_url() . "assets/template_files/wordpress_template.sql"));//
+                    foreach($sql as $query) {
+                        mysql_query($query, $dbhandle);
+                        mysql_error($dbhandle);
+                    }
+                } else {
+                    echo "Db not empty!";
+                }
+
 	}
 
 }
