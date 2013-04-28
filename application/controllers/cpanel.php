@@ -22,7 +22,7 @@ class Cpanel extends CI_Controller {
 		$this->cpanel_authenticate();
 		$api_query = $this->xmlapi->api1_query('accountname', 'Mysql', 'adddb', array($db_name)); 
 		
-		mysql_connect("firstexe_tool")
+		//mysql_connect("firstexe_tool");
 
 		return $api_query->data->result;
 	}
@@ -34,9 +34,14 @@ class Cpanel extends CI_Controller {
 		// $this->xmlapi->set_debug(1); 
 	}
 
-	function duplicate_db() {
-		$output = exec('ls -lah');
-		var_dump($output);
-		//var_dump(shell_exec('mysqldump -h 127.0.0.1 -u root -p558505 greg_db | mysql -h 127.0.0.1 -u root -p558505 ccc'));
+	function import_db() {
+		$username = "firstexe";
+		$password = "SDCjJDAWmLow";
+		$hostname = "localhost"; 
+
+		$dbhandle = mysql_connect($hostname, $username, $password) 
+		  or die("Unable to connect to MySQL");
+	  	var_dump($dbhandle);
 	}
+
 }
