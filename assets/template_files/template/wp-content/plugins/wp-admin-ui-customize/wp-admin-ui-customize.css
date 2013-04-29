@@ -1,0 +1,163 @@
+.columns-2 #postbox-container-1 {
+	width: 60%;
+}
+.columns-2 #postbox-container-2 {
+	width: 38%;
+	margin-left: 2%;
+}
+.postbox-container .postbox .hndle {
+	cursor: default; 	
+}
+
+
+.postbox-container #donationbox {
+	background: #87BCE4;
+	border: 3px solid #227499;
+}
+.postbox-container #donationbox .inside {
+	padding: 6px 10px 10px 10px;
+}
+.postbox-container #donationbox .inside .donation_memo {
+	background: #FFF8D9;
+	padding: 2px 10px;
+}
+
+
+
+/* sidemenu */
+
+#sidemenu-holder {
+	margin-left: 500px;
+}
+#sidemenu-holder #postbox-container-1 {
+	display: inline;
+	width: 470px;
+	margin-left: -500px;
+	clear: both;
+	float: left;
+}
+#sidemenu-holder #postbox-container-2 {
+	width: auto;
+	float: left;
+	min-width: 100%;
+	margin: 0 5% 0 0;
+}
+#sidemenu-holder .postbox .inside {
+	padding: 10px;
+}
+#sidemenu-holder .postbox .inside .widget-placeholder {
+	width: auto;
+}
+#sidemenu-holder .postbox .inside .widget .widget-top .widget-title .in-widget-title {
+	opacity: 0.7;
+	font-weight: normal;
+}
+#sidemenu-holder .postbox .inside .widget .widget-inside .submenu {
+	padding: 5px 5px 20px 5px;
+	border: 1px solid #DFDFDF;
+}
+#sidemenu-holder .postbox .inside .widget .widget-inside input.regular-text {
+	width: 300px;
+}
+
+
+
+#sidemenu-holder #postbox-container-2 .postbox .inside .widget.new .widget-top .widget-title-action,
+#sidemenu-holder #postbox-container-1 .postbox .inside .widget.separator .widget-top .widget-title-action,
+#sidemenu-holder #postbox-container-2 .postbox .inside .widget .widget-inside .submenu,
+#sidemenu-holder #postbox-container-2 .postbox .inside .widget .widget-inside .widget-control-actions,
+#sidemenu-holder #postbox-container-1 .postbox .inside .widget .widget-inside .submenu .widget .widget-inside .submenu {
+	display: none;
+}
+
+
+
+#sidemenu-holder #postbox-container-2 .postbox .inside h3 {
+	cursor: default;
+	border-bottom: none;
+}
+#sidemenu-holder #postbox-container-2 .postbox .inside .widget {
+	width: 170px;
+	float: left;
+	margin: 0 4px 4px 0;
+}
+
+
+
+
+
+
+/* admin_bar */
+
+#admin_bar-holder {}
+#admin_bar-holder .postbox .inside {
+	padding: 10px;
+}
+#admin_bar-holder .postbox .inside .widget-placeholder {
+	width: auto;
+}
+#admin_bar-holder .postbox .inside .widget .widget-top .widget-title .in-widget-title {
+	opacity: 0.7;
+	font-weight: normal;
+}
+#admin_bar-holder .postbox .inside .widget .widget-inside .submenu {
+	padding: 5px 5px 20px 5px;
+	border: 1px solid #DFDFDF;
+	margin: 8px 0 0 0;
+}
+#admin_bar-holder .postbox .inside .widget .widget-inside input.regular-text {
+	width: 90%;
+}
+
+#admin_bar-holder .postbox .inside .widget .widget-top {
+	height: auto;
+}
+#admin_bar-holder .postbox .inside .widget .widget-top .widget-title h4 {
+	line-height: 18px;
+}
+#admin_bar-holder .postbox .inside .widget .widget-inside input.linktext {
+	width: 90%;
+}
+#admin_bar-holder .postbox .inside .widget.wp-logo .widget-top .widget-title h4 .ab-icon,
+#admin_bar-holder .postbox .inside .widget.updates .widget-top .widget-title h4 .ab-icon,
+#admin_bar-holder .postbox .inside .widget.comments .widget-top .widget-title h4 .ab-icon,
+#admin_bar-holder .postbox .inside .widget.new-content .widget-top .widget-title h4 .ab-icon {
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+	margin: 0 2px 0 0;
+}
+#admin_bar-holder .postbox .inside .widget.wp-logo .widget-top .widget-title h4 .ab-icon {
+	background-position: 0 -104px;
+}
+#admin_bar-holder .postbox .inside .widget.updates .widget-top .widget-title h4 .ab-icon {
+	background-position: -2px -159px;
+}
+#admin_bar-holder .postbox .inside .widget.comments .widget-top .widget-title h4 .ab-icon {
+	background-position: -2px -135px;
+}
+#admin_bar-holder .postbox .inside .widget.new-content .widget-top .widget-title h4 .ab-icon {
+	background-position: -2px -202px;
+}
+
+
+#waum_setting_admin_bar_menu .columns-1 .postbox .inside .widget.new .widget-top .widget-title-action,
+#waum_setting_admin_bar_menu .columns-1 .postbox .inside .widget .widget-inside .submenu,
+#waum_setting_admin_bar_menu .columns-1 .postbox .inside .widget .widget-inside .widget-control-actions,
+#admin_bar-holder .postbox .inside .widget.separator .widget-top .widget-title-action,
+#admin_bar-holder .postbox .inside .widget .widget-inside .submenu .widget .widget-inside .submenu {
+	display: none;
+}
+
+
+#waum_setting_admin_bar_menu .columns-1 .postbox .inside h3 {
+	cursor: default;
+	border-bottom: none;
+}
+#waum_setting_admin_bar_menu .columns-1 .postbox .inside .widget {
+	width: 170px;
+	float: left;
+	margin: 0 4px 4px 0;
+}

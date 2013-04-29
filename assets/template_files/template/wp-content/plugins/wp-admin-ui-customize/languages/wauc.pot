@@ -1,0 +1,234 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-03-30 10:43+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Last-Translator: \n"
+
+msgid "It is an excellent plugin to customize the management screen."
+msgstr ""
+
+msgid "Thank you for your donation."
+msgstr ""
+
+msgid "If you have already donated to."
+msgstr ""
+
+msgid "Please enter the 'Donation delete key' that have been described in the 'Line Break First and End download page'."
+msgstr ""
+
+msgid "Donation delete key"
+msgstr ""
+
+msgid "Please consider a donation if you are satisfied with this plugin."
+msgstr ""
+
+msgid "Please donation."
+msgstr ""
+
+msgid "You are contented with this plugin?<br />By the laws of Japan, Japan's new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation."
+msgstr ""
+
+msgid "Features"
+msgstr ""
+
+msgid "Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break."
+msgstr ""
+
+msgid "The primary use of donations"
+msgstr ""
+
+msgid "Liquidation of time and value"
+msgstr ""
+
+msgid "Additional suggestions feature"
+msgstr ""
+
+msgid "Maintain motivation"
+msgstr ""
+
+msgid "Ensure time as the father of Sunday"
+msgstr ""
+
+msgid "About plugin"
+msgstr ""
+
+msgid "Version check"
+msgstr ""
+
+msgid "Developer's site"
+msgstr ""
+
+msgid "Reviews"
+msgstr ""
+
+msgid "Useful plugins"
+msgstr ""
+
+msgid "Customize the list of the post and page. custom post type page, too. You can customize the column display items freely."
+msgstr ""
+
+msgid "Announce to display the dashboard. Change the display to a different user role."
+msgstr ""
+
+msgid "The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article."
+msgstr ""
+
+msgid "Customize the UI of the management screen for all users."
+msgstr ""
+
+msgid "Authority to apply the setting is not selected. <a href=\"%s\">From here</a>, please select the permissions you want to set."
+msgstr ""
+
+msgid "Please select the user role you want to apply the settings."
+msgstr ""
+
+msgid "Would initialize?"
+msgstr ""
+
+msgid "Site Settings"
+msgstr ""
+
+msgid "Tag to be output"
+msgstr ""
+
+msgid "Please display when using the Windows Live Writer."
+msgstr ""
+
+msgid "Information of XML-rpc"
+msgstr ""
+
+msgid "Sitewide feed"
+msgstr ""
+
+msgid "Extra feed"
+msgstr ""
+
+msgid "Account Title"
+msgstr ""
+
+msgid "Wordpress Logo"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "Update Menu"
+msgstr ""
+
+msgid "Profile Edit"
+msgstr ""
+
+msgid "General screen setting"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Not notified"
+msgstr ""
+
+msgid "Wordpress core update notice"
+msgstr ""
+
+msgid "Plugin update notice"
+msgstr ""
+
+msgid "Theme update notice"
+msgstr ""
+
+msgid "Footer text"
+msgstr ""
+
+msgid "Screen Options and Help tab"
+msgstr ""
+
+msgid "Admin bar Menu"
+msgstr ""
+
+msgid "Notice: When you set up the same menu more, you will not display properly."
+msgstr ""
+
+msgid "can be more than one custom menu."
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Menu that can be added"
+msgstr ""
+
+msgid "Custom Menu"
+msgstr ""
+
+msgid "Side Menu"
+msgstr ""
+
+msgid "Please change the menu by drag and drop."
+msgstr ""
+
+msgid "The current menu"
+msgstr ""
+
+msgid "Sepalator"
+msgstr ""
+
+msgid "Menu Title"
+msgstr ""
+
+msgid "Sub Menus"
+msgstr ""
+
+msgid "Remove meta box"
+msgstr ""
+
+msgid "Add New Post and Edit Post screen setting"
+msgstr ""
+
+msgid "Only appears when you have settings to the default permalink."
+msgstr ""
+
+msgid "Appearance's Menus screen setting"
+msgstr ""
+
+msgid "Add a new menu"
+msgstr ""
+
+msgid "This is useful when you want to use only the menus have been created."
+msgstr ""
+
+msgid "Login Screen"
+msgstr ""
+
+msgid "Login Screen Settings"
+msgstr ""
+
+msgid "Show Login Screen"
+msgstr ""
+
+msgid "Login Form"
+msgstr ""
+
+msgid "The link after clicking on the logo"
+msgstr ""
+
+msgid "Logo title"
+msgstr ""
+
+msgid "Logo Image path"
+msgstr ""
+
+msgid "Css file to load"
+msgstr ""
+
