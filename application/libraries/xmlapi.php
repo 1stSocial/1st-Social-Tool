@@ -188,7 +188,7 @@ class CI_Xmlapi
     * @param string $password The password to authenticate with
     * @return Xml_Api object
     */
-    public function __construct($host = '184.172.173.27', $user = null, $password = null )
+    public function __construct($host = '127.0.0.1', $user = null, $password = null )
     {
         // Check if debugging must be enabled
         if ( (defined('XMLAPI_DEBUG')) && (XMLAPI_DEBUG == '1') ) {

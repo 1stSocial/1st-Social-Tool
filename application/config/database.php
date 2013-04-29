@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '217.199.160.116';
-$db['default']['username'] = 'greg';
-$db['default']['password'] = '558505';
-$db['default']['database'] = '1st-Social';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'firstexe_social';
+$db['default']['password'] = '99queen';
+$db['default']['database'] = 'firstexe_1stsocialtool';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
