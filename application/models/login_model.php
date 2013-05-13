@@ -4,6 +4,7 @@ Class Login_model extends CI_Model {
         parent::__construct();
     }
     
+    //If user is loggeed in load home view and set session data, else load login page.
     function check_login() {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
@@ -11,9 +12,6 @@ Class Login_model extends CI_Model {
 
             //Render Settings
             $data['settings'] = $session_data['user_level'] == 'super-admin' || $session_data['user_level'] == 'admin' ? "<a href='".base_url()."index.php/settings'><i class='icon-wrench icon-white'></i></a>" : false;
-
-
-
             $this->load->view('home', $data);
         } else {
             //If no session, redirect to login page
