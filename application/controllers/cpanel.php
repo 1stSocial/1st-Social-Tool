@@ -32,7 +32,8 @@ class Cpanel extends CI_Controller {
 
     function get_subdomains() {
         $this->cpanel_authenticate();
-        var_dump($this->xmlapi->api1_query('accountname','SubDomain','listsubdomainsop',array()));  
+        $query = $this->xmlapi->api1_query('accountname','SubDomain','cplistsubdomains');
+        echo json_encode(array("subdomains"=>$query->data->result));  
     }
 
     function copy_template($subdomain) {

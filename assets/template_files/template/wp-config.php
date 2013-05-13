@@ -18,7 +18,7 @@
 /** The name of the database for WordPress */
 define('WP_CACHE', true); //Added by WP-Cache Manager
 define( 'WPCACHEHOME', '/home/firstexe/public_html/template/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
-define('DB_NAME', 'firstexe_jeuel');
+define('DB_NAME', 'firstexe_gpk');
 
 /** MySQL database username */
 define('DB_USER', 'firstexe_social');

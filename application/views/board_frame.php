@@ -111,3 +111,5 @@
 		<a href="#" class="btn" data-dismiss="modal" ><i class="icon-remove"></i> Cancel</a>
 	</div>
 </div>
+
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/boards.js"></script><script type="text/javascript" src="<?= base_url(); ?>assets/js/boards.js"></script>
