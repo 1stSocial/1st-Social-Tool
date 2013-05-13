@@ -82,4 +82,8 @@ class Board_controller extends CI_Controller {
 		$this->load->view("rss_board", $data);
 	}
 
+	function show_subdomains() {
+
+	}
+
 }

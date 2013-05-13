@@ -30,6 +30,11 @@ class Cpanel extends CI_Controller {
 		return $this->xmlapi->api1_query('accountname','SubDomain','addsubdomain',array($subdomain_name,'domain.com',0,0,'/public_html/'. $subdomain_name));  
 	}
 
+    function get_subdomains() {
+        $this->cpanel_authenticate();
+        var_dump($this->xmlapi->api1_query('accountname','SubDomain','listsubdomainsop',array()));  
+    }
+
     function copy_template($subdomain) {
         $location_from_root = '../../' . $subdomain;
         if (is_dir($location_from_root)) {
