@@ -1,6 +1,6 @@
 <?php 
 //I WILL NOT USE ACTIVE RECORDS
-Class Board_model extends CI_Model {
+Class Fb_board_model extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}

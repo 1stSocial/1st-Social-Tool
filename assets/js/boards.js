@@ -1,5 +1,4 @@
 fnCreateAppDataTable();
-
 //Globals are BAD! mAKE THIS OO ASAP
 var sBoardName = "";
 
@@ -16,7 +15,7 @@ function fnHideLoader() {
 
 function fnRefreshTable() {
 	fnShowLoader();
-	$.get("board_controller/get_board_table_html/true", function(response){
+	$.get("fb_board/get_board_table_html/true", function(response){
 		fnHideLoader();
 		$(".table-container table").html(response);
 	}, "json");
@@ -25,7 +24,7 @@ function fnRefreshTable() {
 }
 
 function fnInitTable(sTableName, bDestroyInstance) {
-	oDataTable = $(sTableName).dataTable({
+ 	oDataTable = $(sTableName).dataTable({
 		"sPaginationType": "full_numbers",
 		"bPaginate": true,
 		"aoColumnDefs": [ 
@@ -91,7 +90,7 @@ function fnCreateAppDataTable() {
 		sBoardName = oTableRow.find(".board-name-holder").text();
 		
 //Below needs to change depending on environment
-		window.open("/index.php/board_controller/show_board/" + sBoardName, '_newtab');
+		window.open("/index.php/fb_board/show_board/" + sBoardName, '_newtab');
 	});
 
 	$(".html-modal").undelegate(".save-board-html", "click");
@@ -179,7 +178,7 @@ function fnGetFileName(oTargetInput) {
 
 function fnModifyBoard(oData) {
 	$.ajax({
-		url: "board_controller/modify_board",
+		url: "fb_board/modify_board",
 		data: oData,
 		type: "POST",
 		dataType: "json",
@@ -199,7 +198,7 @@ function fnModifyBoard(oData) {
 
 function fnCreateBoard(oData) {
 		$.ajax({
-			url: "board_controller/create_board",
+			url: "fb_board/create_board",
 			data: oData,
 			type: "POST",
 			dataType: "json",
@@ -231,7 +230,7 @@ function fnDeleteBoard(sBoardName) {
 	$("body").undelegate(".board-delete-confirm", "click");
 	$("body").delegate(".board-delete-confirm", "click", function(){
 		$.ajax({
-			url: "board_controller/delete_board",
+			url: "fb_board/delete_board",
 			data: {"board_name": sBoardName},
 			type: "POST",
 			dataType: "json",

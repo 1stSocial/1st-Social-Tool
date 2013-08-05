@@ -214,11 +214,11 @@ header {
 	box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
 	margin-bottom: 15px;
 	border-bottom: 1px solid rgba(255,255,255,0.8);
-	.transition(1.5s, background-color);
+	.transition(0.5s, background-color);
 }
 
 .menu-topbar:hover {
-	background-color: rgba(0,0,0,0.30);
+	// background-color: rgba(0,0,0,0.30);
 }
 
 .menu-topbar, .menu-topbar .nav, .menu-topbar .nav li {
@@ -256,6 +256,11 @@ header {
 .dropdown-menu {
 	background: @primary_purple;
 	.transition(0.5, background-color);
+}
+
+.dropdown-toggle .caret, .dropdown-toggle .caret:hover {
+	border-top-color: #FFF !important;
+	border-bottom-color: #FFF !important;
 }
 
 .dropdown-menu li:hover {
