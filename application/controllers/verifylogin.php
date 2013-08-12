@@ -13,20 +13,35 @@ class VerifyLogin extends CI_Controller {
    //This method will have the credentials validation
    $this->load->library('form_validation');
 
+  
    $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
    $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
-
    if($this->form_validation->run() == FALSE)
-   {
+   {   
      //Field validation failed.&nbsp; User redirected to login page
       $this->load->view('header');
       $this->load->view('login');
       $this->load->view('footer');
    }
    else
-   {
+   {  
      //Go to private area
-     redirect('home', 'refresh');
+   	$userData=$this->session->userdata('logged_in');
+     switch($userData['access_level']){
+     	case 'super-admin':
+     		              redirect('/super-admin/home');
+     		              break;
+     	case 'admin': 
+     		              redirect('/admin/home');
+     		              break;
+     	case 'client':
+     		              redirect('client/home');	
+     		              break;	 
+     	case 'user':
+     		              redirect('user/home');
+     		              break;		                          		                
+     }
+     
    }
 
  }
@@ -34,10 +49,10 @@ class VerifyLogin extends CI_Controller {
  function check_database($password)
  {
    //Field validation succeeded.&nbsp; Validate against database
-   $username = $this->input->post('username');
+    $username = $this->input->post('username'); 
 
    //query the database
-   $result = $this->user->login($username, $password);
+   $result = $this->user->login($username, $password);   
    if($result)
    {
      $sess_array = array();
@@ -46,7 +61,7 @@ class VerifyLogin extends CI_Controller {
        $sess_array = array(
          'id' => $row->id,
          'username' => $row->username, 
-         'user_level' => $row->user_level
+         'access_level' => $row->access_level
        );
        $this->session->set_userdata('logged_in', $sess_array);
      }
@@ -57,5 +72,5 @@ class VerifyLogin extends CI_Controller {
      $this->form_validation->set_message('check_database', 'Invalid username or password');
      return false;
    }
- }
+ } 
 }

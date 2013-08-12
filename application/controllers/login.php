@@ -3,10 +3,17 @@
 class Login extends CI_Controller {
 
 	function __construct() {
-		parent::__construct();
+		parent::__construct();	
+		$this->load->model('user');	
 	}
 
 	function index() {
+		$tempData=array('username'=>'abc',
+				          'name'  =>'test user',
+				);
+		$model= new User($tempData);
+	//	echo $model->getUsername();		
+		
 		$this->load->view('header');
 		$this->load->helper(array('form'));
 		$this->load->view('login');
