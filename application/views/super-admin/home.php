@@ -10,8 +10,8 @@
 			<li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="<?= base_url(); ?>index.php/super-admin/board/new">Board Management</a></li>
-					<li><a href="<?= base_url(); ?>index.php/super-admin/board">Board App Management</a></li>
+					<li><a href="<?= base_url(); ?>index.php/board_controller/new_board">Board Management</a></li>
+					<li><a href="<?= base_url(); ?>index.php/board_controller">Board App Management</a></li>
 				</ul>
 			</li>
 			<?php if ($settings): ?>
