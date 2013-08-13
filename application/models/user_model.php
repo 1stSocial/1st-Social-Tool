@@ -1,5 +1,5 @@
 <?php
-Class User extends CI_Model
+Class User_model extends CI_Model
 {
 	private $_id;
 	private $_name;
@@ -201,6 +201,15 @@ Class User extends CI_Model
 
         $this->db->where('id', $user_id);
         $this->db->update('users', $data);
+    }
+    /*
+     * Get all partners 
+     */
+    public function getAllPartners(){
+        $query = $this->db->get_where('users',array( "access_level" =>'partner'));
+		if ($query->num_rows()>0){
+			return $query->result();
+		}
     }
 }
 ?>
