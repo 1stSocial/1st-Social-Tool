@@ -4,14 +4,14 @@ class Login extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();	
-		$this->load->model('user');	
+		$this->load->model('user_model');	
 	}
 
 	function index() {
 		$tempData=array('username'=>'abc',
 				          'name'  =>'test user',
 				);
-		$model= new User($tempData);
+		$model= new User_model($tempData);
 	//	echo $model->getUsername();		
 		
 		$this->load->view('header');

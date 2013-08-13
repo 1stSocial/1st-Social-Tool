@@ -5,7 +5,7 @@ class VerifyLogin extends CI_Controller {
  function __construct()
  {
    parent::__construct();
-   $this->load->model('user','',TRUE);
+   $this->load->model('user_model','',TRUE);
  }
 
  function index()
@@ -28,11 +28,11 @@ class VerifyLogin extends CI_Controller {
      //Go to private area
    	$userData=$this->session->userdata('logged_in');
      switch($userData['access_level']){
-     	case 'super-admin':
-     		              redirect('/super-admin/home');
-     		              break;
-     	case 'admin': 
+     	case 'admin':
      		              redirect('/admin/home');
+     		              break;
+     	case 'partnet': 
+     		              redirect('/partner/home');
      		              break;
      	case 'client':
      		              redirect('client/home');	
@@ -52,7 +52,7 @@ class VerifyLogin extends CI_Controller {
     $username = $this->input->post('username'); 
 
    //query the database
-   $result = $this->user->login($username, $password);   
+   $result = $this->user_model->login($username, $password);   
    if($result)
    {
      $sess_array = array();
