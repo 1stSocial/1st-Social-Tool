@@ -58,11 +58,16 @@ Class Tag_model extends CI_Model
         
         public function getChildTags($parentTag){
             $query = $this->db->get_where('tags',array( "name" =>$parentTag));
-            $option=$query->result();           
-            $query = $this->db->get_where('tags',array( "parent_tag_id" => $option[0]->id));
-		if ($query->num_rows()>0){
-			return $query->result();
+            if ($query->num_rows()>0){
+            $option=$query->result();            
+            $query1 = $this->db->get_where('tags',array( "parent_tag_id" => $option[0]->id));
+		if ($query1->num_rows()>0){
+			return $query1->result();
 		}
+            }
+        }
+        public function deleteTags($boardId){        
+          $this->db->delete('tags', array('board_id' => $boardId));
         }
 	
 }

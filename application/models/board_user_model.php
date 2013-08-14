@@ -84,5 +84,17 @@ Class Board_user_model extends CI_Model
 		  }
 		
 	}
+        
+        public function getSelectedUserByBoardId($boardId){
+             $query = $this->db->get_where('board_users',array( "board_id" => $boardId));
+             if ($query->num_rows()>0){
+                 return $query->result();
+             }
+        }
+        
+         // delete tags by boardId 
+        public function deleteTags($boardId){        
+          $this->db->delete('board_users', array('board_id' => $boardId));
+        }
 	
 }
