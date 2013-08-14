@@ -24,6 +24,6 @@
 		</div>
 	</div>
 </div>
-<div class="row-fluid">
-	<div class="span10 offset1">
-
+<div class="main">
+    
+ 

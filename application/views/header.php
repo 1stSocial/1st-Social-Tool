@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.iframe-transport.js"></script>
 
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>                                
- 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
+ 	<!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>-->
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
  	 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>  
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>

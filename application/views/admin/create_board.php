@@ -1,6 +1,7 @@
-<h3 style="margin-left:5px;">Create Board</h3>
 
- <div class="row-fluid">  
+
+ <div class="container"> 
+     <h3 style="margin-left:5px;">Create Board</h3>
     <p> <? if(isset($success)) echo $success;?> </p>
 <?php  echo form_open('admin/home/create_board','class="horizontal-form"');  ?>
 <div class="component"><!-- Password input-->
@@ -32,9 +33,7 @@
   <div class="controls">
     <select  id="childTagsId" name="tagId" >
   <option>Select</option>
-  <?  if(!empty($parenTag)): foreach($parenTag as $parentTag): ?>
-  <option value="<?=$parentTag->name?>"><?=$parentTag->name?></option>
-  <?php endforeach;endif;?>
+  
 </select>
    </div>
 </div>

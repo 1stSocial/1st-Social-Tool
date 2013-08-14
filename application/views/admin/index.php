@@ -5,47 +5,27 @@
   });
 </script> -->
 
-<table class="bordered-table zebra-striped">
+<table class="table table-striped ">
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Language</th>
+            <th>Board Name</th>
+            <th>Board Parent Tag</th>
+            <th>Created By</th>
+            <th>Created Date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
+            <?php if(is_array($boards) && !empty($boards)): 
+                foreach ($boards as $val): ?>
           <tr>
-            <td>1</td>
-            <td>Some</td>
-            <td>One</td>
-            <td>English</td>
+            <td><?=$val->board_name?></td>
+            <td><?=$val->parent_tags?></td>
+            <td><?=$val->user_name?></td>
+            <td><? echo date('d-m-Y',  strtotime($val->createdTime));?></td>
+            <td><div class="btn-group"> <a href="<?php echo site_url('/admin/home/edit_board/'.$val->board_id) ?>"class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/home/delete_board/'.$val->board_id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Joe</td>
-            <td>Sixpack</td>
-            <td>English</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>Code</td>
-          </tr>
-          <tr>
-            <td colspan="4">
-              span 4 columns
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              span 2 columns
-            </td>
-            <td colspan="2">
-              span 2 columns
-            </td>
-          </tr>
+          <? endforeach;endif;?>
         </tbody>
       </table>
 </table>
