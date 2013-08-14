@@ -16,7 +16,7 @@ class Home extends CI_Controller {
             $data['settings'] = $session_data['access_level'] == 'super-admin' || $session_data['access_level'] == 'admin' ? "<a href='" . base_url() . "index.php/settings'><i class='icon-wrench icon-white'></i></a>" : false;
 
             $this->load->view('admin/home', $data);
-            $this->load->view('footer');
+            //$this->load->view('footer');
         } else {
             //If no session, redirect to login page
             redirect('/login');
@@ -24,7 +24,15 @@ class Home extends CI_Controller {
     }
 
     function index() {
-        $this->load->view('admin/index');
+        $viewData = array();
+        $this->load->model('board_model');
+        $boardModel = new Board_model();
+        $session_data = $this->session->userdata('logged_in');
+        $boards = $boardModel->getBoards($session_data['id']);
+        // echo "<pre>"; print_r($boards);
+        $viewData['boards'] = $boards;
+        $this->load->view('admin/index', $viewData);
+        $this->load->view('footer');
     }
 
     function logout() {
@@ -46,15 +54,14 @@ class Home extends CI_Controller {
         $this->load->model('board_tag_model');
         $this->load->helper('form');
         // get all parent tag
-        $tagModel= new Tag_model();
-        $parentTags=$tagModel->getAllParentTags();
-       // echo"<pre>";        print_r($parentTags); die;
-        
-       //get all partners 
-        $userModel= new User_model();
-        $partners=$userModel->getAllPartners();
+        $tagModel = new Tag_model();
+        $parentTags = $tagModel->getAllParentTags();
+        // echo"<pre>";        print_r($parentTags); die;
+        //get all partners 
+        $userModel = new User_model();
+        $partners = $userModel->getAllPartners();
         //echo "<pre>"; print_r($partners);
-        $viewData=array('parenTag'=>$parentTags,'partners'=>$partners);
+        $viewData = array('parenTag' => $parentTags, 'partners' => $partners);
 
 
 
@@ -67,38 +74,104 @@ class Home extends CI_Controller {
             $data['createdBy'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
 
-           // echo "<pre>"; print_r($data);
+            // echo "<pre>"; print_r($data);
             // save board information 
             $boardModel = new Board_model($data);
-            $boardId = $boardModel->saveBoard();          
+            $boardId = $boardModel->saveBoard();
             if (is_numeric($boardId)) {
-                  // save user information 
+                // save user information 
                 $boardUserModel = new Board_user_model(array('boardId' => $boardId, 'userId' => $userId));
                 $boardUserModel->saveBoardUser();
-                
+
                 // save tags information
-                $boardTagModel= new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['tagId']));
+                $boardTagModel = new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['tagId']));
                 $boardTagModel->saveBoardTag();
-                $viewData['success']='Board successfully created';
-                
+                $viewData['success'] = 'Board successfully created';
             }
+            redirect('/admin/home/index');
         }
-         $this->load->view('admin/create_board',$viewData);
+        $this->load->view('admin/create_board', $viewData);
     }
 
-     function getChildTags(){
-           $this->load->model('tag_model');
-           
-           if ($this->input->post()) {
-               $data= $this->input->post();               
-               $tagModel= new Tag_model();
-               $result=$tagModel->getChildTags($data['parentTag']);
-               //echo "<pre>"; print_r($result);
-               foreach($result as $val){
-                   echo '<option value="'.$val->id.'">'.$val->name.'</option>';
-               }
-           }
+    function edit_board() {
+        $this->load->helper('form');
+        $this->load->model('board_model');
+        $this->load->model('Board_user_model');
+        $this->load->model('tag_model');
+        $this->load->model('user_model');
+        $this->load->model('board_tag_model');
+        $boardId = $this->uri->segment(4);
+        $viewData = array();
+        $boardModel = new Board_model();
+        if (is_numeric($boardId) && !empty($boardId)) {
+            //get board details
+            $boardData = $boardModel->getBoardByBoardId($boardId);
+            // echo "<pre>"; print_r($boardData);  
+            $viewData['boardData'] = $boardData;
+            // get all parent tag
+            $tagModel = new Tag_model();
+            $parentTags = $tagModel->getAllParentTags();
+            $viewData['parenTag'] = $parentTags;
+            // get all child tag
+            $childTag = $tagModel->getChildTags($boardData[0]->parent_tags);
+            $viewData['childTags'] = $childTag;
+
+            //get selected child tag
+            $boardTagModel = new Board_tag_model();
+            $selectedChildTag = $boardTagModel->getChildTagByBoard($boardId);
+            // echo "<pre>"; print_r($selectedChildTag);
+            $viewData['selectedChildTag'] = $selectedChildTag;
+
+            //get all partners 
+            $userModel = new User_model();
+            $partners = $userModel->getAllPartners();
+            //echo "<pre>"; print_r($partners);  
+            $viewData['partners'] = $partners;
+
+            // get select partners 
+            $boardUserModel = new Board_user_model();
+            $selectPartners = $boardUserModel->getSelectedUserByBoardId($boardId);
+            // echo "<pre>"; print_r($selectPartners);
+            $viewData['selectedPartners'] = $selectPartners;
+
+
+            $this->load->view('admin/edit_board', $viewData);
+        }
+    }
+
+    function delete_board() {
+        $boardId = $this->uri->segment(4);
+        $this->load->model('board_model');
+        $this->load->model('Board_user_model'); 
+        $this->load->model('board_tag_model');
+        // delete board details
+        $boardModel = new Board_model();
+        $boardModel->deleteBoard($boardId);
+
+        // delete tags of corresponding board
+        $boardTagModel = new Board_tag_model();
+        $boardTagModel->deleteTags($boardId);
+
+        // delete user assigned of board 
+        $boardUserModel = new Board_user_model();
+        $boardUserModel->deleteTags($boardId);
+        redirect('/admin/home/index');
+    }
+
+    function getChildTags() {
+        $this->load->model('tag_model');
+
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            $tagModel = new Tag_model();
+            $result = $tagModel->getChildTags($data['parentTag']);
+            //echo "<pre>"; print_r($result);
+            foreach ($result as $val) {
+                echo '<option value="' . $val->id . '">' . $val->name . '</option>';
+            }
+        }
         die;
-     }
+    }
+
 }
 
