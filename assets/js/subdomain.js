@@ -1,5 +1,6 @@
 fnGetSubdomains();
 
+alert(test);
 function fnGetSubdomains() {
 $.ajax({
 		url: "/cpanel/get_subdomains",
