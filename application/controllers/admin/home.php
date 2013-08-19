@@ -220,10 +220,12 @@ class Home extends CI_Controller {
            $data['parentid'] = $this->tag_model->addParentTag($data);
            $this->tag_model->addchildTag($data);
             echo '';
+            die;
            }
            else
            {
                echo 'ParentTag all ready exist.';
+               die;
            }
           }
           else
@@ -231,7 +233,7 @@ class Home extends CI_Controller {
               $this->load->view('admin/create_tag');
               $this->load->view('footer');
           }
-           die();
+           die;
         }
         
         $this->load->view('admin/create_tag');
