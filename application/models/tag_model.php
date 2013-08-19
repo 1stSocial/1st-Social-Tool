@@ -69,5 +69,37 @@ Class Tag_model extends CI_Model
         public function deleteTags($boardId){        
           $this->db->delete('tags', array('board_id' => $boardId));
         }
+        
+        public function addParentTag($data)
+        {
+            $val = array(
+                'id'=>NULL,
+                'name'=>$data['parenttag'],
+                'parent_tag_id'=>'0'
+            );
+            $this->db->insert('tags',$val);
+            return mysql_insert_id();  
+        }
 	
+        public function addchildTag($data)
+        {
+            foreach ($data['childtag'] as $key => $value) 
+                {
+                    $val = array(
+                                'id'=>NULL,
+                                'name'=>$value,
+                                'parent_tag_id'=> $data['parentid']
+                                );
+                    if(!$value=="")
+                    $this->db->insert('tags',$val);
+                }
+               
+        }
+        
+        public function checkParentTag($data)
+        {
+            $query = $this->db->get_where('tags',array('name'=> $data['parenttag'],'parent_tag_id'=>'0'));
+            return $query->num_rows();
+            
+        }
 }
