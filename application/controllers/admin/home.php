@@ -23,15 +23,19 @@ class Home extends CI_Controller {
         }
     }
 
-    function index() {
+    function index($option=FALSE) {
         $viewData = array();
         $this->load->model('board_model');
+        $this->load->helper('form');
+        
         $boardModel = new Board_model();
         $session_data = $this->session->userdata('logged_in');
         $boards = $boardModel->getBoards($session_data['id']);
         // echo "<pre>"; print_r($boards);
         $viewData['boards'] = $boards;
+        $viewData['option'] = $option;
         $this->load->view('admin/index', $viewData);
+       
         $this->load->view('footer');
     }
 
@@ -63,8 +67,6 @@ class Home extends CI_Controller {
         //echo "<pre>"; print_r($partners);
         $viewData = array('parenTag' => $parentTags, 'partners' => $partners);
 
-
-
         if ($this->input->post()) {
             $session_data = $this->session->userdata('logged_in');
             $data = $this->input->post();
@@ -90,7 +92,8 @@ class Home extends CI_Controller {
             }
             redirect('/admin/home/index');
         }
-        $this->load->view('admin/create_board', $viewData);
+       echo $this->load->view('admin/create_board', $viewData , TRUE);
+       die();
     }
 
     function edit_board() {
@@ -158,19 +161,81 @@ class Home extends CI_Controller {
         redirect('/admin/home/index');
     }
 
+    
+    function child_tag_list()
+    {
+       $this->load->model('tag_model');
+ 
+        if ($this->input->post()) {
+       //     echo $_POST['parent'];
+        }
+          $tagModel = new Tag_model();
+            $result = $tagModel->getChildTags($_POST['parent']);
+            //echo "<pre>"; print_r($result);
+            if(is_array($result))
+            foreach ($result as $val) 
+                echo '<option value="' . $val->id . '"selected>' . $val->name . '</option>';
+                
+            die();
+            
+    }
+    
     function getChildTags() {
+    
         $this->load->model('tag_model');
 
         if ($this->input->post()) {
-            $data = $this->input->post();
-            $tagModel = new Tag_model();
-            $result = $tagModel->getChildTags($data['parentTag']);
-            //echo "<pre>"; print_r($result);
-            foreach ($result as $val) {
-                echo '<option value="' . $val->id . '">' . $val->name . '</option>';
+            echo $_POST['parent'];
+            die();
+//            $tagModel = new Tag_model();
+//            $result = $tagModel->getChildTags($data['parentTag']);
+//            //echo "<pre>"; print_r($result);
+//            foreach ($result as $val) {
+//                echo '<option value="' . $val->id . '"selected>' . $val->name . '</option>';
+                
+                
             }
+        
+        
+    }
+    
+    function create_Tags()
+    {
+        $this->load->model('tag_model');
+        $this->load->helper('form');
+        $this->load->library('javascript');
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('parenttag','ParentTag','trim|required|xss_clean');
+        
+        if($this->input->post())
+        {
+          if($this->form_validation->run()== TRUE)
+          {
+           $data['parenttag'] = $_POST['parenttag'];
+           $val = $_POST['child'];
+           $data['childtag'] = explode(',',$val);
+           if(!$this->tag_model->checkParentTag($data))
+           {
+           $data['parentid'] = $this->tag_model->addParentTag($data);
+           $this->tag_model->addchildTag($data);
+            echo '';
+           }
+           else
+           {
+               echo 'ParentTag all ready exist.';
+           }
+          }
+          else
+          {
+              $this->load->view('admin/create_tag');
+              $this->load->view('footer');
+          }
+           die();
         }
-        die;
+        
+        $this->load->view('admin/create_tag');
+        $this->load->view('footer');
     }
 
 }
