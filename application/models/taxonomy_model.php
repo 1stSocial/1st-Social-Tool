@@ -47,5 +47,6 @@ class Taxonomy_model extends CI_Model
             $this->db->update('taxonomy',$data);
         }
     
-}
+} 
+
 ?>
