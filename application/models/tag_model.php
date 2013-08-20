@@ -81,7 +81,31 @@ Class Tag_model extends CI_Model
             return mysql_insert_id();  
         }
 	
-        public function addchildTag($data)
+        public function updateTag($data)
+        {
+            $value = array(
+                'name'=>$data['parenttag'],
+                'parent_tag_id'=>'0'
+                    );
+            $this->db->where('id',$data['id']);
+            
+            $this->db->update('tags',$value);
+           
+            $this->db->delete('tags', array('parent_tag_id'=>$data['id']));
+            
+            foreach ($data['childtag'] as $value)
+            {
+              $val2 = array(
+                'id' => NULL,
+                'name'=>$value,
+                'parent_tag_id'=> $data['id'] 
+                    );  
+                if(!$value=="")
+                    $this->db->insert('tags',$val2);
+            }
+        }
+
+         public function addchildTag($data)
         {
             foreach ($data['childtag'] as $key => $value) 
                 {
@@ -93,7 +117,7 @@ Class Tag_model extends CI_Model
                     if(!$value=="")
                     $this->db->insert('tags',$val);
                 }
-               
+               die();
         }
         
         public function checkParentTag($data)
@@ -102,4 +126,21 @@ Class Tag_model extends CI_Model
             return $query->num_rows();
             
         }
+        
+        public function deleteparentTags($Id){        
+          $this->db->delete('tags', array('id' => $Id));
+          $this->db->delete('tags', array('parent_tag_id'=>$Id));
+        }
+        
+        public function ParentTagname($parentTagid){
+            
+            $query = $this->db->get_where('tags',array( "id" =>$parentTagid));
+            if ($query->num_rows()>0){
+            $option=$query->result();            
+           	if ($query->num_rows()>0){
+			return $option[0]->name;
+		}
+            }
+        }
+       
 }
