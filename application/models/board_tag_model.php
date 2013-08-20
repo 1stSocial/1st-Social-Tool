@@ -44,7 +44,16 @@ Class Board_tag_model extends CI_Model {
     }
 
     public function saveBoardTag() {
-        $data = array("board_id" => $this->_boardId, "tag_id" => $this->_tagId);
+        if(is_array($this->_tagId))
+        {
+        foreach($this->_tagId as $value)
+        {
+            
+      
+        $data = array("board_id" => $this->_boardId, "tag_id" => $value);
+          }
+            
+        }
         $query = $this->db->get_where('board_tags', $data);
         if ($query->num_rows() > 0) {
             $option = $query->result();
