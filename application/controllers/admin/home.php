@@ -89,8 +89,9 @@ class Home extends CI_Controller {
                 $boardTagModel = new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['tagId']));
                 $boardTagModel->saveBoardTag();
                 $viewData['success'] = 'Board successfully created';
+                redirect('/admin/home/index');
             }
-            redirect('/admin/home/index');
+            
         }
        echo $this->load->view('admin/create_board', $viewData , TRUE);
        die();
@@ -238,6 +239,67 @@ class Home extends CI_Controller {
         
         $this->load->view('admin/create_tag');
         $this->load->view('footer');
+    }
+    
+    function tag_Management($val=FALSE,$val2=FALSE)
+    {
+        $this->load->model('tag_model');
+        $this->load->helper('form');
+        $this->load->library('javascript');
+        $this->load->library('form_validation');
+        
+        $tagModel = new Tag_model();
+        $data['parentTags'] = $tagModel->getAllParentTags();
+        if(isset($val))
+        {
+            $data['option'] = $val;
+            $data['id1'] = $val2;
+            $this->load->view('admin/TagManagement',$data);
+        }
+        else
+        $this->load->view('admin/TagManagement',$data);
+        $this->load->view('footer');
+        
+    }
+    
+    function delete_parenttag()
+    {
+        $this->load->model('tag_model');
+        $tagModel = new Tag_model();
+        
+        $Id = $this->uri->segment(4);
+        $tagModel->deleteparentTags($Id);
+        redirect('/admin/home/tag_Management');
+    }
+    
+    function tag()
+    {
+        $this->load->model('tag_model');
+        $this->load->helper('form');
+        
+      $tagModel = new Tag_model();
+        $parentTagid = $this->input->post('parentTagid');
+        $data['parentTagid'] = $parentTagid;
+        $data['parentTag'] = $tagModel->ParentTagname($parentTagid);
+        $data['child'] = $tagModel->getChildTags($data['parentTag']);
+        echo $this->load->view('admin/edit_Tag',$data,TRUE);
+        die;
+    }
+    
+    function update_Tag()
+    {
+        $this->load->model('tag_model');
+        $this->load->helper('form');
+        
+        $tagModel = new Tag_model();
+        $data['id'] = $this->input->post('parentTagid');
+        $data['parenttag'] = $this->input->post('parenttag');
+        $val = $this->input->post('child');
+        $data['childtag'] = explode(',', $val);
+        
+        $tagModel->updateTag($data);
+        echo "";
+        die();
     }
 
 }
