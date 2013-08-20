@@ -134,8 +134,8 @@ switch ($option)
 
 
     <div class="modal-footer">
-        <input type="button" id="close" class="close" data-dismiss="modal" aria-hidden="true" value="Close">
         <input type="button" id="savebtn" name="save" class="btn btn-primary" value="Create Tag" onclick="savefun()">
+        <input type="button" id="close" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">
     </div>
 </div>
 <?php form_close();?>
