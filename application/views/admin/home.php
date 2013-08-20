@@ -22,6 +22,14 @@
 				</ul>
 			</li>
                         
+                        <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Taxonomy <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?= base_url(); ?>index.php/taxonomy/index">Taxonomy Management</a></li>
+					<li><a href="<?= base_url(); ?>index.php/taxonomy/index/addtaxonomy">Create Taxonomy</a></li>
+				</ul>
+			</li>  
+                        
 			<?php if ($settings): ?>
 				<li><?= $settings; ?></li>
 			<?php endif; ?>
