@@ -53,14 +53,11 @@
 </select>
    </div>
 </div>
-
-
-<div class="control-group"> 
-  <div class="controls">
-      <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">      
-      <input type="submit" style="float: right" name="save" class="btn btn-primary" value="Create Board" />
-        </div>
-  </div>
+<div class="modal-footer">
+      <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">
+      <input type="submit" style="float: right;position: relative" name="save" class="btn btn-primary" value="Create Board" />
+ </div>     
+  
 </div>
 <script>
     $('#parentTag').change(function()
