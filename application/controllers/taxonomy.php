@@ -31,13 +31,12 @@ class Taxonomy extends CI_Controller {
             {
               $data['option'] = $option;
               $this->load->view('manage_taxonomy',$data);
-              echo "if";
               
             }
             else
             {
             $this->load->view('manage_taxonomy',$data);
-            echo "else";
+            
             
             }//var_dump($data);
             
