@@ -38,6 +38,24 @@
        }
     });
     }
+    
+    function edit(val)
+    {
+      alert(val);
+    $.ajax({
+        type: "POST",
+       url:"home/edit_board",
+       data:{'bid':val},
+       success:function(res){
+        $('#edit').html(res);   
+       },
+       error:function(res)
+       {
+           alert(res);
+       }
+    });
+    
+    }
 </script>
 
 <table class="table table-striped ">
@@ -58,7 +76,7 @@
             <td><?=$val->parent_tags?></td>
             <td><?=$val->user_name?></td>
             <td><? echo date('d-m-Y',  strtotime($val->createdTime));?></td>
-            <td><div class="btn-group"> <a href="<?php echo site_url('/admin/home/edit_board/'.$val->board_id) ?>"class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/home/delete_board/'.$val->board_id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
+            <td><div class="btn-group"> <a href="javascript:edit(<?=$val->board_id?>)" href="<?php // echo site_url('/admin/home/edit_board/'.$val->board_id) ?>"class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/home/delete_board/'.$val->board_id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
           </tr>
           <? endforeach;endif;?>
         </tbody>
@@ -129,3 +147,4 @@ switch ($option)
 
 <div id="createboard"></div>
 
+<div id="edit"></div>
