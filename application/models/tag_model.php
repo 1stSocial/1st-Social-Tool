@@ -83,26 +83,11 @@ Class Tag_model extends CI_Model
 	
         public function updateTag($data)
         {
-            $value = array(
-                'name'=>$data['parenttag'],
-                'parent_tag_id'=>'0'
-                    );
+            
             $this->db->where('id',$data['id']);
             
-            $this->db->update('tags',$value);
+            $this->db->update('tags',$data);
            
-            $this->db->delete('tags', array('parent_tag_id'=>$data['id']));
-            
-            foreach ($data['childtag'] as $value)
-            {
-              $val2 = array(
-                'id' => NULL,
-                'name'=>$value,
-                'parent_tag_id'=> $data['id'] 
-                    );  
-                if(!$value=="")
-                    $this->db->insert('tags',$val2);
-            }
         }
 
          public function addchildTag($data)
@@ -122,8 +107,13 @@ Class Tag_model extends CI_Model
         
         public function checkParentTag($data)
         {
-            $query = $this->db->get_where('tags',array('name'=> $data['parenttag'],'parent_tag_id'=>'0'));
+            if(!$data['parent_tag_id'])
+            {
+            $query = $this->db->get_where('tags',array('name'=> $data['name'],'parent_tag_id'=>'0'));
             return $query->num_rows();
+            }
+            else
+                return 0;
             
         }
         
@@ -141,6 +131,54 @@ Class Tag_model extends CI_Model
 			return $option[0]->name;
 		}
             }
+        }
+        
+        public function AllTag()
+        {
+            $query = $this->db->get('tags');
+            if($query->num_rows()>0)
+            {
+                return $query->result();
+            }
+        }
+        
+        public function addtag($data)
+        {
+            if($data['parent_tag_id'])
+            {
+                $this->db->insert('tags', $data); 
+            }
+            else
+            {
+                $data['parent_tag_id'] = '0'; 
+                $this->db->insert('tags', $data);
+            }
+        }
+
+        public function id_val($id)
+        {
+            $query = $this->db->get_where('tags',array( "id" =>$id));
+            if ($query->num_rows()>0){
+                return $query->result();            
+           	
+            }
+        }
+        
+        public function AllParentTags()
+        {
+            $query = $this->db->get('tags');
+            
+            foreach ($query->result() as $val)
+            {
+                $temp = $this->db->get_where('tags',array('parent_tag_id'=>$val->id));
+                
+                if($temp->num_rows()>0)
+                {
+                    $result[] = $val->name; 
+                }
+            }
+            
+            return $result;
         }
        
 }
