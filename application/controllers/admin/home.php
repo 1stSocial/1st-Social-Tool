@@ -59,8 +59,8 @@ class Home extends CI_Controller {
         $this->load->helper('form');
         // get all parent tag
         $tagModel = new Tag_model();
-        $parentTags = $tagModel->getAllParentTags();
-        // echo"<pre>";        print_r($parentTags); die;
+        $parentTags = $tagModel->AllParentTags();
+//         echo"<pre>";        print_r($parentTags); die;
         //get all partners 
         $userModel = new User_model();
         $partners = $userModel->getAllPartners();
@@ -207,38 +207,38 @@ class Home extends CI_Controller {
         $this->load->library('javascript');
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('parenttag','ParentTag','trim|required|xss_clean');
+        $this->form_validation->set_rules('name','Name','trim|required');
         
         if($this->input->post())
         {
-          if($this->form_validation->run()== TRUE)
+//          if($this->form_validation->run()== TRUE)
           {
-           $data['parenttag'] = $_POST['parenttag'];
-           $val = $_POST['child'];
-           $data['childtag'] = explode(',',$val);
+           $data['id'] = NULL;   
+           $data['name'] = $this->input->post('parenttag');
+           $data['parent_tag_id'] = $this->input->post('Parentid');
+           
            if(!$this->tag_model->checkParentTag($data))
            {
-           $data['parentid'] = $this->tag_model->addParentTag($data);
-           $this->tag_model->addchildTag($data);
-            echo '';
-            die;
+           $this->tag_model->addTag($data);
+           echo '';
            }
            else
            {
                echo 'ParentTag all ready exist.';
-               die;
            }
           }
-          else
-          {
-              $this->load->view('admin/create_tag');
-              $this->load->view('footer');
-          }
-           die;
+//          else
+//          {
+//              echo 'else';
+////              $this->load->view('admin/create_tag');
+////              $this->load->view('footer');
+//          }
+           
         }
-        
-        $this->load->view('admin/create_tag');
-        $this->load->view('footer');
+//        
+//        $this->load->view('admin/create_tag');
+//        $this->load->view('footer');
+        die;
     }
     
     function tag_Management($val=FALSE,$val2=FALSE)
@@ -249,7 +249,7 @@ class Home extends CI_Controller {
         $this->load->library('form_validation');
         
         $tagModel = new Tag_model();
-        $data['parentTags'] = $tagModel->getAllParentTags();
+        $data['parentTags'] = $tagModel->AllTag();
         if(isset($val))
         {
             $data['option'] = $val;
@@ -277,12 +277,13 @@ class Home extends CI_Controller {
         $this->load->model('tag_model');
         $this->load->helper('form');
         
-      $tagModel = new Tag_model();
-        $parentTagid = $this->input->post('parentTagid');
-        $data['parentTagid'] = $parentTagid;
-        $data['parentTag'] = $tagModel->ParentTagname($parentTagid);
-        $data['child'] = $tagModel->getChildTags($data['parentTag']);
-        echo $this->load->view('admin/edit_Tag',$data,TRUE);
+        $tagModel = new Tag_model();
+        $id = $this->input->post('id');
+        $data = $tagModel->id_val($id);
+        $val['id'] = $data[0]->id;
+        $val['name'] = $data[0]->name;
+        $val['parentid'] = $data[0]->parent_tag_id;
+        echo $this->load->view('admin/edit_Tag',$val,TRUE);
         die;
     }
     
@@ -292,10 +293,9 @@ class Home extends CI_Controller {
         $this->load->helper('form');
         
         $tagModel = new Tag_model();
-        $data['id'] = $this->input->post('parentTagid');
-        $data['parenttag'] = $this->input->post('parenttag');
-        $val = $this->input->post('child');
-        $data['childtag'] = explode(',', $val);
+        $data['id'] = $this->input->post('id');
+        $data['name'] = $this->input->post('name');
+        $data['parent_tag_id'] = $this->input->post('pid');
         
         $tagModel->updateTag($data);
         echo "";
