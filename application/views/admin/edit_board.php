@@ -1,17 +1,65 @@
+<script>
+   setTimeout(function(){
+       $('#mod1').click();
+   },100);
+</script>
+<script>
+    
+    function updatefun()
+    {
+        var name = $('#name1').val();
+     var parentTag = $('#parentTag').val();
+     var user_id =$('#user_id').val();
+     var id = $('#mainid').val();
+     var dataval ={
+        name : name,
+        parentTag : parentTag,
+        user_id:user_id,
+        id:id
+       };
+    $.ajax({
+       type: "POST",
+       url:"home/update_board",
+       data:dataval,
+       success:function(res){
+           if(res == '')
+               {
+                   setTimeout(function (){
+                    $('#cl').click();
+                    window.location.href ="home";    
+                   },200);
+                   
+               }
+       },
+       error:function(res)
+       {
+           alert(res);
+       }
+    });
+    }
+
+</script>
 
 
- <div class="container"> 
-     <h3 style="margin-left:5px;">Create Board</h3>
-    <p> <? if(isset($success)) echo $success;?> </p>
+<a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
+
 <?php  echo form_open('admin/home/create_board','class="horizontal-form"');  ?>
-<div class="component"><!-- Password input-->
+
+<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+     <h3 style="margin-left:5px;">Edit Board</h3>
+    <p> <? if(isset($success)) echo $success;?> </p>
+</div>
+
+<div class="modal-body"><!-- Password input-->
 <div class="control-group">
   <?php echo form_label('Board Name:', 'name', array('class' => "control-label") ); ?>
   <div class="controls">
-    <input type="text"  placeholder="Board Name" value="<?=$boardData[0]->name?>" name="name" >
-   </div>
+    <input type="text" id="name1" placeholder="Board Name" value="<?=$boardData[0]->name?>" name="name" >
+    <input type="hidden" id="mainid" value=<?=$id?> >
+  </div>
 </div>
-</div>
+
 
 <div class="component">
 <div class="control-group">
@@ -28,45 +76,18 @@
               $selected='selected';
           }
           ?>    
-  <option <?=$selected?> value="<?=$pTag->name?>"><?=$pTag->name?></option>
+  <option <?=$selected?> value="<?=$pTag->id?>"><?=$pTag->name?></option>
   <?php endforeach;endif;?>
 </select>
    </div>
 </div>
 </div>
      
-<div class="component">
-<div class="control-group">
-   <?php echo form_label('Board Child Tag:', 'child_tag', array('class' => "control-label") ); ?>
-  <div class="controls">
-    <select  id="childTagsId" name="tagId" >
-  <option>Select</option>
-  <?php  
-    if(isset($childTags)&& !empty($childTags)):
-        foreach($childTags as $child): 
-         $selected='';
-         if(!empty($selectedChildTag)){
-             foreach($selectedChildTag as $selectChild){
-                 if($selectChild->tag_id==$child->id){
-                     $selected='selected';
-                 }
-             }
-         }  
-        ?>
-        <option <?=$selected?> value="<?=$child->id?>"><?=$child->name?></option>
-       <? endforeach;
-    endif;
-  ?>
-</select>
-   </div>
-</div>
-</div>     
-
 <div class="component"><!-- Partner-->
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select  multiple name="user_id[]" >
+    <select  multiple id="user_id" name="user_id[]" >
         <? if(!empty($partners)): foreach($partners as $val):
             $selected='';
             if(!empty($selectedPartners)){
@@ -82,12 +103,15 @@
 </select>
    </div>
 </div>
+
 </div>
 
-
-<div class="control-group"> 
-  <div class="controls">
-            <input type="submit" name="save" class="btn btn-primary" value="Update Board" />
-        </div>
-  </div>
+</div>
+<div class="modal-footer">
+    <div class="control-group">
+      <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="cl">
+      <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Update Board" onclick="updatefun();" />
+ 
+    </div>   
+</div>
 </div>
