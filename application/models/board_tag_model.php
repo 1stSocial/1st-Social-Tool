@@ -1,5 +1,6 @@
 <?php
 
+
 Class Board_tag_model extends CI_Model {
 
     private $_id;
