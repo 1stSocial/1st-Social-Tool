@@ -5,32 +5,19 @@
   });
 </script> -->
 <script>
-    function addchildtag()
-    {
-        var add ="<div><input type=button name=add id=addnew class='btn btn-primary' value=+ onclick=addchildtag()>"
-      +"<input type=text id='childid[]'  placeholder=ChildTag name='childtag[]' ></div>";
-               
-        $('#con').append(add); 
-    }
-    
    
     function savefun()
     {
-     var parenttag = $('#parenttag').val();
-     var child ="";
-     $('#con').find('input[type=text]').each(function() { 
-          
-        child += this.value+',';
-    });
-    var dataval ={
-        parenttag : parenttag,
-        child : child      
-    }
-//    alert(childtag);
+     var name = $('#name').val();
+     var id = $('#id').val();
+     
+     var dataval ={
+        parenttag : name,
+        Parentid : id      
+       }
     $.ajax({
         type: "POST",
        url:"../create_Tags",
-//       contentType: 'json',
        data:dataval,
        success:function(res){
            if(res == '')
@@ -43,10 +30,11 @@
                }
         else
         $('#msg').text(res);
+       
         },
        error:function(res)
        {
-//           alert(res);
+           alert(res);
        }
     });
     }
@@ -120,16 +108,13 @@ switch ($option)
 </div>
 <div class="modal-body">
     
- <?php echo form_label('Parent Tag :', 'ptag', array('class' => "control-label") ); ?>
-    <input type="text" style="float: left" id="parenttag" placeholder="ParentTag" name="parenttag" onblur="check()">
+ <?php echo form_label('Name :', 'nametag', array('class' => "control-label") ); ?>
+    <input type="text" style="float: left" id="name" placeholder="TagName" name="name" onblur="check()">
     <div><?php echo validation_errors(); ?></div>
     <label id="msg" class="control-label"></label>
 
-  <?php echo form_label('Child Tags:', 'ctag', array('class' => "control-label",'style'=>"clear:both") ); ?>
-  <div id="con">
-     <div><input type="button" name="add" id="addnew" class="btn btn-primary" class="btn btn-primary" value="+" onclick="addchildtag()"/>
-      <input type="text"  placeholder="ChildTag" id="childid[]" name="childtag[]" value="" >
-      </div>
+  <?php echo form_label('Parent Id :', 'id', array('class' => "control-label",'style'=>"clear:both") ); ?>
+      <input type="text"  placeholder="Parent Id" id="id" name="id" value="">
    </div>
 
 
