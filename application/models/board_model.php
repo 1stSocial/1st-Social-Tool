@@ -148,5 +148,33 @@ Class Board_model extends CI_Model {
           $this->db->delete('board', array('id' => $boardId));      
           
     }
+    
+    public function update()
+    {
+        $data = $this->input->post();
+        
+        $data1 = array('name'=> "$data[name]",'parent_tags'=>"$data[parentTag]");
+        
+        $this->db->where(array('id'=>$data['id']));
+     //print_r($data1);die;
+        $query = $this->db->update('board',$data1);
+    
+        
+            
+        $data2 = array('tag_id'=> "$data[parentTag]");
+        $this->db->where(array('board_id'=>$data['id']));
+     
+        $query = $this->db->update('board_tags',$data2);
+        
+         $this->db->delete('board_users', array('board_id' => $data['id']));      
+   if(is_array($data['user_id']))
+         foreach ($data['user_id'] as $value) {
+               $data3 = array('board_id'=> "$data[id]",'user_id'=> "$value");
+             $this->db->insert('board_users', $data3);
+            }
+         
+         
+         
+    }
 
 }
