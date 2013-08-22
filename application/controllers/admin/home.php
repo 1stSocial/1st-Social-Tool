@@ -70,13 +70,14 @@ class Home extends CI_Controller {
         if ($this->input->post()) {
             $session_data = $this->session->userdata('logged_in');
             $data = $this->input->post();
+//                        print_r($data); die;
             $userId = $data['user_id'];
             unset($data['save']);
             unset($data['user_id']);
             $data['createdBy'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
 
-            // echo "<pre>"; print_r($data);
+//             echo "<pre>"; print_r($data); die;
             // save board information 
             $boardModel = new Board_model($data);
             $boardId = $boardModel->saveBoard();
@@ -84,12 +85,14 @@ class Home extends CI_Controller {
                 // save user information 
                 $boardUserModel = new Board_user_model(array('boardId' => $boardId, 'userId' => $userId));
                 $boardUserModel->saveBoardUser();
-
+                $tagmod = new Tag_model();
+                $data['tagId'] = $tagmod->AllchildTagsid($data['parentTag']);
                 // save tags information
                 $boardTagModel = new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['tagId']));
                 $boardTagModel->saveBoardTag();
                 $viewData['success'] = 'Board successfully created';
-                redirect('/admin/home/index');
+                echo '';
+                die;
             }
             
         }
@@ -104,8 +107,10 @@ class Home extends CI_Controller {
         $this->load->model('tag_model');
         $this->load->model('user_model');
         $this->load->model('board_tag_model');
-        $boardId = $this->uri->segment(4);
+        $boardId = $this->input->post('bid');
+        
         $viewData = array();
+        $viewData[id] = $boardId;
         $boardModel = new Board_model();
         if (is_numeric($boardId) && !empty($boardId)) {
             //get board details
@@ -114,7 +119,7 @@ class Home extends CI_Controller {
             $viewData['boardData'] = $boardData;
             // get all parent tag
             $tagModel = new Tag_model();
-            $parentTags = $tagModel->getAllParentTags();
+            $parentTags = $tagModel->AllParentTags2();
             $viewData['parenTag'] = $parentTags;
             // get all child tag
             $childTag = $tagModel->getChildTags($boardData[0]->parent_tags);
@@ -139,8 +144,12 @@ class Home extends CI_Controller {
             $viewData['selectedPartners'] = $selectPartners;
 
 
-            $this->load->view('admin/edit_board', $viewData);
+            echo $this->load->view('admin/edit_board', $viewData,TRUE);
+            die;
         }
+        
+        
+            
     }
 
     function delete_board() {
@@ -299,6 +308,20 @@ class Home extends CI_Controller {
         
         $tagModel->updateTag($data);
         echo "";
+        die();
+    }
+    
+    function update_board()
+    {
+        $this->load->model('board_model');
+        $this->load->model('Board_user_model');
+        $this->load->model('tag_model');
+        $this->load->model('user_model');
+        $this->load->model('board_tag_model');
+        
+        $board = new Board_model();
+        $board->update();
+        echo '';
         die();
     }
 
