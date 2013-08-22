@@ -1,4 +1,5 @@
 <?php
+
 Class Board_user_model extends CI_Model
 {
 	private $_id;
