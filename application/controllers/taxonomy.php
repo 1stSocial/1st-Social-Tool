@@ -43,7 +43,8 @@ class Taxonomy extends CI_Controller {
 
 	}
 
-	function get_taxonomy($id) {
+	function get_taxonomy() {
+            $id =$this->input->post('id');
             $data= $this->taxonomy_model->get_taxonomy($id);
              // var_dump($data);
               echo $this->load->view('edit_taxonomy',$data[0],TRUE);
@@ -60,7 +61,7 @@ class Taxonomy extends CI_Controller {
             {
             //var_dump($this->input->post());
               $this->taxonomy_model->add_taxonomy();
-              echo "";     
+             
             }else
             { 
                  $this->load->view('add_taxonomy');
@@ -72,12 +73,14 @@ class Taxonomy extends CI_Controller {
         
            // var_dump($this->input->post()); 
         $this->taxonomy_model->update_taxonomy();   
-        echo "";
+       
         die();
 	}
      
 	function delete_taxonomy($taxonomy_id) {
            $this->taxonomy_model->delete_taxonomy($taxonomy_id);
-           $this->index();
+         
+           redirect('taxonomy');
+           
 	}
 }
