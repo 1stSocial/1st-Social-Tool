@@ -31,7 +31,7 @@ function edit(val)
                             type:'POST',
                             data:{'id':val},
                             success:function(res)
-                            {
+                            { 
                                 $('#edit').html(res);
                             }
                             });
