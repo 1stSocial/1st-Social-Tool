@@ -10,10 +10,10 @@ class Taxonomy_model extends CI_Model
     
         $data = array(  
                         
-                        'tag_id' => NULL,
+                        'tag_id' => $this->input->post('parentid'),
                         'taxonomy_id' => NULL,
                         'name'=>$this->input->post('taxonomyname'),
-                       
+                        'type' => $this->input->post('type'),
                     );
         $this->db->insert('taxonomy',$data);
         
@@ -26,7 +26,10 @@ class Taxonomy_model extends CI_Model
     function get_taxonomy($id = '')
     {
         if($id == ''){
-        $query = $this->db->get('taxonomy');
+            $this->db->select('taxonomy.id,taxonomy.name,taxonomy.type,taxonomy.value,tags.name as parenttag');
+            $this->db->from('taxonomy');
+            $this->db->join('tags','tags.id=taxonomy.tag_id');
+        $query = $this->db->get();
         //echo 'if';
         }else{
             $this->db->where(array('id'=>$id));
@@ -36,9 +39,10 @@ class Taxonomy_model extends CI_Model
         return $query->result();
         }
         function update_taxonomy()
-        {   
-            $data = array('name'=>$this->input->post('taxonomyname')
-                                               );  
+        {    
+            $data = array('name'=>$this->input->post('taxonomyname'),
+                           'type'=>$this->input->post('type'),   
+                            'tag_id' =>$this->input->post('tag_id'));  
             
             $this->db->where('id',$this->input->post('id'));
             $this->db->update('taxonomy',$data);
