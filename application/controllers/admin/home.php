@@ -168,7 +168,7 @@ class Home extends CI_Controller {
         // delete user assigned of board 
         $boardUserModel = new Board_user_model();
         $boardUserModel->deleteTags($boardId);
-        redirect('/admin/home/index');
+        redirect('/admin/home');
     }
 
     

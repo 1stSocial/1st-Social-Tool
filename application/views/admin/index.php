@@ -42,7 +42,7 @@
     }
     
     function edit(val)
-    {
+    {  var uri = $('#ur').val();
 
     $.ajax({
         type: "POST",
@@ -168,7 +168,7 @@ switch ($option)
 <?php form_close();?>
 </div>
 
-
+<input type="hidden" id="ur" value="<?= site_url('/admin/home/edit_board')?>">
 <div id="createboard"></div>
 
 <div id="edit"></div>

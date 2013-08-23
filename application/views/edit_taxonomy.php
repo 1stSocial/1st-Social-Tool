@@ -1,3 +1,23 @@
+<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
+<script type="text/javascript">
+          var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+            jQuery(selector).chosen(config[selector]);
+          }
+          
+         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
+     jQuery(".chosen-select").chosen(); 
+      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
+  // });
+          
+</script> 
 <script>
    setTimeout(function(){
        $('#mod1').click();
@@ -17,9 +37,32 @@
         <div class="control-group">
      <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px") ); ?>
   <div class="controls" style="float:left;">
-      <input type="text" style="margin-left: 20px"  class = "control-label" value="<?php if(isset($name)){echo $name;} ?>" name="name" id="name" >
+      <input type="text" style="margin-left: 55px"  class = "control-label" value="<?php if(isset($name)){echo $name;} ?>" name="name" id="name" >
   </div> <div id="error" style ="color:red; display: none;  ">Enter Taxonomy Name</div> 
             </div>
+       <div style="clear: both;"></div> 
+    <div class="control-group">
+   <?php echo form_label('Type:', 'type', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+<select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="type" name="type" style="margin-left: 60px;">
+  <option value="select">Select</option>
+  <option value="string">String</option>
+  <option value="Integer">Integer</option>
+</select>
+   </div>
+</div>    
+       
+    <div class="control-group">
+   <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+<select data-placeholder="Choose a Parent..." class="chosen-select mar"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1"  style="margin-left: 22px;">
+  <option>Select</option>
+  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+  <option value="<?=$key?>"><?=$Tag?></option>
+  <?php endforeach;endif;?>
+</select>
+   </div>
+</div>        
         
       
         
@@ -40,6 +83,8 @@
  function savefun()
     {
      var taxonomyname = $('#name').val();
+     var type = $('#type').val();
+     var tag_id = $('#parentTag1').val();
       if(taxonomyname != ""){
      var id=$("#id").val() ;
      var ur = $('#ur').val();
@@ -49,7 +94,9 @@
         type: "POST",
        url:ur,
        data:{
-        taxonomyname : taxonomyname,
+        taxonomyname : taxonomyname, 
+        type:type,
+        tag_id:tag_id,
      
         id:id
     },

@@ -1,8 +1,29 @@
+<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
+     <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
+     <script type="text/javascript">
+          var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+            jQuery(selector).chosen(config[selector]);
+          }
+          
+         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
+     jQuery(".chosen-select").chosen(); 
+      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
+  // });
+          
+</script>
 <table class="table table-striped ">
         <thead>
           <tr>
             <th>Taxonomy Name</th>
-           
+            <th>Type</th>
+            <th>Parent Tag</th>
             
             
             <th>Action</th>
@@ -14,8 +35,8 @@
                 foreach ($taxonomy as $val): ?>
           <tr>
             <td><?=$val->name?></td>
-         
-            
+            <td><?=$val->type?></td>
+            <td><?=$val->parenttag?></td>
          
             <td><div class="btn-group"><a onclick="edit(<?=$val->id?>)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('taxonomy/delete_taxonomy/'.$val->id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
           </tr>
@@ -59,26 +80,57 @@ switch ($option)
         break;
 }
 ?>
-    <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
+ 
+ 
+ 
+
+<a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
     
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
 <?php //echo form_open('','class="horizontal-form"');?>
 <div class="modal-header">
+
     <h3 style="margin-left:5px;">Create Taxonomy</h3>
     <p> <? if(isset($success)) echo $success;?> </p>
 </div>
     <div id="con" class="modal-body"><!-- Password input-->
-        <div class="control-group">
-     <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px") ); ?> 
-            </div>
+        <div class="control-group" >
+     <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?> 
+          
   <div class="controls" style="float:left;">
-      <input type="text" style="margin-left: 20px"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" >
+      <input type="text" style="margin-left: 55px;"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" />
   </div>
-           
-       <div id="error" style ="color:red; display: none;  ">Enter Taxonomy Name</div> 
-        
-            
+          </div> 
+       <div id="error" style ="color:red; display: none; ">Enter Taxonomy Name</div> 
+       <div style="clear: both;"></div>
+       
+     
+       
+       <div class="control-group">
+   <?php echo form_label('Type:', 'type', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+<select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="type" name="type" style="margin-left: 60px;">
+  <option value="select">Select</option>
+  <option value="string">String</option>
+  <option value="Integer">Integer</option>
+</select>
+   </div>
+</div>    
+       
+    <div class="control-group">
+   <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+<div style="margin-left: 100px">
+<select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
+  <option>Select</option>
+  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+  <option value="<?=$key?>"><?=$Tag?></option>
+  <?php endforeach;endif;?>
+</select>
+   </div>
+</div>    
+              
         
         
         <div class="control-group"> 
@@ -90,16 +142,19 @@ switch ($option)
   </div> 
         
     </div>
-    </form>
+    </div>
 <script>
  function savefun()
     {
      var taxonomyname = $('#name').val();
+     var type = $('#type').val();
+     var parentid = $('#parentTag').val();
     if(taxonomyname != ""){
      
     var dataval ={
         taxonomyname : taxonomyname,
-        
+        type:type,
+        parentid:parentid
     }
 
     $.ajax({
