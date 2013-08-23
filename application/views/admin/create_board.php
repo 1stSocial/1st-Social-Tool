@@ -1,7 +1,3 @@
-<?php
-include '/dropdown.php';
-?>
-
 <script>
    setTimeout(function(){
        $('#mod1').click();
@@ -14,7 +10,7 @@ function savefun()
     var name = $('#name1').val();
      var parentTag = $('#parentTag1').val();
      var user_id =$('#user_id').val();
-     
+    
      var dataval ={
         name : name,
         parentTag : parentTag,
@@ -29,7 +25,7 @@ function savefun()
                {
                    setTimeout(function (){
                     $('#close').click();
-                    window.location.href ="home";    
+                    window.location.href ="../";    
                    },200);
                    
                }
@@ -42,7 +38,14 @@ function savefun()
        }
     });
 }
- 
+
+function c()
+{ 
+    var ur =$('#ur').val();
+     window.location.href =ur;   
+}
+
+
 </script>
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
@@ -63,9 +66,7 @@ function savefun()
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-     <!-- <select id="parentTag" name="parentTag" onselect="call()">-->
-     
- <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
+      <select id="parentTag1" name="parentTag1" onselect="call()">
   <option>Select</option>
   <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
@@ -75,11 +76,11 @@ function savefun()
 </div>
 
 
+
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
-      <!--<select  multiple id="user_id" name="user_id[]" >-->
+    <select  multiple id="user_id" name="user_id[]" >
         <? if(!empty($partners)): foreach($partners as $val):?>
   <option value="<?=$val->id?>"><?=$val->name?></option>
   <? endforeach;endif;?>
@@ -90,12 +91,12 @@ function savefun()
     
 <div class="modal-footer">
     <div class="control-group">
-      <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
+        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close" onclick="c();">
       <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Create Board" onclick="savefun();" />
  
     </div>     
   
 </div>
-
+    <input type ="hidden" id="ur" value="<?php echo site_url('/admin/home'); ?>">
 </div>
  
