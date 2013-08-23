@@ -6,6 +6,7 @@ setTimeout(function(){
 <?php 
 include '/dropdown.php';
 ?>
+
 <script>
     function updatefun()
     {
