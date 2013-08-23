@@ -9,7 +9,7 @@ function savefun()
 {
     var name = $('#name1').val();
      var parentTag = $('#parentTag').val();
-     var user_id =$('#user_id').val();
+     var user_id =$('#type').val();
      
      var dataval ={
         name : name,
@@ -38,6 +38,13 @@ function savefun()
        }
     });
 }
+
+function c()
+{ 
+    var ur =$('#ur').val();
+     window.location.href =ur;   
+}
+
 
 </script>
 
@@ -84,12 +91,12 @@ function savefun()
     
 <div class="modal-footer">
     <div class="control-group">
-      <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
+        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close" onclick="c();">
       <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Create Board" onclick="savefun();" />
  
     </div>     
   
 </div>
-
+    <input type ="hidden" id="ur" value="<?php echo site_url('/admin/home'); ?>">
 </div>
  
