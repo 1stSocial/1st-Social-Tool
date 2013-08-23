@@ -4,6 +4,66 @@
     $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
   });
 </script> -->
+<script>
+
+
+   
+    function savefun()
+    { 
+     var name = $('#name').val();
+     var id = $('#parentTag').val();
+     if(name != ""){
+     var dataval ={
+        parenttag : name,
+        Parentid : id      
+       }
+    $.ajax({
+        type: "POST",
+       url:"../create_Tags",
+       data:dataval,
+       success:function(res){
+           if(res == '')
+               {
+                   setTimeout(function (){
+                    $('#close').click();
+                    window.location.href ='index';    
+                   },200);
+                   
+               }
+        else
+        $('#msg').text(res);
+       
+        },
+       error:function(res)
+       {
+           alert(res);
+       }
+    });
+    }
+    else
+    {
+      $('#error').show();
+    }
+    }
+    function edit(val)
+    {  var uri = $('#ur').val();
+
+    $.ajax({
+        type: "POST",
+       url:"home/edit_board",
+       data:{'bid':val},
+       success:function(res){
+        $('#edit').html(res); 
+       
+       },
+       error:function(res)
+       {
+           alert(res);
+       }
+    });
+    
+    }
+</script>
 
 
 <table class="table table-striped ">
@@ -96,7 +156,6 @@ switch ($option)
 <br><br>  
 
 
-
     <div class="modal-footer">
         <input type="button" id="savebtn" name="save" class="btn btn-primary" value="Create Tag" onclick="savefun()">
         <input type="button" id="close" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" onclick="cl()">
@@ -109,6 +168,4 @@ switch ($option)
 <input type="hidden" id="editurl" value="<?= site_url('/admin/home/edit_board')?>">
 <div id="edit"></div>
 <div id="createboard"></div>
-<script>
 
-<div id="edit"></div>
