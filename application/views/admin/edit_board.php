@@ -10,7 +10,7 @@ include '/dropdown.php';
     function updatefun()
     {
         var name = $('#name1').val();
-     var parentTag = $('#parentTag').val();
+     var parentTag = $('#parentTag1').val();
      var user_id =$('#user_id').val();
      var id = $('#mainid').val();
      var dataval ={
@@ -67,7 +67,7 @@ include '/dropdown.php';
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-   <select data-placeholder="Choose a Partner..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag" >
+   <select data-placeholder="Choose a Partner..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
   <option>Select</option>
   <?   if(!empty($parenTag)): 
       
