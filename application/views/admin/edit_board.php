@@ -1,16 +1,14 @@
 <script>
-setTimeout(function(){
+   setTimeout(function(){
        $('#mod1').click();
    },100);
 </script>
-<?php 
-include '/dropdown.php';
-?>
 <script>
+    
     function updatefun()
     {
         var name = $('#name1').val();
-     var parentTag = $('#parentTag1').val();
+     var parentTag = $('#parentTag').val();
      var user_id =$('#user_id').val();
      var id = $('#mainid').val();
      var dataval ={
@@ -45,7 +43,7 @@ include '/dropdown.php';
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
-<?php  echo form_open('admin/home/create_board','class="horizontal-form"');  ?>
+<?php echo  form_open('','class="horizontal-form"');  ?>
 
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-header">
@@ -67,7 +65,7 @@ include '/dropdown.php';
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-   <select data-placeholder="Choose a Partner..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
+    <select id="parentTag" name="parentTag" >
   <option>Select</option>
   <?   if(!empty($parenTag)): 
       
@@ -89,7 +87,7 @@ include '/dropdown.php';
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
+    <select  multiple id="user_id" name="user_id[]" >
         <? if(!empty($partners)): foreach($partners as $val):
             $selected='';
             if(!empty($selectedPartners)){
@@ -114,6 +112,7 @@ include '/dropdown.php';
       <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="cl">
       <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Update Board" onclick="updatefun();" />
  
-    </div>   
+    </div> 
+    
 </div>
 </div>
