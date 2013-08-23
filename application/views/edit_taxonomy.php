@@ -1,6 +1,7 @@
 <?php
 include '/admin/dropdown.php';
 ?>
+
 <script>
    setTimeout(function(){
        $('#mod1').click();
