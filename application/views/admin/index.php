@@ -67,13 +67,16 @@ switch ($option)
 
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php 
+    include '/dropdown.php';
+?>
 <?php echo form_open('admin/home/create_tags',array('name' => 'myform')); ?>
 
 <div class="modal-header">
 <h3 id="myModalLabel">Create Tag</h3>
 </div>
 <div class="modal-body">
-    
+    <br>
  <?php echo form_label('Name :', 'nametag', array('class' => "control-label") ); ?>
     <input type="text" style="float: left" id="name" placeholder="TagName" name="name" onblur="check()">
     <div><?php echo validation_errors(); ?></div> <div style =" color: red; display: none;" id="error"> Enter tag Name </div>
@@ -83,14 +86,15 @@ switch ($option)
     <?php //  <input type="text"  placeholder="Parent Id" id="id" name="id" value=""> ?>
      
       <div class="controls">
-      <select id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
+      <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
           <option value="0">No Parent</option>
   <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
   <?php endforeach;endif;?>
 </select>
    </div>
-   </div>
+<br><br>  
+
 
 
     <div class="modal-footer">
@@ -107,70 +111,4 @@ switch ($option)
 <div id="createboard"></div>
 <script>
 
-function cl()
-{
-     var uri = $('#ur').val();
-}
-   
-    function savefun()
-    { 
-     var name = $('#name').val();
-     var id = $('#parentTag').val();
-     if(name != ""){
-     var dataval ={
-        parenttag : name,
-        Parentid : id      
-       }
-    $.ajax({
-        type: "POST",
-       url:"../create_Tags",
-       data:dataval,
-       success:function(res){
-           if(res == '')
-               {
-                   setTimeout(function (){
-                    $('#close').click();
-                    window.location.href ='../';    
-                   },200);
-                   
-               }
-        else
-        $('#msg').text(res);
-       
-        },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-    }
-    else
-    {
-      $('#error').show();
-    }
-    }
-    function edit(val)
-    {// if(document.URL.toString() == "")
-        var newurl =  document.URL.toString().split("/index/createbord");
-        
- var edur = $('#editurl').val();
-     
- //alert(edur);
- //url:"home/edit_board",
-    $.ajax({
-        type: "POST",
-      //newurl[0]+'/get_taxonomy',
-       url:newurl[0]+'/edit_board',
-       data:{'bid':val},
-       success:function(res){
-        $('#edit').html(res); 
-        die;
-       },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-    
-    }
-</script>
+<div id="edit"></div>
