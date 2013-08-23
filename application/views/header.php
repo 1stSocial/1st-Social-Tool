@@ -10,7 +10,8 @@
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/redactor.min.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.iframe-transport.js"></script>
-
+        <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootbox.js"></script>
+        
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>                                
  	<!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>-->
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>

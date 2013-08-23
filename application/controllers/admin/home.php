@@ -110,7 +110,7 @@ class Home extends CI_Controller {
         $boardId = $this->input->post('bid');
         
         $viewData = array();
-        $viewData[id] = $boardId;
+        $viewData['id'] = $boardId;
         $boardModel = new Board_model();
         if (is_numeric($boardId) && !empty($boardId)) {
             //get board details

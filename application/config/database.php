@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-<<<<<<< HEAD
-$db['default']['hostname'] = '127.0.0.1';
+
+$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '558505';
+$db['default']['password'] = '';
 $db['default']['database'] = '1stWorld';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

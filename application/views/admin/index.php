@@ -43,7 +43,7 @@
     
     function edit(val)
     {
-      alert(val);
+
     $.ajax({
         type: "POST",
        url:"home/edit_board",
