@@ -17,9 +17,16 @@
     <div><?php echo validation_errors(); ?></div>
     <label id="msg" class="control-label"></label>
 
-  <?php echo form_label('Parent Id:', 'parentid', array('class' => "control-label",'style'=>"clear:both") ); ?>
-    <input type="text" style="float: left" id="parentid" value="<?php if($parentid)echo $parentid;?>" name="parentid">
-    
+  <?php echo form_label('Parent Tag:', 'parentid', array('class' => "control-label",'style'=>"clear:both") ); ?>
+   <?php /* <input type="text" style="float: left" id="parentid" value="<?php if($parentid)echo $parentid;?>" name="parentid"> */ ?>
+     <div class="controls">
+      <select id="parentTag" name="parentTag" onselect="call()" style="margin-left:0px;">
+          <option value="0">No Parent</option>
+  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+  <option value="<?=$key?>"><?=$Tag?></option>
+  <?php endforeach;endif;?>
+</select>
+   </div>
 </div>
     <div class="modal-footer">
         <input type="button" id="updatebtn" name="update" class="btn btn-primary" onclick="updatefun();" value="Update">
@@ -33,7 +40,7 @@
     {
      var id = $("#id").val();   
      var name = $('#name').val();
-     var pid = $('#parentid').val();
+     var pid = $('#parentTag').val();
     var dataval ={
         id: id,
         name : name,
