@@ -24,7 +24,7 @@ include '/dropdown.php';
   <?php echo form_label('Parent Tag:', 'parentid', array('class' => "control-label",'style'=>"clear:both") ); ?>
    <?php /* <input type="text" style="float: left" id="parentid" value="<?php if($parentid)echo $parentid;?>" name="parentid"> */ ?>
    <div class="controls">  
- <select data-placeholder="Choose a Partner..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
+ <select data-placeholder="Choose a Partner..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1">
   <option value="0">No Parent</option>
   <?if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
@@ -46,7 +46,7 @@ include '/dropdown.php';
     {
      var id = $("#id").val();   
      var name = $('#name').val();
-     var pid = $('#parentTag').val();
+     var pid = $('#parentTag1').val();
     var dataval ={
         id: id,
         name : name,
