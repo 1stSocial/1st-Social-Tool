@@ -9,10 +9,10 @@
 
    
     function savefun()
-    {
+    { 
      var name = $('#name').val();
-     var id = $('#id').val();
-     
+     var id = $('#parentTag').val();
+     if(name != ""){
      var dataval ={
         parenttag : name,
         Parentid : id      
@@ -40,7 +40,11 @@
        }
     });
     }
-    
+    else
+    {
+      $('#error').show();
+    }
+    }
     function edit(val)
     {  var uri = $('#ur').val();
 
@@ -152,11 +156,20 @@ switch ($option)
     
  <?php echo form_label('Name :', 'nametag', array('class' => "control-label") ); ?>
     <input type="text" style="float: left" id="name" placeholder="TagName" name="name" onblur="check()">
-    <div><?php echo validation_errors(); ?></div>
+    <div><?php echo validation_errors(); ?></div> <div style =" color: red; display: none;" id="error"> Enter tag Name </div>
     <label id="msg" class="control-label"></label>
 
-  <?php echo form_label('Parent Id :', 'id', array('class' => "control-label",'style'=>"clear:both") ); ?>
-      <input type="text"  placeholder="Parent Id" id="id" name="id" value="">
+  <?php echo form_label('Parent Tag :', 'id', array('class' => "control-label",'style'=>"clear:both") ); ?>
+    <?php //  <input type="text"  placeholder="Parent Id" id="id" name="id" value=""> ?>
+     
+      <div class="controls">
+      <select id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
+          <option value="0">No Parent</option>
+  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+  <option value="<?=$key?>"><?=$Tag?></option>
+  <?php endforeach;endif;?>
+</select>
+   </div>
    </div>
 
 

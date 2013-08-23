@@ -27,6 +27,7 @@ class Home extends CI_Controller {
         $viewData = array();
         $this->load->model('board_model');
         $this->load->helper('form');
+        $this->load->model('tag_model');
         
         $boardModel = new Board_model();
         $session_data = $this->session->userdata('logged_in');
@@ -34,6 +35,11 @@ class Home extends CI_Controller {
         // echo "<pre>"; print_r($boards);
         $viewData['boards'] = $boards;
         $viewData['option'] = $option;
+        
+        $obj = new Tag_model();
+              $viewData['parenTag'] = $obj->AllParentTags();
+              
+             
         $this->load->view('admin/index', $viewData);
        
         $this->load->view('footer');
@@ -259,6 +265,7 @@ class Home extends CI_Controller {
         
         $tagModel = new Tag_model();
         $data['parentTags'] = $tagModel->AllTag();
+       // var_dump($data);
         if(isset($val))
         {
             $data['option'] = $val;
@@ -292,6 +299,8 @@ class Home extends CI_Controller {
         $val['id'] = $data[0]->id;
         $val['name'] = $data[0]->name;
         $val['parentid'] = $data[0]->parent_tag_id;
+        $val['parenTag'] = $tagModel->AllParentTags();
+      //  var_dump($val); die();
         echo $this->load->view('admin/edit_Tag',$val,TRUE);
         die;
     }
