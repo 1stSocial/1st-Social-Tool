@@ -2,7 +2,8 @@
         <thead>
           <tr>
             <th>Taxonomy Name</th>
-           
+            <th>Type</th>
+            <th>Parent Tag</th>
             
             
             <th>Action</th>
@@ -14,8 +15,8 @@
                 foreach ($taxonomy as $val): ?>
           <tr>
             <td><?=$val->name?></td>
-         
-            
+            <td><?=$val->type?></td>
+            <td><?=$val->parenttag?></td>
          
             <td><div class="btn-group"><a onclick="edit(<?=$val->id?>)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('taxonomy/delete_taxonomy/'.$val->id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
           </tr>
@@ -69,16 +70,39 @@ switch ($option)
     <p> <? if(isset($success)) echo $success;?> </p>
 </div>
     <div id="con" class="modal-body"><!-- Password input-->
-        <div class="control-group">
-     <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px") ); ?> 
-            </div>
+        <div class="control-group" >
+     <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?> 
+          
   <div class="controls" style="float:left;">
-      <input type="text" style="margin-left: 20px"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" >
+      <input type="text" style="margin-left: 55px;"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" />
   </div>
-           
-       <div id="error" style ="color:red; display: none;  ">Enter Taxonomy Name</div> 
-        
-            
+          </div> 
+       <div id="error" style ="color:red; display: none; ">Enter Taxonomy Name</div> 
+       <div style="clear: both;"></div>
+       
+       <div class="control-group">
+   <?php echo form_label('Type:', 'type', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+      <select id="type" name="type" style="margin-left: 60px;">
+  <option value="select">Select</option>
+  <option value="string">String</option>
+  <option value="Integer">Intreger</option>
+</select>
+   </div>
+</div>    
+       
+    <div class="control-group">
+   <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+      <select id="parentTag" name="parentTag" onselect="call()" style="margin-left: 22px;">
+  <option>Select</option>
+  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+  <option value="<?=$key?>"><?=$Tag?></option>
+  <?php endforeach;endif;?>
+</select>
+   </div>
+</div>    
+              
         
         
         <div class="control-group"> 
@@ -95,11 +119,14 @@ switch ($option)
  function savefun()
     {
      var taxonomyname = $('#name').val();
+     var type = $('#type').val();
+     var parentid = $('#parentTag').val();
     if(taxonomyname != ""){
      
     var dataval ={
         taxonomyname : taxonomyname,
-        
+        type:type,
+        parentid:parentid
     }
 
     $.ajax({
