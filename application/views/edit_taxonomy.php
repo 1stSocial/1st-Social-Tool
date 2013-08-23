@@ -17,9 +17,32 @@
         <div class="control-group">
      <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px") ); ?>
   <div class="controls" style="float:left;">
-      <input type="text" style="margin-left: 20px"  class = "control-label" value="<?php if(isset($name)){echo $name;} ?>" name="name" id="name" >
+      <input type="text" style="margin-left: 55px"  class = "control-label" value="<?php if(isset($name)){echo $name;} ?>" name="name" id="name" >
   </div> <div id="error" style ="color:red; display: none;  ">Enter Taxonomy Name</div> 
             </div>
+       <div style="clear: both;"></div> 
+    <div class="control-group">
+   <?php echo form_label('Type:', 'type', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+      <select id="type" name="type" style="margin-left: 60px;">
+  <option value="select">Select</option>
+  <option value="string">String</option>
+  <option value="Integer">Intreger</option>
+</select>
+   </div>
+</div>    
+       
+    <div class="control-group">
+   <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+  <div class="controls">
+      <select id="parentTag" name="parentTag"  style="margin-left: 22px;">
+  <option>Select</option>
+  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+  <option value="<?=$key?>"><?=$Tag?></option>
+  <?php endforeach;endif;?>
+</select>
+   </div>
+</div>        
         
       
         
@@ -40,6 +63,8 @@
  function savefun()
     {
      var taxonomyname = $('#name').val();
+     var type = $('#type').val();
+     var tag_id = $('#parentTag').val();
       if(taxonomyname != ""){
      var id=$("#id").val() ;
      var ur = $('#ur').val();
@@ -49,7 +74,9 @@
         type: "POST",
        url:ur,
        data:{
-        taxonomyname : taxonomyname,
+        taxonomyname : taxonomyname, 
+        type:type,
+        tag_id:tag_id,
      
         id:id
     },
