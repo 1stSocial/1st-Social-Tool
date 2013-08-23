@@ -26,10 +26,14 @@ class Taxonomy extends CI_Controller {
 
 	function index($option = FALSE) {
             
+            $this->load->model('tag_model');
+            
             $data['taxonomy']=$this->taxonomy_model->get_taxonomy();
             if($option)
             {
               $data['option'] = $option;
+              $obj = new Tag_model();
+              $data['parenTag'] = $obj->AllParentTags();
               $this->load->view('manage_taxonomy',$data);
               
             }
@@ -44,9 +48,13 @@ class Taxonomy extends CI_Controller {
 	}
 
 	function get_taxonomy() {
+            $this->load->model('tag_model');
+            
             $id =$this->input->post('id');
             $data= $this->taxonomy_model->get_taxonomy($id);
              // var_dump($data);
+                $obj = new Tag_model();
+              $data[0]->parenTag = $obj->AllParentTags();
               echo $this->load->view('edit_taxonomy',$data[0],TRUE);
               die();
 	}
