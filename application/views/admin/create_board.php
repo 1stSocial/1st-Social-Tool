@@ -1,3 +1,24 @@
+<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
+     <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
+     <script type="text/javascript">
+          var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+            jQuery(selector).chosen(config[selector]);
+          }
+          
+         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
+     jQuery(".chosen-select").chosen(); 
+      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
+  // });
+          
+</script> 
+
 <script>
    setTimeout(function(){
        $('#mod1').click();
@@ -38,7 +59,7 @@ function savefun()
        }
     });
 }
-
+ 
 </script>
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
@@ -59,7 +80,9 @@ function savefun()
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-      <select id="parentTag" name="parentTag" onselect="call()">
+     <!-- <select id="parentTag" name="parentTag" onselect="call()">-->
+     
+ <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag" >
   <option>Select</option>
   <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
@@ -69,11 +92,11 @@ function savefun()
 </div>
 
 
-
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select  multiple id="user_id" name="user_id[]" >
+    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="parentTag" name="parentTag" id="user_id" name="user_id[]" >
+      <!--<select  multiple id="user_id" name="user_id[]" >-->
         <? if(!empty($partners)): foreach($partners as $val):?>
   <option value="<?=$val->id?>"><?=$val->name?></option>
   <? endforeach;endif;?>
