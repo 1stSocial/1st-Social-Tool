@@ -29,7 +29,7 @@ function savefun()
                {
                    setTimeout(function (){
                     $('#close').click();
-                    window.location.href ="home";    
+                    window.location.href ="../";    
                    },200);
                    
                }
@@ -42,7 +42,14 @@ function savefun()
        }
     });
 }
- 
+
+function c()
+{ 
+    var ur =$('#ur').val();
+     window.location.href =ur;   
+}
+
+
 </script>
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
@@ -90,12 +97,12 @@ function savefun()
     
 <div class="modal-footer">
     <div class="control-group">
-      <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
+        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close" onclick="c();">
       <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Create Board" onclick="savefun();" />
  
     </div>     
   
 </div>
-
+    <input type ="hidden" id="ur" value="<?php echo site_url('/admin/home'); ?>">
 </div>
  
