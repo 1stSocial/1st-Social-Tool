@@ -1,30 +1,11 @@
-<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
-<script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
-<script type="text/javascript">
-          var config = {
-            '.chosen-select'           : {},
-            '.chosen-select-deselect'  : {allow_single_deselect:true},
-            '.chosen-select-no-single' : {disable_search_threshold:10},
-            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-            '.chosen-select-width'     : {width:"95%"}
-          }
-          for (var selector in config) {
-            jQuery(selector).chosen(config[selector]);
-          }
-          
-         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
-     jQuery(".chosen-select").chosen(); 
-      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
-  // });
-          
-</script> 
+<?php
+include '/admin/dropdown.php';
+?>
 <script>
    setTimeout(function(){
        $('#mod1').click();
    },100);
 </script>
-
-
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <?php// echo form_open('','class="horizontal-form"');?>
 <input type="hidden" id="id" value="<?php echo $id ; ?>" name="id" >
@@ -51,7 +32,7 @@
 </select>
    </div>
 </div>    
-       
+  
     <div class="control-group">
    <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
   <div class="controls">

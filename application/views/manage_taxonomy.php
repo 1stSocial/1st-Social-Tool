@@ -1,23 +1,40 @@
-<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
-     <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
-     <script type="text/javascript">
-          var config = {
-            '.chosen-select'           : {},
-            '.chosen-select-deselect'  : {allow_single_deselect:true},
-            '.chosen-select-no-single' : {disable_search_threshold:10},
-            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-            '.chosen-select-width'     : {width:"95%"}
-          }
-          for (var selector in config) {
-            jQuery(selector).chosen(config[selector]);
-          }
-          
-         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
-     jQuery(".chosen-select").chosen(); 
-      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
-  // });
-          
+<script>
+function edit(val)
+{ 
+                  var newurl =  document.URL.toString().split("/index/addtaxonomy");
+                      
+                        $.ajax({
+                            url: newurl[0]+'/get_taxonomy',
+                            type:'POST',
+                            data:{'id':val},
+                            success:function(res)
+                            {
+                                $('#edit').html(res);
+                            }
+                            });
+}
 </script>
+
+<?php
+if(isset($option))
+switch ($option) 
+{
+    case 'addtaxonomy':
+    {
+        echo "<script>
+$(document).ready(function() {   
+setTimeout(function(){
+    $('#mod1').click();
+   },100);
+});</script>";
+    }
+        break;
+    
+    default:
+        break;
+}
+?>
+ 
 <table class="table table-striped ">
         <thead>
           <tr>
@@ -46,42 +63,7 @@
 <div id="edit" style="position: absolute;left:-500px;top:-1000px;">
     
 </div>
-<script>
-function edit(val)
-{ 
-                  var newurl =  document.URL.toString().split("/index/addtaxonomy");
-                      
-                        $.ajax({
-                            url: newurl[0]+'/get_taxonomy',
-                            type:'POST',
-                            data:{'id':val},
-                            success:function(res)
-                            {
-                                $('#edit').html(res);
-                            }
-                            });
-}
-</script>
 
-<?php
-if(isset($option))
-switch ($option) 
-{
-    case 'addtaxonomy':
-    {
-        echo "<script>
-   setTimeout(function(){
-    $('#mod1').click();
-   },100);</script>";
-    }
-        break;
-    
-    default:
-        break;
-}
-?>
- 
- 
  
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
