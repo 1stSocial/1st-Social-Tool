@@ -1,3 +1,7 @@
+<?php
+include '/dropdown.php';
+?>
+
 <script>
    setTimeout(function(){
        $('#mod1').click();
@@ -66,7 +70,9 @@ function c()
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-      <select id="parentTag1" name="parentTag1" onselect="call()">
+     <!-- <select id="parentTag" name="parentTag" onselect="call()">-->
+     
+ <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
   <option>Select</option>
   <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
@@ -80,7 +86,8 @@ function c()
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select  multiple id="user_id" name="user_id[]" >
+    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
+      <!--<select  multiple id="user_id" name="user_id[]" >-->
         <? if(!empty($partners)): foreach($partners as $val):?>
   <option value="<?=$val->id?>"><?=$val->name?></option>
   <? endforeach;endif;?>
