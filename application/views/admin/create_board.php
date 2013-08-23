@@ -26,7 +26,7 @@ function savefun()
                    setTimeout(function (){
                     $('#close').click();
                     window.location.href ="../";    
-                   },200);
+                   },200); 
                    
                }
         else
