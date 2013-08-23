@@ -3,6 +3,26 @@
        $('#mod1').click();
    },100);
 </script>
+<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
+     <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
+     <script type="text/javascript">
+          var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+            jQuery(selector).chosen(config[selector]);
+          }
+          
+         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
+     jQuery(".chosen-select").chosen(); 
+      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
+  // });
+          
+</script> 
 <script>
     
     function updatefun()
@@ -65,7 +85,7 @@
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select id="parentTag" name="parentTag" >
+   <select data-placeholder="Choose a Partner..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag" >
   <option>Select</option>
   <?   if(!empty($parenTag)): 
       
@@ -87,7 +107,7 @@
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select  multiple id="user_id" name="user_id[]" >
+    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
         <? if(!empty($partners)): foreach($partners as $val):
             $selected='';
             if(!empty($selectedPartners)){
