@@ -53,7 +53,8 @@
        url:"home/edit_board",
        data:{'bid':val},
        success:function(res){
-        $('#edit').html(res);   
+        $('#edit').html(res); 
+       
        },
        error:function(res)
        {
@@ -63,28 +64,6 @@
     
     }
 </script>
-<script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
-     <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
-     <script type="text/javascript">
-          var config = {
-            '.chosen-select'           : {},
-            '.chosen-select-deselect'  : {allow_single_deselect:true},
-            '.chosen-select-no-single' : {disable_search_threshold:10},
-            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-            '.chosen-select-width'     : {width:"95%"}
-          }
-          for (var selector in config) {
-            jQuery(selector).chosen(config[selector]);
-          }
-          
-         // jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
-     jQuery(".chosen-select").chosen(); 
-      jQuery(".chosen-select- deselect").chosen({allow_single_deselect:true});
-  // });
-          
-</script> 
-
-
 
 <table class="table table-striped ">
         <thead>
@@ -147,13 +126,16 @@ switch ($option)
 
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php 
+    include '/dropdown.php';
+?>
 <?php echo form_open('admin/home/create_tags',array('name' => 'myform')); ?>
 
 <div class="modal-header">
 <h3 id="myModalLabel">Create Tag</h3>
 </div>
 <div class="modal-body">
-    
+    <br>
  <?php echo form_label('Name :', 'nametag', array('class' => "control-label") ); ?>
     <input type="text" style="float: left" id="name" placeholder="TagName" name="name" onblur="check()">
     <div><?php echo validation_errors(); ?></div> <div style =" color: red; display: none;" id="error"> Enter tag Name </div>
@@ -163,14 +145,15 @@ switch ($option)
     <?php //  <input type="text"  placeholder="Parent Id" id="id" name="id" value=""> ?>
      
       <div class="controls">
-      <select id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
+      <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
           <option value="0">No Parent</option>
   <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
   <?php endforeach;endif;?>
 </select>
    </div>
-   </div>
+<br><br>  
+
 
 
     <div class="modal-footer">
