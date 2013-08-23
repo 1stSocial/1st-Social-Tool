@@ -1,3 +1,6 @@
+<?php
+include '/dropdown.php';
+?>
 <script>
    setTimeout(function(){
        $('#mod1').click();
@@ -11,29 +14,32 @@
 <h3 id="myModalLabel">Edit Tag</h3>
 </div>
 <div class="modal-body">
+    <br>
     <input type='hidden' id="id" name="id" value=<?=$id?>  >   
  <?php echo form_label('Name :', 'name', array('class' => "control-label")); ?>
     <input type="text" style="float: left" id="name" value="<?=$name;?>" name="name">
     <div><?php echo validation_errors(); ?></div>
     <label id="msg" class="control-label"></label>
-
+<div class="control-group">
   <?php echo form_label('Parent Tag:', 'parentid', array('class' => "control-label",'style'=>"clear:both") ); ?>
    <?php /* <input type="text" style="float: left" id="parentid" value="<?php if($parentid)echo $parentid;?>" name="parentid"> */ ?>
-     <div class="controls">
-      <select id="parentTag" name="parentTag" onselect="call()" style="margin-left:0px;">
-          <option value="0">No Parent</option>
-  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
+   <div class="controls">  
+ <select data-placeholder="Choose a Partner..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
+  <option value="0">No Parent</option>
+  <?if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
   <?php endforeach;endif;?>
 </select>
    </div>
 </div>
+<br>
+<br>
     <div class="modal-footer">
         <input type="button" id="updatebtn" name="update" class="btn btn-primary" onclick="updatefun();" value="Update">
         <input type="button" id="close" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">
     </div>
-</div>
 
+</div> 
 <script>
    
     function updatefun()
