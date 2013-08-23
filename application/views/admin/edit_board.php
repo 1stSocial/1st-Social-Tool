@@ -70,7 +70,7 @@ include '/dropdown.php';
 <div class="control-group">
    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select id="parentTag" name="parentTag" >
+   <select data-placeholder="Choose a Partner..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
   <option>Select</option>
   <?   if(!empty($parenTag)): 
       
@@ -92,7 +92,7 @@ include '/dropdown.php';
 <div class="control-group">
   <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
   <div class="controls">
-    <select  multiple id="user_id" name="user_id[]" >
+    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
         <? if(!empty($partners)): foreach($partners as $val):
             $selected='';
             if(!empty($selectedPartners)){
