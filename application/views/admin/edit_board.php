@@ -13,7 +13,7 @@ include '/dropdown.php';
     function updatefun()
     {
         var name = $('#name1').val();
-     var parentTag = $('#parentTag').val();
+     var parentTag = $('#parentTag1').val();
      var user_id =$('#user_id').val();
      var id = $('#mainid').val();
      var dataval ={
