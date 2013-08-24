@@ -30,6 +30,14 @@
 				</ul>
 			</li>  
                         
+                        <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Items <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?= base_url(); ?>index.php/admin/Item/">Items Management</a></li>
+					<li><a href="<?= base_url(); ?>index.php/admin/Item/Add_item">Create Item</a></li>
+				</ul>
+			</li>
+                        
                         
 			<?php if ($settings): ?>
 				<li><?= $settings; ?></li>

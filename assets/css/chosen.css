@@ -443,6 +443,12 @@
     width:220px!important;
     margin-left: 64px; 
 }
+
+#board_chosen
+{
+    width:220px!important;
+    margin-left: 64px;
+}
 /* @end */
 /* @group Retina compatibility */
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 144dpi) {
