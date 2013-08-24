@@ -1,4 +1,5 @@
-<?php echo form_open('admin/Item','additem');?>
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/create_item.js"></script>
+<?php echo form_open('admin/Item/fill_value','additem');?>
 <div class="heading">
     <h3> Create Item </h3>
 </div>
@@ -14,8 +15,5 @@
         <option value="<?=$val->board_id?>"><?=$val->board_name?></option>
         <?php endforeach;endif;?>
     </select>
-
-<div class="control-group">
-    
-</div>
+<input type="submit" value="Create" id="sub" name="sub" class="btn btn-primary">
 <?php echo form_close();?>
