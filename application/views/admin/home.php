@@ -18,7 +18,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tag <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="<?= base_url(); ?>index.php/admin/home/tag_Management">Tag Management</a></li>
-					<li><a href="<?= base_url(); ?>index.php/admin/home/index/createtag">Create Tag</a></li>
+					<li><a href="<?= base_url(); ?>index.php/admin/home/tag_Management/createtag">Create Tag</a></li>
 				</ul>
 			</li>
                         
