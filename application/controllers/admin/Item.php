@@ -37,12 +37,40 @@ class Item extends CI_Controller {
         $boardModel = new Board_model();
         $boards = $boardModel->getBoards($session_data['id']);
 //         echo "<pre>";         var_dump($boards);
-        $data['boards'] = $boards;
+//         die();
+         $data['boards'] = $boards;
         
         $this->load->view('admin/add_item',$data);
         
     }
     
+    function fill_value()
+    {
+        $this->load->helper('form');
+        $this->load->model('Board_model');
+        $this->load->model('Tag_model');
+        $this->load->model('Taxonomy_model');
+        $this->load->model('item_model');
+        
+        $boardModel = new Board_model();
+        $taxonomy = new Taxonomy_model();
+        $item = new Item_model();
+        
+        $borad_id = $this->input->post('board');
+        $boards = $boardModel->getBoardByBoardId($borad_id);
+//        var_dump($boards);
+        $taxonomy = $item->get_taxonomy($boards['0']->parent_tags);
+        $data['board_name'] = $boards['0']->name;
+        $data['created_by'] = $boards['0']->created_by;
+        $data['Taxonomy'] = $taxonomy;
+//        var_dump($data['Taxonomy']);
+//       var_dump($data);
+//        die;
+        $this->load->view('admin/item_fill',$data);
+        
+        
+    }
+            
     function delete_item()
     {
         
@@ -51,6 +79,25 @@ class Item extends CI_Controller {
     function update_item()
     {
         
+    }
+    
+    function insert_item()
+    { 
+        $session_data = $this->session->userdata('logged_in');
+        $data = $this->input->post();
+//                        print_r($data); die;
+//        $userId = $data['user_id'];
+        
+        unset($data['save']);
+        unset($data['user_id']);
+        $data['created_by'] = $session_data['id'];
+        $data['createdTime'] = date('Y-m-d h:m:s');
+        $data['status'] = '0';
+        $this->load->model('item_model');
+        $item = new Item_model();
+        
+        $item->item_insert($data);
+        $this->index();
     }
 }
 ?>
