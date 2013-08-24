@@ -43,7 +43,7 @@ function savefun()
     });
 }
 
-function c()
+function close()
 { 
     var ur =$('#ur').val();
      window.location.href =ur;   
@@ -84,7 +84,7 @@ function c()
 
 
 <div class="control-group">
-  <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label") ); ?>
+  <?php echo form_label('Board User (Partner):', 'user_id1', array('class' => "control-label") ); ?>
   <div class="controls">
     <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
       <!--<select  multiple id="user_id" name="user_id[]" >-->
@@ -98,7 +98,7 @@ function c()
     
 <div class="modal-footer">
     <div class="control-group">
-        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close" onclick="c();">
+        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close" onclick="close();">
       <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Create Board" onclick="savefun();" />
  
     </div>     
