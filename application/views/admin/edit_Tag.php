@@ -31,7 +31,7 @@ include '/dropdown.php';
 <br>
 <br>
     <div class="modal-footer">
-        <input type="button" id="updatebtn" name="update" class="btn btn-primary" onclick="updatefun();" value="Update">
+        <input type="button" id="updatebtn" name="update" class="btn btn-primary" value="Update">
         <input type="button" id="closebtn" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">
     </div>
 
