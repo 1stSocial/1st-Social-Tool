@@ -6,7 +6,7 @@
 </script> -->
 <script>
 
-function close()
+function cl()
 {
      var uri = $('#ur').val();
 }
