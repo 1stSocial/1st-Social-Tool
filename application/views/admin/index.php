@@ -4,67 +4,6 @@
     $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
   });
 </script> -->
-<script>
-
-
-   
-    function savefun()
-    { 
-     var name = $('#name').val();
-     var id = $('#parentTag').val();
-     if(name != ""){
-     var dataval ={
-        parenttag : name,
-        Parentid : id      
-       }
-    $.ajax({
-        type: "POST",
-       url:"../create_Tags",
-       data:dataval,
-       success:function(res){
-           if(res == '')
-               {
-                   setTimeout(function (){
-                    $('#close').click();
-                    window.location.href ='index';    
-                   },200);
-                   
-               }
-        else
-        $('#msg').text(res);
-       
-        },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-    }
-    else
-    {
-      $('#error').show();
-    }
-    }
-    function edit(val)
-    {  var uri = $('#ur').val();
-
-    $.ajax({
-        type: "POST",
-       url:"home/edit_board",
-       data:{'bid':val},
-       success:function(res){
-        $('#edit').html(res); 
-       
-       },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-    
-    }
-</script>
-
 
 <table class="table table-striped ">
         <thead>
@@ -168,4 +107,72 @@ switch ($option)
 <input type="hidden" id="editurl" value="<?= site_url('/admin/home/edit_board')?>">
 <div id="edit"></div>
 <div id="createboard"></div>
+<script>
 
+function close()
+{
+     var uri = $('#ur').val();
+}
+   
+    function savefun()
+    { 
+     var name = $('#name').val();
+     var id = $('#parentTag').val();
+     if(name != ""){
+     var dataval ={
+        parenttag : name,
+        Parentid : id      
+       }
+    $.ajax({
+        type: "POST",
+       url:"../create_Tags",
+       data:dataval,
+       success:function(res){
+           if(res == '')
+               {
+                   setTimeout(function (){
+                    $('#close').click();
+                    window.location.href ='../';    
+                   },200);
+                   
+               }
+        else
+        $('#msg').text(res);
+       
+        },
+       error:function(res)
+       {
+           alert(res);
+       }
+    });
+    }
+    else
+    {
+      $('#error').show();
+    }
+    }
+    function edit(val)
+    {// if(document.URL.toString() == "")
+        var newurl =  document.URL.toString().split("/index/createbord");
+        
+ var edur = $('#editurl').val();
+     
+ //alert(edur);
+ //url:"home/edit_board",
+    $.ajax({
+        type: "POST",
+      //newurl[0]+'/get_taxonomy',
+       url:newurl[0]+'/edit_board',
+       data:{'bid':val},
+       success:function(res){
+        $('#edit').html(res); 
+        die;
+       },
+       error:function(res)
+       {
+           alert(res);
+       }
+    });
+    
+    }
+</script>
