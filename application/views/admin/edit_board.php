@@ -1,49 +1,10 @@
-<script>
-   setTimeout(function(){
-       $('#mod1').click();
-   },100);
-</script>
+
 <?php 
 include '/dropdown.php';
 ?>
 
 
-<script>
-    
-    function updatefun()
-    {
-        var name = $('#name1').val();
-     var parentTag = $('#parentTag1').val();
-     var user_id =$('#user_id').val();
-     var id = $('#mainid').val();
-     var dataval ={
-        name : name,
-        parentTag : parentTag,
-        user_id:user_id,
-        id:id
-       };
-    $.ajax({
-       type: "POST",
-       url:"home/update_board",
-       data:dataval,
-       success:function(res){
-           if(res == '')
-               {
-                   setTimeout(function (){
-                    $('#cl').click();
-                    window.location.href ="home";    
-                   },200);
-                   
-               }
-       },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-    }
-
-</script>
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_board.js"></script>
 
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
@@ -115,7 +76,7 @@ include '/dropdown.php';
 <div class="modal-footer">
     <div class="control-group">
       <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="cl">
-      <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Update Board" onclick="updatefun();" />
+      <input type="button" style="float: right;position: relative" id="update" name="update" class="btn btn-primary" value="Update Board" />
  
     </div> 
     

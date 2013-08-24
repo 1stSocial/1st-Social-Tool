@@ -2,55 +2,7 @@
 include '/dropdown.php';
 ?>
 
-<script>
-   setTimeout(function(){
-       $('#mod1').click();
-   },100);
-</script>
-<script>
-
-function savefun()
-{
-    var name = $('#name1').val();
-     var parentTag = $('#parentTag1').val();
-     var user_id =$('#user_id').val();
-    
-     var dataval ={
-        name : name,
-        parentTag : parentTag,
-        user_id:user_id
-       };
-    $.ajax({
-       type: "POST",
-       url:"../create_board",
-       data:dataval,
-       success:function(res){
-           if(res == '')
-               {
-                   setTimeout(function (){
-                    $('#close').click();
-                    window.location.href ="../";    
-                   },200); 
-                   
-               }
-        else
-        alert(res);
-        },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-}
-
-function close()
-{ 
-    var ur =$('#ur').val();
-     window.location.href =ur;   
-}
-
-
-</script>
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/create_board.js"></script>
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
@@ -98,8 +50,8 @@ function close()
     
 <div class="modal-footer">
     <div class="control-group">
-        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" id="close" onclick="close();">
-      <input type="button" style="float: right;position: relative" name="update" class="btn btn-primary" value="Create Board" onclick="savefun();" />
+        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
+      <input type="button" style="float: right;position: relative" id="add" name="add" class="btn btn-primary" value="Create Board" onclick="savefun();" />
  
     </div>     
   

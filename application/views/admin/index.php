@@ -63,7 +63,6 @@ function cl()
        data:{'bid':val},
        success:function(res){
         $('#edit').html(res); 
-        die;
        },
        error:function(res)
        {
@@ -174,5 +173,6 @@ switch ($option)
 
 <input type="hidden" id="ur" value="<?= site_url('/admin/home')?>">
 <input type="hidden" id="editurl" value="<?= site_url('/admin/home/edit_board')?>">
-<div id="edit"></div>
+
 <div id="createboard"></div>
+<div id="edit"></div>
