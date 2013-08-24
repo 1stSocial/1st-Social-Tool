@@ -29,7 +29,7 @@
         <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
          <script>
         $(document).ready(function() {   
-
+         $('#body').redactor();
          var config = {
                     '.chosen-select'           : {},
                     '.chosen-select-deselect'  : {allow_single_deselect:true},
