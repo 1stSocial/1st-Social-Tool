@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
    },100);
  });
 
-jQuery('#update').click(function(){
+jQuery('#updatebtn').click(function(){
   var id = jQuery("#id").val();   
      var name = jQuery('#name').val();
      var pid = jQuery('#parentTag1').val();
@@ -24,7 +24,7 @@ jQuery('#update').click(function(){
                {
                    setTimeout(function (){
                     jQuery('#closebtn').click();
-                    window.location.href ='index';    
+                    window.location.href ='tag_Management';    
                    },200);
                    
                }
