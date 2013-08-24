@@ -35,9 +35,9 @@ include '/admin/dropdown.php';
 </div>    
   
     <div class="control-group">
-   <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
+   <?php echo form_label('Parent Tag:', 'parent_tag1', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
   <div class="controls">
-<select data-placeholder="Choose a Parent..." class="chosen-select mar"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1"  style="margin-left: 22px;">
+<select data-placeholder="Choose a Parent..." class="chosen-select mar"  style="width:350px;" tabindex="4" id="parentTag2" name="parentTag2"  style="margin-left: 22px;">
   <option>Select</option>
   <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
   <option value="<?=$key?>"><?=$Tag?></option>
@@ -66,7 +66,7 @@ include '/admin/dropdown.php';
     {
      var taxonomyname = $('#name').val();
      var type = $('#type').val();
-     var tag_id = $('#parentTag1').val();
+     var tag_id = $('#parentTag2').val();
       if(taxonomyname != ""){
      var id=$("#id").val() ;
      var ur = $('#ur').val();
