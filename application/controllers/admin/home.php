@@ -266,6 +266,8 @@ class Home extends CI_Controller {
         $tagModel = new Tag_model();
         $data['parentTags'] = $tagModel->AllTag();
        // var_dump($data);
+        $obj = new Tag_model();
+              $data['parenTag'] = $obj->AllParentTags();
         if(isset($val))
         {
             $data['option'] = $val;
