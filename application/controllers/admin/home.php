@@ -68,7 +68,7 @@ class Home extends CI_Controller {
         $parentTags = $tagModel->AllParentTags();
 //         echo"<pre>";        print_r($parentTags); die;
         //get all partners 
-        $userModel = new User_model();
+        $userModel = new User_model();  
         $partners = $userModel->getAllPartners();
         //echo "<pre>"; print_r($partners);
         $viewData = array('parenTag' => $parentTags, 'partners' => $partners);

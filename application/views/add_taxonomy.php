@@ -3,8 +3,9 @@
        $('#mod1').click();
    },100);
 </script>
-
-
+<?php
+include '/admin/dropdown.php';
+?>
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <?php echo form_open('taxonomy/add_taxonomy','class="horizontal-form"');?>
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
