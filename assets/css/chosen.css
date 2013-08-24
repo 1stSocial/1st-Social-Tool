@@ -414,17 +414,23 @@
 .chosen-rtl.chosen-container-single.chosen-with-drop .chosen-single div b {
   background-position: -12px 2px;
 }
+#parentTag2_chosen
+{
+    width:220px!important;
+    margin-left: 25px;
+}
 
 #parentTag_chosen
 {
     width:220px!important;
+    margin-left: 9px;
   
 }
 
 #parentTag1_chosen
 {
     width:220px!important;
-    margin-left: 15px;
+    margin-left: 0px;
 }
 
 #user_id_chosen
