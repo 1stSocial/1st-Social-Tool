@@ -1,4 +1,3 @@
-
 <script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
 <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
  <script>
