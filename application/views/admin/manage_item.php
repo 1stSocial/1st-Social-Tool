@@ -20,10 +20,29 @@
              <td><div style=" height:70px;   overflow: scroll;"><?=$val->body?></div></td> 
               <td><?=$val->created_by?></td>  
                <td><?=$val->status?></td>  
-               <td><?=$val->createdTime?></td>  
-               <td><div class="btn-group"> <a href="<?php echo site_url('/admin/item/edit_item/'.$val->id) ?>" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/item/delete_item/'.$val->id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
+               <td><?=$val->createdTime?></td>  <? /*  href=".$val->id) ?>"  , */?>
+               <td><div class="btn-group"> <a onclick="edit('<?php echo site_url('/admin/item/edit_item/'); ?>','<?php echo $val->id; ?>')" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/item/delete_item/'.$val->id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
    </tr>
           <? endforeach;endif;?>
         </tbody>
       </table>
-
+<script>
+   function edit(ur,id){
+       ur = ur+'/'+id;
+     // alert(ur+id+";");
+        
+        
+  $.ajax({ url:ur,
+      
+      type:'POST',
+  success:function(res)
+  { //alert(res);
+ $('#item_edit').html(res);
+    }
+        });      
+   }
+</script>
+    
+<div id="item_edit"style="position: absolute;left:-500px;top:-1000px;">
+    
+</div>

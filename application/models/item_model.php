@@ -12,11 +12,19 @@ Class Item_model extends CI_Model {
     function item_insert($data)
     {
         $this->db->insert('items',$data);
-        
+       $rs['item_id'] = $this->db->insert_id();   
+        $rs['tag_id'] = $this->input->post('tag_id');
+       $this->db->insert('item_tags',$rs);
     }
-    function get_item()
+    function get_item($id)
     {
-        $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by';
+        if($id == 1)
+        {
+            $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by ';
+        }
+        else
+        $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by where i.created_by = '.$id;
+        
         $query = $this->db->query($q);
         return $query->result();
     }
@@ -25,6 +33,8 @@ Class Item_model extends CI_Model {
     {
         $this->db->where(array('id'=>$id));
         $this->db->delete('items');
+        $this->db->where(array('item_id'=>$id));
+        $this->db->delete('item_tags');
     }
     
     function get_item_id($id)
@@ -49,6 +59,22 @@ Class Item_model extends CI_Model {
        
        $this->db->update('items',$data,array('id'=>$id));
        
+    }
+    
+    function get_board($id)
+    {
+        $this->db->select('*,b_u.id as bu_id');  
+        $this->db->from('board_users as b_u');
+        $this->db->join('board as b', 'b.id = b_u.board_id');
+        if($id == '1')
+        {}
+        else
+        $this->db->where('user_id', $id); 
+        $query = $this->db->get();
+         if ($query->num_rows() > 0) {
+             return $query->result_array();
+             
+         }
     }
     
 }

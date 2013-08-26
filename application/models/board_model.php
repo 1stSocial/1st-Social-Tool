@@ -177,5 +177,12 @@ Class Board_model extends CI_Model {
          
          
     }
+    
+    function bord_tag($id)
+    {  $this->db->select('tag_id');
+        $this->db->where('board_id',$id);
+           $query = $this->db->get('board_tags');
+           return $query->result_array();
+    }
 
 }

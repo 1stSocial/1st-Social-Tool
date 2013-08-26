@@ -6,6 +6,7 @@
 			</a>
 		</div>
 		<ul class="nav">
+                    <?php if($access_level == 'admin') : ?>
 			<li class="<?= $this->uri->segment(1) == "home" ? "active" : ""; ?>"><a href="<?= base_url(); ?>index.php/admin/home">Home</a></li>
 			<li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <span class="caret"></span></a>
@@ -29,7 +30,7 @@
 					<li><a href="<?= base_url(); ?>index.php/taxonomy/index/addtaxonomy">Create Taxonomy</a></li>
 				</ul>
 			</li>  
-                        
+                        <?php endif;?>
                         <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Items <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -45,7 +46,7 @@
 		</ul>
 		<div class="account-box pull-right">
 			<span>Welcome <?= $username; ?>!</span>
-			<a class="btn btn-inverse" href="home/logout"><i class="icon-off icon-white"></i> Logout</a>
+			<a class="btn btn-inverse" href="<?= base_url(); ?>index.php/admin/home/logout"><i class="icon-off icon-white"></i> Logout</a>
 		</div>
 	</div>
 </div>
