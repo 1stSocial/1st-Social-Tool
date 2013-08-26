@@ -79,14 +79,30 @@ class Item extends CI_Controller {
     function delete_item()
     {
         $this->load->model('Item_model');
+        $itemid = $this->uri->segment(4);
         $item_modal = new Item_model();
-        $item_modal ->delete_item();
-        
+        $item_modal ->delete_item($itemid);
+        $this->index();
     }
     
+    function edit_item()
+    {
+        $this->load->model('Item_model');
+        $this->load->helper('form');
+        
+        $itemid = $this->uri->segment(4);
+        $item_modal = new Item_model();
+        $data = $item_modal ->get_item_id($itemid);
+        $this->load->view('admin/item_edit',$data['0']);
+//        var_dump($data);
+    }
+            
     function update_item()
     {
-        
+        $this->load->model('Item_model');
+        $item_model = new Item_model();
+        $item_model->update_item();
+        $this->index();
     }
     
     function insert_item()
