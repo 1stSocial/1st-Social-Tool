@@ -1,11 +1,12 @@
-
 <?php 
-include '/dropdown.php';
+
+$path = $_SERVER['SCRIPT_NAME'];
+$startpath = $_SERVER['DOCUMENT_ROOT'];
+$val = str_replace('/index.php', '/application/views/admin/dropdown.php', $path);
+include $startpath.$val;
+
 ?>
-
-
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_board.js"></script>
-
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
