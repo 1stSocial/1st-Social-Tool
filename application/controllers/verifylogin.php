@@ -27,20 +27,22 @@ class VerifyLogin extends CI_Controller {
    {  
      //Go to private area
    	$userData=$this->session->userdata('logged_in');
+           
      switch($userData['access_level']){
      	case 'admin':
      		              redirect('/admin/home');
      		              break;
-     	case 'partnet': 
+     	case 'partner': 
+                              
      		              redirect('/partner/home');
      		              break;
      	case 'client':
-     		              redirect('client/home');	
+     		              redirect('/client/home');	
      		              break;	 
      	case 'user':
      		              redirect('user/home');
-     		              break;		                          		                
-     }
+     		              break;
+      }
      
    }
 
