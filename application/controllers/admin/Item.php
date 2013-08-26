@@ -81,6 +81,7 @@ class Item extends CI_Controller {
         $this->load->model('Item_model');
         $item_modal = new Item_model();
         $item_modal ->delete_item();
+        
     }
     
     function update_item()
