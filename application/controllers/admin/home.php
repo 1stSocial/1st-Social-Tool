@@ -14,7 +14,9 @@ class Home extends CI_Controller {
             $data['username'] = $session_data['username'];
             //Render Settings
             $data['settings'] = $session_data['access_level'] == 'super-admin' || $session_data['access_level'] == 'admin' ? "<a href='" . base_url() . "index.php/settings'><i class='icon-wrench icon-white'></i></a>" : false;
-
+            
+            $data['access_level'] = $session_data['access_level'];
+            
             $this->load->view('admin/home', $data);
             //$this->load->view('footer');
         } else {
