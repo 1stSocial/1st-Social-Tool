@@ -89,6 +89,7 @@ body .redactor_box_fullscreen {
 	background: #fff !important;
 	overflow: auto;
 	white-space: normal;
+        height: 110px !important;
 }
 .redactor_editor a {
 	color: #15c !important;

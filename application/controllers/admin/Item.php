@@ -23,7 +23,12 @@ class Item extends CI_Controller {
     }
     function index($option=FALSE)
     {
+        $this->load->model('item_model');
          $this->load->helper('form');
+         
+         $data['items'] = $this->item_model->get_item();
+         $this->load->view('admin/manage_item',$data);
+         
     }
     
     function Add_item()
