@@ -46,14 +46,14 @@
 </div>
 </div>
 </div>
-<!--<div class="controls" id="taxonomydiv">
-    <div>
-    <? //  if(!empty($Taxonomy)): foreach($Taxonomy as $val): ?>
-    <label style="font-size : 20px" class="label input-mini" >//<?=$val->name?> :</label><br>
-    <input type="text" class="input-medium" id="taxo[//<?=$val->name?>]" name="taxo[]"/><br>
-    <?php // endforeach;endif;?>
+<div class="controls" id="taxonomydiv">
+    <div id="taxodiv">
+    <? if(!empty($Taxonomy)): foreach($Taxonomy as $val): ?>
+    <label style=" float: left;" class="control-label" ><?=$val->name?> :</label>
+    <input type="text" style="float:left" class="control-label" style="margin-left: 20px;" id="<?=$val->id?>" name="taxo"/><div id="<?=$val->id?>d"></div><div style="clear: both"></div><br>
+    <?php endforeach;endif;?>
     </div>
-</div>-->
+</div>
  <div class="control-group">
 <div class="modal-footer">
    <input type="button" class="btn btn-primary " value="Create Item" onclick="savefun('<?php echo site_url("/admin/item/insert_item/"); ?>')" />
@@ -104,14 +104,24 @@ function savefun(ur)
      var name = $('#item_name').val();
      var title = $('#item_title').val();
      var body = $('#body').val();
-    if(name != ""){
-  
+     var taxo = [];
+//var arrayB = new Array();
+     $('#taxodiv').find('input:text')
+        .each(function() {
+             taxo[this.id] = $(this).val();
+        });
+   
+     
+    if(name != "" && title !="" && body !=""){
+ 
     var dataval ={
         tag_id:tag_id, // its to be change ;.l;l;l;l;===
         name : name,
         title:title,
-        body:body
+        body:body,
+        taxo : taxo
     }
+    
    //alert('heloo'+ur+ name);
     $.ajax({
         type: "POST",
@@ -122,15 +132,25 @@ function savefun(ur)
            if(res == '')
                {
                    setTimeout(function (){
-                    $('#close').click();
-                    
+                    $('#closebtn').click();
+                    window.location.href ='./';
                    },200);
                    
-               }  window.location.href ='./';
+               }
+           else
+               {
+                 var obj = jQuery.parseJSON(res);
+                 for(var i=0;i<obj.length;i++)
+                     {
+                         var val = obj[i].split(":");
+                         $id = "#"+val[0]+"d";
+                         $($id).html(val[1]);
+                     }
+               }
        },
        error:function(res)
        {
-           alert(res);
+//           
        }
     });
     }
