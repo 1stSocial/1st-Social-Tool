@@ -15,6 +15,19 @@ Class Item_model extends CI_Model {
        $rs['item_id'] = $this->db->insert_id();   
         $rs['tag_id'] = $this->input->post('tag_id');
        $this->db->insert('item_tags',$rs);
+       $taxoarr = $this->input->post('taxo');
+       foreach ($taxoarr as $taxo_id => $taxo_val) {
+        if(!$taxo_val=='')
+        {
+            $taxo = array(
+                         'item_id'=>$rs['item_id'],
+                         'taxo_id'=>$taxo_id,
+                         'value' => $taxo_val
+            );
+
+            $this->db->insert('item_taxo',$taxo);
+       }
+       }
     }
     function get_item($id)
     {
@@ -75,6 +88,19 @@ Class Item_model extends CI_Model {
              return $query->result_array();
              
          }
+    }
+    
+    function get_type($id)
+    {
+        $query = $this->db->get_where('taxonomy', array('id'=>$id));
+        if($query->num_rows()>0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
     }
     
 }
