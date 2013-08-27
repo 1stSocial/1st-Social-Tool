@@ -145,6 +145,7 @@ function savefun(ur)
                          var val = obj[i].split(":");
                          $id = "#"+val[0]+"d";
                          $($id).html(val[1]);
+						 
                      }
                }
        },
