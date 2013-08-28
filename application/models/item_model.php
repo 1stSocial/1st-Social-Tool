@@ -10,13 +10,25 @@ Class Item_model extends CI_Model {
         return $query->result();
     }
     
-    function item_insert($data)
+    function item_insert($data,$tag_id)
     {
         $this->db->insert('items',$data);
        $rs['item_id'] = $this->db->insert_id();   
-        $rs['tag_id'] = $this->input->post('tag_id');
-       $this->db->insert('item_tags',$rs);
-       $taxoarr = $this->input->post('taxo');
+//        $tag_id = $this->input->post('tag_id');
+//        var_dump($tag_id); die;
+      if(is_array($tag_id))
+      {
+          foreach ($tag_id as $value) {
+              $rs['tag_id'] = $value;
+              $this->db->insert('item_tags',$rs);
+          } 
+      }
+      else
+      {
+          $rs['tag_id'] = $tag_id;
+          $this->db->insert('item_tags',$rs);
+      }
+        $taxoarr = $this->input->post('taxo');
        foreach ($taxoarr as $taxo_id => $taxo_val) {
         if(!$taxo_val=='')
         {
@@ -25,7 +37,7 @@ Class Item_model extends CI_Model {
                          'taxo_id'=>$taxo_id,
                          'value' => $taxo_val
             );
-
+            
             $this->db->insert('item_taxo',$taxo);
        }
        }
@@ -49,6 +61,8 @@ Class Item_model extends CI_Model {
         $this->db->delete('items');
         $this->db->where(array('item_id'=>$id));
         $this->db->delete('item_tags');
+        $this->db->where(array('item_id'=>$id));
+        $this->db->delete('item_taxo');
     }
     
     function get_item_id($id)
