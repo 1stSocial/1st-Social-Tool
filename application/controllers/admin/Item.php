@@ -105,20 +105,84 @@ class Item extends CI_Controller {
         $itemid = $this->uri->segment(4);
         $item_modal = new Item_model();
 //        echo $itemid ; die;
-        $data = $item_modal ->get_item_id($itemid);
-       // echo "id-";  print_r($data); die;
-       echo $this->load->view('admin/item_edit',$data['0'],TRUE);
+        $data['item'] = $item_modal ->get_item_id($itemid);
+        $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
+//        echo "id-";        var_dump($data); die;
+       echo $this->load->view('admin/item_edit',$data,TRUE);
         die;
 //        var_dump($data);
     }
             
     function update_item()
     {
-        $this->load->model('Item_model');
-        $item_model = new Item_model();
-        $item_model->update_item();
-        echo '';
-        die;
+        
+        $this->load->model('item_model');
+        $error = array();
+        $error_iden = TRUE;
+        $item = new Item_model();
+        
+        $taxoarr = $this->input->post('taxo');
+        foreach ($taxoarr as $taxo_id => $taxo_val) 
+            {
+                $val = $item->get_type($taxo_id);
+                 if($val)
+                 {
+                     switch($val['0']['type'])
+                     {
+                         case 'Integer':
+                         {
+                            if(!$taxo_val=='')
+                            {
+                             $exp = '/^[0-9]*[.]*[0-9]+$/' ;
+                             if(!preg_match($exp,$taxo_val))
+                             {
+                                 $error[] = $taxo_id.":Please Enter Number";
+                                 $error_iden = $error_iden && FALSE;
+                             }
+                             else
+                             {
+                                 $error[] = $taxo_id.":";
+                                 $error_iden = $error_iden && TRUE;
+                             }
+                            }
+                            else
+                            {
+                                $error[] = $taxo_id.":Please Enter Number";
+                                $error_iden = $error_iden && FALSE;
+                            }
+                         }
+                             break;
+                         case 'String':
+                         {
+                             if($taxo_val=='')
+                             {
+                                 $error[] = $taxo_id.":* please give value";
+                                 $error_iden = $error_iden && FALSE;
+                             }
+                             else
+                             {
+                                 $error[] = $taxo_id.":";
+                                 $error_iden = $error_iden && TRUE;
+                             }
+                         }
+                             break;
+                     }
+                 }
+            }
+        if($error_iden)
+        {
+            $this->load->model('Item_model');
+            $item_model = new Item_model();
+            $item_model->update_item();
+            echo '';
+            die;
+        }
+        else
+        {
+            echo json_encode($error);
+            die;
+        }
+        
     }
     
     function insert_item()
