@@ -22,8 +22,7 @@
 </div>
     <div class="modal-body" style=" ">   
     
-<input type="hidden" id="tag_id" name="tag_id" value="<?=$tag_id;?>">
-
+<!--<input type="hidden" id="tag_id" name="tag_id" value="<?=$child_tag;?>">-->
  <div class="control-group">
 <div class="controls">
      <label style=" float: left;" class="control-label"  >Name :</label>
