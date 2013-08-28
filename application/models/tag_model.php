@@ -211,6 +211,43 @@ Class Tag_model extends CI_Model
             return $result;
         }
         
+        public function tag_val($bid)
+        {
+            $query = $this->db->get_where('board',array('id'=>$bid));
+            $arr = array();
+            $arr2 = array();
+            
+            if($query->num_rows()>0)
+            {
+                $result = $query->result_array();
+                
+                foreach($result as $val) {
+                    $query2 = $this->db->get_where('tags',array('parent_tag_id'=>$val['parent_tags']));
+                    if($query2->num_rows()>0)
+                    {
+                        $result2 = $query2->result_array();
+                        foreach($result2 as $val2) {
+                            $query3 = $this->db->get_where('tags',array('parent_tag_id'=>$val2['id']));
+                            if($query3->num_rows()>0)
+                            {
+                                $arr[] = $val2;
+                                foreach($query3->result_array() as $val3)
+                                {
+                                    $arr2[] = $val3;
+                                }
+                            }
+                        }
+                        }
+                    }
+                }
+               
+                $result_send['Parent'] = $arr;
+                $result_send['child'] =$arr2;
+                
+                return $result_send;
+        }
+
+
         public function semi_parent()
         {
             $query = $this->db->get_where('tags',array('parent_tag_id'=>'0'));
