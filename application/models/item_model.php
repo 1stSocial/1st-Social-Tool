@@ -64,6 +64,19 @@ Class Item_model extends CI_Model {
          }
     }
     
+    function get_item_taxo($id)
+    {
+        $this->db->select('*,first.value as ival');
+        $this->db->from('item_taxo as first');
+        $this->db->join('taxonomy as t','first.taxo_id = t.id');
+        $this->db->where('item_id', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+             return $query->result_array();
+          }
+    }
+    
+            
     function update_item()
     {
        $id = $this->input->post('id');
@@ -72,6 +85,22 @@ Class Item_model extends CI_Model {
        $data['body'] = $this->input->post('body');
        
        $this->db->update('items',$data,array('id'=>$id));
+       $this->db->delete('item_taxo', array('item_id'=>$id));
+       $taxoarr = $this->input->post('taxo');
+       
+       foreach ($taxoarr as $taxo_id => $taxo_val) 
+           {
+                if(!$taxo_val=='')
+                {
+                    $taxo = array(
+                                 'item_id'=>$id,
+                                 'taxo_id'=>$taxo_id,
+                                 'value' => $taxo_val
+                    );
+
+                    $this->db->insert('item_taxo',$taxo);
+               }
+        }
        
     }
     
