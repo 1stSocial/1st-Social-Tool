@@ -53,6 +53,8 @@ class Item extends CI_Controller {
 //         var_dump($data);
         $this->load->view('admin/add_item',$data);
         
+        
+        
     }
     
     function fill_value()
@@ -67,7 +69,7 @@ class Item extends CI_Controller {
         $taxonomy = new Taxonomy_model();
         $item = new Item_model();
         $session_data = $this->session->userdata('logged_in');
-        $borad_id = $this->input->post('board');
+        $borad_id = $this->input->post('boardval');
         $boards = $boardModel->getBoardByBoardId($borad_id);
 //        var_dump($boards);
         $taxonomy = $item->get_taxonomy($boards['0']->parent_tags);
@@ -81,6 +83,7 @@ class Item extends CI_Controller {
 //       var_dump($data);
 //        die;
         
+        $_SESSION['child_tag'] = $this->input->post('tag');
         
         $data['items'] = $this->item_model->get_item($session_data['id']);
         $this->load->view('admin/item_fill',$data);
@@ -256,7 +259,9 @@ class Item extends CI_Controller {
                 $data['created_by'] = $session_data['id'];
                 $data['createdTime'] = date('Y-m-d h:m:s');
                 $data['status'] = '0';
-                $item->item_insert($data);
+                $tag = $_SESSION['child_tag'];
+                unset($_SESSION['child_tag']);
+                $item->item_insert($data,$tag);
                echo '';
                 die();
         }
@@ -265,6 +270,17 @@ class Item extends CI_Controller {
             echo json_encode($error);
             die;
         }
+    }
+    
+    
+    function childtag()
+    {
+         $this->load->model('tag_model');
+         $tag_model = new Tag_model();
+         $id = $this->input->post('id'); 
+         $data['tag']= $tag_model->tag_val($id);
+         echo json_encode($data);
+            die;
     }
 }
 ?>
