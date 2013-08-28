@@ -1,10 +1,10 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/create_item.js"></script>
 <script>
-   setTimeout(function(){
-       $('#mod1').click();
-   },100);
-   
-   $('#body').redactor();
+//   setTimeout(function(){
+//       $('#mod1').click();
+//   },100);
+//   
+//   $('#body').redactor();
    
    function _close()
     {
@@ -18,7 +18,7 @@
 
  <?php echo form_open('admin/Item/fill_value','additem');?>
 <div class="modal-header">
-
+    <input type="hidden" id="url" value="<?=site_url();?>">
     <h3> Create Item </h3>
 </div>
     <div class="modal-body" style=" ">   
@@ -27,13 +27,18 @@
 <label class="control-label" style="float: left">Choose Board :</label>
     <?php // echo form_label('Choose Board :', 'Boardlbl', array('class' => "control-label") ); ?>
 
-    <select data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="board" name="board" >
+<select data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
         <option></option>
         <?  if(!empty($boards)): foreach($boards as $val): ?>
         <option value="<?=$val['board_id']?>"><?=$val['name']?></option>
        
         <?php endforeach;endif;?>
-    </select>
+</select>
+
+<div id="add">
+    
+</div>
+
 <br/><br/>
 <div class="control-group">
 <div class="modal-footer">
