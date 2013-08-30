@@ -1,0 +1,65 @@
+		/********* set color code of theme ( Instead you can set color name also )  *********/
+    /********************* (Please mention color name in lowercase  *********************/
+    
+    
+		@theme: #F00; 
+   
+   
+   /*--------- main less css starts here -------------*/
+   @bg:@theme - 30%;
+   @footer: darken(@bg, 15%);
+body{
+            background: lighten(white, 45%);
+            }
+#blogname{
+     background: @theme + 90%;
+    }
+a{ color:@theme; }
+#masthead {
+     border-top:4px solid @theme - #979797;
+    }
+.menu{
+     background: @theme - #979797;
+    }
+#blogname h2{
+     color: @theme - #787878;
+    }
+#search {
+     border: 1px solid @theme + 90%;
+     background:lighten(@theme, 47%);
+    }
+#s{ color:@theme - 90% };
+#searchsubmit{
+    background:url("images/sbutton.png") repeat @theme + 90%;
+    }
+#latestjob .textwidget{
+     color: @theme + 30%;
+    }
+.wp-pagenavi span.current{
+     color: @theme + 30%;
+    }
+.even{
+     border-top:1px solid @theme + 30%;
+     border-bottom:1px solid @theme + 30%;
+     background:lighten(@theme, 45%);
+    }
+#slider-range .ui-slider-range{
+    background: @theme;
+    }
+#left .active{
+     background:lighten(@theme,48%);
+    }
+.title h2 a{
+     color: @theme + #444;
+    }
+#left .active h2 a{
+     color: darken(@theme, 20%);
+    }
+#date{
+    background:@theme + 80%;
+    }
+#year{ color:@theme - 50%; }
+.orange_saperator{ border:1px solid @theme;}
+.price_range_p #amount{ color: lighten(@theme, 10%); }
+#bottom{ border-top:2px solid @theme; background : lighten(@footer, 40%); }
+#footer{ background: @theme - 90%; }
