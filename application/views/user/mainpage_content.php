@@ -7,9 +7,10 @@
     <div id="navigation" class="clearfix">
 
 
-        <!--                        <div class="wp-pagenavi">
-                                    <span class="pages">Page 1 of 4</span><span class="current">1</span><a href="http://1stworld.1stsocial.com.au/?page=2" class="page larger">2</a><a href="http://1stworld.1stsocial.com.au/?page=3" class="page larger">3</a><a href="http://1stworld.1stsocial.com.au/?page=4" class="page larger">4</a><a href="http://1stworld.1stsocial.com.au/?page=2" class="nextpostslink">»</a>
-                                </div>-->
+                                <!--<div class="wp-pagenavi">-->
+                                    <!--<span class="pages">Page 1 of 4</span><span class="current">1</span><a href="http://1stworld.1stsocial.com.au/?page=2" class="page larger">2</a><a href="http://1stworld.1stsocial.com.au/?page=3" class="page larger">3</a><a href="http://1stworld.1stsocial.com.au/?page=4" class="page larger">4</a><a href="http://1stworld.1stsocial.com.au/?page=2" class="nextpostslink">»</a>-->
+                                    <div style='margin-left: 80%'><?php echo $this->pagination->create_links();?></div>
+                                <!--</div>-->
 
 
 
@@ -24,7 +25,12 @@
 
                             <h2><a rel="bookmark" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
                             <div id="outer">
-                                <span class="location">Location: NSW, Regional NSW          </span><br>
+                                <span class="location">Location: <?php if(isset($post['child'][$loop])):
+                                        foreach($post['child'][$loop] as $val1) :
+                                            if($val1->parent_tag_id == $post['Location'][0]->id):
+                                        ?>
+                                    <a href="javascript:footer_refine(<?=$val1->id?>)" rel="tag"><?=$val1->name?></a>
+                                    <?php endif; endforeach; endif;?></span><br>
                                 <span class="posted">Posted: <?php $dt = human_to_unix($val->createdTime);
         $formate = "%d %M %Y";
         echo mdate($formate, $dt); ?></span> 
@@ -69,7 +75,7 @@
         echo mdate($formate, $dt); ?></span>  
 
 
-                                <span class="tags sallery_tag">85000 per year</span>
+                                <span class="tags sallery_tag"><?=$post['salary'][$loop][0]->val;?>per year</span>
                                 <?php if(isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
                                 <span class="tags">
                                     <?php if(isset($post['child'][$loop])):
@@ -90,8 +96,7 @@
                             <div>
                                 <?= $val->body ?>
                                 <div></div>
-                                <div><a href="http://youtu.be/AGsYz2YTExg">&nbsp;</a></div>
-                                <!--<p><iframe src="1stWorld%20_%201stExecutive%20Job%20Board_files/AGsYz2YTExg.htm" allowfullscreen="" frameborder="0" height="315" width="560"></iframe></p>-->
+                                
                                 <div></div>
                                 <div></div>
                             </div>

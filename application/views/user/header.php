@@ -38,11 +38,7 @@
         <div id="masthead">
             <div class="header">
                 <div id="top">
-                <div id="blogname">
-                    <h1 class="logo">
-                        <a title="1stWorld" href="<?=  site_url()?>/user/user/index">1stWorld</a> 
-                    </h1>
-                    <h2>1stExecutive Job Board </h2>
+                    <a href="<?=  site_url()?>/user/user/index"><div id="toplogo"></div></a>
                 </div>
                <div id="Header_content">
                    <li class="botwid widget_text">			
@@ -57,21 +53,19 @@
                         <li id="menu-item-132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-132"><a href="">Help</a></li>
                         </ul>
                     </div>
-                    
                     <div id="search">
-                        <form action="" id="searchform" method="get" role="search">
+                        <!--<form action="" id="searchform" method="get" role="search">-->
                                     <div>
                                         <input id="s" name="s" value="job search" onfocus="if (this.value=='job search') this.value='';" onblur="if (this.value=='') this.value='job search';" type="text">
-                                        <input value="" id="searchsubmit" type="submit">
+                                        <input value="" id="searchsubmit" type="button">
                                     </div>
-                                </form>
-                    </div>   
-
+                                <!--</form>-->
+                    </div>
                 </div>
                     </div>
             </div>
             </div>
         
 <div id="wrapper">  <!-- wrapper begin -->
-<!--<div id="topbg"></div>-->
+<div id="topbg"></div>
 <div id="casing">

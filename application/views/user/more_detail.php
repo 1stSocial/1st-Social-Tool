@@ -21,7 +21,7 @@
         echo mdate($formate, $dt); ?></span>  
 
 
-                                <span class="tags sallery_tag">85000 per year</span>
+                                <span class="tags sallery_tag"><?=$post['salary'][$loop][0]->val;?> per year</span>
                                 <?php if(isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
                                 <span class="tags">
                                     <?php if(isset($post['child'][$loop])):
@@ -39,7 +39,7 @@
 
                         </div>
                         <div class="entry" style="padding:0 60px;">
-                            <div>
+                            <div style="text-align: justify">
                                 <?= $val->body ?>
                                 <div></div>
                                 <div><a href="http://youtu.be/AGsYz2YTExg">&nbsp;</a></div>

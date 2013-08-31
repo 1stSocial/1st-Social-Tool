@@ -6,9 +6,9 @@
 
             <li class="botwid widget_pages"><h3 class="bothead">Pages</h3>		
                 <ul>
-                    <li class="page_item page-item-124"><a href="http://localhost/1stworld/about-us/">About Us</a></li>
-                    <li class="page_item page-item-128"><a href="http://localhost/1stworld/become-a-member/">Become A Member</a></li>
-                    <li class="page_item page-item-129"><a href="http://localhost/1stworld/help/">Help</a></li>
+                    <li class="page_item page-item-124"><a href="">About Us</a></li>
+                    <li class="page_item page-item-128"><a href="">Become A Member</a></li>
+                    <li class="page_item page-item-129"><a href="">Help</a></li>
                 </ul>
             </li>
             <?php if(is_array($Parent)): foreach ($Parent as $data):?>

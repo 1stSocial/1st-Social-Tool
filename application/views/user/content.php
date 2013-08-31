@@ -3,18 +3,19 @@
             <div class="textwidget">Jobs</div>
         </li></div>
 
-    <div id="navigation" class="clearfix" >
-
+    <div id="navigation1" class="clearfix" >
+        <div style='margin-left: 80%'><?php echo $this->pagination->create_links();?></div>
     </div>
 
     <?php $loop = 0; if(is_array($post) && isset($post['item']) ):foreach ($post['item'] as $val): ?>
         <div class="post" id="post-<?php echo $val->id; ?>">
             <div class="title">
+                <input type="hidden" value='<?=$pagename;?>' id="pagename" name="pagename">
                 <h2><a href="" class="title_link" rel="" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
                 <div class="postmeta"> 	
                     <span class="user">Posted by <a href="" title="Posts by " rel="author"><?php echo $val->user_name; ?></a></span>  
                     <span class="clock"><?php $dt = human_to_unix($val->createdTime); $formate="%l,%d %M %Y"; echo mdate($formate,$dt); ?></span>  
-                    <span class="tags sallery_tag">85000 per year</span>
+                    <span class="tags sallery_tag"><?=$post['salary'][$loop][0]->val;?> per year</span>
                                 <?php if(isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
                                 <span class="tags">
                                     <?php if(isset($post['child'][$loop])):
@@ -40,4 +41,6 @@
         </div>
     <?php $loop++; endforeach;endif; ?>;
     <div class="clear"></div>
+    
 </div>
+<script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
