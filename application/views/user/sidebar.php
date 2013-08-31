@@ -1,9 +1,11 @@
+    
 <div id="left" >
     <?php 
     if(isset($content))
         echo $content;
      ?>
 </div>
+
 <div id="right">
 
     <!-- Sidebar widgets -->
@@ -61,11 +63,11 @@
 
 
             <li>
-                <a href="http://localhost/1stworld/" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
+                <a href="<?=  site_url()?>/user/user/detail/<?=$val['id']?>" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
             </li>			
 
             <li class="rbanner">
-                <a href="" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
+                <a href="" title=""><div class="rimg"></div></a>
             </li>
 
             <li>
@@ -73,7 +75,7 @@
             </li>
 
             <li class="rbanner">
-                <a href="" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
+                <a href="" title=""><div class="limg"></div></a>
             </li>
 
         </ul>
