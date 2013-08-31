@@ -6,7 +6,65 @@ class User_model extends CI_Model
     {
         
     }
-    function post_job()
+    
+    function page_count($page)
+    {
+        switch ($page) {
+            case 'post_job':
+            {
+                $this->db->select('i.*,u.name as user_name');
+                    
+                $this->db->from('items as i');
+                $this->db->join('users as u','u.id =i.created_by','inner');
+        //      $this->db->distinct();
+                $result = $this->db->get();
+                return $result->num_rows();
+            }break;
+
+            case 'refine_job_salary':
+            {
+                $max = $this->input->post('max');
+                $min = $this->input->post('min');
+
+                $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+                $this->db->from('taxonomy as taxo');
+                $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
+                $this->db->join('items as i','i.id=t.item_id','inner');
+                $this->db->join('users as u','u.id =i.created_by','inner');
+                $this->db->where('taxo.name','salary');
+                $this->db->where("t.value BETWEEN $min AND $max");
+       
+//        $query = $this->db->get();
+                $result = $this->db->get();
+                return $result->num_rows();
+            }break;
+            
+            case 'keyword_search':
+            {
+                $keyword = $this->input->post('search');
+       
+                $this->db->select('id');
+                $this->db->from('items');
+                $this->db->like('name',$keyword);
+                $this->db->or_like('title',$keyword);
+                $query = $this->db->get();
+                
+                return $query->num_rows();
+            }break;
+        } 
+       
+        
+    }
+    
+    function refine_post_count($id)
+    {
+                $this->db->select('item_id');
+                $this->db->from('item_tags');
+                $this->db->where_in('tag_id',$id);
+                $result = $this->db->get();
+                return $result->num_rows();
+    } 
+    function post_job($start)
     {
         $result1 = array();
       //$result = $this->db->query('select u.name as user_name,i.* from items i inner join users u on u.id =i.created_by ');
@@ -15,6 +73,7 @@ class User_model extends CI_Model
                     
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
+                     $this->db->limit(5, $start);
 //                    $this->db->distinct();
                     $result = $this->db->get();
                     if($result->num_rows()>0)
@@ -49,13 +108,38 @@ class User_model extends CI_Model
                     
                     $result1['child'] = $temp;
 //                    print_r($result1);
+                    $temp5 = array();
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+                        $this->db->from('taxonomy as taxo');
+                        $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
+                        $this->db->join('items as i','i.id=t.item_id','inner');
+                        $this->db->join('users as u','u.id =i.created_by','inner');
+                        $this->db->where('taxo.name','salary');
+                        $res = $this->db->where('i.id',$val->id);
+                        $temp4 = $this->db->get();
+                        $temp5[] =$temp4->result();
                     }
-                    return($result1);
+                    
+                    $result1['salary'] = $temp5;
+                    
+                        $this->db->select('id');
+                        $this->db->from('tags');
+                        $this->db->where('name','Location');
+                        $query = $this->db->get();
+                        $result1['Location'] =  $query->result();
+                    
+                    }
+                    
+//                    print_r($result1);
+//                    die;
+                      return($result1);
                     
                     
     }
     
-    function refine_post_job($id)
+    function refine_post_job($id,$start)
     {
         $data = array();
         $data1 = array();
@@ -66,6 +150,7 @@ class User_model extends CI_Model
             $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
+                $this->db->limit(5, $start);
                 $result = $this->db->get();
                 if($result->num_rows()>0)
                 {
@@ -94,6 +179,7 @@ class User_model extends CI_Model
                     $this->db->join('items as i','i.id=t.item_id','inner');
                     $this->db->join('users as u','u.id =i.created_by','inner');
                     $this->db->where_in('t.tag_id',$key);
+                    $this->db->limit(5, $start);
                     $this->db->distinct();
                     $result = $this->db->get();
                     if($result->num_rows()>0)
@@ -127,13 +213,29 @@ class User_model extends CI_Model
                     }
                     
                     $result1['child'] = $temp;
+                    
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+                        $this->db->from('taxonomy as taxo');
+                        $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
+                        $this->db->join('items as i','i.id=t.item_id','inner');
+                        $this->db->join('users as u','u.id =i.created_by','inner');
+                        $this->db->where('taxo.name','salary');
+                        $res = $this->db->where('i.id',$val->id);
+                        $temp4 = $this->db->get();
+                        $temp5[] =$temp4->result();
+                    }
+                    
+                    $result1['salary'] = $temp5;
+                    
                     }
                     return($result1);
                     
        
     }
     
-    function refine_job_salary()
+    function refine_job_salary($start)
     {
         $result1 = array();
         $max = $this->input->post('max');
@@ -146,6 +248,7 @@ class User_model extends CI_Model
         $this->db->join('users as u','u.id =i.created_by','inner');
         $this->db->where('taxo.name','salary');
         $this->db->where("t.value BETWEEN $min AND $max");
+        $this->db->limit(5, $start);
        
 //        $query = $this->db->get();
            $result = $this->db->get();
@@ -180,6 +283,24 @@ class User_model extends CI_Model
                     }
                     
                     $result1['child'] = $temp;
+                    
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+                        $this->db->from('taxonomy as taxo');
+                        $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
+                        $this->db->join('items as i','i.id=t.item_id','inner');
+                        $this->db->join('users as u','u.id =i.created_by','inner');
+                        $this->db->where('taxo.name','salary');
+                        $res = $this->db->where('i.id',$val->item_id);
+                        $temp4 = $this->db->get();
+                        $temp5[] =$temp4->result();
+                    }   
+                    
+                    $result1['salary'] = $temp5;
+                    
+                    
+                    
                     }
 //                    print_r($result1);
 //                    die;
@@ -207,7 +328,10 @@ class User_model extends CI_Model
                     
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
-                    $this->db->where('i.id',$id);
+                    if(is_array($id))
+                       $this->db->where_in('i.id',$id); 
+                    else 
+                        $this->db->where('i.id',$id);
 //                    $this->db->distinct();
                     $result = $this->db->get();
                     if($result->num_rows()>0)
@@ -241,11 +365,58 @@ class User_model extends CI_Model
                     }
                     
                     $result1['child'] = $temp;
+                    
+                    
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+                        $this->db->from('taxonomy as taxo');
+                        $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
+                        $this->db->join('items as i','i.id=t.item_id','inner');
+                        $this->db->join('users as u','u.id =i.created_by','inner');
+                        $this->db->where('taxo.name','salary');
+                        $res = $this->db->where('i.id',$val->id);
+                        $temp4 = $this->db->get();
+                        $temp5[] =$temp4->result();
+                    }
+                    
+                    $result1['salary'] = $temp5;    
 //                    print_r($result1);
                     }
                     return($result1);
                     
     }
+    
+    function keyword_search($start)
+    {
+       $keyword = $this->input->post('search');
+       
+       $this->db->select('id');
+       $this->db->from('items');
+       $this->db->like('name',$keyword);
+       $this->db->or_like('title',$keyword);
+       $this->db->limit(5, $start);
+       $query = $this->db->get();
+       
+       if($query->num_rows()>0)
+       {
+           $var = $query->result_array();
+           $arr = array();
+           
+           foreach ($var as $va) {
+               
+               $arr[] = $va['id'];
+           }
+           
+           return $this->view_detail($arr);
+           
+       }
+ else {
+            
+       }
+       
+    }
+    
 }
 
 ?>
