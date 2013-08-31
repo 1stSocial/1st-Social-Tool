@@ -395,6 +395,7 @@ class User_model extends CI_Model
        $this->db->from('items');
        $this->db->like('name',$keyword);
        $this->db->or_like('title',$keyword);
+       $this->db->or_like('body',$keyword);
        $this->db->limit(5, $start);
        $query = $this->db->get();
        
