@@ -11,66 +11,92 @@
    
    /*--------- main less css starts here -------------*/
    @bg:@theme - 10%;
-   @footer: darken(@bg, 15%);
+
+@footer: darken(@bg, 15%);
+
 body{
-            background: white; //lighten(@bg, 50%);
-            }
-#blogname{
-     background: @theme;
+ background: white; //lighten(@bg, 50%);
     }
+
+#blogname{
+     background: @blog_background_color;
+    }
+
 a{ color:@theme; }
+
 #masthead {
      border-top:4px solid @theme - #979797;
     }
+
 .menu{
-     background: @theme - #979797;
+     background: @menu_background_color;
+     font-size : @menu_font_size;
     }
+
 #blogname h2{
-     color: @theme - #787878;
+     color: @blog_name_color;
     }
+
 #search {
-     border: 1px solid @theme;
-     background:lighten(@theme, 47%);
+     border: @border;
+     background:@searchbox_color;
     }
+
 #s{ color:@theme - 90% };
+
 #searchsubmit{
     background:url("images/sbutton.png") repeat @theme;
     }
+
 #latestjob .textwidget{
-		 font-style: normal;
+		 font-style: @latestjob_font_style;
      color: @theme;
     }
+
 .wp-pagenavi span.current{
      color: @theme + 30%;
     }
+
 .even{
      border-top:1px solid @theme + 30%;
      border-bottom:1px solid @theme + 30%;
      background:lighten(@theme, 45%);
     }
+
 #slider-range .ui-slider-range{
     background: @theme;
     }
+
 #left .active{
      background:lighten(@theme,48%);
     }
+
 .title {
     cursor: pointer;
 }
+
 .title h2 a, .title h1 {
      color: @theme;
     }
+
 #left .active h2 a{
      color: darken(@theme, 20%);
     }
+
 .job-image {
     border: 1px solid @theme;
 } 
+
 #date{
     background:@theme;
     }
+
 #year{ color:@theme; }
+
 .orange_saperator{ border:1px solid @theme;}
+
 .price_range_p #amount{ color: lighten(@theme, 10%); background:transparent; }
+
 #bottom{ border-top:2px solid @theme; background : @theme, 90%; }
+
 #footer{ background: @theme; }

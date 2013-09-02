@@ -10,3 +10,7 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
   KEY `pareent_taxonomy_id` (`taxonomy_id`),
   KEY `pareent_taxonomy_id_2` (`taxonomy_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
+
+ALTER TABLE `items`  ADD `board_id` INT(50) NOT NULL AFTER `createdTime`
