@@ -16,28 +16,41 @@ class User extends CI_Controller {
         $this->load->library('pagination');
         $config['base_url'] = site_url().'/user/user/index';
         $config['per_page'] = 5;
+        $config['use_page_numbers'] = TRUE;
         $val =$this->uri->segment(4);
+        $data['pageno'] = $val;
+        
+          if($val > 1)
+            {
+                 $val=$val - 1;
+            }
+        else 
+           { 
+           $val=0;
+            }
         
         if ($this->input->post()) {
             $id = $this->input->post('val');
             $id_array = explode(",", $id);
             if (count($id_array) - 1 == 0) {
                 $config['total_rows'] = $this->user_model->page_count('post_job');
-                $data['post'] = $this->user_model->post_job($val);
+                $data['post'] = $this->user_model->post_job($val*5);
+                $data['pageno'] = $this->input->post('pageno');
 //            $data['parent_id'] = $this->user_model->parent_id();
                 $this->pagination->initialize($config);
                 echo $this->load->view('user/mainpage_content', $data, TRUE);
             } else {
                 $config['total_rows'] = $this->user_model->refine_post_count($id_array);
                 $this->pagination->initialize($config);
-                $data['post'] = $this->user_model->refine_post_job($id_array,$val);
+                $data['post'] = $this->user_model->refine_post_job($id_array,$val*5);
                 echo $this->load->view('user/content', $data, TRUE);
             }
             die;
         } else {
             $config['total_rows'] = $this->user_model->page_count('post_job');
             $this->pagination->initialize($config);
-            $data['post'] = $this->user_model->post_job($val);
+          
+            $data['post'] = $this->user_model->post_job($val*5);
 //            $data['parent_id'] = $this->user_model->parent_id();
             $data['content'] = $this->load->view('user/mainpage_content', $data, TRUE);
 //         
