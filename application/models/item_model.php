@@ -65,7 +65,7 @@ Class Item_model extends CI_Model {
         $this->db->delete('item_taxo');
     }
     
-    function get_item_id($id)
+    function  get_item_id($id)
     {
         $this->db->select('*,t.tag_id as tag_id,i.id as item_id,');  
         $this->db->from('items as i');
@@ -90,6 +90,7 @@ Class Item_model extends CI_Model {
           }
     }
     
+    
             
     function update_item()
     {
@@ -113,6 +114,22 @@ Class Item_model extends CI_Model {
                     );
 
                     $this->db->insert('item_taxo',$taxo);
+               }
+        }
+        
+        $this->db->delete('item_tags', array('item_id'=>$id));
+        $tagarr = $this->input->post('tag_id');
+       
+       foreach ($tagarr as $tag_val) 
+           {
+                if(!$tag_val=='')
+                {
+                    $taxo = array(
+                                 'item_id'=>$id,
+                                 'tag_id'=>$tag_val
+                    );
+
+                    $this->db->insert('item_tags',$taxo);
                }
         }
        
