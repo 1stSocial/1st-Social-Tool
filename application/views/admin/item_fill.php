@@ -17,7 +17,7 @@
 
 <?php echo form_open('admin/Item/insert_item'); ?>
 <div class="modal-header">
-
+    <input type="hidden" value='<?=$board_id;?>' id="bord_id" name='bord_id'>
     <h3>Add Item <?=$board_name?></h3> 
 </div>
     <div class="modal-body" style=" ">   
@@ -103,6 +103,7 @@ function savefun(ur)
      var name = $('#item_name').val();
      var title = $('#item_title').val();
      var body = $('#body').val();
+     var board_id = $('#bord_id').val();
      var taxo = [];
 //var arrayB = new Array();
      $('#taxodiv').find('input:text')
@@ -118,6 +119,7 @@ function savefun(ur)
         name : name,
         title:title,
         body:body,
+        board_id : board_id,
         taxo : taxo
     }
     

@@ -1,3 +1,4 @@
+
 <script>
    setTimeout(function(){
        $('#mod1').click();
@@ -5,11 +6,12 @@
    
    $('#body').redactor();
 </script>
-<a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
+<a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <?php echo form_open(); ?>
+
 <div class="modal-header">
 <h3>Edit Item <?=$item['0']['name']?></h3>
 </div>
@@ -37,15 +39,48 @@
     </div>
 </div>
  </div>
- 
-<div class="controls" id="taxonomydiv">
-    <div id="taxodiv">
-    <? if(!empty($Taxonomy)): foreach($Taxonomy as $val): ?>
-    <label style=" float: left;" class="control-label" ><?=$val['name']?> :</label>
-    <div> <input type="text" style="float:left" class="control-label" style="margin-left: 20px;" id="<?=$val['id']?>" name="taxo" value="<?=$val['ival']?>"/><div id="<?=$val['id']?>d"></div><div style="clear: both"></div><br>
-    <?php endforeach;endif;?>
+    
+<div class="controls" id="maintaddiv">
+    <div id="taddiv">
+        <?php 
+        $selectArr = array();
+        
+        foreach($Tag['Parent'] as $data): ?>
+        <div style='magrin-top:33px;padding-top:8px;'>
+            <label class="control-label" style="float: left;width:165px"> <?=$data['name'];?>  </label>
+             <select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' id = '<?=$data['id']?>' name=tag[]>
+                 <?php if(!empty($Tag['child'])): foreach($Tag['child'] as $val):  if($val['parent_tag_id'] == $data['id']):?>
+                    <?php var_dump($item); foreach($item as $maindata):  if($maindata['tag_id'] == $val['id']):
+                        $selectArr[]  = $val['id'] ;
+                        ?>
+                 <option value='<?=$val['id']?>' selected="selected"><?=$val['name']?></option> 
+                 <?php else :?>
+                 <!--<option value='<?=$val['id']?>'><?=$val['name']?></option>--> 
+            <?php endif;endforeach;
+            
+            if(!in_array($val['id'], $selectArr)):
+            ?>
+                
+                 <option value='<?=$val['id']?>'><?=$val['name']?></option>
+                
+                     <?php endif; endif;endforeach;endif;?> 
+            </select>
+        <?php endforeach;?>        
+        </div>
     </div>
 </div>    
+ 
+<div class="controls" id="taxonomydiv">
+    <div id="taxodiv" style="padding-top: 5px">
+    <? if(!empty($Taxonomy)): foreach($Taxonomy as $val): ?>
+    <label style=" float: left;" class="control-label" ><?=$val['name']?> :</label>
+    <div style='magrin-top:33px'> <input type="text" style="float:left" class="control-label" style="margin-left: 20px;" id="<?=$val['id']?>" name="taxo" value="<?=$val['ival']?>"/><div id="<?=$val['id']?>d"></div><div style="clear: both"></div></div><br>
+    <?php endforeach;endif;?>
+    
+</div>    
+</div>
+    
+    
     
 <div class="control-group">
 <div class="modal-footer">
@@ -55,21 +90,35 @@
 </div>
     </div>
 </div>
-
+</div>
 <script>
-
-function savefun(ur)
-    { var id = $('#item_id').val();
+    
+    $(document).ready()
+    {
+        $(".chosen-select").chosen({width: "50%"});
+    }
+    
+    function savefun(ur)
+    { 
+     var id = $('#item_id').val();
      var itemname = $('#name').val();
      var title = $('#title').val();
      var body = $('#body').val();
+   //  var tag = $('#tag').val();
+   var tag =[];
      var taxo = [];
 //var arrayB = new Array();
      $('#taxodiv').find('input:text')
         .each(function() {
              taxo[this.id] = $(this).val();
         });
-        
+     
+     $('#maintaddiv').find('select').find(":selected")
+        .each(function() {
+             tag[$(this).val()] = $(this).val();
+             
+        });
+     
     if(itemname != ""){
      
     var dataval ={
@@ -77,8 +126,9 @@ function savefun(ur)
         name : itemname,
         title:title,
         body:body,
-        taxo : taxo
-    }
+        taxo : taxo,
+        tag_id : tag
+    };
 
     $.ajax({
         type: "POST",

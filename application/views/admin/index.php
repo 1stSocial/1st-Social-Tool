@@ -6,7 +6,7 @@
 </script> -->
 
 
-<table class="table table-striped ">
+<table id="tab_id" class="table table-striped">
         <thead>
           <tr>
             <th>Board Name</th>
@@ -27,6 +27,7 @@
             <td><div class="btn-group"> <a href="javascript:edit(<?=$val->board_id?>)" href="<?php // echo site_url('/admin/home/edit_board/'.$val->board_id) ?>"class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/home/delete_board/'.$val->board_id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
           </tr>
           <? endforeach;endif;?>
+          
         </tbody>
       </table>
 </table>
@@ -112,6 +113,13 @@ switch ($option)
 
 
 <script>
+
+$(document).ready(function(){
+    $('#tab_id').dataTable( {
+    "sPaginationType": "full_numbers"
+  } );
+    $('#tab_id_length').show();
+});
 
 function cl()
 {

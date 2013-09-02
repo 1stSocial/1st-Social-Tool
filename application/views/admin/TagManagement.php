@@ -1,4 +1,4 @@
-<table class="table table-striped ">
+<table id="tab_id" class="table table-striped ">
         <thead>
           <tr>
               <th>Tag Id</th> 
@@ -22,6 +22,14 @@
     
 </div>
 <script>
+
+$(document).ready(function(){
+    $('#tab_id').dataTable( {
+    "sPaginationType": "full_numbers"
+  } );
+    $('#tab_id_length').show();
+});
+    
 function edit(val)
 {
    edit_url = $('#edit_url').val();
