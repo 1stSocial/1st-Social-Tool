@@ -1,0 +1,102 @@
+		/********* set color code of theme ( Instead you can set color name also )  *********/
+    /********************* (Please mention color name in lowercase  *********************/
+    
+    
+    
+		@theme: #0e95d0; 
+   
+   
+   
+   
+   
+   /*--------- main less css starts here -------------*/
+   @bg:@theme - 10%;
+
+@footer: darken(@bg, 15%);
+
+body{
+ background: @background_color; //lighten(@bg, 50%);
+    }
+
+#blogname{
+     background: @background_color;
+    }
+
+a{ color:@theme; }
+
+#masthead {
+     border-top:4px solid @theme - #979797;
+    }
+
+.menu{
+     background: @menu_color;
+     
+    }
+
+#blogname h2{
+     color: @blog_name_color;
+    }
+
+#search {
+     border: @border;
+     background:@search_bg_color;
+    }
+
+#s{ color:@theme - 90% };
+
+#searchsubmit{
+    background:url("images/sbutton.png") repeat @searchbtn_color;
+    }
+
+#latestjob .textwidget{
+		 font-style: @latest_font_style;
+     color: @latestjob_text_color;
+    }
+
+.wp-pagenavi span.current{
+     color: @theme + 30%;
+    }
+
+.even{
+     border-top:@mainpage_job_top;
+     border-bottom:1px solid @theme + 30%;
+     background:lighten(@theme, 45%);
+    }
+
+#slider-range .ui-slider-range{
+    background: @theme;
+    }
+
+#left .active{
+     background:lighten(@theme,48%);
+    }
+
+.title {
+    cursor: pointer;
+}
+
+.title h2 a, .title h1 {
+     color: @theme;
+    }
+
+#left .active h2 a{
+     color: darken(@theme, 20%);
+    }
+
+.job-image {
+    border: 1px solid @theme;
+} 
+
+#date{
+    background:@theme;
+    }
+
+#year{ color:@theme; }
+
+.orange_saperator{ border:1px solid @theme;}
+
+.price_range_p #amount{ color: lighten(@theme, 10%); background:transparent; }
+
+#bottom{ border-top:2px solid @theme; background : @theme, 90%; }
+
+#footer{ background: @theme; }

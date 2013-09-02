@@ -39,7 +39,7 @@ class Home extends CI_Controller {
         $viewData['option'] = $option;
         
         $obj = new Tag_model();
-              $viewData['parenTag'] = $obj->AllParentTags();
+        $viewData['parenTag'] = $obj->AllParentTags();
               
              
         $this->load->view('admin/index', $viewData);
