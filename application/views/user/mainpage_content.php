@@ -2,8 +2,7 @@
     <div id="latestjob"><li class="botwid widget_text">			<div class="textwidget">Latest Jobs</div>
         </li></div>
 
-    <div id="navigation" class="clearfix">
-    </div>
+   
     <div id="navigation" class="clearfix">
 
 
@@ -11,8 +10,8 @@
                                     <!--<span class="pages">Page 1 of 4</span><span class="current">1</span><a href="http://1stworld.1stsocial.com.au/?page=2" class="page larger">2</a><a href="http://1stworld.1stsocial.com.au/?page=3" class="page larger">3</a><a href="http://1stworld.1stsocial.com.au/?page=4" class="page larger">4</a><a href="http://1stworld.1stsocial.com.au/?page=2" class="nextpostslink">»</a>-->
                                     <div style='margin-left: 80%'><?php echo $this->pagination->create_links();?></div>
                                 <!--</div>-->
-
-
+                                <input type="hidden" value="<?=$pageno;?>" id="pageno" name="pageno">
+                                <input type="hidden" value="<?=  site_url();?>" id="t" name="t">
 
     </div>
     <?php $loop = 0; if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>       
@@ -128,7 +127,7 @@
     
     <?php $loop++; endforeach;
 endif; ?>
-
+ 
 </div>
 
 <script>
@@ -143,4 +142,25 @@ $("div#lpouter").click(function() {
                 $var.slideToggle('slow');
             });
 
+
+$('#navigation a').click(function (){
+        
+         var id = $(this).text();
+         var pageno = $('#pageno').val();
+//         alert(id);
+         $('#pageno').val(id);
+         
+});
+
+$(document).ready()
+{
+      var str = $('#navigation strong').html();  
+     var value = $('#t').val();
+        $('#navigation').html($('#navigation').html().replace('<strong>'+str+'</strong>','<a href='+value+'/user/user/index/'+str+'>'+str+'</a>'));
+//       alert(value);
+
+//      alert(pageno);
+     $('#navigation').html($('#navigation').html().replace('<a href='+value+'/user/user/index/'+$('#pageno').val()+'>'+$('#pageno').val()+'</a>','<strong>'+$('#pageno').val()+'</strong>'));
+       
+}
 </script>
