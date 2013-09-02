@@ -72,6 +72,7 @@ class Item extends CI_Controller {
         $borad_id = $this->input->post('boardval');
         $boards = $boardModel->getBoardByBoardId($borad_id);
 //        var_dump($boards);
+        $data['board_id'] = $borad_id;
         $taxonomy = $item->get_taxonomy($boards['0']->parent_tags);
         $tagid = $boardModel->bord_tag( $borad_id);// 
         $data['board_name'] = $boards['0']->name;
@@ -103,14 +104,20 @@ class Item extends CI_Controller {
     function edit_item()
     {
         $this->load->model('Item_model');
+        $this->load->model('tag_model');
         $this->load->helper('form');
+        
+        $tag_model = new Tag_model();
         
         $itemid = $this->uri->segment(4);
         $item_modal = new Item_model();
 //        echo $itemid ; die;
         $data['item'] = $item_modal ->get_item_id($itemid);
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
-//        echo "id-";        var_dump($data); die;
+        
+         $data['Tag']= $tag_model->tag_val($data['item']['0']['board_id']);
+        
+//        echo "id-";        var_dump($data); 
        echo $this->load->view('admin/item_edit',$data,TRUE);
         die;
 //        var_dump($data);
@@ -194,6 +201,8 @@ class Item extends CI_Controller {
         $data['name'] = $this->input->post('name');
         $data['title'] = $this->input->post('title');
         $data['body'] = $this->input->post('body');
+        $data['board_id'] = $this->input->post('board_id');
+        
         $this->load->model('item_model');
         $error = array();
         $error_iden = TRUE;
