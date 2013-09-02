@@ -24,7 +24,9 @@
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.iframe-transport.js"></script>
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootbox.js"></script>
-       
+        <script type="text/javascript" src="<?= base_url(); ?>assets/js/datatable/jquery.dataTables.js"></script>
+        <!--<script class="jsbin" src="http://datatables.net/download/build/jquery.dataTables.nightly.js"></script>-->
+        
         <script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
          <script>
@@ -49,8 +51,9 @@
     
        
        
-        
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/docsupport/style.css">
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/datatable/table.css">
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/datatable/page.css">
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/docsupport/style.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/docsupport/prism.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/chosen.css">
         <style type="text/css" media="all">

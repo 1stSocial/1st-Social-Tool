@@ -36,7 +36,7 @@ setTimeout(function(){
 }
 ?>
  
-<table class="table table-striped ">
+<table id="tab_id" class="table table-striped ">
         <thead>
           <tr>
             <th>Taxonomy Name</th>
@@ -127,6 +127,14 @@ setTimeout(function(){
     </div>
     </div>
 <script>
+    
+    $(document).ready(function(){
+    $('#tab_id').dataTable( {
+    "sPaginationType": "full_numbers"
+  } );
+    $('#tab_id_length').show();
+});
+    
  function savefun()
     {
      var taxonomyname = $('#name').val();
