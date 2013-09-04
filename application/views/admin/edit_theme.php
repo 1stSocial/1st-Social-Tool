@@ -1,11 +1,12 @@
 <?php
 $str =array();
-
+if(is_array($val))
+{
 foreach ($val as $a)
 {
     $str[$a['key']]=$a['value'];
 }
-
+}
 //var_dump($str);
 ?>
 
