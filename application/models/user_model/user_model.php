@@ -418,6 +418,34 @@ class User_model extends CI_Model
        
     }
     
+    
+    function apply_theme()
+    {
+        $this->db->select('id');
+        $this->db->from('theme');
+        $this->db->where('status','1');
+        $query = $this->db->get();
+        
+        
+//        var_dump($res);
+        if($query->num_rows()>0)
+        {
+        $res = $query->result_array();
+        $this->db->where('theme_id',$res['0']['id']);
+        $result =  $this->db->get('theme_value');
+        if($result->num_rows()>0)
+        return $result->result_array();
+        else 
+            {
+            return "";
+            }
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
 }
 
 ?>

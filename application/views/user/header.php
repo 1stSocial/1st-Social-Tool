@@ -11,7 +11,9 @@
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
          <!--<link rel="stylesheet" href="<?//= base_url(); ?>assets/css/user/share.css"></link>-->
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css"></link>
-         <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/main.less"></link>
+         <!--<link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/head.less"></link>-->
+         
+         <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less"></link>
          
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_002.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>

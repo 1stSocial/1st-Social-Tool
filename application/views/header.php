@@ -9,7 +9,8 @@
         
         <!--<script src="<?= base_url(); ?>assets/css/docsupport/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
         
-        
+        <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/temp.less"></link>
+         
         
      
  	 <!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-1.9.1.js"></script>-->
@@ -66,6 +67,7 @@
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
  	 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>  
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>
+         <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/less-1.js"></script>-->
 
    <title>1st Social</title>
  </head>

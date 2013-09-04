@@ -1,11 +1,34 @@
 <?php
-
 class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+       $this->load->model('user_model/user_model');
+       $temp = new User_model;
+       $theme = $temp->apply_theme();
+//       var_dump($theme);
+        $str = "";
+            
+        if(is_array($theme))
+        {
+            foreach ($theme as $val)
+            {
+                $str .= '@'.$val['key'].':'.$val['value'].'!important;';
+            } 
+        }
+        else
+        {
+            $str = "";
+        }
+        $filepath = 'assets/css/user/temp.less';
+         
+//        echo $str;
+//        die;
+        $fp = fopen($filepath,"w+");
+        fwrite($fp, $str);
+        fclose($fp);
+        
         $this->load->view('user/header');
-        $this->load->model('user_model/user_model');
         $this->load->helper('date');
         
     }

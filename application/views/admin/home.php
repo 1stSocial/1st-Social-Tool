@@ -41,7 +41,13 @@
                         
                         
 			<?php if ($settings): ?>
-				<li><?= $settings; ?></li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?= base_url(); ?>index.php/admin/setting/index">Theme Management</a></li>
+                                        <li><a href="<?= base_url(); ?>index.php/admin/setting/select_theme">Select Theme</a></li>
+				</ul>
+                                </li>
 			<?php endif; ?>
 		</ul>
 		<div class="account-box pull-right">
