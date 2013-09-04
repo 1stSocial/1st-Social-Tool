@@ -42,7 +42,7 @@ include '/admin/dropdown.php';
         
         <div class="control-group"> 
   <div class="controls">
-       <input type="submit" style="float: left; margin-left:170px; " name="save" class="btn btn-primary" value="Create Taxonomy" />
+       <input type="submit" style="float: left; margin-left:0%; " name="save" class="btn btn-primary" value="Create Taxonomy" />
       <input type="button" style="float: left;" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">      
      
         </div>
