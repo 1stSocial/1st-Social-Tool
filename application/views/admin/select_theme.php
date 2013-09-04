@@ -1,3 +1,15 @@
+<style>
+    .my_wrapper
+    {
+         text-align:0px auto;
+         margin:0 auto;
+         height: 100px;
+    }
+    .modal-body
+    {
+        height: auto;
+    }
+</style>
 <?php echo form_open(site_url().'/admin/setting/theme'); ?> 
 <table id="tab_id" class="table table-striped ">
         <thead>
@@ -31,11 +43,12 @@
     <h3 style="margin-left:5px;">Select Theme</h3>
     <!--<p> <? // if(isset($success)) echo $success;?> </p>-->
 </div>
-
-<div class="modal-body"><!-- Password input-->
-<div style="height: 50px"></div>
+<div class="modal-body">
+    <div class="my_wrapper">
+<!-- Password input-->
+<div style="height: 30px"></div>
 <div class="control-group">
-   <?php echo form_label('Theme :', 'name', array('class' => "control-label",'style'=>'margin-left:70px;margin-right:70px;float:left') ); ?>
+   <?php echo form_label('Theme :', 'name', array('class' => "control-label",'style'=>'margin-left:106px;margin-right:10px;float:left') ); ?>
   <div class="controls">
      <!-- <select id="parentTag" name="parentTag" onselect="call()">-->
      
@@ -48,7 +61,9 @@
 </select>
    </div>
 </div>
-    <div style="height: 50px"></div>
+    <!--<div style="height: 50px"></div>-->
+</div>
+</div>
 <div class="modal-footer">
     <div class="control-group">
         <input type="button" style="float: right;margin-left: 0%" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
