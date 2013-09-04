@@ -50,7 +50,7 @@ include '/dropdown.php';
     
 <div class="modal-footer">
     <div class="control-group">
-        <input type="button" style="float: right" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
+        <input type="button" style="float: right;margin-left: 0%" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
       <input type="button" style="float: right;position: relative" id="add" name="add" class="btn btn-primary" value="Create Board" onclick="savefun();" />
  
     </div>     

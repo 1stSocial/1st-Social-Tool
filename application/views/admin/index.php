@@ -116,9 +116,17 @@ switch ($option)
 
 $(document).ready(function(){
     $('#tab_id').dataTable( {
-    "sPaginationType": "full_numbers"
+    "sPaginationType": "full_numbers",
+    
   } );
-    $('#tab_id_length').show();
+   
+//    $('.dataTables_filter').attr('style','clear:both');
+//    $("#tab_id").dataTable().dataTables_filter('clear:left');
+$("#tab_id_info").css("width","550px");
+$("#tab_id_length").css("width","500px");
+        $('.dataTables_length').insertAfter($("#tab_id_info"));
+         $('#tab_id_length').show();
+  
 });
 
 function cl()

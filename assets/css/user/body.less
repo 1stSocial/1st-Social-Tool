@@ -3,35 +3,42 @@
     
     
     
-		@theme: #0e95d0; 
+		
    
-   
+ 
    
    
    
    /*--------- main less css starts here -------------*/
-   @bg:@theme - 10%;
-
-@footer: darken(@bg, 15%);
+   
+@import "./default_head.less";
+@import "./temp.less";
 
 body{
  background: @background_color; //lighten(@bg, 50%);
+font-family : @body_font_family;
+ color: @body_font_color;
+font-size: @body_font_size;
     }
 
 #blogname{
-     background: @background_color;
+     background: @blog_bg_color;
     }
 
-a{ color:@theme; }
+a{
+color:@anchor_color;
+font-size:@anchor_size ;
+}
 
 #masthead {
-     border-top:4px solid @theme - #979797;
+     border-top:4px solid @head_border_color;
     }
 
 .menu{
+
      background: @menu_color;
      
-    }
+}
 
 #blogname h2{
      color: @blog_name_color;
@@ -58,13 +65,13 @@ a{ color:@theme; }
     }
 
 .even{
-     border-top:@mainpage_job_top;
-     border-bottom:1px solid @theme + 30%;
-     background:lighten(@theme, 45%);
+     border-top:@jobdiv_top_border;
+     border-bottom:@jobdiv_bottom_border;
+     background:@job_bg_color;
     }
 
 #slider-range .ui-slider-range{
-    background: @theme;
+    background: @slider_color;
     }
 
 #left .active{
@@ -88,15 +95,15 @@ a{ color:@theme; }
 } 
 
 #date{
-    background:@theme;
+    background:@date_color;
     }
 
-#year{ color:@theme; }
+#year{ color:@date_color;}
 
-.orange_saperator{ border:1px solid @theme;}
+.orange_saperator{ border:1px solid @saperator_color;}
 
-.price_range_p #amount{ color: lighten(@theme, 10%); background:transparent; }
+.price_range_p #amount{ color: @price_range_color; background:transparent; }
 
-#bottom{ border-top:2px solid @theme; background : @theme, 90%; }
+#bottom{ border-top:2px solid @topborder_color; background : @theme, 90%; }
 
 #footer{ background: @theme; }
