@@ -14,3 +14,14 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
 
 
 ALTER TABLE `items`  ADD `board_id` INT(50) NOT NULL AFTER `createdTime`
+
+ALTER TABLE `theme` ADD `status` INT( 1 ) NOT NULL AFTER `theme_name` 
+
+
+CREATE TABLE IF NOT EXISTS `theme_value` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `key` varchar(50) NOT NULL,
+  `value` varchar(50) NOT NULL,
+  `theme_id` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+)
