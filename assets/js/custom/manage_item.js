@@ -8,6 +8,13 @@ $(document).ready(function() {
     $('#tab_id_length').show();
 });
 
+function deletbox(urllink)
+{
+    bootbox.confirm('Are you sure?', function(val){
+        if(val){ document.location.href = urllink;}
+    });
+}
+
 function edit(ur, id) {
     ur = ur + '/' + id;
     // alert(ur+id+";");
