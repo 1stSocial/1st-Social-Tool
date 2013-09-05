@@ -8,7 +8,26 @@ jQuery(document).ready(function(){
 jQuery('#updatebtn').click(function(){
   var id = jQuery("#id").val();   
      var name = jQuery('#name').val();
-     var pid = jQuery('#parentTag1').val();
+     var pid = jQuery('#parentTag').val();
+     
+     if(name=="")
+        {
+             $('#error').show();
+        }
+        else
+            {
+                $('#error').hide();
+            }
+    if(pid=="0")
+        {
+             $('#perror').show();
+        }
+        else
+            {
+                $('#perror').hide();
+            }        
+     
+   if (name != "" && pid!="0") {  
     var dataval ={
         id: id,
         name : name,
@@ -34,4 +53,5 @@ jQuery('#updatebtn').click(function(){
            alert(res);
        }
     });
+   }
 });

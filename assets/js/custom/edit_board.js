@@ -11,6 +11,26 @@ jQuery('#update').click(function(){
      var parentTag = jQuery('#parentTag1').val();
      var user_id =jQuery('#user_id').val();
      var id = jQuery('#mainid').val();
+     
+    if(name=="")
+        {
+             $('#berror').show();
+        }
+        else
+            {
+                $('#berror').hide();
+            }
+    if(parentTag=="0")
+        {
+             $('#perror').show();
+        }
+        else
+            {
+                $('#perror').hide();
+            }        
+     
+   if (name != "" && parentTag!="0") {   
+     
      var dataval ={
         name : name,
         parentTag : parentTag,
@@ -36,5 +56,5 @@ jQuery('#update').click(function(){
            alert(res);
        }
     });
-   
+   }
 });
