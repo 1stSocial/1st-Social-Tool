@@ -7,7 +7,6 @@ foreach ($val as $a)
     $str[$a['key']]=$a['value'];
 }
 }
-//var_dump($str);
 ?>
 
 <?php  echo form_open('admin/setting/theme_update','class="horizontal-form"');  ?>
@@ -223,8 +222,7 @@ foreach ($val as $a)
                     
                 <?php echo form_label('@topborder_color :', 'color', array('class' => "control-label",'style'=>"width: 100%") ); ?><div style="clear: both;margin-top: 50px">
                 <input type="text" style="width: 100%" class = "control-label" placeholder="@topborder_color" id="topborder_color" value="<?php if(isset($str['topborder_color'])) { echo $str['topborder_color'];}?>" name="topborder_color" ></div>
-           
-            </div>
+           </div>
         </div>
       </div>
 </div>

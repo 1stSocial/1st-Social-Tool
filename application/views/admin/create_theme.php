@@ -1,20 +1,3 @@
-<!--<script>
-
-    $('#save').click(function ()
-    {
-        alert('a');
-      $('#data').find('input:text')
-        .each(function() {
-             var value = $(this).val();
-             var id = '@'+this.id;
-             less.modifyVars({
-                id: 'abc'
-             });
-        });
-    });
-    
-
-</script>-->
 <?php  echo form_open('admin/setting/theme','class="horizontal-form"');  ?>
  
 <div class="col-md-3">
@@ -37,6 +20,7 @@
     
     <input type="submit" id="save" name="btn" value="Save" class="btn btn-primary" />
     </div>
+    
 <div id="data" style="margin-left: 30%; width: 60%;background: transparent;float: left;">
     <div id="variables-body">
         <div class="control-group">
@@ -49,7 +33,8 @@
             </div>
         
         </div>
-    </div>    
+    </div>   
+    
     <div id="variables-body">
         <div class="control-group">
             <div class="controls">
@@ -81,7 +66,6 @@
         </div>
     </div>
     
-    
     <div id="variables-theme">
         <div class="control-group">
             <div class="controls">
@@ -92,6 +76,7 @@
         
         </div>
     </div>
+    
     <div id="variables-blog">
         <div class="control-group">
             <div class="controls">
@@ -202,7 +187,6 @@
         </div>
     </div>
         
-    
       <div id="variables-priceslider">
         <div class="control-group">
             <div class="controls">
@@ -217,7 +201,6 @@
         </div>
       </div>
     
-        
         <div id="variables-bottom">
         <div class="control-group">
             <div class="controls">
