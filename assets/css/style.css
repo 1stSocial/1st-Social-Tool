@@ -20,3 +20,31 @@ background-attachment: fixed !important;
 .horizontal-form .btn{
 margin-left:20%;	
 	}
+        
+        
+.div_wrapper 
+{
+/*    margin:0 auto!important;*/
+   vertical-align: central;
+    padding-left: 18%;
+    /*text-align:0px auto;*/
+    /*height: 200px;*/
+}
+.footer_btn
+{
+    float: left;
+    position: relative;
+    margin-left: 5%;
+    
+}
+
+.modal-body
+{
+    overflow-x:  visible!important;
+    overflow-y:  visible!important;
+}
+
+.modal-footer
+{
+    margin:0 auto!important;
+}
