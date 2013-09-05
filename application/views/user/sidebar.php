@@ -1,9 +1,9 @@
     
 <div id="left" >
-    <?php 
-    if(isset($content))
+    <?php
+    if (isset($content))
         echo $content;
-     ?>
+    ?>
 </div>
 
 <div id="right">
@@ -12,29 +12,32 @@
     <div class="sidebar">
         <ul>
             <li class="sidebox super_recent_posts"><h3 class="sidetitl"><a href="">Latest Jobs</a></h3>                
-                <?php if(is_array($latestjob)): foreach ($latestjob as $val) :?>
-                <div class="super_recent_posts_item">
-                    <b> <a href="<?=  site_url()?>/user/user/detail/<?=$val['id']?>" title="<?=$val['title']?>" class="super_recent_posts_item_title"><?=$val['title']?></a> </b> 
-                    <!--<span>(<a href="" rel="tag">Regional TAS</a>)</span>-->
-                </div>
-                <?php endforeach;endif;?>
+                <?php if (is_array($latestjob)): foreach ($latestjob as $val) : ?>
+                        <div class="super_recent_posts_item">
+                            <b> <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?>" title="<?= $val['title'] ?>" class="super_recent_posts_item_title"><?= $val['title'] ?></a> </b> 
+                            <!--<span>(<a href="" rel="tag">Regional TAS</a>)</span>-->
+                        </div>
+                    <?php endforeach;
+                endif; ?>
             </li>
-            
-            <?php if(is_array($tag['Parent'])): foreach ($tag['Parent'] as $data):?>
-            <li class="sidebox widget_lc_taxonomy">
-                <div id="lct-widget-locations-container" class="list-custom-taxonomy-widget">
-                    <h3 class="sidetitl"><?=$data['name']?></h3>
-                    <ul id="lct-widget">
-                        <?php foreach ($tag['child'] as $val): if($val['parent_tag_id'] == $data['id']) :  ?>
-                        <li class="cat-item">
-                            <a href="javascript:refine();" title="View all posts filed under <?=$val['name'];?>"><input type="checkbox" name="child" id="child" value="<?=$val['id'];?>"/><?=$val['name']?></a>
-                        </li>
-                        <?php endif;endforeach;?>
-                    </ul>
-                </div>
-            </li>
-            <?  endforeach;endif;?>
-  
+
+<?php if (is_array($tag['Parent'])): foreach ($tag['Parent'] as $data): ?>
+                    <li class="sidebox widget_lc_taxonomy">
+                        <div id="lct-widget-locations-container" class="list-custom-taxonomy-widget">
+                            <h3 class="sidetitl"><?= $data['name'] ?></h3>
+                            <ul id="lct-widget">
+        <?php foreach ($tag['child'] as $val): if ($val['parent_tag_id'] == $data['id']) : ?>
+                                        <li class="cat-item">
+                                            <a href="javascript:refine();" title="View all posts filed under <?= $val['name']; ?>"><input type="checkbox" name="child" id="child" value="<?= $val['id']; ?>"/><?= $val['name'] ?></a>
+                                        </li>
+            <?php endif;
+        endforeach; ?>
+                            </ul>
+                        </div>
+                    </li>
+    <? endforeach;
+endif; ?>
+
             <li class="sidebox widget_text"><h3 class="sidetitl">salary</h3>			<div class="textwidget"><p class="price_range_p">
                         <input value="$0k - $200k" id="amount" type="text"> per year
                     </p>
@@ -63,7 +66,7 @@
 
 
             <li>
-                <a href="<?=  site_url()?>/user/user/detail/<?=$val['id']?>" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
+                <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?>" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
             </li>			
 
             <li class="rbanner">
@@ -82,4 +85,4 @@
     </div>
 </div>
 <div class="clear"></div>
-<input type="hidden" value="<?=site_url();?>" id="side_url">
+<input type="hidden" value="<?= site_url(); ?>" id="side_url">

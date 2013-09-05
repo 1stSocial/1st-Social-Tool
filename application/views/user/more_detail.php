@@ -32,9 +32,7 @@
                                     <?php endif; endforeach; endif;?>
                                 </span>
                                 <?php endforeach; endif;?>
-                                <!--<span class="tags"><a href="" rel="tag">NSW</a><a href="" rel="tag">Regional NSW</a></span>-->
-
-
+                             
                             </div>
 
                         </div>
@@ -43,15 +41,13 @@
                                 <?= $val->body ?>
                                 <div></div>
                                 <div><a href="http://youtu.be/AGsYz2YTExg">&nbsp;</a></div>
-                                <!--<p><iframe src="1stWorld%20_%201stExecutive%20Job%20Board_files/AGsYz2YTExg.htm" allowfullscreen="" frameborder="0" height="315" width="560"></iframe></p>-->
                                 <div></div>
                                 <div></div>
                             </div>
 
 
                             <a class="readmore" href="">Apply Now</a>			
-                            <!--<a class="readmore" href="http://1stworld.1stsocial.com.au/jobs/truck-drivers-hc-and-mc-2/"> View Tutorial </a>-->
-
+                           
                             <div class="clear"></div>
                         </div>
                        

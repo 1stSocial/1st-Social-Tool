@@ -6,9 +6,7 @@
     <div id="navigation" class="clearfix">
 
 
-                                <!--<div class="wp-pagenavi">-->
-                                    <!--<span class="pages">Page 1 of 4</span><span class="current">1</span><a href="http://1stworld.1stsocial.com.au/?page=2" class="page larger">2</a><a href="http://1stworld.1stsocial.com.au/?page=3" class="page larger">3</a><a href="http://1stworld.1stsocial.com.au/?page=4" class="page larger">4</a><a href="http://1stworld.1stsocial.com.au/?page=2" class="nextpostslink">»</a>-->
-                                    <div style='margin-left: 80%'><?php echo $this->pagination->create_links();?></div>
+                               <div style='margin-left: 80%'><?php echo $this->pagination->create_links();?></div>
                                 <!--</div>-->
                                 <input type="hidden" value="<?=$pageno;?>" id="pageno" name="pageno">
                                 <input type="hidden" value="<?=  site_url();?>" id="t" name="t">
@@ -39,8 +37,7 @@
 
                     </div> <!--end-->   
                     <div style="float:right; margin-right: 10px; margin-top: 22px;"> <!--start-->
-                        <!--<img class="job-image" src="1stWorld%20_%201stExecutive%20Job%20Board_files/1stexecutive-125x125.png" border="0" height="50" width="50">-->
-
+                        
                     </div> <!--end-->
 
                 </div> <!--endl pouter-->
@@ -85,8 +82,7 @@
                                     <?php endif; endforeach; endif;?>
                                 </span>
                                 <?php endforeach; endif;?>
-                                <!--<span class="tags"><a href="" rel="tag">NSW</a><a href="" rel="tag">Regional NSW</a></span>-->
-
+                             
 
                             </div>
 
@@ -102,8 +98,7 @@
 
 
                             <a class="readmore" href="">Apply Now</a>			
-                            <!--<a class="readmore" href="http://1stworld.1stsocial.com.au/jobs/truck-drivers-hc-and-mc-2/"> View Tutorial </a>-->
-
+                          
                             <div class="clear"></div>
                         </div>
                         <div class="orange_saperator"> </div>
@@ -134,9 +129,7 @@ endif; ?>
 
 var shflag = 0 ;
 $("div#lpouter").click(function() {
-//    alert('tets');
-                //$(this).toggleClass("active");
-            
+
     $var = $(this).parent().find("#jobs_home1");
                
                 $var.slideToggle('slow');
@@ -147,7 +140,7 @@ $('#navigation a').click(function (){
         
          var id = $(this).text();
          var pageno = $('#pageno').val();
-//         alert(id);
+
          $('#pageno').val(id);
          
 });
@@ -157,9 +150,7 @@ $(document).ready()
       var str = $('#navigation strong').html();  
      var value = $('#t').val();
         $('#navigation').html($('#navigation').html().replace('<strong>'+str+'</strong>','<a href='+value+'/user/user/index/'+str+'>'+str+'</a>'));
-//       alert(value);
 
-//      alert(pageno);
      $('#navigation').html($('#navigation').html().replace('<a href='+value+'/user/user/index/'+$('#pageno').val()+'>'+$('#pageno').val()+'</a>','<strong>'+$('#pageno').val()+'</strong>'));
        
 }

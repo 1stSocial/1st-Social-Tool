@@ -25,10 +25,6 @@
                 </div>
             </li>
             <?  endforeach;endif;?>
-<!--m-103"><a href="http://localhost/1stworld/work-types/fifo/" title="View all posts filed under FIFO">FIFO</a> (1)
-                        </li>
-                    </ul></div>
-            </li>	-->
         </ul>
         <div class="clear"></div>
     </div>
@@ -50,103 +46,6 @@
 <script>
     var options = {"publisher": "1fa5a027-fa11-4b80-b07b-c50f52e3bc15", "position": "left", "ad": {"visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": {"items": ["twitter", "facebook", "google", "rss", "delicious", "linkedin"]}};
     var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
-</script>
-
-<script>
-//    jQuery('.sidebar #lct-widget a').each(function() {
-//        var current_html = jQuery(this).html();
-//        jQuery(this).html('<input type="checkbox" id=child[] />' + current_html);
-//    });
-//    jQuery('.sidebar #lct-widget-industries-container a').each(function() {
-//        var current_html = jQuery(this).html();
-//        jQuery(this).html('<input type="checkbox" />' + current_html);
-//    });
-//    jQuery('.sidebar #lct-widget-work-types-container a').each(function() {
-//        var current_html = jQuery(this).html();
-//        jQuery(this).html('<input type="checkbox" />' + current_html);
-//    });
-//    jQuery('.sidebar #lct-widget-occupations-container a').each(function() {
-//        var current_html = jQuery(this).html();
-//        jQuery(this).html('<input type="checkbox" />' + current_html);
-//    });
-//    jQuery('.sidebar input[type="checkbox"]').live("click", function() {
-//        var check_url = jQuery(this).parent().attr('href');
-//        document.location.href = check_url;
-//    });
-//    jQuery('.sidebar input[type="checkbox"]').each(function() {
-//        var this_url = jQuery(this).parent().attr('href');
-//        var cur_page_url = document.URL;
-//        if (cur_page_url == this_url) {
-//            jQuery(this).attr('checked', 'checked');
-//        }
-//    });
-
-</script>
-
-<script>
-//    var nj = jQuery.noConflict();
-//    nj(function() {
-//        nj("#slider-range").slider({
-//            range: true,
-//            min: 0,
-//            max: 200,
-//            values: [0, 200],
-//            slide: function(event, ui) {
-//                nj('#min_sal').val(ui.values[ 0 ] + '000');
-//                nj('#max_sal').val(ui.values[ 1 ] + '000');
-//                nj("#amount").val("$" + ui.values[ 0 ] + "k - $" + ui.values[ 1 ] + "k");
-//            }
-//        });
-//        nj("#amount").val("$" + nj("#slider-range").slider("values", 0) +
-//                "k - $" + nj("#slider-range").slider("values", 1) + "k");
-//    });
-//    nj('.refine_btn').click(function() {
-//        var site_url_nj = 'http://localhost/1stworld?min_sal=' + nj('#min_sal').val() + '&max_sal=' + nj('#max_sal').val();
-//        document.location.href = site_url_nj;
-//    });
-
-
-
-
-    /*$(document).ready(function(){
-     
-     $("#jobs_home").hide();
-     $("#lpouter").show();
-     
-     $('#lpouter').click(function(){ 
-     $(this).toggleClass("active"); $(this).next("#jobs_home").stop('true','true').slideToggle("slow");
-     //$('#jobs_home').toggle("slow");
-     // jQuery.prev()
-     $(this).prev('#jobs_home').toggle();
-     
-     // jQuery.next()
-     $(this).next('#jobs_home').toggle();
-     });
-     
-     });
-     */
-</script>
-<script>
-//    jQuery('.page').each(function(index, element) {
-//        jQuery(this).attr('href', 'http://localhost/1stworld/?page=' + jQuery(this).html());
-//    });
-//    var current_page = jQuery('.current').html();
-//    previous_page = current_page - 1;
-//    var next_page = ++current_page;
-//    jQuery('.previouspostslink').attr('href', "http://localhost/1stworld/?page=" + previous_page);
-//    jQuery('.nextpostslink').attr('href', 'http://localhost/1stworld/?page=' + next_page);
-//    jQuery('.next_job').each(function() {
-//        var next_link = jQuery(this).next().children('a').attr('href');
-//        jQuery(this).attr('href', next_link);
-//    });
-//    $(".view_list").click(function() {
-//        $("#jobs_home").hide();
-//        jQuery('.jobs_home_cont').hide();
-//
-//    });
-//    jQuery('.job_head_custom').click(function() {
-//        jQuery('.jobs_home_cont').hide();
-//    });
 </script>
 
 <div style="position: absolute; top: -1999px; left: -1988px;" id="stcpDiv">ShareThis Copy and Paste</div>
