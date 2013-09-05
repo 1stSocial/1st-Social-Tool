@@ -1,186 +1,98 @@
-<script>
-function edit(val)
-{ 
-                  var newurl =  document.URL.toString().split("/index/addtaxonomy");
-                      
-                        $.ajax({
-                            url: newurl[0]+'/get_taxonomy',
-                            type:'POST',
-                            data:{'id':val},
-                            success:function(res)
-                            {
-                                $('#edit').html(res);
-                            }
-                            });
-}
-</script>
-
-
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/manage_taxonomy.js"></script>
 <?php
-if(isset($option))
-switch ($option) 
-{
-    case 'addtaxonomy':
-    {
-        echo "<script>
-$(document).ready(function() {   
-setTimeout(function(){
-    $('#mod1').click();
-   },100);
-});</script>";
+if (isset($option))
+    switch ($option) {
+        case 'addtaxonomy': {
+                echo "<script>
+                        $(document).ready(function() {   
+                        setTimeout(function(){
+                            $('#mod1').click();
+                           },100);
+                        });</script>";
+            }
+            break;
+
+        default:
+            break;
     }
-        break;
-    
-    default:
-        break;
-}
 ?>
- 
 <table id="tab_id" class="table table-striped ">
-        <thead>
-          <tr>
+    <thead>
+        <tr>
             <th>Taxonomy Name</th>
             <th>Type</th>
             <th>Parent Tag</th>
-            
-            
             <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-            <?php
-            if(is_array($taxonomy) && !empty($taxonomy)): 
-                foreach ($taxonomy as $val): ?>
-          <tr>
-            <td><?=$val->name?></td>
-            <td><?=$val->type?></td>
-            <td><?=$val->parenttag?></td>
-         
-            <td><div class="btn-group"><a onclick="edit(<?=$val->id?>)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('taxonomy/delete_taxonomy/'.$val->id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
-          </tr>
-          <? endforeach;endif;?>
-        </tbody>
-      </table>
-<div id="edit" style="position: absolute;left:-500px;top:-1000px;">
-    
-</div>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        if (is_array($taxonomy) && !empty($taxonomy)):
+            foreach ($taxonomy as $val):
+                ?>
+                <tr>
+                    <td><?= $val->name ?></td>
+                    <td><?= $val->type ?></td>
+                    <td><?= $val->parenttag ?></td>
 
- 
+                    <td><div class="btn-group"><a onclick="edit(<?= $val->id ?>)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+                            <a href="javascript:deletbox('<?php echo site_url('taxonomy/delete_taxonomy/' . $val->id) ?>')" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
+                </tr>
+                <?php
+            endforeach;
+        endif;
+        ?>
+    </tbody>
+</table>
+<div id="edit" style="position: absolute;left:-500px;top:-1000px;"></div>
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
-    
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-<?php //echo form_open('','class="horizontal-form"');?>
-<div class="modal-header">
-
-    <h3 style="margin-left:5px;">Create Taxonomy</h3>
-    <p> <? if(isset($success)) echo $success;?> </p>
-</div>
-    <div id="con" class="modal-body"><!-- Password input-->
+    <div class="modal-header">
+        <h3 style="margin-left:5px;">Create Taxonomy</h3>
+        <p> <? if (isset($success)) echo $success; ?> </p>
+    </div>
+    <div id="con" class="modal-body div_wrapper"><!-- Password input-->
         <div class="control-group" >
-     <?php echo form_label('Name:', 'name', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?> 
-          
-  <div class="controls" style="float:left;">
-      <input type="text" style="margin-left: 55px;"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" />
-  </div>
-          </div> 
-       <div id="error" style ="color:red; display: none; ">Enter Taxonomy Name</div> 
-       <div style="clear: both;"></div>
-       
-     
-       
-       <div class="control-group">
-   <?php echo form_label('Type:', 'type', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
-  <div class="controls">
-<select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="type" name="type" style="margin-left: 60px;">
-  <option value="select">Select</option>
-  <option value="string">String</option>
-  <option value="Integer">Integer</option>
-</select>
-   </div>
-</div>    
-       
-    <div class="control-group">
-   <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label",'style'=>"float:left;margin-left:10px;") ); ?>
-<div style="margin-left: 100px">
-<select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
-  <option>Select</option>
-  <?  if(!empty($parenTag)): foreach($parenTag as $key => $Tag): ?>
-  <option value="<?=$key?>"><?=$Tag?></option>
-  <?php endforeach;endif;?>
-</select>
-   </div>
-</div>    
-              
-        
-        
+            <?php echo form_label('Name:', 'name', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?> 
+            <div class="controls" style="float:left;">
+                <input type="text" style="margin-left: 55px;"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" />
+            </div><div style =" color: red; display: none;padding-left:43%;clear: both;" id="taxoname"> Enter Taxonomy Name </div>
+        </div> 
+        <div id="error" style ="color:red; display: none; ">Enter Taxonomy Name</div> 
+        <div style="clear: both;"></div>
+        <div class="control-group">
+            <?php echo form_label('Type:', 'type', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?>
+            <div class="controls">
+                <select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="type" name="type" style="margin-left: 60px;">
+                    <option value="select">Select</option>
+                    <option value="string">String</option>
+                    <option value="Integer">Integer</option>
+                </select><div style =" color: red; display: none;padding-left:43%" id="type_error"> Select Taxonomy Type </div>
+            </div>
+        </div>    
+        <div class="control-group">
+            <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?>
+            <div style="margin-left: 100px">
+                <select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
+                    <option value="0">Select</option>
+                    <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
+                            <option value="<?= $key ?>"><?= $Tag ?></option>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </select>
+            </div><div style =" color: red; display: none;padding-left:43%" id="tag_error"> Select Parent Tag </div>
+        </div>    
+    </div>            
+    <div class="modal-footer ">      
         <div class="control-group"> 
-  <div class="controls">
-      <input type="button" style="float: left; margin-left:170px; " name="save" class="btn btn-primary" value="Create Taxonomy" onclick="savefun()" />
-      <input type="button" id="close" style="float: left;" class="close btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close" onclick="c()">      
-     
-        </div>
-  </div> 
-        
+            <div class="controls">
+                <input type="button" style="float: left; margin-left:170px; " name="save" class="btn btn-primary footer_btn" value="Create Taxonomy" onclick="savefun()" />
+                <input type="button" id="close" style="float: left;" class="close btn btn-primary footer_btn  " data-dismiss="modal" aria-hidden="true" value="Close" onclick="c()">      
+            </div>
+        </div> 
     </div>
-    </div>
-<script>
-    
-    $(document).ready(function(){
-    $('#tab_id').dataTable( {
-    "sPaginationType": "full_numbers"
-  } );
-    $("#tab_id_info").css("width","550px");
-$("#tab_id_length").css("width","500px");
-        $('.dataTables_length').insertAfter($("#tab_id_info"));
-         $('#tab_id_length').show();
-});
-    
- function savefun()
-    {
-     var taxonomyname = $('#name').val();
-     var type = $('#type').val();
-     var parentid = $('#parentTag').val();
-    if(taxonomyname != ""){
-     
-    var dataval ={
-        taxonomyname : taxonomyname,
-        type:type,
-        parentid:parentid
-    }
-
-    $.ajax({
-        type: "POST",
-       url:"../add_taxonomy",
-//       contentType: 'json',
-       data:dataval,
-       success:function(res){
-           if(res == '')
-               {
-                   setTimeout(function (){
-                    $('#close').click();
-                   window.location.href ='../';    
-                   },200);
-                   
-               }
-       },
-       error:function(res)
-       {
-           alert(res);
-       }
-    });
-    }
-    else
-    {
-     $("#error").show();
-    }
-    }   
-    function c()
-    {
-        window.location.href ='../';   
-    }
-</script>
-    </div>
-    
+</div>

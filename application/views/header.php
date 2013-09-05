@@ -3,22 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
      
-         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-        
-        
-        
-        <!--<script src="<?= base_url(); ?>assets/css/docsupport/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
-        
         <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/temp.less"></link>
          
-        
-     
- 	 <!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-1.9.1.js"></script>-->
          <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
          <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
          <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-ui-1.10.1.custom.js"></script>
- 	<!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/custom.js"></script>-->
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/redactor.min.js"></script>
@@ -26,7 +15,6 @@
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.iframe-transport.js"></script>
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootbox.js"></script>
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/datatable/jquery.dataTables.js"></script>
-        <!--<script class="jsbin" src="http://datatables.net/download/build/jquery.dataTables.nightly.js"></script>-->
         
         <script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
@@ -67,8 +55,7 @@
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
  	 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>  
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>
-         <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/less-1.js"></script>-->
-
+     
    <title>1st Social</title>
  </head>
  <body>
