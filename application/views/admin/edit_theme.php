@@ -26,7 +26,7 @@ foreach ($val as $a)
               <li class=""><a href="#variables-title">Title</a></li>
               <li class=""><a href="#variables-priceslider">Price Slider</a></li>
               <li class=""><a href="#variables-bottom">Bottom</a></li>
-              
+              <li class=""><a href="#variables-footer">Footer</a></li>
           </ul>
     
     <input type="submit" id="save" name="btn" value="Update" class='btn btn-primary'/>
@@ -225,4 +225,15 @@ foreach ($val as $a)
            </div>
         </div>
       </div>
+    
+    <div id="variables-footer">
+        <div class="control-group">
+            <div class="controls">
+            <h2>Footer-Color</h2>
+                <?php echo form_label('@footer_color :', 'theme', array('class' => "control-label",'style'=>"width: 100%") ); ?><div style="clear: both;margin-top: 50px">
+                <input type="text" style="width: 100%" class = "control-label" value="<?php if(isset($str['footer_color'])) { echo $str['footer_color'];}?>" placeholder="@footer_color" id="footer_color" name="footer_color" ></div>
+            </div>
+        
+        </div>
+     </div>
 </div>
