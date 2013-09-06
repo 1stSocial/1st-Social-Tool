@@ -3,7 +3,7 @@
 <div class="col-md-3">
 <div class="bs-sidebar hidden-print affix" style="margin-left: 40px; width: 20%;background: transparent;float: left; font-size: 20px">
     
-          <ul class="nav bs-sidenav">
+          <ul class="nav nav-list">
               <li class=""><a href="#variables-body">Body</a></li>
               <li class=""><a href="#variables-head">Head</a></li>
               <li class=""><a href="#variables-theme">Theme</a></li>
@@ -15,6 +15,7 @@
               <li class=""><a href="#variables-title">Title</a></li>
               <li class=""><a href="#variables-priceslider">Price Slider</a></li>
               <li class=""><a href="#variables-bottom">Bottom</a></li>
+              <li class=""><a href="#variables-footer">Footer</a></li>
               
           </ul>
     
@@ -214,4 +215,15 @@
             </div>
         </div>
       </div>
+        
+      <div id="variables-footer">
+        <div class="control-group">
+            <div class="controls">
+            <h2>Footer-Color</h2>
+                <?php echo form_label('@footer_color :', 'theme', array('class' => "control-label",'style'=>"width: 100%") ); ?><div style="clear: both;margin-top: 50px">
+                <input type="text" style="width: 100%" class = "control-label" placeholder="@footer_color" id="footer_color" name="footer_color" ></div>
+            </div>
+        
+        </div>
+     </div>
 </div>
