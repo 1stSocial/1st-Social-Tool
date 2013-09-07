@@ -50,7 +50,10 @@ Class Tag_model extends CI_Model
 	}
 	
 	public function getAllParentTags(){
-		$query = $this->db->get_where('tags',array( "parent_tag_id" =>0));
+		$this->db->select('t_p.*,t.name');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $temp = $this->db->get_where('tag_parent',array('t_p.parent_tag_id'=>0));
 		if ($query->num_rows()>0){
 			return $query->result();
 		}
@@ -67,6 +70,7 @@ Class Tag_model extends CI_Model
 		}
             }
         }
+        
         public function deleteTags($boardId){        
           $this->db->delete('tags', array('board_id' => $boardId));
         }
@@ -86,8 +90,35 @@ Class Tag_model extends CI_Model
         {
             
             $this->db->where('id',$data['id']);
+            $this->db->update('tags',array('name'=>$data['name']));
+             
+//            $this->db->where('tag_id',$data['id']);
+//            $this->db->delete('tag_parent');
+             
+        $this->db->where('tag_id',$data['id']);
+        $this->db->delete('tag_parent');
+                
             
-            $this->db->update('tags',$data);
+            if(is_array($data['parent_tag_id']))
+                {
+                    foreach ($data['parent_tag_id'] as $value) {
+                            $val = array(
+                                'tag_id'=>$data['id'],
+                                'parent_tag_id'=>$value
+                            );
+                            $this->db->insert('tag_parent', $val);
+                    }
+//                    $this->db->insert('tags', $value); die;
+//                die;
+                }
+                else
+                {
+                    $val = array(
+                                'tag_id'=>$data['id'],
+                                'parent_tag_id'=>0
+                            );
+                    $this->db->insert('tag_parent', $val);
+                }
            
         }
 
@@ -110,7 +141,11 @@ Class Tag_model extends CI_Model
         {
             if(!$data['parent_tag_id'])
             {
-            $query = $this->db->get_where('tags',array('name'=> $data['name'],'parent_tag_id'=>'0'));
+                $this->db->select('t_p.*,t.name');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $query = $this->db->get_where('tag_parent',array('t_p.parent_tag_id'=>0));
+//            $query = $this->db->get_where('tags',array('name'=> $data['name'],'parent_tag_id'=>'0'));
             return $query->num_rows();
             }
             else
@@ -145,19 +180,38 @@ Class Tag_model extends CI_Model
         
         public function addtag($data)
         {
-            if($data['parent_tag_id'])
-            {
-                $this->db->insert('tags', $data); 
-            }
-            else
-            {
-                $data['parent_tag_id'] = '0'; 
-                $this->db->insert('tags', $data);
-            }
+//            var_dump($data);
+//            if($data['parent_tag_id'])
+//            {
+                $this->db->insert('tags',array('name'=>$data['name']));
+                $tag_id = mysql_insert_id(); 
+                if(is_array($data['parent_tag_id']))
+                {
+                    foreach ($data['parent_tag_id'] as $value) {
+                            $val = array(
+                                'tag_id'=>$tag_id,
+                                'parent_tag_id'=>$value
+                            );
+                            $this->db->insert('tag_parent', $val);
+                    }
+//                    $this->db->insert('tags', $value); die;
+//                die;
+                }
+                else
+                {
+                    $val = array(
+                                'tag_id'=>$tag_id,
+                                'parent_tag_id'=>0
+                            );
+                    $this->db->insert('tag_parent', $val);
+                }
+//            }
+            
         }
 
         public function id_val($id)
         {
+            
             $query = $this->db->get_where('tags',array( "id" =>$id));
             if ($query->num_rows()>0){
                 return $query->result();            
@@ -167,12 +221,21 @@ Class Tag_model extends CI_Model
         
         public function AllParentTags()
         {
-            $query = $this->db->get('tags');
+//            $query = $this->db->get('tags');
+           
+                $this->db->select('t_p.*,t.name');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $query = $this->db->get();
+                
             
             foreach ($query->result() as $val)
             {
-                $id = $val->id; 
-                $temp = $this->db->get_where('tags',array('parent_tag_id'=>$id));
+                $id = $val->tag_id; 
+                 $this->db->select('t_p.*,t.name');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $temp = $this->db->get_where('tag_parent',array('t_p.parent_tag_id'=>$id));
                 
                 if($temp->num_rows()>0)
                 {
@@ -184,12 +247,19 @@ Class Tag_model extends CI_Model
         }
         function AllParentTags2()
         {
-            $query = $this->db->get('tags');
+            $this->db->select('t_p.*,t.name');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $query = $this->db->get();
             
             foreach ($query->result() as $val)
             {
-                $id = $val->id; 
-                $temp = $this->db->get_where('tags',array('parent_tag_id'=>$id));
+                $id = $val->tag_id; 
+                 $this->db->select('t_p.*,t.name');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $temp = $this->db->get_where('tag_parent',array('t_p.parent_tag_id'=>$id));
+                
                 
                 if($temp->num_rows()>0)
                 {
@@ -220,14 +290,25 @@ Class Tag_model extends CI_Model
             if($query->num_rows()>0)
             {
                 $result = $query->result_array();
-                
+//                var_dump($result);die;
                 foreach($result as $val) {
-                    $query2 = $this->db->get_where('tags',array('parent_tag_id'=>$val['parent_tags']));
+                    $this->db->select('t_p.*,t.name');
+                    $this->db->from('tag_parent as t_p');
+                    $this->db->join('tags as t','t_p.tag_id=t.id');
+                    $this->db->where('t_p.parent_tag_id',$val['parent_tags']);
+                    $query2 = $this->db->get_where();
                     if($query2->num_rows()>0)
                     {
                         $result2 = $query2->result_array();
+//                        var_dump($result2);
+//                        die;
                         foreach($result2 as $val2) {
-                            $query3 = $this->db->get_where('tags',array('parent_tag_id'=>$val2['id']));
+                             $this->db->select('t_p.*,t.name');
+                            $this->db->from('tag_parent as t_p');
+                            $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                            $this->db->where('t_p.parent_tag_id',$val2['tag_id']);
+                            $query3 = $this->db->get();
+//                            $query3 = $this->db->get_where('tags',array('parent_tag_id'=>$val2['id']));
                             if($query3->num_rows()>0)
                             {
                                 $arr[] = $val2;
@@ -248,23 +329,65 @@ Class Tag_model extends CI_Model
         }
 
 
-        public function semi_parent()
+        public function semi_parent($bid=FALSE)
         {
-            $query = $this->db->get_where('tags',array('parent_tag_id'=>'0'));
+//            echo $bid;die;
+            $temp_res = array();
+            if($bid)
+            {
+                $this->db->select('*');
+                $this->db->from('board');
+                $this->db->where('id',$bid);
+                $abc =  $this->db->get();
+                if($abc->num_rows()>0)
+                {
+                    $temp_res = $abc->result_array();
+//                    var_dump($temp_res);
+                }
+               
+            }
+            else
+            {
+                $temp_res['0']['parent_tags'] = TRUE;
+            }
+            $this->db->select('t_p.*,t.name');
+            $this->db->from('tag_parent as t_p');
+            $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+            $this->db->where('t_p.parent_tag_id','0'); 
+            
+            $query = $this->db->get();
+            
             $arr = array();
             $arr2 = array();
             
             if($query->num_rows()>0)
             {
                 $result = $query->result_array();
-                
-                foreach($result as $val) {
-                    $query2 = $this->db->get_where('tags',array('parent_tag_id'=>$val['id']));
-                    if($query2->num_rows()>0)
+//                var_dump($result);die;
+               
+                foreach($result as $val) 
+                {   
+                   
+                  if($val['tag_id']  == $temp_res['0']['parent_tags'])
+                  {
+                    $this->db->select('t_p.*,t.name');
+                    $this->db->from('tag_parent as t_p');
+                    $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                    $this->db->where('t_p.parent_tag_id',$val['tag_id']);
+                    $this->db->distinct();
+                    $query2 = $this->db->get();
+                  if($query2->num_rows()>0)
                     {
                         $result2 = $query2->result_array();
+//                        var_dump($result2);die;
+                        
                         foreach($result2 as $val2) {
-                            $query3 = $this->db->get_where('tags',array('parent_tag_id'=>$val2['id']));
+                            $this->db->select('t_p.*,t.name');
+                            $this->db->from('tag_parent as t_p');
+                            $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                            $this->db->where('t_p.parent_tag_id',$val2['tag_id']);
+//                            $this->db->distinct('t.name');
+                            $query3 = $this->db->get();
                             if($query3->num_rows()>0)
                             {
                                 $arr[] = $val2;
@@ -276,16 +399,21 @@ Class Tag_model extends CI_Model
                         }
                         }
                     }
-                }
+            }}
                 $result_send['Parent'] = $arr;
                 $result_send['child'] =$arr2;
-                
+//                var_dump($result_send);die;
                 return $result_send;
             }
             
             public function parenttag($id)
             {
-                $query = $this->db->get_where('tags',array('parent_tag_id'=>$id));
+                $this->db->select('t_p.*,t.name');
+                    $this->db->from('tag_parent as t_p');
+                    $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                    $this->db->where('t_p.parent_tag_id',$id);
+                    $query = $this->db->get();
+//                $query = $this->db->get_where('tags',array('parent_tag_id'=>));
                 if($query->num_rows()>0)
                 {
                     return $query->result_array();
