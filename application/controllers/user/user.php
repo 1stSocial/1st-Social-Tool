@@ -8,6 +8,7 @@ class User extends CI_Controller {
         $temp = new User_model;
         $theme = $temp->apply_theme();
 
+
         $str = "";
 
         if (is_array($theme)) {
