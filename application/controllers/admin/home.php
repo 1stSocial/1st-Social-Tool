@@ -245,15 +245,15 @@ class Home extends CI_Controller {
            $data['name'] = $this->input->post('parenttag');
            $data['parent_tag_id'] = $this->input->post('Parentid');
            
-           if(!$this->tag_model->checkParentTag($data))
-           {
+//           if(!$this->tag_model->checkParentTag($data))
+//           {
            $this->tag_model->addTag($data);
            echo '';
-           }
-           else
-           {
-               echo 'ParentTag all ready exist.';
-           }
+//           }
+//           else
+//           {
+//               echo 'ParentTag all ready exist.';
+//           }
           }
 //          else
 //          {
@@ -313,7 +313,7 @@ class Home extends CI_Controller {
         $data = $tagModel->id_val($id);
         $val['id'] = $data[0]->id;
         $val['name'] = $data[0]->name;
-        $val['parentid'] = $data[0]->parent_tag_id;
+//        $val['parentid'] = $data[0]->parent_tag_id;
         $val['parenTag'] = $tagModel->AllParentTags();
       //  var_dump($val); die();
         echo $this->load->view('admin/edit_Tag',$val,TRUE);
