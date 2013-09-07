@@ -2,8 +2,8 @@ $(document).ready(function() {
     $('#tab_id').dataTable({
         "sPaginationType": "full_numbers",
     });
-    $("#tab_id_info").css("width", "550px");
-    $("#tab_id_length").css("width", "500px");
+    $("#tab_id_info").css("width", "33%");
+    $("#tab_id_length").css("width", "28%");
     $('.dataTables_length').insertAfter($("#tab_id_info"));
     $('#tab_id_length').show();
 

@@ -37,7 +37,6 @@ font-size:@anchor_size ;
 .menu{
 
      background: @menu_color;
-     
 }
 
 #blogname h2{
@@ -56,7 +55,7 @@ font-size:@anchor_size ;
     }
 
 #latestjob .textwidget{
-		 font-style: @latest_font_style;
+     font-style: @latest_font_style;
      color: @latestjob_text_color;
     }
 
@@ -67,7 +66,7 @@ font-size:@anchor_size ;
 .even{
      border-top:@jobdiv_top_border;
      border-bottom:@jobdiv_bottom_border;
-     background:@job_bg_color;
+     background:lighten(@job_bg_color, 45%);
     }
 
 #slider-range .ui-slider-range{
@@ -83,7 +82,7 @@ font-size:@anchor_size ;
 }
 
 .title h2 a, .title h1 {
-     color: @theme;
+     color: @title_color;
     }
 
 #left .active h2 a{
@@ -106,4 +105,17 @@ font-size:@anchor_size ;
 
 #bottom{ border-top:2px solid @topborder_color; background : @theme, 90%; }
 
-#footer{ background: @theme; }
+#footer{ background: @footer_color; }
+
+#toplogo
+{
+ background: url(images/full-logo-rgb21.png);
+}
+.rimg
+{
+ background: url(images/1stexecutive-125x125.png);
+}
+.limg
+{
+background: url(images/careersmultilist-125x125.png);
+}

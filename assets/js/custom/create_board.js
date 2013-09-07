@@ -2,6 +2,9 @@ jQuery(document).ready(function() {
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
+    
+    jQuery('#theme_chosen').css('width','49%');
+    
 });
 
 jQuery('#closebtn').click(function() {
@@ -17,6 +20,7 @@ jQuery('#add').click(function() {
     var name = jQuery('#name1').val();
     var parentTag = jQuery('#parentTag1').val();
     var user_id = jQuery('#user_id').val();
+    var theme_id = jQuery('#theme').val();
 
     if (name == "")
     {
@@ -28,7 +32,7 @@ jQuery('#add').click(function() {
         jQuery("#berror").hide();
     }
 
-    if (parentTag == "Select")
+    if (parentTag == "0")
     {
         jQuery("#perror").show();
     }
@@ -36,13 +40,15 @@ jQuery('#add').click(function() {
     {
         jQuery("#perror").hide();
     }
+   
 
-    if (name != "" && parentTag != "Select" && user_id != " ")
+    if (name != "" && parentTag != "0" && user_id != " ")
     {
         var dataval = {
             name: name,
             parentTag: parentTag,
-            user_id: user_id
+            user_id: user_id,
+            theme_id:theme_id
         };
         var ur = jQuery('#ur').val();
         jQuery.ajax({

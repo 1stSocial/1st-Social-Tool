@@ -19,13 +19,22 @@ function savefun(ur)
     var title = $('#item_title').val();
     var body = $('#body').val();
     var board_id = $('#bord_id').val();
+    var taxoid =  $('#taxoid').val();
+    
+   
+    
     var taxo = [];
+    var ids=[];
     $('#taxodiv').find('input:text')
             .each(function() {
         taxo[this.id] = $(this).val();
     });
-
-
+    var i =0;
+    $('#taxodiv').find('input:hidden')
+            .each(function() {
+        ids[i] = $(this).val();
+        i++;
+    });
     if (name != "" && title != "" && body != "") {
 
         var dataval = {
@@ -34,7 +43,8 @@ function savefun(ur)
             title: title,
             body: body,
             board_id: board_id,
-            taxo: taxo
+            taxo: taxo,
+            ids : ids
         }
 
         $.ajax({

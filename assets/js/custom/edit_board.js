@@ -2,6 +2,7 @@ jQuery(document).ready(function(){
    setTimeout(function(){
        jQuery('#mod1').click();
    },100);
+    jQuery('#theme_chosen').css('width','49%');
 });
 
 
@@ -11,7 +12,8 @@ jQuery('#update').click(function(){
      var parentTag = jQuery('#parentTag1').val();
      var user_id =jQuery('#user_id').val();
      var id = jQuery('#mainid').val();
-     
+      var theme_id = jQuery('#theme').val();
+      
     if(name=="")
         {
              $('#berror').show();
@@ -35,7 +37,8 @@ jQuery('#update').click(function(){
         name : name,
         parentTag : parentTag,
         user_id:user_id,
-        id:id
+        id:id,
+        theme_id:theme_id
        };
     jQuery.ajax({
        type: "POST",

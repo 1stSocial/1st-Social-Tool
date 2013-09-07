@@ -197,20 +197,20 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 #toplogo
 {
-    background: url(images/full-logo-rgb21.png);
+    
     width: 90px;
     height: 150px;
 }
 
 .rimg
 {
-    background: url(images/1stexecutive-125x125.png);
+   
     width: 125px;
     height: 125px;
 }
 .limg
 {
-    background: url(images/careersmultilist-125x125.png);
+    
     width: 125px;
     height: 125px;
 }
