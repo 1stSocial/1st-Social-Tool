@@ -64,7 +64,7 @@ switch ($option) {
         <div class="control-group">    
 <?php echo form_label('Parent Tag :', 'id', array('class' => "control-label", 'style' => "clear:both;float:left")); ?>
             <div class="controls" style="float: left">
-                <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" >
+                <select data-placeholder="Choose a Parent Tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" >
                     <option value="0">No Parent</option>
                     <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                             <option value="<?= $key ?>"><?= $Tag ?></option>
