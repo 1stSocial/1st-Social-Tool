@@ -70,8 +70,9 @@
         $formate = "%l,%d %M %Y";
         echo mdate($formate, $dt); ?></span>  
 
-
+                                <?php if(isset($post['salary'][$loop][0]->val)) :?>
                                 <span class="tags sallery_tag"><?=$post['salary'][$loop][0]->val;?>per year</span>
+                                <?php endif;?>
                                 <?php if(isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
                                 <span class="tags">
                                     <?php if(isset($post['child'][$loop])):

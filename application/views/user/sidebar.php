@@ -26,9 +26,9 @@
                         <div id="lct-widget-locations-container" class="list-custom-taxonomy-widget">
                             <h3 class="sidetitl"><?= $data['name'] ?></h3>
                             <ul id="lct-widget">
-        <?php foreach ($tag['child'] as $val): if ($val['parent_tag_id'] == $data['id']) : ?>
+        <?php foreach ($tag['child'] as $val): if ($val['parent_tag_id'] == $data['tag_id']) : ?>
                                         <li class="cat-item">
-                                            <a href="javascript:refine();" title="View all posts filed under <?= $val['name']; ?>"><input type="checkbox" name="child" id="child" value="<?= $val['id']; ?>"/><?= $val['name'] ?></a>
+                                            <a href="javascript:refine();" title="View all posts filed under <?= $val['name']; ?>"><input type="checkbox" name="child" id="child" value="<?= $val['tag_id']; ?>"/><?= $val['name'] ?></a>
                                         </li>
             <?php endif;
         endforeach; ?>

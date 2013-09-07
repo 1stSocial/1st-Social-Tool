@@ -16,8 +16,8 @@
                 <div id="lct-widget-locations-container" class="list-custom-taxonomy-widget">
                     <h3 class="bothead"><?=$data['name']?></h3>
                     <ul id="lct-widget-locations">	
-                        <?php foreach ($child as $val): if($val['parent_tag_id'] == $data['id']) :  ?>
-                        <li class="cat-item cat-item-20"><a href="javascript:footer_refine(<?=$val['id'];?>);" title="View all posts filed under <?=$val['name'];?>"><?=$val['name'];?></a>
+                        <?php foreach ($child as $val): if($val['parent_tag_id'] == $data['tag_id']) :  ?>
+                        <li class="cat-item cat-item-20"><a href="javascript:footer_refine(<?=$val['tag_id'];?>);" title="View all posts filed under <?=$val['name'];?>"><?=$val['name'];?></a>
                         
                         </li>
                         <?php endif;endforeach;?>
