@@ -83,17 +83,22 @@ class User_model extends CI_Model
                     if($result->num_rows()>0)
                     {
                     $result1['item'] = $result->result();
+//                    var_dump($result1['item']);
+//                    die;    
                     
                     $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.parent_tag_id');
+                        $this->db->select('tag_parent.parent_tag_id');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+//                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent','taxo.tag_id=tag_parent.tag_id');
                         $this->db->where('taxo.item_id',$val->id);
                         $this->db->distinct();
                         $temp1 = $this->db->get();
                         $T = $temp1->result();
+//                        var_dump($T);
+//                        die;
                         $TEMP[] = $T;
                     }
                     $result1['parent'] = $TEMP;
@@ -102,15 +107,19 @@ class User_model extends CI_Model
                     
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.*');
+                        $this->db->select('*');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id');
+                        
+                        $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->id);
+                        $this->db->distinct('tag.name');
                         $temp3 = $this->db->get();
                         $temp[] =$temp3->result();
                     }
                     
                     $result1['child'] = $temp;
+//                    var_dump($result1['child']);die;    
 //                    print_r($result1);
                     $temp5 = array();
                     foreach ($result1['item'] as $val)
