@@ -1,6 +1,5 @@
 <?php
 
-
 Class Board_model extends CI_Model {
 
     private $_id;
@@ -114,75 +113,78 @@ Class Board_model extends CI_Model {
             return $this->db->insert_id();
         }
     }
-    
+
     // get board using userId 
-    public function getBoards($userId){
+    public function getBoards($userId) {
         //$query = $this->db->get_where('board', array("created_by" => $userId));
-        $this->db->select('*,u.name as user_name,b.name as board_name,b.id as board_id');  
+        $this->db->select('*,u.name as user_name,b.name as board_name,b.id as board_id');
         $this->db->from('board as b');
-        $this->db->join('users as u', 'b.created_by = u.id');         
-        $this->db->where('created_by', $userId); 
+        $this->db->join('users as u', 'b.created_by = u.id');
+        $this->db->where('created_by', $userId);
         $query = $this->db->get();
-         if ($query->num_rows() > 0) {
-             return $query->result();
-             
-         }
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
     }
-    
-   // get board using boardId
-    public function getBoardByBoardId($boardId){
-         //$query = $this->db->get_where('board', array("id" => $boardId));
-        $this->db->select('*');  
+
+    // get board using boardId
+    public function getBoardByBoardId($boardId) {
+        //$query = $this->db->get_where('board', array("id" => $boardId));
+        $this->db->select('*');
         $this->db->from('board');
-        $this->db->join('board_tags', 'board.id = board_tags.board_id', 'left');         
-        $this->db->where('board.id', $boardId); 
+        $this->db->join('board_tags', 'board.id = board_tags.board_id', 'left');
+        $this->db->where('board.id', $boardId);
         $query = $this->db->get();
-        
-          if ($query->num_rows() > 0) {
-             return $query->result();
-             
-         }
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
     }
-    
+
     // delete board
-    public function deleteBoard($boardId){        
-          $this->db->delete('board', array('id' => $boardId));      
-          
+    public function deleteBoard($boardId) {
+        $this->db->delete('board', array('id' => $boardId));
+        $this->db->delete('board_page', array('board_id' => $boardId));
     }
-    
-    public function update()
-    {
+
+    public function update() {
         $data = $this->input->post();
+
+         $data3 = array('theme_id'=>"$data[theme_id]");
         
-        $data1 = array('name'=> "$data[name]",'parent_tags'=>"$data[parentTag]");
+         $this->db->where('board_id',$data['id']);
+         $this->db->update('board_page',$data3);
         
-        $this->db->where(array('id'=>$data['id']));
-     //print_r($data1);die;
-        $query = $this->db->update('board',$data1);
-    
-        
-            
-        $data2 = array('tag_id'=> "$data[parentTag]");
-        $this->db->where(array('board_id'=>$data['id']));
-     
-        $query = $this->db->update('board_tags',$data2);
-        
-         $this->db->delete('board_users', array('board_id' => $data['id']));      
-   if(is_array($data['user_id']))
-         foreach ($data['user_id'] as $value) {
-               $data3 = array('board_id'=> "$data[id]",'user_id'=> "$value");
-             $this->db->insert('board_users', $data3);
+        $data1 = array('name' => "$data[name]", 'parent_tags' => "$data[parentTag]");
+
+        $this->db->where(array('id' => $data['id']));
+        //print_r($data1);die;
+        $query = $this->db->update('board', $data1);
+
+        $data2 = array('tag_id' => "$data[parentTag]");
+        $this->db->where(array('board_id' => $data['id']));
+
+        $query = $this->db->update('board_tags', $data2);
+
+        $this->db->delete('board_users', array('board_id' => $data['id']));
+        if (is_array($data['user_id']))
+            foreach ($data['user_id'] as $value) {
+                $data3 = array('board_id' => "$data[id]", 'user_id' => "$value");
+                $this->db->insert('board_users', $data3);
             }
-         
-         
-         
+            
+        
     }
-    
-    function bord_tag($id)
-    {  $this->db->select('tag_id');
-        $this->db->where('board_id',$id);
-           $query = $this->db->get('board_tags');
-           return $query->result_array();
+
+    function bord_tag($id) {
+        $this->db->select('tag_id');
+        $this->db->where('board_id', $id);
+        $query = $this->db->get('board_tags');
+        return $query->result_array();
+    }
+
+    function set_theme($data) {
+        $this->db->insert('board_page', $data);
     }
 
 }
