@@ -211,46 +211,52 @@ class Item extends CI_Controller {
         $tag_id = $this->input->post('tag_id');
         
         $taxoarr = $this->input->post('taxo');
-        foreach ($taxoarr as $taxo_id => $taxo_val) 
-            {
-                $val = $item->get_type($taxo_id);
+        $ids = $this->input->post('ids');
+        
+        foreach ($ids as $id)
+        {
+//        foreach ($taxoarr as $taxo_id => $taxo_val) 
+//            {
+                
+                $val = $item->get_type($id);
+                
                  if($val)
                  {
                      switch($val['0']['type'])
                      {
                          case 'Integer':
                          {
-                            if(!$taxo_val=='')
+                            if(!$taxoarr[$id] =='')
                             {
                              $exp = '/^[0-9]*[.]*[0-9]+$/' ;
-                             if(!preg_match($exp,$taxo_val))
+                             if(!preg_match($exp,$taxoarr[$id]))
                              {
-                                 $error[] = $taxo_id.":Please Enter Number";
+                                 $error[] = $id.":Please Enter Number";
                                  $error_iden = $error_iden && FALSE;
                              }
                              else
                              {
-                                 $error[] = $taxo_id.":";
+                                 $error[] = $id.":";
                                  $error_iden = $error_iden && TRUE;
                              }
                             }
                             else
                             {
-                                $error[] = $taxo_id.":Please Enter Number";
+                                $error[] = $id.":Please Enter Number";
                                 $error_iden = $error_iden && FALSE;
                             }
                          }
                              break;
                          case 'String':
                          {
-                             if($taxo_val=='')
+                             if($taxoarr[$id] =='')
                              {
-                                 $error[] = $taxo_id.":* please give value";
+                                 $error[] = $id.":* please give value";
                                  $error_iden = $error_iden && FALSE;
                              }
                              else
                              {
-                                 $error[] = $taxo_id.":";
+                                 $error[] = $id.":";
                                  $error_iden = $error_iden && TRUE;
                              }
                          }
