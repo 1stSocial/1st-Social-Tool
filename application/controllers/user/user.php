@@ -128,7 +128,12 @@ class User extends CI_Controller {
             $data['content'] = $this->load->view('user/mainpage_content', $data, TRUE);
 //         
         }
+//       echo $board_id;
+        if(isset($board_id))
+        $data['tag'] = $tag_model->semi_parent($board_id);
+        else
         $data['tag'] = $tag_model->semi_parent();
+        
         $data['latestjob'] = $this->user_model->latest_job();
 //            var_dump($data);
 
