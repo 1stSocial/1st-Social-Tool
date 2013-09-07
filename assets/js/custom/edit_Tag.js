@@ -9,7 +9,7 @@ jQuery('#updatebtn').click(function(){
   var id = jQuery("#id").val();   
      var name = jQuery('#name').val();
      var pid = jQuery('#parentTag').val();
-     
+   
      if(name=="")
         {
              $('#error').show();
@@ -27,7 +27,7 @@ jQuery('#updatebtn').click(function(){
                 $('#perror').hide();
             }        
      
-   if (name != "" && pid!="0") {  
+   if (name != "") {  
     var dataval ={
         id: id,
         name : name,

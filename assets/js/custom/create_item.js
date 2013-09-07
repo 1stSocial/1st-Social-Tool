@@ -45,12 +45,12 @@ function change_val()
             $.each(obj['tag']['Parent'], function(i, data) {
                value = "";
                 value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label' style='float: left;width:165px'>" + data['name'] + ":</label>" +
-                        "<select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' tabindex=2 id=" + data['id'] + " name=tag[]>"
+                        "<select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
                         + "<option> </option>";
                 val2 = "";
                 $.each(obj['tag']['child'], function(i, val) {
-                    if (val['parent_tag_id'] == data['id']) {
-                        val2 += "<option value=" + val['id'] + ">" + val['name'] + "</option>";
+                    if (val['parent_tag_id'] == data['tag_id']) {
+                        val2 += "<option value=" + val['tag_id'] + ">" + val['name'] + "</option>";
                     }
                 });
                 val2 += "</select></div>";
