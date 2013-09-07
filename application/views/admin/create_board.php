@@ -19,7 +19,7 @@ include '/dropdown.php';
                 <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label")); ?>
                 <div class="controls">
                     <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
-                        <option>Select</option>
+                        <option value="0"></option>
                         <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                                 <option value="<?= $key ?>"><?= $Tag ?></option>
                             <?php endforeach;
@@ -27,10 +27,26 @@ include '/dropdown.php';
                     </select><div style =" color: red; display: none;padding-left:43%" id="perror"> Select Parent Tag </div>
                 </div>
             </div>
+            
+            <div class="control-group">
+                <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label")); ?>
+                <div class="controls">
+                    <select data-placeholder="Choose a Theme..." class="chosen-select" style="width:350px;" tabindex="4" id="theme" name="theme" >
+                        <option value="0"></option>
+                        <option value="0">Default</option>
+                        <? if (!empty($theme)): foreach ($theme as $Theme_val): ?>
+                                <option value="<?= $Theme_val->id ?>"><?= $Theme_val->theme_name ?></option>
+                            <?php endforeach;
+                        endif; ?>
+                    </select>
+                </div>
+            </div>
+            
             <div class="control-group">
 <?php echo form_label('Board User (Partner):', 'user_id1', array('class' => "control-label")); ?>
                 <div class="controls">
                     <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
+                        <option value="0"></option>
                         <? if (!empty($partners)): foreach ($partners as $val): ?>
                                 <option value="<?= $val->id ?>"><?= $val->name ?></option>
     <? endforeach;

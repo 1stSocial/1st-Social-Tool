@@ -43,6 +43,21 @@ include $startpath . $val;
                     </div>
                 </div>
             </div>
+            
+            <div class="control-group">
+                <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label")); ?>
+                <div class="controls">
+                    <select data-placeholder="Choose a Theme..." class="chosen-select" style="width:350px;" tabindex="4" id="theme" name="theme" >
+                        <option value="0"></option>
+                        <option value="0">Default</option>
+                        <? if (!empty($theme)): foreach ($theme as $Theme_val): ?>
+                                <option value="<?= $Theme_val->id ?>"><?= $Theme_val->theme_name ?></option>
+                            <?php endforeach;
+                        endif; ?>
+                    </select>
+                </div>
+            </div> 
+            
             <div class="component"><!-- Partner-->
                 <div class="control-group">
 <?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label")); ?>

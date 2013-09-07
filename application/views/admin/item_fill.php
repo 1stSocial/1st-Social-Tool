@@ -34,8 +34,9 @@
             <div id="taxodiv">
                 <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
                         <label style=" float: left;" class="control-label" ><?= $val->name ?> :</label>
-                        <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width: 90%;" class="control-label" id="<?= $val->id ?>" name="taxo"/><div id="<?= $val->id ?>d"></div><div style="clear: both"></div></div>
-                    <?php endforeach;
+                        <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width: 90%;" class="control-label" id="<?= $val->id ?>" name="taxo"/><input type="hidden" value="<?=$val->id?>" id="taxoid"/><div id="<?= $val->id ?>d"></div><div style="clear: both"></div></div>
+                        
+ <?php endforeach;
                 endif;
                 ?>
             </div>
