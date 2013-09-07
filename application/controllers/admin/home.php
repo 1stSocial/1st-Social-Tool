@@ -39,6 +39,7 @@ class Home extends CI_Controller {
         $viewData['option'] = $option;
         
         $obj = new Tag_model();
+     
         $viewData['parenTag'] = $obj->AllParentTags();
               
              
@@ -64,18 +65,22 @@ class Home extends CI_Controller {
         $this->load->model('tag_model');
         $this->load->model('user_model');
         $this->load->model('board_tag_model');
+        $this->load->model('setting/setting_model');
         $this->load->helper('form');
         // get all parent tag
         $tagModel = new Tag_model();
         $parentTags = $tagModel->AllParentTags();
-//         echo"<pre>";        print_r($parentTags); die;
+
         //get all partners 
         $userModel = new User_model();  
         $partners = $userModel->getAllPartners();
-        //echo "<pre>"; print_r($partners);
-        $viewData = array('parenTag' => $parentTags, 'partners' => $partners);
+        //get all theme.
+        $setting_model = new Setting_model();
+        $Theme = $setting_model->theme_name();
+        $viewData = array('parenTag' => $parentTags, 'partners' => $partners,'theme'=>$Theme);
 
         if ($this->input->post()) {
+            
             $session_data = $this->session->userdata('logged_in');
             $data = $this->input->post();
 //                        print_r($data); die;
@@ -98,6 +103,9 @@ class Home extends CI_Controller {
                 // save tags information
                 $boardTagModel = new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['tagId']));
                 $boardTagModel->saveBoardTag();
+                
+                $boardModel->set_theme(array('board_id'=>$boardId,'theme_id'=>$data['theme_id']));
+                
                 $viewData['success'] = 'Board successfully created';
                 echo '';
                 die;
@@ -114,6 +122,7 @@ class Home extends CI_Controller {
         $this->load->model('Board_user_model');
         $this->load->model('tag_model');
         $this->load->model('user_model');
+        $this->load->model('setting/setting_model');
         $this->load->model('board_tag_model');
         $boardId = $this->input->post('bid');
         
@@ -150,8 +159,10 @@ class Home extends CI_Controller {
             $selectPartners = $boardUserModel->getSelectedUserByBoardId($boardId);
             // echo "<pre>"; print_r($selectPartners);
             $viewData['selectedPartners'] = $selectPartners;
-
-
+            
+            $setting_model = new Setting_model();
+            $Theme = $setting_model->theme_name();
+            $viewData['theme']= $Theme;
             echo $this->load->view('admin/edit_board', $viewData,TRUE);
             die;
         }
