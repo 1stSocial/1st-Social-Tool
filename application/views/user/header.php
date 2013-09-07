@@ -11,28 +11,35 @@
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
          <!--<link rel="stylesheet" href="<?//= base_url(); ?>assets/css/user/share.css"></link>-->
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css"></link>
-         <!--<link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/head.less"></link>-->
-         
+        
          <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less"></link>
-         
+     
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_002.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>
+         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/less-1.js"></script>
+        
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/buttons.js"></script>
+         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom.js"></script>
+         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/devicepx-jetpack.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/gprofiles.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-1.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/loader.js"></script>
+      
          <script type="text/javascript" src="<?//=base_url();?>assets/js/user/st.js"></script>
+         
+           
          <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/stcommon.js"></script>-->
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/superfish.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/wpgroho.js"></script>
         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
-        
+          
+       
 </head>
  
     <body class="home blog">
@@ -56,12 +63,11 @@
                         </ul>
                     </div>
                     <div id="search">
-                        <!--<form action="" id="searchform" method="get" role="search">-->
                                     <div>
                                         <input id="s" name="s" value="job search" onfocus="if (this.value=='job search') this.value='';" onblur="if (this.value=='') this.value='job search';" type="text">
                                         <input value="" id="searchsubmit" type="button">
                                     </div>
-                                <!--</form>-->
+                               
                     </div>
                 </div>
                     </div>
@@ -70,4 +76,4 @@
         
 <div id="wrapper">  <!-- wrapper begin -->
 <div id="topbg"></div>
-<div id="casing">
+<div id="casing"> 
