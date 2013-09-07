@@ -64,7 +64,7 @@ class User_model extends CI_Model
                 $result = $this->db->get();
                 return $result->num_rows();
     } 
-    function post_job($start)
+    function post_job($start,$board_id =  FALSE)
     {
         $result1 = array();
       //$result = $this->db->query('select u.name as user_name,i.* from items i inner join users u on u.id =i.created_by ');
@@ -73,6 +73,10 @@ class User_model extends CI_Model
                     
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
+                    if($board_id)
+                    {
+                        $this->db->where('board_id',$board_id);
+                    }
                      $this->db->limit(5, $start);
 //                    $this->db->distinct();
                     $result = $this->db->get();
@@ -132,8 +136,6 @@ class User_model extends CI_Model
                     
                     }
                     
-//                    print_r($result1);
-//                    die;
                       return($result1);
                     
                     
@@ -440,6 +442,38 @@ class User_model extends CI_Model
             return "";
             }
         }
+        else
+        {
+            return "";
+        }
+    }
+    
+    function apply_theme2($id)
+    {
+        
+        $temp = $this->db->get_where('board_page', array('board_id'=>$id));
+        $val = $temp->result_array();
+        $this->db->select('*');
+        $this->db->from('theme_value');
+        $this->db->where('theme_id',$val[0]['theme_id']); 
+        $query = $this->db->get();
+        
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    function get_boardid($name)
+    {
+        $query = $this->db->get_where('board', array('name'=>$name));
+        if($query->num_rows()>0)
+        return $query->result();
         else
         {
             return "";
