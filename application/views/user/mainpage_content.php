@@ -123,7 +123,7 @@
     
     <?php $loop++; endforeach;
 endif; ?>
- 
+    <input type="hidden" name ="board_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
 </div>
 
 <script>
@@ -150,9 +150,18 @@ $(document).ready()
 {
       var str = $('#navigation strong').html();  
      var value = $('#t').val();
+     var b_name = $('#board_name').val();
+     if(b_name == 'home')
+        {
         $('#navigation').html($('#navigation').html().replace('<strong>'+str+'</strong>','<a href='+value+'/user/user/index/'+str+'>'+str+'</a>'));
 
      $('#navigation').html($('#navigation').html().replace('<a href='+value+'/user/user/index/'+$('#pageno').val()+'>'+$('#pageno').val()+'</a>','<strong>'+$('#pageno').val()+'</strong>'));
-       
+     }  
+    else
+      {
+            $('#navigation').html($('#navigation').html().replace('<strong>'+str+'</strong>','<a href='+value+'/'+b_name+str+'>'+str+'</a>'));
+
+     $('#navigation').html($('#navigation').html().replace('<a href='+value+'/'+b_name+$('#pageno').val()+'>'+$('#pageno').val()+'</a>','<strong>'+$('#pageno').val()+'</strong>'));
+      }     
 }
 </script>

@@ -44,6 +44,6 @@
         </div>
     <?php $loop++; endforeach;endif; ?>;
     <div class="clear"></div>
-    
+      <input type="hidden" name ="board_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
 </div>
 <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
