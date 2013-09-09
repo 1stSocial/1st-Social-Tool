@@ -400,13 +400,32 @@ Class Tag_model extends CI_Model
                         }
                     }
             }}
-                $result_send['Parent'] = $arr;
-                $result_send['child'] =$arr2;
-//      $input = array_map("unserialize", array_unique(array_map("serialize", $arr)));
-//      var_dump($input);die;
-      
+                $result_send['Parent'] = $this->super_unique($arr,'name');
+                $result_send['child'] =$this->super_unique($arr2,'name');
                 return $result_send;
             }
+            
+            
+        function super_unique($array,$key)
+
+        {
+
+           $temp_array = array();
+
+           foreach ($array as &$v) {
+
+               if (!isset($temp_array[$v[$key]]))
+
+               $temp_array[$v[$key]] =& $v;
+
+           }
+
+           $array = array_values($temp_array);
+
+           return $array;
+        }
+
+
             
             public function parenttag($id)
             {
