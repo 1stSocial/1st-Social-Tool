@@ -30,12 +30,15 @@ class User extends CI_Controller {
       
         if($isboardjobs1 != "board" && $isboardjobs2!="board" && $isboardjobs3!="board")
         {
-        $fp = fopen($filepath, "w+");
-        flock($fp,LOCK_EX);
-        fwrite($fp, $str);
-        flock($fp,LOCK_UN);
-        fclose($fp);
-          $this->load->view('user/header');
+        if(!$temp->board_exist($isboardjobs1))
+        {
+            $fp = fopen($filepath, "w+");
+            flock($fp,LOCK_EX);
+            fwrite($fp, $str);
+            flock($fp,LOCK_UN);
+            fclose($fp);
+            $this->load->view('user/header');
+        }
         }
 //          chmod($filepath,'0750');
         $this->load->helper('date');
