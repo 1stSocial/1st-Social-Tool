@@ -489,6 +489,19 @@ class User_model extends CI_Model
         }
     }
     
+    function board_exist($name)
+    {
+        $abc =  $this->db->get_where('board',array('name'=>$name));
+        if($abc->num_rows())
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+    
 }
 
 ?>
