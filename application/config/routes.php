@@ -45,5 +45,7 @@ $route['404_override'] = '';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
 //$route['board']='user/user/board/';
-$route['([a-z_]*)([A-Z_]*)']='user/user/board/$1';
+$route['(?!admin)(?!verifylogin)(?!login)([a-zA-Z_]*)']='user/user/board/$1';
+
+//$route['admin']='admin/index';
 $route['user']='user/user/index';
