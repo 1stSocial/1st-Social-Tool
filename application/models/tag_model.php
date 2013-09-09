@@ -402,7 +402,9 @@ Class Tag_model extends CI_Model
             }}
                 $result_send['Parent'] = $arr;
                 $result_send['child'] =$arr2;
-//                var_dump($result_send);die;
+//      $input = array_map("unserialize", array_unique(array_map("serialize", $arr)));
+//      var_dump($input);die;
+      
                 return $result_send;
             }
             
