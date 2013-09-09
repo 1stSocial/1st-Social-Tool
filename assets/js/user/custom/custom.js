@@ -5,7 +5,8 @@ function refine()
     var siteurl = $('#side_url').val();
     var value = '';
     var i = 0;
-
+    var b_name = $('#board_name').val();
+   
     $('#lct-widget-locations-container :checked').each(function() {
         value += $(this).val() + ',';
 
@@ -14,10 +15,18 @@ function refine()
         val: value
     };
 
+     if(b_name == 'home')
+        {
+            tempurl =  siteurl + '/user/user/index';
+        }
+     else
+     {
+         tempurl = siteurl + '/'+b_name;
+     }
 
     $.ajax({
         type: "POST",
-        url: siteurl + '/user/user/index',
+        url: tempurl,
         data: dataval,
         success: function(res)
         {
@@ -49,9 +58,11 @@ function change()
 function footer_refine(id)
 {
     var siteurl = $('#side_url').val();
-
+    var b_name = $('#board_name').val();
+//    alert(b_name);
     var dataval = {
-        val: id
+        val: id,
+        b_name:b_name
     };
 
 
@@ -103,19 +114,24 @@ $(document).ready(function() {
     
     $('#searchsubmit').click(function()
     {
+        var b_name = $('#board_name').val();
         var search = $('#s').val();
+//        alert(b_name);
         if (search != "job search")
         {
 
             var dataval = {
-                'search': search
-                
+                'search': search,
+                'b_name':b_name
             };
 
             $.ajax({
                 type: "POST",
                 url: siteurl + "/user/user/keyword_search",
                 data: dataval,
+                 beforeSend:function(){
+                $('#searchsubmit').unbind('click');
+            },    
                 success: function(res)
                 {
 //                    alert(res);
@@ -140,6 +156,7 @@ $(document).ready(function() {
     $('#navigation1 a').click(function (){
         
          var id = $(this).text();
+         var b_name = $('#board_name').val();
          var pagename = $('#pagename').val();
          var uri = siteurl;
          
@@ -167,13 +184,17 @@ $(document).ready(function() {
 
             var dataval = {
                 'search': search,
-                'page' :  id
+                'page' :  id,
+                'b_name' :b_name
             };
 
             $.ajax({
                 type: "POST",
                 url: uri ,
                 data: dataval,
+                 beforeSend:function(){
+                $('#refine_btn').unbind('click');
+            },    
                 success: function(res)
                 {
 //                    alert(res);
@@ -186,6 +207,7 @@ $(document).ready(function() {
                             function() {
                                 $('#left').html(res);
                             }).fadeIn('slow');
+                            
                 },
                 error: function(res)
                 {
@@ -195,23 +217,28 @@ $(document).ready(function() {
         }
         return false;
     });
-    
 
     $('#refine_btn').click(function() {
-
+//  alert("tt34");
+   var b_name = $('#board_name').val();
         var dataval = {
             min: $('#min_sal').val(),
-            max: $('#max_sal').val()
+            max: $('#max_sal').val(),
+            b_name : b_name
         };
-
+       
         var siteurl = $('#side_url').val();
 
         $.ajax({
             type: 'POST',
             url: siteurl + '/user/user/salary_refine',
-            data: dataval,
+                data: dataval,           
+            beforeSend:function(){
+                $('#refine_btn').unbind('click');
+            },           
             success: function(res)
             {
+                clickflag = 0 ;
                 $('#left').fadeOut('slow',
                         function() {
                             $('#left').html("");
@@ -220,17 +247,16 @@ $(document).ready(function() {
                         function() {
                             $('#left').html(res);
                         }).fadeIn('slow');
+//                        alert('s');
             },
             error: function(res)
             {
                 alert('error');
             }
         });
+    
 
     });
-
-
-    
 
 });
 
