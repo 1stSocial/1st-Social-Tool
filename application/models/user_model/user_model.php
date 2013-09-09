@@ -92,7 +92,7 @@ class User_model extends CI_Model
                         $this->db->select('tag_parent.parent_tag_id');
                         $this->db->from('item_tags as taxo');
 //                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
-                        $this->db->join('tag_parent','taxo.tag_id=tag_parent.tag_id');
+                        $this->db->join('tag_parent','taxo.tag_id=tag_parent.tag_id','inner');
                         $this->db->where('taxo.item_id',$val->id);
                         $this->db->distinct();
                         $temp1 = $this->db->get();
@@ -110,7 +110,6 @@ class User_model extends CI_Model
                         $this->db->select('*');
                         $this->db->from('item_tags as taxo');
                         $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id');
-                        
                         $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->id);
                         $this->db->distinct('tag.name');
@@ -150,59 +149,73 @@ class User_model extends CI_Model
                     
     }
     
-    function refine_post_job($id,$start)
+    function refine_post_job($id,$start,$board_id=FALSE)
     {
         $data = array();
         $data1 = array();
-        $temp = array();
+        $temp1 = array();
        $result1 = array();
-        
+        $key =array();
                                               
             $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
-                $this->db->limit(5, $start);
+//                $this->db->limit(5, $start);
                 $result = $this->db->get();
                 if($result->num_rows()>0)
                 {
                 $data = $result->result();
+//                var_dump($data);die;
               //  $result = $this->db->query('select u.name as user_name,i.* from items i inner join users u on u.id =i.created_by');
                     foreach ($data as $val)
                     {
-                        $temp[] = $val->item_id;
+                        $temp1[] = $val->item_id;
                     }
-                    $temp = array_count_values($temp);
-                    $key = array_search(count($id)-1,$temp);
+                    $temp = array_count_values($temp1);
+                    foreach ($temp as $tempkey => $val)
+                    {
+                        if(count($id)-1 == $val)
+                        {
+                            $key[] = $tempkey;
+                        }
+                    }
+                  
                 }
-//            endforeach;
         
-                if(count($id)-1==1)
-                {
-                    $key = $id;
+                if(count($id)-1 == 1)
+                {              
+                    if(!is_array($temp1))
+                    $key = $temp1;
+                    
                 }
                 if(count($id)-1 == 0) 
                 {
                     return $this->post_job();
                 }
-                
+//                var_dump($key);
                     $this->db->select('i.*,t.item_id ,u.name as user_name');
                     $this->db->from('item_tags as t');
                     $this->db->join('items as i','i.id=t.item_id','inner');
                     $this->db->join('users as u','u.id =i.created_by','inner');
-                    $this->db->where_in('t.tag_id',$key);
+                    $this->db->where_in('i.id',$key);
+                    if($board_id)
+                    {
+                        $this->db->where('i.board_id',$board_id);
+                    }
                     $this->db->limit(5, $start);
                     $this->db->distinct();
                     $result = $this->db->get();
                     if($result->num_rows()>0)
                     {
                         $result1['item'] = $result->result();
-                    
+//                        var_dump($result1['item']);die;
                $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.parent_tag_id');
+                        $this->db->select('t_p.parent_tag_id');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id');
+                        $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->id);
                         $this->db->distinct();
                         $temp1 = $this->db->get();
@@ -215,9 +228,10 @@ class User_model extends CI_Model
                     
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.*');
+                        $this->db->select('*');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id');
+                        $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->id);
                         $temp3 = $this->db->get();
                         $temp[] =$temp3->result();
@@ -246,7 +260,7 @@ class User_model extends CI_Model
        
     }
     
-    function refine_job_salary($start)
+    function refine_job_salary($start,$board_id=FALSE)
     {
         $result1 = array();
         $max = $this->input->post('max');
@@ -259,6 +273,10 @@ class User_model extends CI_Model
         $this->db->join('users as u','u.id =i.created_by','inner');
         $this->db->where('taxo.name','salary');
         $this->db->where("t.value BETWEEN $min AND $max");
+        if($board_id)
+        {
+            $this->db->where('i.board_id',$board_id);
+        }
         $this->db->limit(5, $start);
        
 //        $query = $this->db->get();
@@ -270,9 +288,14 @@ class User_model extends CI_Model
                $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.parent_tag_id');
+//                        $this->db->select('tag.parent_tag_id');
+//                        $this->db->from('item_tags as taxo');
+//                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+//                        $this->db->where('taxo.item_id',$val->item_id);
+                         $this->db->select('t_p.parent_tag_id');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id','inner');
+                        $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->item_id);
                         $this->db->distinct();
                         $temp1 = $this->db->get();
@@ -285,9 +308,11 @@ class User_model extends CI_Model
                     
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.*');
+                        $this->db->select('*');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id','inner');
+                        $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
+//                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->item_id);
                         $temp3 = $this->db->get();
                         $temp[] =$temp3->result();
@@ -313,7 +338,7 @@ class User_model extends CI_Model
                     
                     
                     }
-//                    print_r($result1);
+//                    var_dump($result1);
 //                    die;
                     return($result1);
     }
@@ -352,9 +377,16 @@ class User_model extends CI_Model
                     $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.parent_tag_id');
+//                        $this->db->select('tag.parent_tag_id');
+//                        $this->db->from('item_tags as taxo');
+////                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+//                        $this->db->join('tag_parent as tag','taxo.tag_id=tag_parent.tag_id');
+////                        $this->db->where('taxo.item_id',$val->id);
+//                        $this->db->where('taxo.item_id',$val->id);
+                        $this->db->select('tag_parent.parent_tag_id');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+//                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent','taxo.tag_id=tag_parent.tag_id');
                         $this->db->where('taxo.item_id',$val->id);
                         $this->db->distinct();
                         $temp1 = $this->db->get();
@@ -367,9 +399,11 @@ class User_model extends CI_Model
                     
                     foreach ($result1['item'] as $val)
                     {
-                        $this->db->select('tag.*');
+                        $this->db->select('*');
                         $this->db->from('item_tags as taxo');
-                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+//                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
+                        $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id');
+                        $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
                         $this->db->where('taxo.item_id',$val->id);
                         $temp3 = $this->db->get();
                         $temp[] =$temp3->result();
@@ -398,21 +432,33 @@ class User_model extends CI_Model
                     
     }
     
-    function keyword_search($start)
+    function keyword_search($start,$board_id=FALSE)
     {
        $keyword = $this->input->post('search');
-       
-       $this->db->select('id');
-       $this->db->from('items');
-       $this->db->like('name',$keyword);
-       $this->db->or_like('title',$keyword);
-       $this->db->or_like('body',$keyword);
-       $this->db->limit(5, $start);
-       $query = $this->db->get();
+       if($board_id)
+       {
+       $sql = 'SELECT * FROM `items` WHERE `board_id` = "'.$board_id.'" and `name` LIKE "%'.$keyword.'%" and `title` LIKE "%'.$keyword.'%" and `body` LIKE "%'.$keyword.'%"';
+            
+//       echo $sql;
+       $query = $this->db->query($sql);
+
+       }
+       else
+       {
+           $this->db->select('*');
+            $this->db->from('items');
+            $this->db->like('name',$keyword);
+            $this->db->or_like('title',$keyword);
+            $this->db->or_like('body',$keyword);
+            $this->db->limit(5, $start);
+            $query = $this->db->get();
+       }
+//       ////       var_dump($this->db->get());
        
        if($query->num_rows()>0)
        {
            $var = $query->result_array();
+//          var_dump($var);die;
            $arr = array();
            
            foreach ($var as $va) {
