@@ -48,3 +48,12 @@ margin-left:20%;
 {
     margin:0 auto!important;
 }
+
+ol ul li, ul ul li {
+    list-style-type: none;
+}
+
+ul li
+{
+    list-style-type: none;
+}
