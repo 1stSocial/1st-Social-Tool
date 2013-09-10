@@ -36,23 +36,24 @@
         foreach($Tag['Parent'] as $data): ?>
         <div style='magrin-top:33px;padding-top:8px;'>
             <label class="control-label" style="float: left;width:165px"> <?=$data['name'];?>  </label>
-             <select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' id = '<?=$data['id']?>' name=tag[]>
-                 <?php if(!empty($Tag['child'])): foreach($Tag['child'] as $val):  if($val['parent_tag_id'] == $data['id']):?>
-                    <?php var_dump($item); foreach($item as $maindata):  if($maindata['tag_id'] == $val['id']):
-                        $selectArr[]  = $val['id'] ;
+             <select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' id = '<?=$data['tag_id']?>' name=tag[]>
+                 <?php if(!empty($Tag['child'])): foreach($Tag['child'] as $val):  if($val['parent_tag_id'] == $data['tag_id']):?>
+                    <?php var_dump($item); foreach($item as $maindata):  if($maindata['tag_id'] == $val['tag_id']):
+                        $selectArr[]  = $val['tag_id'] ;
                         ?>
-                 <option value='<?=$val['id']?>' selected="selected"><?=$val['name']?></option> 
+                 <option value='<?=$val['tag_id']?>' selected="selected"><?=$val['name']?></option> 
                  <?php else :?>
             <?php endif;endforeach;
             
-            if(!in_array($val['id'], $selectArr)):
+            if(!in_array($val['tag_id'], $selectArr)):
             ?>
                 
-                 <option value='<?=$val['id']?>'><?=$val['name']?></option>
+                 <option value='<?=$val['tag_id']?>'><?=$val['name']?></option>
                 
                      <?php endif; endif;endforeach;endif;?> 
             </select>
-        <?php endforeach;?>        
+        <?php endforeach;?> 
+        
         </div>
     </div>
 </div>    
@@ -61,9 +62,9 @@
     <div id="taxodiv" style="padding-top: 5px">
     <? if(!empty($Taxonomy)): foreach($Taxonomy as $val): ?>
     <label style=" float: left;" class="control-label" ><?=$val['name']?> :</label>
-    <div style='magrin-top:33px;padding-left:31%;'><input type="text" style="float:left;width:69%" class="control-label" id="<?=$val['id']?>" name="taxo" value="<?=$val['ival']?>"/><div id="<?=$val['id']?>d"></div><div style="clear: both"></div></div>
+    <div style='magrin-top:33px;padding-left:31%;'><input type="text" style="float:left;width:69%" class="control-label" id="<?=$val['id']?>" name="taxo" value="<?=$val['ival']?>"/><input type="hidden" value="<?=$val['id']?>" id="taxoid"/><div id="<?=$val['id']?>d"></div><div style="clear: both"></div></div>
     <?php endforeach;endif;?>
-    
+       
 </div>    
 </div>
 </div>   

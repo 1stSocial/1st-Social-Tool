@@ -24,8 +24,13 @@
             <div class="controls" style="float: left">
                 <select data-placeholder="Choose a Parent Tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" >
                     <option value="0">No Parent</option>
-                    <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
-                            <option value="<?= $key ?>"><?= $Tag ?></option>
+                    <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): 
+                    foreach ($parentid as $sePartner) {
+                        $selected =''; 
+                                            if ($key == $sePartner) {
+                                                $selected = 'selected';
+                    }}?>
+                            <option <?=$selected;?> value="<?= $key ?>"><?= $Tag ?></option>
                         <?php
                         endforeach;
                     endif;

@@ -23,22 +23,29 @@
             </div>
             <div class="component">
                 <div class="control-group">
-                    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label")); ?>
+                    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label"));
+                    $sel = $boardData[0]->parent_tags;?>
                     <div class="controls">
                         <select data-placeholder="Choose a Parent..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
                             <option value="0"></option>
                             <?
-                            if (!empty($parenTag)):
+                            if(!empty($parenTag)):
                                 foreach ($parenTag as $key => $Tag):
                                     $selected = '';
-                                    if ($Tag == $boardData[0]->parent_tags) {
-                                        $selected = 'selected';
+                                    if ($key == $sel) {
+                                        $selected = 'selected';  
+                                    }
+                                    else
+                                    {
+                                        $selected='';
                                     }
                                     ?>    
-                                    <option <?= $selected;?> value="<?= $key ?>"><?= $Tag ?></option>
+                            <option <?=$selected;?> value="<?= $key ?>"><?= $Tag ?></option>
+                            <!--<option selected>'test</option>-->
                                 <?php endforeach;
                             endif;
                             ?>
+                                    <!--<option selected="selected">-->
                         </select><div style =" color: red; display: none;padding-left:43%" id="perror"> Select Parent Tag </div>
                     </div>
                 </div>
@@ -49,9 +56,18 @@
                 <div class="controls">
                     <select data-placeholder="Choose a Theme..." class="chosen-select" style="width:350px;" tabindex="4" id="theme" name="theme" >
                         <option value="0"></option>
-                        <option value="0">Default</option>
-                        <? if (!empty($theme)): foreach ($theme as $Theme_val): ?>
-                                <option value="<?= $Theme_val->id ?>"><?= $Theme_val->theme_name ?></option>
+                        <option <?php if($selected_theme==0) echo 'selected';?> value="0">Default</option>
+                        <? if (!empty($theme)): foreach ($theme as $Theme_val): 
+                                    $selected = '';
+                                    if ($Theme_val->id == $selected_theme) {
+                                        $selected = 'selected';  
+                                    }
+                                    else
+                                    {
+                                        $selected='';
+                                    }
+                                    ?>    
+                                <option <?=$selected;?> value="<?= $Theme_val->id ?>"><?= $Theme_val->theme_name ?></option>
                             <?php endforeach;
                         endif; ?>
                     </select>
