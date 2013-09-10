@@ -35,7 +35,7 @@ include $startpath . $val;
                                         $selected = 'selected';
                                     }
                                     ?>    
-                                    <option <?= $selected ?> value="<?= $pTag->id ?>"><?= $pTag->name ?></option>
+                                    <option <?= $selected ?> value="<?= $pTag->tag_id ?>"><?= $pTag->name ?></option>
                                 <?php endforeach;
                             endif;
                             ?>
