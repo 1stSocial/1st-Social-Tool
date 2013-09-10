@@ -1,5 +1,5 @@
 <?php
-
+ 
 Class Tag_model extends CI_Model
 {
 	private $_id;
