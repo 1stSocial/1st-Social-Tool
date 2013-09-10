@@ -1,5 +1,5 @@
 <?php
-include '/admin/dropdown.php';
+//include '/admin/dropdown.php';
 ?>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_taxonomy.js"></script>
 
