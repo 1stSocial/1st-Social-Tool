@@ -1,5 +1,5 @@
 <?php
-include '/dropdown.php';
+//include '/dropdown.php';
 ?>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_Tag.js"></script>
 <?php echo form_open('admin/home/update_tags', array('name' => 'myform')); ?>

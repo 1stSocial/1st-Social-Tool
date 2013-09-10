@@ -45,7 +45,7 @@ switch ($option) {
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <?php
-    include '/dropdown.php';
+//    include '/dropdown.php';
     ?>
 <?php echo form_open('admin/home/create_tags', array('name' => 'myform')); ?>
 
