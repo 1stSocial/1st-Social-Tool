@@ -154,13 +154,18 @@ Class Tag_model extends CI_Model
         }
         
         public function deleteparentTags($Id){        
-          $this->db->delete('tags', array('id' => $Id));
-          $this->db->delete('tags', array('parent_tag_id'=>$Id));
+          
+               
+            $this->db->delete('tags', array('id' => $Id));
+            $this->db->delete('tag_parent', array('tag_id'=>$Id));
+             $this->db->delete('tag_parent', array('parent_tag_id'=>$Id));
         }
         
         public function ParentTagname($parentTagid){
-            
-            $query = $this->db->get_where('tags',array( "id" =>$parentTagid));
+            $this->db->select('*');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+            $query = $this->db->get_where('tag_parent',array( "tag_id" =>$parentTagid));
             if ($query->num_rows()>0){
             $option=$query->result();            
            	if ($query->num_rows()>0){
@@ -219,7 +224,24 @@ Class Tag_model extends CI_Model
             }
         }
         
-        public function AllParentTags()
+        public function root_parent()
+        {
+                $this->db->select('*');
+                $this->db->from('tag_parent as t_p');
+                $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                $temp = $this->db->get_where('tag_parent',array('t_p.parent_tag_id'=>0));
+                if($temp->num_rows())
+                {
+                    $val = $temp->result();
+                    foreach($val as $key => $value)
+                    {
+                        $result[$id] = $val->name;
+                    }
+                    return $result;
+                }
+        }
+
+                public function AllParentTags()
         {
 //            $query = $this->db->get('tags');
            
