@@ -159,9 +159,9 @@ $(document).ready()
      }  
     else
       {
-            $('#navigation').html($('#navigation').html().replace('<strong>'+str+'</strong>','<a href='+value+'/'+b_name+str+'>'+str+'</a>'));
+            $('#navigation').html($('#navigation').html().replace('<strong>'+str+'</strong>','<a href='+value+'/user/user/board/'+b_name+'/'+str+'>'+str+'</a>'));
 
-     $('#navigation').html($('#navigation').html().replace('<a href='+value+'/'+b_name+$('#pageno').val()+'>'+$('#pageno').val()+'</a>','<strong>'+$('#pageno').val()+'</strong>'));
+     $('#navigation').html($('#navigation').html().replace('<a href='+value+'/user/user/board/'+b_name+'/'+$('#pageno').val()+'>'+$('#pageno').val()+'</a>','<strong>'+$('#pageno').val()+'</strong>'));
       }     
 }
 </script>
