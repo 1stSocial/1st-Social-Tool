@@ -46,6 +46,7 @@ class Item extends CI_Controller {
         
         $itemModel = new Item_model();
         $boards = $itemModel->get_board($session_data['id']);
+        
 //         echo "<pre>";         var_dump($boards);
 //         die();
          $data['boards'] = $boards;

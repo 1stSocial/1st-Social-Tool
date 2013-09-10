@@ -69,7 +69,7 @@ class Home extends CI_Controller {
         $this->load->helper('form');
         // get all parent tag
         $tagModel = new Tag_model();
-        $parentTags = $tagModel->AllParentTags();
+        $parentTags = $tagModel->root_parent();
 
         //get all partners 
         $userModel = new User_model();  
@@ -136,7 +136,7 @@ class Home extends CI_Controller {
             $viewData['boardData'] = $boardData;
             // get all parent tag
             $tagModel = new Tag_model();
-            $parentTags = $tagModel->AllParentTags2();
+            $parentTags = $tagModel->root_parent();
             $viewData['parenTag'] = $parentTags;
             // get all child tag
             $childTag = $tagModel->getChildTags($boardData[0]->parent_tags);
