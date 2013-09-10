@@ -224,7 +224,26 @@ Class Tag_model extends CI_Model
             }
         }
         
-        public function root_parent()
+        
+        public function parent_tag($id)
+        {
+            echo $id;
+           $query = $this->db->get_where('tag_parent',array('tag_id'=>$id));
+            if($query->num_rows())
+            {
+                $arr[] = array();
+               $res = $query->result_array();
+               foreach ($res as $val)
+               {
+                   $arr[] = $val['parent_tag_id'];
+               }
+               
+               return $arr;
+            }
+            
+        }
+
+                public function root_parent()
         {
                 $this->db->select('*');
                 $this->db->from('tag_parent as t_p');

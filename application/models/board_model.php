@@ -172,8 +172,6 @@ Class Board_model extends CI_Model {
                 $data3 = array('board_id' => "$data[id]", 'user_id' => "$value");
                 $this->db->insert('board_users', $data3);
             }
-            
-        
     }
 
     function bord_tag($id) {
@@ -185,6 +183,16 @@ Class Board_model extends CI_Model {
 
     function set_theme($data) {
         $this->db->insert('board_page', $data);
+    }
+    
+    function get_theme($bid)
+    {
+        $result = $this->db->get_where('board_page', array('board_id'=>$bid));
+        if($result->num_rows())
+        {
+            $res = $result->result_array();
+            return $res['0']['theme_id'];
+        }
     }
 
 }
