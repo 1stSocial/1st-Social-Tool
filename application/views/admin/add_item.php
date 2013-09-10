@@ -12,7 +12,7 @@
         <select data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
             <option value="0"></option>
             <? if (!empty($boards)): foreach ($boards as $val): ?>
-                    <option value="<?= $val['board_id'] ?>"><?= $val['name'] ?></option>
+                    <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
 
                 <?php endforeach;
             endif;

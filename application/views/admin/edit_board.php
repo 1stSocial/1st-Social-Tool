@@ -25,17 +25,17 @@
                 <div class="control-group">
                     <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label")); ?>
                     <div class="controls">
-                        <select data-placeholder="Choose a Partner..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
-                            <option value="0">Select</option>
+                        <select data-placeholder="Choose a Parent..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
+                            <option value="0"></option>
                             <?
                             if (!empty($parenTag)):
-                                foreach ($parenTag as $pTag):
+                                foreach ($parenTag as $key => $Tag):
                                     $selected = '';
-                                    if ($pTag->name == $boardData[0]->parent_tags) {
+                                    if ($Tag == $boardData[0]->parent_tags) {
                                         $selected = 'selected';
                                     }
                                     ?>    
-                                    <option <?= $selected ?> value="<?= $pTag->tag_id ?>"><?= $pTag->name ?></option>
+                                    <option <?= $selected;?> value="<?= $key ?>"><?= $Tag ?></option>
                                 <?php endforeach;
                             endif;
                             ?>

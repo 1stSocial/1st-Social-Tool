@@ -48,7 +48,7 @@
                     <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
                         <option value="0"></option>
                         <? if (!empty($partners)): foreach ($partners as $val): ?>
-                                <option value="<?= $val->tag_id ?>"><?= $val->name ?></option>
+                                <option value="<?= $val->id ?>"><?= $val->name ?></option>
     <? endforeach;
 endif; ?>
                     </select>
