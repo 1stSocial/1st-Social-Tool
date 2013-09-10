@@ -365,15 +365,31 @@ class User_model extends CI_Model
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
                     if(is_array($id))
-                       $this->db->where_in('i.id',$id); 
+                    {
+                        if(count($id))
+                        {
+                            $this->db->where_in('i.id',$id);
+                            $result = $this->db->get();
+                        }
+                        else
+                        {
+                          
+                            $this->db->where('i.id','1');
+                            $result=  $this->db->get();
+                        }
+                        
+                        
+                    }
                     else 
+                    {
                         $this->db->where('i.id',$id);
 //                    $this->db->distinct();
-                    $result = $this->db->get();
+                        $result = $this->db->get();
+                    }
                     if($result->num_rows()>0)
                     {
                     $result1['item'] = $result->result();
-                    
+//                    var_dump($result1['item']);die;
                     $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
@@ -435,16 +451,6 @@ class User_model extends CI_Model
     function keyword_search($start,$board_id=FALSE)
     {
        $keyword = $this->input->post('search');
-       if($board_id)
-       {
-       $sql = 'SELECT * FROM `items` WHERE `board_id` = "'.$board_id.'" and `name` LIKE "%'.$keyword.'%" and `title` LIKE "%'.$keyword.'%" and `body` LIKE "%'.$keyword.'%"';
-            
-//       echo $sql;
-       $query = $this->db->query($sql);
-
-       }
-       else
-       {
            $this->db->select('*');
             $this->db->from('items');
             $this->db->like('name',$keyword);
@@ -452,22 +458,33 @@ class User_model extends CI_Model
             $this->db->or_like('body',$keyword);
             $this->db->limit(5, $start);
             $query = $this->db->get();
-       }
-//       ////       var_dump($this->db->get());
        
        if($query->num_rows()>0)
        {
+           
            $var = $query->result_array();
 //          var_dump($var);die;
            $arr = array();
-           
+//           if(!$board_id)
+           {
            foreach ($var as $va) {
                
                $arr[] = $va['id'];
            }
            
            return $this->view_detail($arr);
-           
+           }
+//           else
+//           {
+//             foreach ($var as $va) 
+//                 {
+//                        if($board_id == $va['board_id'])
+//                        {
+//                            $arr[] = $va['id'];
+//                        }
+//                 }
+//                 return $this->view_detail($arr);
+//           }
        }
  else {
             
