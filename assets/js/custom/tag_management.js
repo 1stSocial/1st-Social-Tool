@@ -1,4 +1,5 @@
 $(document).ready(function() {
+     jQuery('.chosen-select').chosen(); 
     $('#tab_id').dataTable({
         "sPaginationType": "full_numbers"
     });
