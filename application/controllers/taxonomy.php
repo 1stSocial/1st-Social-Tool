@@ -55,7 +55,6 @@ class Taxonomy extends CI_Controller {
             
             $id =$this->input->post('id');
             $data= $this->taxonomy_model->get_taxonomy($id);
-             // var_dump($data);
                 $obj = new Tag_model();
               $data[0]->parenTag = $obj->root_parent();
               echo $this->load->view('edit_taxonomy',$data[0],TRUE);
@@ -70,7 +69,6 @@ class Taxonomy extends CI_Controller {
          
             if($this->input->post())
             {
-            //var_dump($this->input->post());
               $this->taxonomy_model->add_taxonomy();
              
             }else
