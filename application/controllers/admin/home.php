@@ -163,6 +163,9 @@ class Home extends CI_Controller {
             $setting_model = new Setting_model();
             $Theme = $setting_model->theme_name();
             $viewData['theme']= $Theme;
+            
+            $viewData['selected_theme'] = $boardModel->get_theme($boardId);
+            
             echo $this->load->view('admin/edit_board', $viewData,TRUE);
             die;
         }
@@ -313,9 +316,11 @@ class Home extends CI_Controller {
         $data = $tagModel->id_val($id);
         $val['id'] = $data[0]->id;
         $val['name'] = $data[0]->name;
-//        $val['parentid'] = $data[0]->parent_tag_id;
+        $val['parentid'] = $tagModel->parent_tag($val['id']);
+        
+        
         $val['parenTag'] = $tagModel->AllParentTags();
-      //  var_dump($val); die();
+//        var_dump($val); die();
         echo $this->load->view('admin/edit_Tag',$val,TRUE);
         die;
     }

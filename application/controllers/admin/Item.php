@@ -117,7 +117,7 @@ class Item extends CI_Controller {
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
         
          $data['Tag']= $tag_model->tag_val($data['item']['0']['board_id']);
-        
+//         var_dump($data['Tag']);die;
 //        echo "id-";        var_dump($data); 
        echo $this->load->view('admin/item_edit',$data,TRUE);
         die;
@@ -133,46 +133,98 @@ class Item extends CI_Controller {
         $item = new Item_model();
         
         $taxoarr = $this->input->post('taxo');
-        foreach ($taxoarr as $taxo_id => $taxo_val) 
-            {
-                $val = $item->get_type($taxo_id);
+//        foreach ($taxoarr as $taxo_id => $taxo_val) 
+//            {
+//                $val = $item->get_type($taxo_id);
+//                 if($val)
+//                 {
+//                     switch($val['0']['type'])
+//                     {
+//                         case 'Integer':
+//                         {
+//                            if(!$taxo_val=='')
+//                            {
+//                             $exp = '/^[0-9]*[.]*[0-9]+$/' ;
+//                             if(!preg_match($exp,$taxo_val))
+//                             {
+//                                 $error[] = $taxo_id.":Please Enter Number";
+//                                 $error_iden = $error_iden && FALSE;
+//                             }
+//                             else
+//                             {
+//                                 $error[] = $taxo_id.":";
+//                                 $error_iden = $error_iden && TRUE;
+//                             }
+//                            }
+//                            else
+//                            {
+//                                $error[] = $taxo_id.":Please Enter Number";
+//                                $error_iden = $error_iden && FALSE;
+//                            }
+//                         }
+//                             break;
+//                         case 'String':
+//                         {
+//                             if($taxo_val=='')
+//                             {
+//                                 $error[] = $taxo_id.":* please give value";
+//                                 $error_iden = $error_iden && FALSE;
+//                             }
+//                             else
+//                             {
+//                                 $error[] = $taxo_id.":";
+//                                 $error_iden = $error_iden && TRUE;
+//                             }
+//                         }
+//                             break;
+//                     }
+//                 }
+//            }
+        $ids = $this->input->post('ids');
+        foreach ($ids as $id)
+        {
+//        foreach ($taxoarr as $taxo_id => $taxo_val) 
+//            {
+                
+                $val = $item->get_type($id);
+                
                  if($val)
                  {
                      switch($val['0']['type'])
                      {
                          case 'Integer':
                          {
-                            if(!$taxo_val=='')
+                            if(!$taxoarr[$id] =='')
                             {
                              $exp = '/^[0-9]*[.]*[0-9]+$/' ;
-                             if(!preg_match($exp,$taxo_val))
+                             if(!preg_match($exp,$taxoarr[$id]))
                              {
-                                 $error[] = $taxo_id.":Please Enter Number";
+                                 $error[] = $id.":Please Enter Number";
                                  $error_iden = $error_iden && FALSE;
                              }
                              else
                              {
-                                 $error[] = $taxo_id.":";
+                                 $error[] = $id.":";
                                  $error_iden = $error_iden && TRUE;
                              }
                             }
                             else
                             {
-                                $error[] = $taxo_id.":Please Enter Number";
+                                $error[] = $id.":Please Enter Number";
                                 $error_iden = $error_iden && FALSE;
                             }
                          }
                              break;
                          case 'String':
                          {
-                             if($taxo_val=='')
+                             if($taxoarr[$id] =='')
                              {
-                                 $error[] = $taxo_id.":* please give value";
+                                 $error[] = $id.":* please give value";
                                  $error_iden = $error_iden && FALSE;
                              }
                              else
                              {
-                                 $error[] = $taxo_id.":";
+                                 $error[] = $id.":";
                                  $error_iden = $error_iden && TRUE;
                              }
                          }
