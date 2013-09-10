@@ -137,11 +137,15 @@ Class Item_model extends CI_Model {
     
     function get_board($id)
     {
-        $this->db->select('*,b_u.id as bu_id');  
+        $this->db->select('b.*');  
         $this->db->from('board_users as b_u');
         $this->db->join('board as b', 'b.id = b_u.board_id');
+        $this->db->distinct();
+        
         if($id == '1')
-        {}
+        {
+            
+        }
         else
         $this->db->where('user_id', $id); 
         $query = $this->db->get();

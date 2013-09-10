@@ -235,7 +235,7 @@ Class Tag_model extends CI_Model
                     $val = $temp->result();
                     foreach($val as $key => $value)
                     {
-                        $result[$id] = $val->name;
+                        $result[$value->id] = $value->name;
                     }
                     return $result;
                 }
