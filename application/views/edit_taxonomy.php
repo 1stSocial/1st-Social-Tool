@@ -27,9 +27,21 @@
 <?php echo form_label('Type:', 'type', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?>
             <div class="controls">
                 <select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="type" name="type" style="margin-left: 60px;">
+                    <?php if($type=='Select') {?>
+                    <option selected value="select">Select</option>
+                    <?}else{?>
                     <option value="select">Select</option>
+                    <?}?>
+                    <?php if($type=='string') {?>
+                    <option selected value="string">String</option>
+                    <?}else{?>
                     <option value="string">String</option>
+                    <?}?>
+                    <?php if($type=='Integer') {?>
+                    <option selected value="Integer">Integer</option>
+                    <?}else{?>
                     <option value="Integer">Integer</option>
+                    <?}?>
                 </select><div style =" color: red; display: none;padding-left:43%" id="type_error"> Select Taxonomy Type </div>
             </div>
         </div>    
@@ -39,8 +51,18 @@
             <div class="controls">
                 <select data-placeholder="Choose a Parent..." class="chosen-select mar"  style="width:350px;" tabindex="4" id="parentTag2" name="parentTag2"  style="margin-left: 22px;">
                     <option value="0">Select</option>
-                    <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
-                            <option value="<?= $key ?>"><?= $Tag ?></option>
+                    <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): 
+                            $selected = '';
+                                    if ($key == $tag_id) {
+                                        $selected = 'selected';  
+                                    }
+                                    else
+                                    {
+                                        $selected='';
+                                    }
+                        ?>
+                    
+                            <option <?=$selected?> value="<?= $key ?>"><?= $Tag ?></option>
     <?php endforeach;
 endif;
 ?>
