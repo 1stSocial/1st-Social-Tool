@@ -16,6 +16,7 @@ function savefun(ur)
     var body = $('#body').val();
     var tag = [];
     var taxo = [];
+    var ids=[];
     $('#taxodiv').find('input:text')
             .each(function() {
         taxo[this.id] = $(this).val();
@@ -26,7 +27,13 @@ function savefun(ur)
         tag[$(this).val()] = $(this).val();
 
     });
-
+    var i=0;
+    $('#taxodiv').find('input:hidden')
+            .each(function() {
+        ids[i] = $(this).val();
+        i++;
+    });
+    
     if (itemname != "") {
 
         var dataval = {
@@ -35,7 +42,8 @@ function savefun(ur)
             title: title,
             body: body,
             taxo: taxo,
-            tag_id: tag
+            tag_id: tag,
+             ids : ids
         };
 
         $.ajax({
@@ -43,7 +51,27 @@ function savefun(ur)
             url: ur,
             data: dataval,
             success: function(res) {
-                if (res == '')
+//                if (res == '')
+//                {
+//                    setTimeout(function() {
+//                        $('#closebtn').click();
+//                        window.location.href = './';
+//                    }, 200);
+//
+//                }
+//                else
+//                {
+//                    var obj = jQuery.parseJSON(res);
+//
+//                    for (var i = 0; i < obj.length; i++)
+//                    {
+//                        var val = obj[i].split(":");
+//                        $id = "#" + val[0] + "d";
+//                        $($id).html(val[1]);
+//
+//                    }
+//                }
+                    if (res == '')
                 {
                     setTimeout(function() {
                         $('#closebtn').click();
@@ -54,7 +82,6 @@ function savefun(ur)
                 else
                 {
                     var obj = jQuery.parseJSON(res);
-
                     for (var i = 0; i < obj.length; i++)
                     {
                         var val = obj[i].split(":");
