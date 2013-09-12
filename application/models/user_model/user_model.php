@@ -265,6 +265,9 @@ class User_model extends CI_Model
         $result1 = array();
         $max = $this->input->post('max');
         $min = $this->input->post('min');
+        $taxoid = $this->input->post('taxoid');
+        
+        echo $taxoid;
         
         $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
         $this->db->from('taxonomy as taxo');
@@ -273,10 +276,12 @@ class User_model extends CI_Model
         $this->db->join('users as u','u.id =i.created_by','inner');
         $this->db->where('taxo.name','salary');
         $this->db->where("t.value BETWEEN $min AND $max");
+//        $this->db->where('t.taxo_id',$taxoid);
         if($board_id)
         {
             $this->db->where('i.board_id',$board_id);
         }
+        
         $this->db->limit(5, $start);
        
 //        $query = $this->db->get();
@@ -284,7 +289,7 @@ class User_model extends CI_Model
                     if($result->num_rows()>0)
                     {
                         $result1['item'] = $result->result();
-                    
+//                        var_dump($result1['item']);
                $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
@@ -358,6 +363,65 @@ class User_model extends CI_Model
         
     }
     
+    function taxo_val($bid)
+    {
+        $this->db->select('Filterable_taxo');
+        $this->db->from('board');
+        $this->db->where('id',$bid);
+        $res = $this->db->get();
+        
+        if($res->num_rows()>0)
+        {
+            $te = $res->result_array();
+//            var_dump($te);die;
+            $taxo = $te['0']['Filterable_taxo']; 
+        }
+        
+        $val = array();
+       
+        $this->db->select("MAX(CAST(it.value AS SIGNED))");
+        $this->db->from('item_taxo as it');
+        $this->db->where('taxo_id',$taxo);
+        
+//        $this->db->where()
+        $max = $this->db->get();
+        if($max->num_rows()>0)
+        {
+            $res = $max->result_array();
+            $temp =$res['0']['MAX(CAST(it.value AS SIGNED))'];
+            $val['max'] =  intval($temp)/1000;
+        }
+        
+        $this->db->select("MIN(CAST(it.value AS SIGNED))");
+       $this->db->from('item_taxo as it');
+        $this->db->where('taxo_id',$taxo);
+        $max = $this->db->get();
+        if($max->num_rows()>0)
+        {
+            $res = $max->result_array();
+            $val['min'] = intval($res['0']['MIN(CAST(it.value AS SIGNED))'])/1000;
+            if(!$val['min']<1)
+            {
+                $val['min'] = 0;
+            }
+        }
+        
+        $this->db->select('name');
+        $this->db->from('taxonomy');
+        $this->db->where('id',$taxo);
+        $taxoname = $this->db->get();
+        
+        if($taxoname->num_rows()>0)
+        {
+            $t = $taxoname->result_array();
+            $val['name'] = $t['0']['name'];
+        }
+        $val['taxoid'] =$taxo;
+//        var_dump($val);die;
+        
+        return $val;
+    }
+            
     function view_detail($id)
     {
         $result1 = array();
