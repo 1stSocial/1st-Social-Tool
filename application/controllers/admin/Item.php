@@ -17,7 +17,7 @@ class Item extends CI_Controller {
             $data['access_level'] =  $session_data['access_level'];
             
             $this->load->view('admin/home', $data);
-            //$this->load->view('footer');
+         
         } 
         else 
         {
@@ -46,12 +46,9 @@ class Item extends CI_Controller {
         
         $itemModel = new Item_model();
         $boards = $itemModel->get_board($session_data['id']);
-        
-//         echo "<pre>";         var_dump($boards);
-//         die();
+
          $data['boards'] = $boards;
          $data['items'] = $this->item_model->get_item($session_data['id']);
-//         var_dump($data);
         $this->load->view('admin/add_item',$data);
         
         
@@ -72,7 +69,6 @@ class Item extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $borad_id = $this->input->post('boardval');
         $boards = $boardModel->getBoardByBoardId($borad_id);
-//        var_dump($boards);
         $data['board_id'] = $borad_id;
         $taxonomy = $item->get_taxonomy($boards['0']->parent_tags);
         $tagid = $boardModel->bord_tag( $borad_id);// 
@@ -81,15 +77,11 @@ class Item extends CI_Controller {
         $data['Taxonomy'] = $taxonomy;
         
         $data['tag_id'] = $tagid['0']['tag_id'];// 
-//        var_dump($data['Taxonomy']);
-//       var_dump($data);
-//        die;
-        
+
         $_SESSION['child_tag'] = $this->input->post('tag');
         
         $data['items'] = $this->item_model->get_item($session_data['id']);
         $this->load->view('admin/item_fill',$data);
-        
         
     }
             
@@ -112,16 +104,13 @@ class Item extends CI_Controller {
         
         $itemid = $this->uri->segment(4);
         $item_modal = new Item_model();
-//        echo $itemid ; die;
+
         $data['item'] = $item_modal ->get_item_id($itemid);
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
         
          $data['Tag']= $tag_model->tag_val($data['item']['0']['board_id']);
-//         var_dump($data['Tag']);die;
-//        echo "id-";        var_dump($data); 
        echo $this->load->view('admin/item_edit',$data,TRUE);
         die;
-//        var_dump($data);
     }
             
     function update_item()
@@ -133,59 +122,9 @@ class Item extends CI_Controller {
         $item = new Item_model();
         
         $taxoarr = $this->input->post('taxo');
-//        foreach ($taxoarr as $taxo_id => $taxo_val) 
-//            {
-//                $val = $item->get_type($taxo_id);
-//                 if($val)
-//                 {
-//                     switch($val['0']['type'])
-//                     {
-//                         case 'Integer':
-//                         {
-//                            if(!$taxo_val=='')
-//                            {
-//                             $exp = '/^[0-9]*[.]*[0-9]+$/' ;
-//                             if(!preg_match($exp,$taxo_val))
-//                             {
-//                                 $error[] = $taxo_id.":Please Enter Number";
-//                                 $error_iden = $error_iden && FALSE;
-//                             }
-//                             else
-//                             {
-//                                 $error[] = $taxo_id.":";
-//                                 $error_iden = $error_iden && TRUE;
-//                             }
-//                            }
-//                            else
-//                            {
-//                                $error[] = $taxo_id.":Please Enter Number";
-//                                $error_iden = $error_iden && FALSE;
-//                            }
-//                         }
-//                             break;
-//                         case 'String':
-//                         {
-//                             if($taxo_val=='')
-//                             {
-//                                 $error[] = $taxo_id.":* please give value";
-//                                 $error_iden = $error_iden && FALSE;
-//                             }
-//                             else
-//                             {
-//                                 $error[] = $taxo_id.":";
-//                                 $error_iden = $error_iden && TRUE;
-//                             }
-//                         }
-//                             break;
-//                     }
-//                 }
-//            }
         $ids = $this->input->post('ids');
         foreach ($ids as $id)
         {
-//        foreach ($taxoarr as $taxo_id => $taxo_val) 
-//            {
-                
                 $val = $item->get_type($id);
                 
                  if($val)
@@ -237,6 +176,7 @@ class Item extends CI_Controller {
             $this->load->model('Item_model');
             $item_model = new Item_model();
             $item_model->update_item();
+//            unlink($this->input->post('unlink'));
             echo '';
             die;
         }
@@ -255,6 +195,7 @@ class Item extends CI_Controller {
         $data['title'] = $this->input->post('title');
         $data['body'] = $this->input->post('body');
         $data['board_id'] = $this->input->post('board_id');
+        $data['image'] =  $this->input->post('image');
         
         $this->load->model('item_model');
         $error = array();
@@ -268,9 +209,7 @@ class Item extends CI_Controller {
         
         foreach ($ids as $id)
         {
-//        foreach ($taxoarr as $taxo_id => $taxo_val) 
-//            {
-                
+
                 $val = $item->get_type($id);
                 
                  if($val)
@@ -319,8 +258,6 @@ class Item extends CI_Controller {
             }
         if($error_iden)
         {
-//                $taxo = $this->input->post('taxo');
-//                $userId = $data['user_id'];
 
                 unset($data['save']);
                 unset($data['user_id']);
@@ -331,7 +268,7 @@ class Item extends CI_Controller {
                 unset($_SESSION['child_tag']);
                 $item->item_insert($data,$tag);
                echo '';
-                die();
+                die;
         }
         else
         {
@@ -340,7 +277,47 @@ class Item extends CI_Controller {
         }
     }
     
-    
+    function test()
+    {
+        $imgname = "upload".time().".jpg";
+       
+        if(isset($_FILES["img"]))
+        {
+        
+        if ($_FILES["img"]["error"] > 0)
+        {
+        echo "";
+        die;
+        }
+        else
+        {
+        $Upload = 'assets/css/user/temp/'.$_FILES["img"]["name"] ;
+         $Type = $_FILES["img"]["type"] ;
+         $Storedin = $_FILES["img"]["tmp_name"] ;
+         if($_FILES["img"]["name"] != "")
+         {
+         move_uploaded_file($Storedin, 'assets/css/user/temp/'.$_FILES["img"]["name"]);
+         
+         list($x,$y) = getimagesize($Upload);
+         $new = imagecreatetruecolor(100, 100);
+         $newtemp = imagecreatefromjpeg($Upload);
+         imagecopyresized($new, $newtemp, 0, 0, 0, 0, 100, 100, $x, $y);
+         imagejpeg($new,'assets/css/user/itemimage/'.$imgname);
+         unlink($Upload);
+         echo 'assets/css/user/itemimage/'.$imgname;
+         }
+        else
+        {
+             echo "";
+        }
+        }}
+        else
+        {
+    echo "";
+        }
+        die;
+    }
+            
     function childtag()
     {
          $this->load->model('tag_model');

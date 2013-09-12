@@ -18,7 +18,6 @@ class Home extends CI_Controller {
             $data['access_level'] = $session_data['access_level'];
             
             $this->load->view('admin/home', $data);
-            //$this->load->view('footer');
         } else {
             //If no session, redirect to login page
             redirect('/login');
@@ -34,7 +33,6 @@ class Home extends CI_Controller {
         $boardModel = new Board_model();
         $session_data = $this->session->userdata('logged_in');
         $boards = $boardModel->getBoards($session_data['id']);
-        // echo "<pre>"; print_r($boards);
         $viewData['boards'] = $boards;
         $viewData['option'] = $option;
         
@@ -83,14 +81,12 @@ class Home extends CI_Controller {
             
             $session_data = $this->session->userdata('logged_in');
             $data = $this->input->post();
-//                        print_r($data); die;
             $userId = $data['user_id'];
             unset($data['save']);
             unset($data['user_id']);
             $data['createdBy'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
 
-//             echo "<pre>"; print_r($data); die;
             // save board information 
             $boardModel = new Board_model($data);
             $boardId = $boardModel->saveBoard();
@@ -132,7 +128,6 @@ class Home extends CI_Controller {
         if (is_numeric($boardId) && !empty($boardId)) {
             //get board details
             $boardData = $boardModel->getBoardByBoardId($boardId);
-            // echo "<pre>"; print_r($boardData);  
             $viewData['boardData'] = $boardData;
             // get all parent tag
             $tagModel = new Tag_model();
@@ -145,19 +140,16 @@ class Home extends CI_Controller {
             //get selected child tag
             $boardTagModel = new Board_tag_model();
             $selectedChildTag = $boardTagModel->getChildTagByBoard($boardId);
-            // echo "<pre>"; print_r($selectedChildTag);
             $viewData['selectedChildTag'] = $selectedChildTag;
 
             //get all partners 
             $userModel = new User_model();
             $partners = $userModel->getAllPartners();
-            //echo "<pre>"; print_r($partners);  
             $viewData['partners'] = $partners;
 
             // get select partners 
             $boardUserModel = new Board_user_model();
             $selectPartners = $boardUserModel->getSelectedUserByBoardId($boardId);
-            // echo "<pre>"; print_r($selectPartners);
             $viewData['selectedPartners'] = $selectPartners;
             
             $setting_model = new Setting_model();
@@ -199,11 +191,9 @@ class Home extends CI_Controller {
        $this->load->model('tag_model');
  
         if ($this->input->post()) {
-       //     echo $_POST['parent'];
         }
           $tagModel = new Tag_model();
             $result = $tagModel->getChildTags($_POST['parent']);
-            //echo "<pre>"; print_r($result);
             if(is_array($result))
             foreach ($result as $val) 
                 echo '<option value="' . $val->id . '"selected>' . $val->name . '</option>';
@@ -219,13 +209,6 @@ class Home extends CI_Controller {
         if ($this->input->post()) {
             echo $_POST['parent'];
             die();
-//            $tagModel = new Tag_model();
-//            $result = $tagModel->getChildTags($data['parentTag']);
-//            //echo "<pre>"; print_r($result);
-//            foreach ($result as $val) {
-//                echo '<option value="' . $val->id . '"selected>' . $val->name . '</option>';
-                
-                
             }
         
         
@@ -242,33 +225,15 @@ class Home extends CI_Controller {
         
         if($this->input->post())
         {
-//          if($this->form_validation->run()== TRUE)
-          {
+            {
            $data['id'] = NULL;   
            $data['name'] = $this->input->post('parenttag');
            $data['parent_tag_id'] = $this->input->post('Parentid');
            
-//           if(!$this->tag_model->checkParentTag($data))
-//           {
            $this->tag_model->addTag($data);
            echo '';
-//           }
-//           else
-//           {
-//               echo 'ParentTag all ready exist.';
-//           }
-          }
-//          else
-//          {
-//              echo 'else';
-////              $this->load->view('admin/create_tag');
-////              $this->load->view('footer');
-//          }
-           
+          }  
         }
-//        
-//        $this->load->view('admin/create_tag');
-//        $this->load->view('footer');
         die;
     }
     
@@ -281,7 +246,6 @@ class Home extends CI_Controller {
         
         $tagModel = new Tag_model();
         $data['parentTags'] = $tagModel->AllTag();
-       // var_dump($data);
         $obj = new Tag_model();
               $data['parenTag'] = $obj->AllParentTags();
         if(isset($val))
@@ -320,7 +284,6 @@ class Home extends CI_Controller {
         
         
         $val['parenTag'] = $tagModel->AllParentTags();
-//        var_dump($val); die();
         echo $this->load->view('admin/edit_Tag',$val,TRUE);
         die;
     }
