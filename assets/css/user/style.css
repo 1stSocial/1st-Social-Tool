@@ -28,7 +28,12 @@ Tags: Tutorials, Yellow, Grey, White, Minimalistic, Right-sidebar, fixed-width, 
 
 /* RESET */
 
-
+.loader
+{
+    height: 100%;
+    width: 100%;
+    background: url(images/bg_img.jpg) repeat-x left top #ffffff;
+}
 
 html, body, div, span, applet, object, iframe,
 
@@ -1064,7 +1069,12 @@ h6 {
 
 }
 
-
+/*.default_image
+{
+     background: url(./itemimage/default.png);
+     height : 50 px;
+     width:  50 px;
+}*/
 
 
 
