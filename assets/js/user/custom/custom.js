@@ -1,5 +1,3 @@
-
-
 function refine()
 {
     var siteurl = $('#side_url').val();
@@ -117,14 +115,14 @@ $(document).ready(function() {
         var b_name = $('#board_name').val();
         var search = $('#s').val();
 //        alert(b_name);
-        if (search != "job search")
+        if (search != "search")
         {
 
             var dataval = {
                 'search': search,
                 'b_name':b_name
             };
-
+            
             $.ajax({
                 type: "POST",
                 url: siteurl + "/user/user/keyword_search",

@@ -5,23 +5,37 @@ $(document).ready()
     }, 100);
 
     $('#body').redactor();
+   $('.fileupload').fileupload();
+   
+     $('form').ajaxForm({
+        beforeSubmit: function() {
+            
+        },
+        success: function(data) {
+            
+            savefun(data);
+        }
+     });
+     
 }
 function _close()
 {
     window.location.href = './';
 }
-function savefun(ur)
-{
+function savefun(image)
+{ 
+    alert(image);
+    ur = $('#url_temp').val();
     ur = ur + '/';
-
     var tag_id = $('#tag_id').val();
     var name = $('#item_name').val();
     var title = $('#item_title').val();
     var body = $('#body').val();
     var board_id = $('#bord_id').val();
     var taxoid =  $('#taxoid').val();
-    
-   
+//    var imgval = $('#imgsrc').attr('src');
+//    alert(imgval); 
+//    alert(img);
     
     var taxo = [];
     var ids=[];
@@ -35,6 +49,15 @@ function savefun(ur)
         ids[i] = $(this).val();
         i++;
     });
+    
+    var imgval;
+    
+     $('#imgdiv').find('img')
+            .each(function() {
+        imgval = $(this).attr('src');
+       
+    });
+    
     if (name != "" && title != "" && body != "") {
 
         var dataval = {
@@ -44,14 +67,19 @@ function savefun(ur)
             body: body,
             board_id: board_id,
             taxo: taxo,
-            ids : ids
+            ids : ids,
+            img : imgval,
+            image : image
         }
 
         $.ajax({
             type: "POST",
             url: ur,
             data: dataval,
+
+       
             success: function(res) {
+//                alert('cl');
                 if (res == '')
                 {
                     setTimeout(function() {
@@ -74,12 +102,13 @@ function savefun(ur)
             },
             error: function(res)
             {
-
+                    alert('dsdss');
             }
         });
     }
     else
     {
+        alert('else');
         $("#error").show();
     }
 }

@@ -6,14 +6,26 @@ $(document).ready()
 
     $('#body').redactor();
     $(".chosen-select").chosen({width: "50%"});
+    
+    $('form').ajaxForm({
+        beforeSubmit: function() {
+            
+        },
+        success: function(data) {
+            savefun(data);
+        }
+     });
 }
 
-function savefun(ur)
+function savefun(image)
 {
+    ur = $('#url_temp').val();
+    ur = ur + '/';
     var id = $('#item_id').val();
     var itemname = $('#name').val();
     var title = $('#title').val();
     var body = $('#body').val();
+    var unlink = $('#imgsrc').attr('src');
     var tag = [];
     var taxo = [];
     var ids=[];
@@ -43,7 +55,9 @@ function savefun(ur)
             body: body,
             taxo: taxo,
             tag_id: tag,
-             ids : ids
+             ids : ids,
+             image : image,
+             unlink : unlink
         };
 
         $.ajax({
