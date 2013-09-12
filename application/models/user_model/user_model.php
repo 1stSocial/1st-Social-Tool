@@ -343,10 +343,13 @@ class User_model extends CI_Model
                     return($result1);
     }
     
-    function latest_job()
+    function latest_job($board_id = FALSE)
     {
         $this->db->select('items.id,items.name,items.title,items.createdTime');
         $this->db->from('items');
+        if($board_id)
+        $this->db->where('board_id',$board_id);
+        
         $this->db->order_by('createdTime','DESC');
         $this->db->limit(5);
         $query = $this->db->get();

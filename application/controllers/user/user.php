@@ -149,8 +149,8 @@ class User extends CI_Controller {
         $data['tag'] = $tag_model->semi_parent($board_id);
         else
         $data['tag'] = $tag_model->semi_parent();
-        if($data_str =='job' || $data_str =='JOB')
-        $data['latestjob'] = $this->user_model->latest_job();
+        
+        $data['latestjob'] = $this->user_model->latest_job($board_id);
 //            var_dump($data);
 //        $data['board_name'] = $
         $this->load->view('user/sidebar', $data);
