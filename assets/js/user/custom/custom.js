@@ -95,9 +95,9 @@ $(document).ready(function() {
     nj(function() {
         nj("#slider-range").slider({
             range: true,
-            min: 0,
-            max: 200,
-            values: [0, 200],
+            min: $('#min_sal').val()/1000,
+            max: $('#max_sal').val()/1000,
+            values: [$('#min_sal').val()/1000, $('#max_sal').val()/1000],
             slide: function(event, ui) {
                 nj('#min_sal').val(ui.values[ 0 ] + '000');
                 nj('#max_sal').val(ui.values[ 1 ] + '000');
@@ -218,13 +218,20 @@ $(document).ready(function() {
 
     $('#refine_btn').click(function() {
 //  alert("tt34");
+
+    var taxoid =  $('#taxo_id').val()
+    if(taxoid == "")
+        {
+            taxoid = 2;
+        }
    var b_name = $('#board_name').val();
         var dataval = {
             min: $('#min_sal').val(),
             max: $('#max_sal').val(),
-            b_name : b_name
+            b_name : b_name,
+            taxoid : taxoid
         };
-       
+        alert(taxoid);
         var siteurl = $('#side_url').val();
 
         $.ajax({
