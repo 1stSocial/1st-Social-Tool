@@ -1,13 +1,29 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/item_fill.js"></script>
+
+
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-    <?php echo form_open('admin/Item/insert_item'); ?>
+    <?php echo form_open_multipart(site_url("/admin/item/test/"));?>
     <div class="modal-header">
         <input type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
         <h3>Add Item <?= $board_name ?></h3> 
     </div>
-    <div class="modal-body" style="overflow: auto ! important;">   
+    <div class="modal-body" style="overflow: auto ! important;"> 
+        
+             <div class="control-group">
+            <div class="controls">
+                <label style=" float: left;" class="control-label"  >Upload Image :</label>
+                <div style='magrin-top:33px;padding-left:20%;'>
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="" /></div>
+                    <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
+                    <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" /></span>
+                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                </div></div>
+            </div>
+        </div>
+<!--        <input type="file" class="file fileupload fileupload-preview">-->
         <div class="control-group">
             <div class="controls">
                 <label style=" float: left;" class="control-label"  >Name :</label>
@@ -45,7 +61,8 @@
 
     <div class="modal-footer">        
         <div class="control-group div_wrapper">
-            <input type="button" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Create Item" onclick="savefun('<?php echo site_url("/admin/item/insert_item/"); ?>')" />
+            <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/item/insert_item/"); ?>">
+            <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Create Item" onclick="//savefun('<?php // echo site_url("/admin/item/insert_item/"); ?>')" />
             <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
         </div>
     </div>

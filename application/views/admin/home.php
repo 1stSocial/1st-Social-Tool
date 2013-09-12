@@ -6,7 +6,7 @@
 			</a>
 		</div>
 		<ul class="nav">
-                    <?php if($access_level == 'admin') : ?>
+                    <?php if($access_level == 'admin' || $access_level == 'partner') : ?>
 			<li class="<?= $this->uri->segment(1) == "home" ? "active" : ""; ?>"><a href="<?= base_url(); ?>index.php/admin/home">Home</a></li>
 			<li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <span class="caret"></span></a>
