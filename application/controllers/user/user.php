@@ -46,7 +46,9 @@ class User extends CI_Controller {
 
  public function board($data_str = FALSE)
     {
+     
         $temp = new User_model;
+    
         if($data_str)
         {
             $id = $temp ->get_boardid($data_str);
@@ -63,7 +65,7 @@ class User extends CI_Controller {
         {
             $theme = $temp->apply_theme();
         }
-        $data['board_name'] = $data_str;
+        
         $str = "";
         $myarr = array();
         if (is_array($theme)) {
@@ -74,13 +76,17 @@ class User extends CI_Controller {
             $str = ""; 
         }
        $filepath = 'assets/css/user/temp.less';
-       $fp = fopen($filepath, "w+");
-        flock($fp,LOCK_EX);
-        fwrite($fp, $str);
-        flock($fp,LOCK_UN);
-        fclose($fp);
-        $this->load->view('user/header');
-        
+      
+        if($temp->board_exist($data_str))
+        {    
+            $fp = fopen($filepath, "w+");
+             flock($fp,LOCK_EX);
+             fwrite($fp, $str);
+             flock($fp,LOCK_UN);
+             fclose($fp);
+             $data['board_name'] = $data_str;
+             $this->load->view('user/header');
+        }
         //body start here..
         
         $this->load->model('tag_model');
@@ -143,7 +149,7 @@ class User extends CI_Controller {
         $data['tag'] = $tag_model->semi_parent($board_id);
         else
         $data['tag'] = $tag_model->semi_parent();
-        
+        if($data_str =='job' || $data_str =='JOB')
         $data['latestjob'] = $this->user_model->latest_job();
 //            var_dump($data);
 //        $data['board_name'] = $
