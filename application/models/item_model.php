@@ -98,7 +98,8 @@ Class Item_model extends CI_Model {
        $data['name'] = $this->input->post('name');
        $data['title'] = $this->input->post('title');
        $data['body'] = $this->input->post('body');
-       
+       $data['image'] = $this->input->post('image');
+        
        $this->db->update('items',$data,array('id'=>$id));
        $this->db->delete('item_taxo', array('item_id'=>$id));
        $taxoarr = $this->input->post('taxo');
