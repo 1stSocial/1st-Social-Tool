@@ -1,6 +1,6 @@
 <div id="left">
     <div id="latestjob"><li class="botwid widget_text">			
-            <div class="textwidget">Jobs</div>
+            <div class="textwidget"><? if(isset($board_name)) echo strtoupper($board_name); else echo 'JOBS';?></div>
         </li></div>
 
     <div id="navigation1" class="clearfix" >

@@ -1,4 +1,3 @@
-    
 <div id="left" >
     <?php
     if (isset($content))
@@ -11,6 +10,7 @@
     <!-- Sidebar widgets -->
     <div class="sidebar">
         <ul>
+           <? if(isset($latestjob)): ?> 
             <li class="sidebox super_recent_posts"><h3 class="sidetitl"><a href="">Latest Jobs</a></h3>                
                 <?php if (is_array($latestjob)): foreach ($latestjob as $val) : ?>
                         <div class="super_recent_posts_item">
@@ -20,8 +20,8 @@
                     <?php endforeach;
                 endif; ?>
             </li>
-
-<?php if (is_array($tag['Parent'])): foreach ($tag['Parent'] as $data): ?>
+            <? endif;?>
+        <?php if (is_array($tag['Parent'])): foreach ($tag['Parent'] as $data): ?>
                     <li class="sidebox widget_lc_taxonomy">
                         <div id="lct-widget-locations-container" class="list-custom-taxonomy-widget">
                             <h3 class="sidetitl"><?= $data['name'] ?></h3>
@@ -31,7 +31,7 @@
                                             <a href="javascript:refine();" title="View all posts filed under <?= $val['name']; ?>"><input type="checkbox" name="child" id="child" value="<?= $val['tag_id']; ?>"/><?= $val['name'] ?></a>
                                         </li>
             <?php endif;
-        endforeach; ?>
+            endforeach; ?>
                             </ul>
                         </div>
                     </li>
@@ -63,8 +63,6 @@ endif; ?>
     <div class="squarebanner ">
         <h3 class="sidetitl"> Sponsors </h3>
         <ul>
-
-
             <li>
                 <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?>" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
             </li>			
@@ -80,7 +78,6 @@ endif; ?>
             <li class="rbanner">
                 <a href="" title=""><div class="limg"></div></a>
             </li>
-
         </ul>
     </div>
 </div>

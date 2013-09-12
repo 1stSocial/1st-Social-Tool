@@ -64,7 +64,7 @@
                     </div>
                     <div id="search">
                                     <div>
-                                        <input id="s" name="s" value="job search" onfocus="if (this.value=='job search') this.value='';" onblur="if (this.value=='') this.value='job search';" type="text">
+                                        <input id="s" name="s" value="search" onfocus="if (this.value=='search') this.value='';" onblur="if (this.value=='') this.value='search';" type="text">
                                         <input value="" id="searchsubmit" type="button">
                                     </div>
                                

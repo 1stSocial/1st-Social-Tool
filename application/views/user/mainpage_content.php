@@ -1,5 +1,5 @@
 <div id="left">
-    <div id="latestjob"><li class="botwid widget_text">			<div class="textwidget">Latest Jobs</div>
+    <div id="latestjob"><li class="botwid widget_text">	<div class="textwidget"><? if(isset($board_name)) echo strtoupper($board_name); else echo 'LATEST JOBS';?></div>
         </li></div>
 
    
@@ -37,7 +37,8 @@
 
                     </div> <!--end-->   
                     <div style="float:right; margin-right: 10px; margin-top: 22px;"> <!--start-->
-                        
+                        <img src="<?php if($val->image!="") echo base_url().'/'.$val->image; else echo base_url().'/assets/css/user/itemimage/default.png'; ?>" alt="admin" height="50" width="50">  
+
                     </div> <!--end-->
 
                 </div> <!--endl pouter-->
