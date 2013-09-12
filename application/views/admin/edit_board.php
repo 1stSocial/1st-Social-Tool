@@ -50,7 +50,15 @@
                     </div>
                 </div>
             </div>
-            
+            <!--<div class="control-group">-->
+                <?php // echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label")); ?>
+<!--                <div class="controls">
+                    <div id="select_box" style="width:451px;">
+                    <select data-placeholder="Choose a Filterable Taxonomy..." class="chosen-select" style="width:350px;" tabindex="4" id="taxo" name="taxo" >
+                        <option></option>
+                    </select></div>
+                </div>-->
+            <!--</div>-->
             <div class="control-group">
                 <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label")); ?>
                 <div class="controls">
