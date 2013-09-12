@@ -151,7 +151,8 @@ class User extends CI_Controller {
         $data['tag'] = $tag_model->semi_parent();
         
         $data['latestjob'] = $this->user_model->latest_job($board_id);
-//            var_dump($data);
+        $data['max_min'] =$this->user_model->taxo_val($board_id);
+ //            var_dump($data);
 //        $data['board_name'] = $
         $this->load->view('user/sidebar', $data);
         $this->load->view('user/footer', $data['tag']);
