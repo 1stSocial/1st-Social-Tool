@@ -46,6 +46,20 @@ class Home extends CI_Controller {
         $this->load->view('footer');
     }
 
+    function taxoval()
+    {
+        $this->load->model('taxonomy_model');
+        $taxo_model =  new Taxonomy_model;
+        
+        $id = $this->input->post('tag_id');
+        $res = $taxo_model->get_int_taxo($id);
+   
+//        var_dump($res);die;
+        $send = json_encode($res);
+        echo $send;
+        die;
+    }
+            
     function logout() {
         $this->session->unset_userdata('logged_in');
         session_destroy();
@@ -86,10 +100,11 @@ class Home extends CI_Controller {
             unset($data['user_id']);
             $data['createdBy'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
-
+            $val = $data['filterable_taxo'];
+            
             // save board information 
             $boardModel = new Board_model($data);
-            $boardId = $boardModel->saveBoard();
+            $boardId = $boardModel->saveBoard($val);
             if (is_numeric($boardId)) {
                 // save user information 
                 $boardUserModel = new Board_user_model(array('boardId' => $boardId, 'userId' => $userId));
