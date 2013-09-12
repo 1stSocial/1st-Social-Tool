@@ -14,8 +14,10 @@
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.iframe-transport.js"></script>
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootbox.js"></script>
-        <script type="text/javascript" src="<?= base_url(); ?>assets/js/datatable/jquery.dataTables.js"></script>
         
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>assets/js/datatable/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.form.js"></script>
         <script src="<?= base_url(); ?>assets/js/chosen.jquery.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
          <script>
@@ -50,12 +52,17 @@
           .chosen-rtl .chosen-drop { left: -9000px; }
         </style>
         
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>                                
+       
+        
+        
+             <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>                                
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/js/bootstrap-fileupload/bootstrap-fileupload.css">
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
  	 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>  
+        
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>
-     
+        
    <title>1st Social</title>
  </head>
  <body>
