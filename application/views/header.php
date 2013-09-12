@@ -5,6 +5,10 @@
      
         <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/temp.less"></link>
          
+        <script>
+        
+        var selectVar = null ; 
+        </script>
          <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
          <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
          <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-ui-1.10.1.custom.js"></script>
@@ -37,8 +41,31 @@
                   jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
              jQuery('.chosen-select').chosen(); 
               jQuery('.chosen-select- deselect').chosen({allow_single_deselect:true});
-           });
-        });</script>
+         
+                
+//                jQuery("#btn").click(
+//                        function(){alert("test--"+selectVar);
+         // var opt =   new Option("mytest","tttt",false,false) ; 
+  //selectVar.add_option(opt);
+//                        }) ;
+     
+    
+    
+    });
+           
+           
+           
+           
+           
+        });
+                function myf()
+                {
+                    
+                    var sl = new SelectParser();
+      //   jQuery('.chosen-select').add_option();
+                }
+         
+         </script>
     
        
        
@@ -66,6 +93,6 @@
    <title>1st Social</title>
  </head>
  <body>
-
+     <div><input type="button" id="btn" ></div>
 <div class="loader">
 </div>
