@@ -86,6 +86,13 @@ function footer_refine(id)
     });
 }
 
+function num_refine(min,max)
+{
+    $('#min').val(min);
+    $('#max').val(max);
+    
+    $('#refine_btn').click();
+}
 
 $(document).ready(function() {
 
@@ -97,10 +104,10 @@ $(document).ready(function() {
             range: true,
             min: $('#min_sal').val()/1000,
             max: $('#max_sal').val()/1000,
-            values: [$('#min_sal').val()/1000, $('#max_sal').val()/1000],
+            values: [$('#min').val()/1000, $('#max').val()/1000],
             slide: function(event, ui) {
-                nj('#min_sal').val(ui.values[ 0 ] + '000');
-                nj('#max_sal').val(ui.values[ 1 ] + '000');
+                nj('#min').val(ui.values[ 0 ] + '000');
+                nj('#max').val(ui.values[ 1 ] + '000');
                 nj("#amount").val("$" + ui.values[ 0 ] + "k - $" + ui.values[ 1 ] + "k");
             }
         });
@@ -225,13 +232,13 @@ $(document).ready(function() {
             taxoid = 2;
         }
    var b_name = $('#board_name').val();
+   
         var dataval = {
-            min: $('#min_sal').val(),
-            max: $('#max_sal').val(),
+            min: $('#min').val(),
+            max: $('#max').val(),
             b_name : b_name,
             taxoid : taxoid
         };
-        alert(taxoid);
         var siteurl = $('#side_url').val();
 
         $.ajax({
