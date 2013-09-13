@@ -262,6 +262,7 @@ class User extends CI_Controller {
         $data['post'] = $this->user_model->refine_job_salary($val,$board_id['0']->id);
          
         $data['pagename'] = 'salary_refine';
+        $data['board_name']=$data_str;
         echo $this->load->view('user/content', $data, TRUE);
         die;
     }
