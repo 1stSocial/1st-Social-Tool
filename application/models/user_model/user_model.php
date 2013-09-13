@@ -274,9 +274,9 @@ class User_model extends CI_Model
         $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
         $this->db->join('items as i','i.id=t.item_id','inner');
         $this->db->join('users as u','u.id =i.created_by','inner');
-        $this->db->where('taxo.name','salary');
+//        $this->db->where('taxo.name','salary');
         $this->db->where("t.value BETWEEN $min AND $max");
-//        $this->db->where('t.taxo_id',$taxoid);
+        $this->db->where('t.taxo_id',$taxoid);
         if($board_id)
         {
             $this->db->where('i.board_id',$board_id);
