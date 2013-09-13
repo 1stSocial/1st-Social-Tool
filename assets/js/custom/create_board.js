@@ -21,32 +21,20 @@ jQuery(document).ready(function() {
             type: 'POST',
             success: function(res)
             {
-//                $('#taxo').append($('<option>', {
-//                    value: 1,
-//                    text: 'My option'
-//                }));
                 
                 var val = "<select data-placeholder='Choose a Filterable Taxonomy...' class=chosen-select style=width:350px; tabindex=4 id=taxo name=taxo>";
                         val += "<option value=0></option>";
                 
                  var obj = jQuery.parseJSON(res);
                  $.each(obj,function (i,data){
-//                     alert(data['id']+":"+data['name']);
                      val += "<option value="+data['id']+">"+data['name']+"</option>";
-                     
-                     
                     });
                  val +="</select>";
-//                 alert(val);
                  $('#select_box').html("");
                  $('#select_box').html(val);
                      jQuery('.chosen-select').chosen();
                      jQuery('#taxo_chosen').css('width', '49%');
-//                $('#chosen-select').typeahead({
-//                    updater:function (item) {
-//                     return item;
-//                    }
-//                });
+
             }
         });
     });
