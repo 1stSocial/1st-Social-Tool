@@ -45,11 +45,16 @@ endif; ?>
                                 $val=0; 
                           for($i=1;$i<5;$i++){?>
                             <li>    
-                            <a href="javascript:num_refine();" title=""><input type="checkbox" name="salref" id="salref" value="<?php echo $val."-".($val+$temp)-1?>"/><?php echo $val; echo "&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;";  echo ($val+$temp)-1 ;?></a>    
+                                <a href="javascript:num_refine(<?=$val?>,<?=($val+$temp)-1?>);" title=""><input type="radio" name="salref" id="salref" value="<?php echo $val."-".($val+$temp)-1?>"/><?php echo $val; echo "&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;";  echo ($val+$temp)-1 ;?></a>    
                           </li>
                                 <?php 
                             $val = $val + $temp;
-                          } }?>
+                          } }
+                          else
+                          {
+                              echo "<br><br>";
+                          }
+                          ?>
                         </ul>    
                             <br>
                     <div aria-disabled="false" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range" style="width:240px;"><div style="left: 0%; width: 100%;" class="ui-slider-range ui-widget-header ui-corner-all"></div><a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a><a style="left: 100%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div>
@@ -67,6 +72,8 @@ endif; ?>
                     </div>
                     <input id="min_sal" value="<?php if(isset($max_min['min'])) echo $max_min['min']*1000;else echo '0'; ?>" type="hidden">
                     <input id="max_sal" value="<?php if(isset($max_min['max'])) echo $max_min['max']*1000;else echo '200000'; ?>" type="hidden">
+                    <input id="min" value="<?php if(isset($max_min['min'])) echo $max_min['min']*1000;else echo '0'; ?>" type="hidden">
+                    <input id="max" value="<?php if(isset($max_min['max'])) echo $max_min['max']*1000;else echo '200000'; ?>" type="hidden">
                     <input id="taxo_id" type="hidden" value="<?php if(isset($max_min['taxoid'])) echo $max_min['taxoid']; else echo ""?>">
                     <input class="refine_btn" value="Refine" id="refine_btn" type="button"></div>
             </li>
