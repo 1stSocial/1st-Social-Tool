@@ -50,15 +50,18 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="control-group">-->
-                <?php // echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label")); ?>
-<!--                <div class="controls">
+            <input type="text" style="display: none" value="<?=$sel?>" id="selected_tag">
+            <input type="text" style="display: none" value="<?= $boardData[0]->Filterable_taxo ?>" id="selected_taxo">
+            <div class="control-group">
+                <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label")); ?>
+                <div class="controls">
                     <div id="select_box" style="width:451px;">
                     <select data-placeholder="Choose a Filterable Taxonomy..." class="chosen-select" style="width:350px;" tabindex="4" id="taxo" name="taxo" >
                         <option></option>
                     </select></div>
-                </div>-->
-            <!--</div>-->
+                </div>
+            </div>
+
             <div class="control-group">
                 <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label")); ?>
                 <div class="controls">
@@ -114,6 +117,8 @@
             <div class="control-group">
                 <input type="button" id="update" name="update" class="btn btn-primary footer_btn" value="Update Board" />
                 <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" id="cl">
+                <input type="hidden" id="site" value="<?= site_url();?>">
+                
             </div> 
         </div>
     </div>
