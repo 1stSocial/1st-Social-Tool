@@ -1,3 +1,13 @@
+$(document).ready(
+		function()
+		{
+                    var url = $('#url').val();
+             
+			$('#body').redactor({
+				imageUpload: url+'/admin/item/temp'
+			});
+		}
+	);
 $(document).ready()
 {
     setTimeout(function() {

@@ -1,86 +1,90 @@
 $(document).ready(
-		function()
-		{
-			$('#body1').redactor({
-				imageUpload: 'temp'
-			});
-		}
-	);
+        function()
+        {
+            $('#body1').redactor({
+                imageUpload: 'temp'
+            });
+        }
+);
+
 $(document).ready()
 {
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
- 
-   $('.fileupload').fileupload();
-   
-     $('form').ajaxForm({
+    $('.fileupload').fileupload(
+            {
+                uploadtype: 'image/jpg'
+            });
+
+    $('form').ajaxForm({
         beforeSubmit: function() {
-            
         },
         success: function(data) {
-            
+
             savefun(data);
         }
-     });
-
-
-
-  $("#redactor_file_link").attr("disabled","");
-// var nj = jQuery.noConflict();
-//  nj(function() {
-//    nj('#body1').redactor(function (){
-//         
-//        $('#redactor_content').redactor({
-//            imageUpload: '/modules/upload.php'
-//        });
-//    });
-//   });
+    });
+    $("#redactor_file_link").attr("disabled", "");
 }
 
-
+function change_fun()
+{
+    var val = $('#img').val();
+    var ext = /^.+\.([^.]+)$/.exec(val);
+    if (ext[1] != 'jpg')
+    {
+        $('#img_msg').html('Warning : Please Select jpg image.');
+        $('#clo').click();
+    }
+    else
+    {
+        $('#img_msg').hide();
+    }
+}
 
 function _close()
 {
     window.location.href = './';
 }
 function savefun(image)
-{ 
-    alert(image);
+{
     ur = $('#url_temp').val();
     ur = ur + '/';
     var tag_id = $('#tag_id').val();
     var name = $('#item_name').val();
     var title = $('#item_title').val();
-    var body = $('#body').val();
+    var body = $('#body1').val();
     var board_id = $('#bord_id').val();
-    var taxoid =  $('#taxoid').val();
-//    var imgval = $('#imgsrc').attr('src');
-//    alert(imgval); 
-//    alert(img);
-    
+    var taxoid = $('#taxoid').val();
+
     var taxo = [];
-    var ids=[];
+    var ids = [];
     $('#taxodiv').find('input:text')
             .each(function() {
         taxo[this.id] = $(this).val();
     });
-    var i =0;
+    var i = 0;
     $('#taxodiv').find('input:hidden')
             .each(function() {
         ids[i] = $(this).val();
         i++;
     });
-    
+
     var imgval;
-    
-     $('#imgdiv').find('img')
+
+    $('#imgdiv').find('img')
             .each(function() {
         imgval = $(this).attr('src');
-       
     });
-    
-    if (name != "" && title != "" && body != "") {
+
+    if (image == 'not uploaded')
+    {
+        $('#img_msg').html('Image not uploaded ...');
+        $('#img_msg').show();
+    }
+
+    if (name != "" && title != "" && body != "" && image != 'not uploaded') {
 
         var dataval = {
             tag_id: tag_id, // its to be change ;.l;l;l;l;===
@@ -89,26 +93,22 @@ function savefun(image)
             body: body,
             board_id: board_id,
             taxo: taxo,
-            ids : ids,
-            img : imgval,
-            image : image
+            ids: ids,
+            img: imgval,
+            image: image
         }
 
         $.ajax({
             type: "POST",
             url: ur,
             data: dataval,
-
-       
             success: function(res) {
-//                alert('cl');
                 if (res == '')
                 {
                     setTimeout(function() {
                         $('#closebtn').click();
                         window.location.href = './';
                     }, 200);
-
                 }
                 else
                 {
@@ -118,19 +118,17 @@ function savefun(image)
                         var val = obj[i].split(":");
                         $id = "#" + val[0] + "d";
                         $($id).html(val[1]);
-
                     }
                 }
             },
             error: function(res)
             {
-                    alert('dsdss');
+                alert('dsdss');
             }
         });
     }
     else
     {
-        alert('else');
         $("#error").show();
     }
 }
