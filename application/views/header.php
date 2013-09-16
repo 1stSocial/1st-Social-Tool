@@ -12,9 +12,10 @@
          <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
          <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
          <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-ui-1.10.1.custom.js"></script>
+         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/redactor.js"></script>
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/redactor.min.js"></script>
+	
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery.iframe-transport.js"></script>
         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootbox.js"></script>
@@ -26,7 +27,7 @@
         <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
          <script>
         $(document).ready(function() {   
-         $('#body').redactor();
+//         $('#body').redactor();
          var config = {
                     '.chosen-select'           : {},
                     '.chosen-select-deselect'  : {allow_single_deselect:true},
@@ -82,14 +83,14 @@
        
         
         
-             <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>                                
+             <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>-->                                
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="<?= base_url(); ?>assets/js/bootstrap-fileupload/bootstrap-fileupload.css">
- 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
+ 	
  	 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>  
         
  	<link rel="stylesheet" href="<?= base_url(); ?>assets/less/main.css"/>
-        
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/redactor.css"/>
    <title>1st Social</title>
  </head>
  <body>

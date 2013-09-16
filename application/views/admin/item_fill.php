@@ -1,6 +1,5 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/item_fill.js"></script>
 
-
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
@@ -38,14 +37,13 @@
             </div>
         </div>
 
-        <div class="control-group">
-            <div class="controls">
+
                 <label style=" float: left;" class="control-label"  >Body :</label>
                 <div style="height: 200px; width: auto; overflow: scroll; margin-left: 53px;">
-                    <textarea id="body" name="body" ></textarea>
+                    <textarea id="body1" name="body1" ></textarea>
+                    
                 </div>
-            </div>
-        </div>
+           
         <div class="controls" id="taxonomydiv">
             <div id="taxodiv">
                 <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
@@ -66,6 +64,7 @@
             <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
         </div>
     </div>
+   
 </div>
 <table class="table table-striped ">
     <thead>

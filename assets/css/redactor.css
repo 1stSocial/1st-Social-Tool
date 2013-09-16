@@ -527,6 +527,7 @@ body .redactor_toolbar li a.redactor_btn_alignment	 		{ background-position: -62
 .redactor_input  {
 	width: 99%;
 	font-size: 14px;
+        
 }
 .redactor_modal_box {
 	height: 350px;
@@ -584,7 +585,7 @@ body .redactor_toolbar li a.redactor_btn_alignment	 		{ background-position: -62
 	position: relative;
 	top: -1px;
 }
-#redactor_modal input[type="text"],
+/*#redactor_modal input[type="text"],*/
 #redactor_modal input[type="password"],
 #redactor_modal input[type="email"],
 #redactor_modal textarea {

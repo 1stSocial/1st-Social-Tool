@@ -1,10 +1,17 @@
+$(document).ready(
+		function()
+		{
+			$('#body1').redactor({
+				imageUpload: 'temp'
+			});
+		}
+	);
 $(document).ready()
 {
     setTimeout(function() {
-        $('#mod1').click();
+        jQuery('#mod1').click();
     }, 100);
-
-    $('#body').redactor();
+ 
    $('.fileupload').fileupload();
    
      $('form').ajaxForm({
@@ -16,8 +23,23 @@ $(document).ready()
             savefun(data);
         }
      });
-     
+
+
+
+  $("#redactor_file_link").attr("disabled","");
+// var nj = jQuery.noConflict();
+//  nj(function() {
+//    nj('#body1').redactor(function (){
+//         
+//        $('#redactor_content').redactor({
+//            imageUpload: '/modules/upload.php'
+//        });
+//    });
+//   });
 }
+
+
+
 function _close()
 {
     window.location.href = './';

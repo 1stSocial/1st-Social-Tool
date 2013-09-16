@@ -16,6 +16,8 @@
     function SelectParser() {
       this.options_index = 0;
       this.parsed = [];
+//      alert("name--"+this.name);
+      selectVar = this ;
     }
 
     SelectParser.prototype.add_node = function(child) {
@@ -47,6 +49,7 @@
     };
 
     SelectParser.prototype.add_option = function(option, group_position, group_disabled) {
+      //  alert("ttt123");
       if (option.nodeName.toUpperCase() === "OPTION") {
         if (option.text !== "") {
           if (group_position != null) {

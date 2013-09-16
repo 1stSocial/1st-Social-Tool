@@ -264,13 +264,15 @@ var RLANG = {
 				'</form>' +
 				'<div id="redactor_tab3" class="redactor_tab" style="display: none;">' +
 					'<label>' + RLANG.image_web_link + '</label>' +
-					'<input type="text" name="redactor_file_link" id="redactor_file_link" class="redactor_input"  />' +
+					'<input type="text" name="redactor_file_link" id="redactor_file_link" class="redactor_input"/>' +
+                                        
 				'</div>' +
 				'</div>' +
 				'<div id="redactor_modal_footer">' +
 					'<a href="javascript:void(null);" class="redactor_modal_btn redactor_btn_modal_close">' + RLANG.cancel + '</a>' +
 					'<input type="button" name="upload" class="redactor_modal_btn" id="redactor_upload_btn" value="' + RLANG.insert + '" />' +
-				'</div>',
+				'</div>'+'<script> </script>'
+                        ,
 
 			modal_link: String() +
 				'<div id="redactor_modal_content">' +
@@ -3844,6 +3846,7 @@ var RLANG = {
 		uploadLoaded : function()
 		{
 			var i = $('#' + this.id)[0];
+                       
 			var d;
 
 			if (i.contentDocument)
@@ -3865,7 +3868,10 @@ var RLANG = {
 				if (typeof d !== 'undefined')
 				{
 					// Remove bizarre <pre> tag wrappers around our json data:
-					var rawString = d.body.innerHTML;
+					
+                           
+                              var rawString = d.body.innerHTML;
+                               alert("rawString-"+rawString);
 					var jsonString = rawString.match(/\{(.|\n)*\}/)[0];
 					var json = $.parseJSON(jsonString);
 

