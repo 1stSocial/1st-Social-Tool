@@ -3871,7 +3871,7 @@ var RLANG = {
 					
                            
                               var rawString = d.body.innerHTML;
-                               alert("rawString-"+rawString);
+                              
 					var jsonString = rawString.match(/\{(.|\n)*\}/)[0];
 					var json = $.parseJSON(jsonString);
 
