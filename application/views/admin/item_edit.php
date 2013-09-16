@@ -99,6 +99,6 @@ endif; ?>
             <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
         </div>
     </div>
-
+    <input type="hidden" value="<?=  site_url();?>" id="url">
 </div>
 
