@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 07, 2013 at 02:48 PM
+-- Generation Time: Sep 16, 2013 at 04:46 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -32,18 +32,20 @@ CREATE TABLE IF NOT EXISTS `board` (
   `parent_tags` varchar(100) DEFAULT NULL,
   `createdTime` datetime NOT NULL,
   `created_by` int(11) NOT NULL,
+  `Filterable_taxo` int(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `board_id` (`id`),
   KEY `created_by` (`created_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `board`
 --
 
-INSERT INTO `board` (`id`, `name`, `parent_tags`, `createdTime`, `created_by`) VALUES
-(23, 'job', '1', '2013-09-06 09:09:36', 1),
-(24, 'vehicle', '21', '2013-09-07 08:09:44', 1);
+INSERT INTO `board` (`id`, `name`, `parent_tags`, `createdTime`, `created_by`, `Filterable_taxo`) VALUES
+(23, 'job', '1', '2013-09-06 09:09:36', 1, 2),
+(24, 'vehicle', '21', '2013-09-07 08:09:44', 1, 4),
+(25, 'parten board', '1', '2013-09-11 06:09:10', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `board_page` (
   PRIMARY KEY (`id`),
   KEY `board_id` (`board_id`),
   KEY `created_by` (`created_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `board_page`
@@ -70,7 +72,9 @@ CREATE TABLE IF NOT EXISTS `board_page` (
 
 INSERT INTO `board_page` (`id`, `board_id`, `theme_id`, `board_css`, `board_html`, `board_js`, `created_by`) VALUES
 (2, 23, 2, NULL, '', NULL, 0),
-(3, 24, 2, NULL, '', NULL, 0);
+(3, 24, 0, NULL, '', NULL, 0),
+(4, 25, 2, NULL, '', NULL, 0),
+(5, 26, 0, NULL, '', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `board_tags` (
   PRIMARY KEY (`id`),
   KEY `board_id` (`board_id`),
   KEY `tag_id` (`tag_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `board_tags`
@@ -93,7 +97,9 @@ CREATE TABLE IF NOT EXISTS `board_tags` (
 
 INSERT INTO `board_tags` (`id`, `board_id`, `tag_id`) VALUES
 (29, 23, 1),
-(30, 24, 1);
+(30, 24, 0),
+(31, 25, 1),
+(32, 26, 1);
 
 -- --------------------------------------------------------
 
@@ -106,16 +112,18 @@ CREATE TABLE IF NOT EXISTS `board_users` (
   `board_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
 
 --
 -- Dumping data for table `board_users`
 --
 
 INSERT INTO `board_users` (`id`, `board_id`, `user_id`) VALUES
-(33, 24, 2),
-(36, 23, 2),
-(37, 23, 4);
+(52, 24, 2),
+(63, 25, 2),
+(64, 26, 2),
+(73, 23, 2),
+(74, 23, 4);
 
 -- --------------------------------------------------------
 
@@ -161,24 +169,27 @@ CREATE TABLE IF NOT EXISTS `items` (
   `status` enum('1','0') NOT NULL DEFAULT '0',
   `createdTime` datetime NOT NULL,
   `board_id` int(50) NOT NULL,
+  `image` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `created_by` (`created_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `title`, `body`, `created_by`, `status`, `createdTime`, `board_id`) VALUES
-(10, 'driving', 'test', '<p>jdsfjaf</p><p>safjasf</p><p>asdf;lkdsa</p><p>fsdf</p><p><br></p>', 1, '0', '2013-09-05 03:09:42', 21),
-(11, 'test2', 'test2', 'hi this is a test job2...<br><p><br></p>', 1, '0', '2013-09-07 06:09:55', 23),
-(12, 'test3', 'test3', '<blockquote>hi this is a test job3<br></blockquote><p><br></p>', 1, '0', '2013-09-07 06:09:49', 23),
-(13, 'test4', 'test4', 'dsbkshdfkghdlkfghlk<p><br></p>', 1, '0', '2013-09-07 06:09:24', 23),
-(14, 'test5', 'test5', '<blockquote>dfjsleejflj</blockquote><p><br></p>', 1, '0', '2013-09-07 06:09:03', 23),
-(15, 'test6', 'driving', '<p>asdffsadf<br></p>', 1, '0', '2013-09-07 08:09:03', 23),
-(16, 'bmw', 'bmw', 'ajfld<p><br></p>', 1, '0', '2013-09-07 09:09:15', 24),
-(17, 'new', 'new', 'lkjs;ak;f<p><br></p>', 1, '0', '2013-09-07 09:09:49', 23),
-(18, 'car', 'car', 'mksadfl<p><br></p>', 1, '0', '2013-09-07 01:09:10', 24);
+INSERT INTO `items` (`id`, `name`, `title`, `body`, `created_by`, `status`, `createdTime`, `board_id`, `image`) VALUES
+(10, 'driving', 'test', '<p>jdsfjaf</p><p>safjasf</p><p>asdf;lkdsa</p><p>fsdf</p><p><br></p>', 1, '0', '2013-09-05 03:09:42', 21, ''),
+(11, 'test2', 'test2', 'hi this is a test job2...<br><p><br></p>', 1, '0', '2013-09-07 06:09:55', 23, ''),
+(12, 'test3', 'test3', '<blockquote>hi this is a test job3<br></blockquote><p><br></p>', 1, '0', '2013-09-07 06:09:49', 23, ''),
+(13, 'test4', 'test4', 'dsbkshdfkghdlkfghlk<p><br></p>', 1, '0', '2013-09-07 06:09:24', 23, ''),
+(14, 'test5', 'test5', '<blockquote>dfjsleejflj</blockquote><p><br></p>', 1, '0', '2013-09-07 06:09:03', 23, ''),
+(15, 'test6', 'driving', '<p>asdffsadf<br></p>', 1, '0', '2013-09-07 08:09:03', 23, ''),
+(16, 'bmw', 'bmw', 'ajfld<p><br></p>', 1, '0', '2013-09-07 09:09:15', 24, 'assets/css/user/itemimage/upload1378972982.jpg'),
+(17, 'new', 'new', 'lkjs;ak;f<p><br></p>', 1, '0', '2013-09-07 09:09:49', 23, ''),
+(18, 'car', 'car', 'mksadfl<p><br></p>', 1, '0', '2013-09-07 01:09:10', 24, ''),
+(21, 'image', 'new car ', 'lsdfj;l<p><br></p>', 1, '0', '2013-09-12 06:09:08', 24, ''),
+(22, 'image', 'image', 'hi<br><br><a href="http://img.planespotters.net/photo/199000/original/CS-TFY-Masterjet-Airbus-A320-200_PlanespottersNet_199054.jpg">http://img.planespotters.net/photo/199000/original/CS-TFY-Masterjet-Airbus-A320-200_PlanespottersNet_199054.jpg</a><p><br></p>', 1, '0', '2013-09-13 06:09:12', 24, 'assets/css/user/itemimage/upload1379050750.jpg');
 
 -- --------------------------------------------------------
 
@@ -193,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `item_tags` (
   PRIMARY KEY (`id`),
   KEY `tag_id` (`tag_id`),
   KEY `item_id` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
 
 --
 -- Dumping data for table `item_tags`
@@ -230,13 +241,24 @@ INSERT INTO `item_tags` (`id`, `tag_id`, `item_id`) VALUES
 (97, 11, 15),
 (98, 6, 15),
 (99, 19, 15),
-(100, 23, 16),
-(101, 24, 16),
 (102, 10, 17),
 (103, 5, 17),
 (104, 17, 17),
 (105, 5, 18),
-(106, 6, 18);
+(106, 6, 18),
+(117, 5, 19),
+(118, 5, 20),
+(122, 6, 21),
+(123, 5, 22),
+(124, 6, 23),
+(125, 6, 24),
+(126, 6, 25),
+(127, 6, 26),
+(128, 6, 27),
+(129, 6, 28),
+(130, 5, 29),
+(131, 6, 16),
+(132, 6, 22);
 
 -- --------------------------------------------------------
 
@@ -250,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `item_taxo` (
   `taxo_id` int(5) NOT NULL,
   `value` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=98 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=156 ;
 
 --
 -- Dumping data for table `item_taxo`
@@ -269,13 +291,49 @@ INSERT INTO `item_taxo` (`id`, `item_id`, `taxo_id`, `value`) VALUES
 (88, 14, 3, 'kdflsdkj;'),
 (89, 15, 2, '45000'),
 (90, 15, 3, 'sadfkhsadflk'),
-(91, 16, 4, '4500'),
-(92, 16, 5, 'asdf;l'),
 (93, 17, 2, '45000'),
 (94, 17, 3, 'abc'),
-(95, 18, 4, '45000'),
+(95, 18, 4, '50000'),
 (96, 18, 5, 'ca 400'),
-(97, 18, 6, '4500');
+(97, 18, 6, '4500'),
+(109, 19, 4, '22'),
+(110, 19, 5, '22'),
+(111, 19, 6, '222'),
+(112, 20, 4, '33'),
+(113, 20, 5, '33'),
+(114, 20, 6, '33'),
+(124, 21, 4, '22'),
+(125, 21, 5, '22'),
+(126, 21, 6, '22'),
+(127, 22, 4, '22'),
+(128, 22, 5, '22'),
+(129, 22, 6, '22'),
+(130, 23, 4, '222'),
+(131, 23, 5, 'jioui'),
+(132, 23, 6, '98788'),
+(133, 24, 4, '88'),
+(134, 24, 5, 'sf'),
+(135, 24, 6, '45'),
+(136, 25, 4, '56'),
+(137, 25, 5, '22'),
+(138, 25, 6, '88'),
+(139, 26, 4, '222'),
+(140, 26, 5, '44'),
+(141, 26, 6, '44'),
+(142, 27, 4, '222'),
+(143, 27, 5, '222'),
+(144, 27, 6, '222'),
+(145, 28, 4, '11'),
+(146, 28, 5, 'dsdsdsds'),
+(147, 28, 6, '11'),
+(148, 29, 4, '111'),
+(149, 29, 5, '11'),
+(150, 29, 6, '11'),
+(151, 16, 4, '4500'),
+(152, 16, 5, 'asdf;l'),
+(153, 22, 4, '45000'),
+(154, 22, 5, 'ssa'),
+(155, 22, 6, '56');
 
 -- --------------------------------------------------------
 
@@ -332,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `tags`
@@ -358,7 +416,6 @@ INSERT INTO `tags` (`id`, `name`) VALUES
 (19, 'Semi-Skilled Labour '),
 (20, 'Driving '),
 (21, 'vehicle'),
-(23, 'Bristol, Connecticut'),
 (24, 'Vermont');
 
 -- --------------------------------------------------------
@@ -372,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `tag_parent` (
   `tag_id` int(5) NOT NULL,
   `parent_tag_id` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `tag_parent`
@@ -381,7 +438,6 @@ CREATE TABLE IF NOT EXISTS `tag_parent` (
 INSERT INTO `tag_parent` (`id`, `tag_id`, `parent_tag_id`) VALUES
 (1, 1, 0),
 (2, 2, 1),
-(3, 3, 1),
 (4, 5, 3),
 (5, 6, 3),
 (6, 7, 3),
@@ -397,10 +453,11 @@ INSERT INTO `tag_parent` (`id`, `tag_id`, `parent_tag_id`) VALUES
 (16, 18, 16),
 (17, 19, 16),
 (18, 20, 16),
-(20, 3, 21),
 (21, 23, 22),
-(22, 24, 22),
-(33, 21, 0);
+(33, 21, 0),
+(34, 3, 1),
+(35, 3, 21),
+(39, 24, 3);
 
 -- --------------------------------------------------------
 
@@ -427,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
 
 INSERT INTO `taxonomy` (`id`, `tag_id`, `taxonomy_id`, `name`, `value`, `type`) VALUES
 (2, 1, NULL, 'salary', '', 'Integer'),
-(3, 1, NULL, 'link', '', 'String'),
+(3, 1, NULL, 'link', '', 'string'),
 (4, 21, NULL, 'price', '', 'Integer'),
 (5, 21, NULL, 'modal no', '', 'string'),
 (6, 21, NULL, 'abc', '', 'Integer');
