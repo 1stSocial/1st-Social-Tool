@@ -27,7 +27,6 @@
         <script src="<?= base_url(); ?>assets/css/docsupport/prism.js" type="text/javascript" charset="utf-8"></script> 
          <script>
         $(document).ready(function() {   
-//         $('#body').redactor();
          var config = {
                     '.chosen-select'           : {},
                     '.chosen-select-deselect'  : {allow_single_deselect:true},
@@ -42,14 +41,7 @@
                   jQuery(document).ready(function(){  // it is better if u call your function inside document.ready function
              jQuery('.chosen-select').chosen(); 
               jQuery('.chosen-select- deselect').chosen({allow_single_deselect:true});
-         
-                
-//                jQuery("#btn").click(
-//                        function(){alert("test--"+selectVar);
-         // var opt =   new Option("mytest","tttt",false,false) ; 
-  //selectVar.add_option(opt);
-//                        }) ;
-     
+
     
     
     });
@@ -94,6 +86,5 @@
    <title>1st Social</title>
  </head>
  <body>
-     <div><input type="button" id="btn" ></div>
 <div class="loader">
 </div>
