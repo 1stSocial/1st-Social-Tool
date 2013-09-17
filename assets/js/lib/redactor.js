@@ -9,7 +9,7 @@
 
 	Usage: $('#content').redactor();
 */
-
+ 
 var rwindow, rdocument;
 
 if (typeof RELANG === 'undefined')
@@ -3299,7 +3299,7 @@ var RLANG = {
 			this._imageSet('<img src="' + $(e.target).attr('rel') + '" alt="' + $(e.target).attr('title') + '" />', true);
 		},
 		imageUploadCallbackLink: function()
-		{
+		{   
 			if ($('#redactor_file_link').val() !== '')
 			{
 				var data = '<img src="' + $('#redactor_file_link').val() + '" />';

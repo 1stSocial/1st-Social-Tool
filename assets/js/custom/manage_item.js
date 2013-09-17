@@ -6,13 +6,13 @@ $(document).ready(function() {
     $("#tab_id_length").css("width", "28%");
     $('.dataTables_length').insertAfter($("#tab_id_info"));
     $('#tab_id_length').show();
-    $("img").css({
-        'width': 50,
-        'height': 50
-    });
-     $("iframe").css({
+    $(".body_img img").css({
         'width': 100,
         'height': 100
+    });
+     $("iframe").css({
+        'width': 300,
+        'height': 300
     });
 });
 

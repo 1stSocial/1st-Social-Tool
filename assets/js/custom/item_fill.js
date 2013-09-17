@@ -6,6 +6,7 @@ $(document).ready(
             });
         $('.redactor_box').css('height','400px');
         $('.redactor_ redactor_editor').css('height','400px');
+       
         }
 );
 
@@ -14,6 +15,8 @@ $(document).ready()
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
+    
+    
     $('.fileupload').fileupload(
             {
                 uploadtype: 'image/jpg'
