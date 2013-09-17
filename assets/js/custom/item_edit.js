@@ -4,8 +4,11 @@ $(document).ready(
                     var url = $('#url').val();
              
 			$('#body').redactor({
-				imageUpload: url+'/admin/item/temp'
+				imageUpload: url+'/admin/item/temp',
+                                
 			});
+                        
+                       
 		}
 	);
 $(document).ready()
@@ -19,7 +22,7 @@ $(document).ready()
      $('.fileupload').fileupload();
      
     $(".chosen-select").chosen({width: "50%"});
-    
+ 
     $('form').ajaxForm({
         beforeSubmit: function() {
             
@@ -30,6 +33,8 @@ $(document).ready()
         }
      });
 }
+ 
+
 
 function savefun(image)
 {
