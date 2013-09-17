@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/manage_item.js"></script>
 <table id="tab_id" class="table table-striped ">
     <thead>
@@ -19,11 +20,11 @@
 
                     <td><?= $val->name ?></td>
                     <td><?= $val->title ?></td>  
-                    <td><div style=" height:70px;   overflow: scroll;"><?= $val->body ?></div></td> 
+                    <td><div class="body_img" style="height:200px;  overflow: auto;"><?= $val->body ?></div></td> 
                     <td><?= $val->created_by ?></td>  
                     <td><?= $val->status ?></td>  
                     <td><?= $val->createdTime ?></td>  <? /*  href=".$val->id) ?>"  , */ ?>
-                    <td><div class="btn-group"> <a onclick="edit('<?php echo site_url('/admin/item/edit_item/'); ?>', '<?php echo $val->id; ?>')" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+                    <td><div class="btn-group"> <a href=<?php echo site_url('/admin/item/edit_item/'.$val->id);?> class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
                             <a href="javascript:deletbox('<?php echo site_url('/admin/item/delete_item/' . $val->id) ?>')" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
                 </tr>
     <? endforeach;
