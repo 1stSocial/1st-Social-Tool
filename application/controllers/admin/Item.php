@@ -26,8 +26,22 @@ class Item extends CI_Controller {
 
     function temp() 
     {
-        chmod('assets/css/user/content/', '0777');
+//        chmod('assets/css/user/content/', '0777');
         copy($_FILES['file']['tmp_name'], 'assets/css/user/content/' . $_FILES['file']['name']);
+//        $Upload = 'assets/css/user/content/' . $_FILES["file"]["name"];
+//                $Storedin = $_FILES["file"]["tmp_name"];
+////                      chmod('assets/css/user/temp/', '0777');
+////                    move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["file"]["name"]);
+//                    if (file_exists('assets/css/user/content/' . $_FILES["file"]["name"])) {
+//                        list($x, $y) = getimagesize($Upload);
+//                        $new = imagecreatetruecolor(100, 100);
+//                        $newtemp = imagecreatefromjpeg($Upload);
+//                        imagecopyresized($new, $newtemp, 0, 0, 0, 0, 100, 100, $x, $y);
+//                        imagejpeg($new, 'assets/css/user/thumbnail/' . $_FILES["file"]["name"]);
+//                    } else {
+//                        echo 'not uploaded';
+//                    }
+//                
         $array = array(
             'filelink' => base_url() . 'assets/css/user/content/' . $_FILES['file']['name'],
             'filename' => $_FILES['file']['name']
@@ -110,8 +124,8 @@ class Item extends CI_Controller {
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
 
         $data['Tag'] = $tag_model->tag_val($data['item']['0']['board_id']);
-        echo $this->load->view('admin/item_edit', $data, TRUE);
-        die;
+        $this->load->view('admin/item_edit', $data);
+        
     }
 
     function update_item() {
@@ -254,7 +268,7 @@ class Item extends CI_Controller {
                 $Type = $_FILES["img"]["type"];
                 $Storedin = $_FILES["img"]["tmp_name"];
                 if ($_FILES["img"]["name"] != "") {
-                    chmod('assets/css/user/temp/', '0777');
+//                    chmod('assets/css/user/temp/', '0777');
                     move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["img"]["name"]);
                     if (file_exists('assets/css/user/temp/' . $_FILES["img"]["name"])) {
                         list($x, $y) = getimagesize($Upload);
@@ -272,7 +286,16 @@ class Item extends CI_Controller {
                 }
             }
         } else {
-            echo "";
+           if(isset($_POST['imgscr']))
+            {
+               echo $this->input->post("imgscr");
+            }
+           else
+             {
+               echo '';
+             }
+               
+           
         }
         die;
     }
