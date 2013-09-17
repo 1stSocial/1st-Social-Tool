@@ -4,6 +4,8 @@ $(document).ready(
             $('#body1').redactor({
                 imageUpload: 'temp'
             });
+        $('.redactor_box').css('height','400px');
+        $('.redactor_ redactor_editor').css('height','400px');
         }
 );
 
@@ -21,7 +23,7 @@ $(document).ready()
         beforeSubmit: function() {
         },
         success: function(data) {
-
+          
             savefun(data);
         }
     });
@@ -52,7 +54,7 @@ function savefun(image)
     ur = $('#url_temp').val();
     ur = ur + '/';
     var tag_id = $('#tag_id').val();
-    var name = $('#item_name').val();
+//    var name = $('#item_name').val();
     var title = $('#item_title').val();
     var body = $('#body1').val();
     var board_id = $('#bord_id').val();
@@ -84,11 +86,11 @@ function savefun(image)
         $('#img_msg').show();
     }
 
-    if (name != "" && title != "" && body != "" && image != 'not uploaded') {
+    if (title != "" && body != "" && image != 'not uploaded') {
 
         var dataval = {
             tag_id: tag_id, // its to be change ;.l;l;l;l;===
-            name: name,
+            name: title,
             title: title,
             body: body,
             board_id: board_id,

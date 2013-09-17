@@ -15,6 +15,9 @@ $(document).ready()
     }, 100);
 
     $('#body').redactor();
+    
+     $('.fileupload').fileupload();
+     
     $(".chosen-select").chosen({width: "50%"});
     
     $('form').ajaxForm({
@@ -22,6 +25,7 @@ $(document).ready()
             
         },
         success: function(data) {
+         
             savefun(data);
         }
      });
@@ -32,7 +36,7 @@ function savefun(image)
     ur = $('#url_temp').val();
     ur = ur + '/';
     var id = $('#item_id').val();
-    var itemname = $('#name').val();
+//    var itemname = $('#name').val();
     var title = $('#title').val();
     var body = $('#body').val();
     var unlink = $('#imgsrc').attr('src');
@@ -56,11 +60,11 @@ function savefun(image)
         i++;
     });
     
-    if (itemname != "") {
+    if (title != "") {
 
         var dataval = {
             id: id, // its to be change ;.l;l;l;l;===
-            name: itemname,
+            name: title,
             title: title,
             body: body,
             taxo: taxo,
@@ -99,7 +103,7 @@ function savefun(image)
                 {
                     setTimeout(function() {
                         $('#closebtn').click();
-                        window.location.href = './';
+                        window.location.href = '../';
                     }, 200);
 
                 }
@@ -128,5 +132,5 @@ function savefun(image)
 }
 function _close()
 {
-    window.location.href = './';
+    window.location.href = '../';
 }
