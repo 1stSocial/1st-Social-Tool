@@ -26,22 +26,23 @@ class Item extends CI_Controller {
 
     function temp() 
     {
+//        die;
 //        chmod('assets/css/user/content/', '0777');
         copy($_FILES['file']['tmp_name'], 'assets/css/user/content/' . $_FILES['file']['name']);
-//        $Upload = 'assets/css/user/content/' . $_FILES["file"]["name"];
-//                $Storedin = $_FILES["file"]["tmp_name"];
-////                      chmod('assets/css/user/temp/', '0777');
-////                    move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["file"]["name"]);
-//                    if (file_exists('assets/css/user/content/' . $_FILES["file"]["name"])) {
-//                        list($x, $y) = getimagesize($Upload);
-//                        $new = imagecreatetruecolor(100, 100);
-//                        $newtemp = imagecreatefromjpeg($Upload);
-//                        imagecopyresized($new, $newtemp, 0, 0, 0, 0, 100, 100, $x, $y);
-//                        imagejpeg($new, 'assets/css/user/thumbnail/' . $_FILES["file"]["name"]);
-//                    } else {
-//                        echo 'not uploaded';
-//                    }
-//                
+        $Upload = 'assets/css/user/content/' . $_FILES["file"]["name"];
+                $Storedin = $_FILES["file"]["tmp_name"];
+//                      chmod('assets/css/user/temp/', '0777');
+//                    move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["file"]["name"]);
+                    if (file_exists('assets/css/user/content/' . $_FILES["file"]["name"])) {
+                        list($x, $y) = getimagesize($Upload);
+                        $new = imagecreatetruecolor(100, 100);
+                        $newtemp = imagecreatefromjpeg($Upload);
+                        imagecopyresized($new, $newtemp, 0, 0, 0, 0, 100, 100, $x, $y);
+                        imagejpeg($new, 'assets/css/user/thumbnail/' . $_FILES["file"]["name"]);
+                    } else {
+                        echo 'not uploaded';
+                    }
+                
         $array = array(
             'filelink' => base_url() . 'assets/css/user/content/' . $_FILES['file']['name'],
             'filename' => $_FILES['file']['name']
