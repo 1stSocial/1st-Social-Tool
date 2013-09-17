@@ -1,7 +1,7 @@
 <?php
     $output_width =80;
     $output_height=80;
-
+ 
     if(isset($_GET['height'])){
        $output_height=$_GET['height'];
     }
