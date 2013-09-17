@@ -102,5 +102,9 @@ endif;
         </div>
    
     <input type="hidden" value="<?= site_url(); ?>" id="url">
-</div>
-
+</div></form></div>
+<script>
+    $('#redactor_upload_btn').click(function () {
+                            alert('shfkj');
+                         });
+</script>
