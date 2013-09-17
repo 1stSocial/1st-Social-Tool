@@ -24,15 +24,14 @@ class Item extends CI_Controller {
         }
     }
 
-    function temp() {
-
+    function temp() 
+    {
+        chmod('assets/css/user/content/', '0777');
         copy($_FILES['file']['tmp_name'], 'assets/css/user/content/' . $_FILES['file']['name']);
-
         $array = array(
             'filelink' => base_url() . 'assets/css/user/content/' . $_FILES['file']['name'],
             'filename' => $_FILES['file']['name']
         );
-
         echo stripslashes(json_encode($array));
         die;
     }
@@ -169,7 +168,7 @@ class Item extends CI_Controller {
             echo json_encode($error);
             die;
         }
-    }
+    } 
 
     function insert_item() {
         $session_data = $this->session->userdata('logged_in');
@@ -286,7 +285,6 @@ class Item extends CI_Controller {
         echo json_encode($data);
         die;
     }
-
 }
 
 ?>
