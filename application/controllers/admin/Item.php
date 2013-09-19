@@ -98,7 +98,7 @@ class Item extends CI_Controller {
         $data['tag_id'] = $tagid['0']['tag_id']; // 
 
         $_SESSION['child_tag'] = $this->input->post('tag');
-
+       
         $data['items'] = $this->item_model->get_item($session_data['id']);
         $this->load->view('admin/item_fill', $data);
     }
@@ -192,7 +192,9 @@ class Item extends CI_Controller {
         $data['body'] = $this->input->post('body');
         $data['board_id'] = $this->input->post('board_id');
         $data['image'] = $this->input->post('image');
-
+        
+        $folder_name = $this->input->post('folder_name');
+        
         $this->load->model('item_model');
         $error = array();
         $error_iden = TRUE;
@@ -245,9 +247,14 @@ class Item extends CI_Controller {
             $data['created_by'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
             $data['status'] = '0';
+//            var_dump($_SESSION['child_tag']);
             $tag = $_SESSION['child_tag'];
+//            var_dump($tag);
+//            die;
             unset($_SESSION['child_tag']);
-            $item->item_insert($data, $tag);
+            $item_id = $item->item_insert($data, $tag);
+            $folder_name =  md5('unique_salt' . $folder_name);
+            rename('assets/css/user/content/'.$folder_name, 'assets/css/user/content/'.$item_id);
             echo '';
             die;
         } else {
@@ -278,6 +285,10 @@ class Item extends CI_Controller {
                         imagecopyresized($new, $newtemp, 0, 0, 0, 0, 100, 100, $x, $y);
                         imagejpeg($new, 'assets/css/user/itemimage/' . $imgname);
                         unlink($Upload);
+                        if(isset($_POST['imgscr']))
+                        {
+                            unlink($_POST['imgscr']);
+                        }
                         echo 'assets/css/user/itemimage/' . $imgname;
                     } else {
                         echo 'not uploaded';
@@ -309,6 +320,31 @@ class Item extends CI_Controller {
         echo json_encode($data);
         die;
     }
+    
+    function uploadify()
+    {
+        $targetFolder = '/uploads'; // Relative to the root
+
+        $verifyToken = md5('unique_salt' . $_POST['timestamp']);
+
+        if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
+                $tempFile = $_FILES['Filedata']['tmp_name'];
+                $targetPath = $_SERVER['DOCUMENT_ROOT'] ;
+                $targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
+
+                // Validate the file type
+                $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+                $fileParts = pathinfo($_FILES['Filedata']['name']);
+
+                if (in_array($fileParts['extension'],$fileTypes)) {
+                        move_uploaded_file($tempFile,$targetFile);
+                        echo '1';
+                } else {
+                        echo 'Invalid file type.';
+                }
+        }
+    }
+    
 }
 
 ?>

@@ -130,6 +130,14 @@ Class Setting_model extends CI_Model {
 //      var_dump($data);
     }
     
+    public function get_image()
+    {
+        $res = $this->db->get('items');
+        if($res->num_rows())
+        return $res->result_array();
+        else
+        return "";
+    }
 }
 
 ?>

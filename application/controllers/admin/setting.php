@@ -128,5 +128,17 @@ class Setting extends CI_Controller {
         
         }
       }
+      
+      public function gallary()
+      {
+          
+          $this->load->model('setting/setting_model');
+          
+          $setting = new Setting_model();
+          $data['item'] = $setting->get_image();
+          
+          $this->load->view('admin/gallary',$data);
+          $this->load->view('footer');
+      }
 }
 ?>

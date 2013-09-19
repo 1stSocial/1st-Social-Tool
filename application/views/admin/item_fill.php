@@ -1,7 +1,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/item_fill.js"></script>
 
 <!--<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
-
+        
     <?php echo form_open_multipart(site_url("/admin/item/test/")); ?>
 <div class="header" style="margin-left  : 40%">
         <input type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
@@ -54,8 +54,19 @@
                 ?>
             </div>
         </div>
-
-    
+       <!--  image upload  -->
+      
+                <label style=" float: left;" class="control-label"  >Upload Gallery Images :</label>
+               
+                <form>
+                             <div id="queue"></div>
+                             <input id="file_upload" name="file_upload" type="file" multiple="true">
+                             <input id='base' type="hidden" value="<?php echo base_url();?>">
+                             <?php $timestamp = time();
+                             ?>
+                             <input id='folder_name' type="hidden" value="<?php echo $timestamp;?>">
+                     </form>
+       <!--image upload-->
    
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/item/insert_item/"); ?>">
@@ -65,3 +76,20 @@
    
     <input type="hidden" value="<?= site_url(); ?>" id="url">
 </div>
+<script type="text/javascript">
+    
+		
+		$(function() {
+                var base = $('#base').val();
+			$('#file_upload').uploadify({
+				'formData'     : {
+					'timestamp' : '<?php echo $timestamp;?>',
+                                        'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+				},
+				'swf'      : base +'assets/extra/uploadify.swf',
+				'uploader' : base +'assets/extra/uploadify.php'
+			});
+		});
+               
+               
+	</script>

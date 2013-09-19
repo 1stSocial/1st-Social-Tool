@@ -51,7 +51,11 @@
                         <div></div>
                         <div></div>
                     </div>
-
+                    <div> 
+                    <?php
+                     include 'gallary.php';
+                    ?>
+                    </div>
                     <div class="clear"></div>
                     <a class="readmore" href="">Apply Now</a>		
                 </div>

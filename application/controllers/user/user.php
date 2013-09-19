@@ -55,7 +55,6 @@ class User extends CI_Controller {
             
             if($id!="")
             {
-//                echo $id;
                 $board_id = $id[0]->id;
                 $theme = $temp->apply_theme2($id[0]->id);
             }else
@@ -272,9 +271,11 @@ class User extends CI_Controller {
         $tag_model = new Tag_model();
 
         $boardId = $this->uri->segment(4);
-
+        $base = base_url();
+        
         $data['post'] = $this->user_model->view_detail($boardId);
-
+//        var_dump($data['post']);die;
+//        scandir($base.'assets/css/user/content/'.);
         $data['content'] = $this->load->view('user/more_detail', $data, TRUE);
 
         $data['tag'] = $tag_model->semi_parent();
@@ -320,7 +321,21 @@ class User extends CI_Controller {
         die;
     }
     
-   
+
+    public function gallary()
+      {
+          
+          $this->load->model('setting/setting_model');
+          
+          $setting = new Setting_model();
+          $data['item'] = $setting->get_image();
+          
+          $data['content'] = $this->load->view('user/gallary',$data,TRUE);
+          $this->load->view('user/sidebar', $data);
+        $this->load->view('user/footer');
+      }
+    
 }
+
 
 ?>  

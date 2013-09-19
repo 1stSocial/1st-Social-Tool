@@ -41,6 +41,7 @@ Class Item_model extends CI_Model {
             $this->db->insert('item_taxo',$taxo);
        }
        }
+       return $rs['item_id'];
     }
     function get_item($id)
     {

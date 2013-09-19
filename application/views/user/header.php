@@ -9,37 +9,44 @@
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/jquery-ui.css"></link>    
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
+          <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>-->
          <!--<link rel="stylesheet" href="<?//= base_url(); ?>assets/css/user/share.css"></link>-->
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css"></link>
-        
          <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less"></link>
+         
+        
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-responsive.css"></link>
+       
+         
+         
+         
      
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_002.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>
-         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/less-1.js"></script>
-        
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/buttons.js"></script>
-         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom.js"></script>
-         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/devicepx-jetpack.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/gprofiles.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-1.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/loader.js"></script>
-      
          <script type="text/javascript" src="<?//=base_url();?>assets/js/user/st.js"></script>
-         
            
          <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/stcommon.js"></script>-->
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/superfish.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/wpgroho.js"></script>
-        <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
-          
-       
+         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
+         
+         
+         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-ui-1.10.1.custom.js"></script>
+         <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
+         <script src="<?= base_url(); ?>assets/js/gallery/load-image.js"></script>
+        <script src="<?= base_url(); ?>assets/js/gallery/bootstrap-image-gallery.js"></script>
+        <script src="<?= base_url(); ?>assets/js/gallery/main.js"></script>
+         
 </head>
  
     <body class="home blog">
