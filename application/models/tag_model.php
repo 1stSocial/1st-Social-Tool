@@ -269,21 +269,26 @@ Class Tag_model extends CI_Model
                 $this->db->join('tags as t','t_p.tag_id=t.id','inner');
                 $query = $this->db->get();
                 
+//                var_dump($query->result_array());die;
+                
             
             foreach ($query->result() as $val)
             {
+                
                 $id = $val->tag_id; 
                  $this->db->select('t_p.*,t.name');
                 $this->db->from('tag_parent as t_p');
                 $this->db->join('tags as t','t_p.tag_id=t.id','inner');
                 $temp = $this->db->get_where('tag_parent',array('t_p.parent_tag_id'=>$id));
                 
-                if($temp->num_rows()>0)
+                if($temp->num_rows()>0 || $val->parent_tag_id == 0)
                 {
                     $result[$id] = $val->name; 
                 }
             }
             
+            
+//            var_dump($result);die;
             return $result;
         }
         function AllParentTags2()
