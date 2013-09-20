@@ -1,7 +1,11 @@
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-image-gallery.min.css"></link>
-<div class="container-fluid">
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/bootstrap_gal.css"/>
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-image-gallery.min.css"></link>   
     
+     
+<div id="test">
+<div class="container-fluid">
+ 
+
      <div id="gallery1" data-toggle="modal-gallery" data-target="#modal-gallery">
          
                     <?php
@@ -44,5 +48,6 @@
             <i class="icon-arrow-right icon-white"></i>
         </a>
     </div>
+</div>
 </div>
 </div>

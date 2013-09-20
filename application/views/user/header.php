@@ -14,7 +14,6 @@
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css"></link>
          <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less"></link>
          
-        
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-responsive.css"></link>
        
          

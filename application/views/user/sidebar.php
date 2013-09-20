@@ -57,7 +57,11 @@ endif; ?>
                           ?>
                         </ul>    
                             <br>
-                    <div aria-disabled="false" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range" style="width:240px;"><div style="left: 0%; width: 100%;" class="ui-slider-range ui-widget-header ui-corner-all"></div><a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a><a style="left: 100%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div>
+                    <div aria-disabled="false" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range" style="width:240px;">
+                        <div style="left: 0%; width: 100%;" class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                        <a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                        <a style="left: 100%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                    </div>
                     <div class="price_skale">  
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|
 
