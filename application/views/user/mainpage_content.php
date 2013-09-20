@@ -1,6 +1,9 @@
 <div id="left">
-    <div id="latestjob"><li class="botwid widget_text">	<div class="textwidget"><? if (isset($board_name)) echo strtoupper($board_name);
-else echo 'LATEST JOBS'; ?></div>
+    <div id="latestjob"><li class="botwid widget_text">	<div class="textwidget"><? if (isset($board_name))
+    echo strtoupper($board_name);
+else
+    echo 'LATEST JOBS';
+?></div>
         </li></div>
 
 
@@ -14,11 +17,15 @@ else echo 'LATEST JOBS'; ?></div>
 
     </div>
 <?php $loop = 0;
-if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>       
+if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val):
+        ?>       
             <div class="tuts"> 
                 <div id="tt">
-                    <div id="lpouter" class="<?php if ($loop % 2) echo 'odd';
-        else echo'even'; ?> job_head_custom test"> <!--start lpouter-->
+                    <div id="lpouter" class="<?php if ($loop % 2)
+            echo 'odd';
+        else
+            echo'even';
+        ?> job_head_custom test"> <!--start lpouter-->
 
                         <div style="float:left;"> <!--start-->
                             <div class="title">
@@ -26,27 +33,32 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>
                                 <h2><a rel="bookmark" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
                                 <div id="outer">
                                     <span class="location">Location: <?php
-                                if (isset($post['child'][$loop])):
-                                    foreach ($post['child'][$loop] as $val1) :
-                                        if ($val1->parent_tag_id == $post['Location'][0]->id):
-                    ?>
+                                        if (isset($post['child'][$loop])):
+                                            foreach ($post['child'][$loop] as $val1) :
+                                                if ($val1->parent_tag_id == $post['Location'][0]->id):
+                                                    ?>
                                                     <a href="javascript:footer_refine(<?= $val1->id ?>)" rel="tag"><?= $val1->name ?></a>
-                <?php endif;
-            endforeach;
-        endif; ?></span><br>
+                                                <?php
+                                                endif;
+                                            endforeach;
+                                        endif;
+                                        ?></span><br>
                                     <span class="posted">Posted: <?php
-        $dt = human_to_unix($val->createdTime);
-        $formate = "%d %M %Y";
-        echo mdate($formate, $dt);
-        ?></span> 
+                                        $dt = human_to_unix($val->createdTime);
+                                        $formate = "%d %M %Y";
+                                        echo mdate($formate, $dt);
+                                        ?></span> 
                                 </div>
 
                             </div>
 
                         </div> <!--end-->   
                         <div style="float:right; margin-right: 10px; margin-top: 22px;"> <!--start-->
-                            <img src="<?php if ($val->image != "") echo base_url() . '/' . $val->image;
-        else echo base_url() . '/assets/css/user/itemimage/default.png'; ?>" alt="admin" height="50" width="50">  
+                            <img src="<?php if ($val->image != "")
+                                            echo base_url() . '/' . $val->image;
+                                        else
+                                            echo base_url() . '/assets/css/user/itemimage/default.png';
+                                        ?>" alt="admin" height="50" width="50">  
 
                         </div> <!--end-->
 
@@ -65,14 +77,14 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>
 
                                 <div id="date"> <!--start date-->
                                     <span id="date1"><?php
-        $dt = human_to_unix($val->createdTime);
-        $formate = "%d";
-        echo mdate($formate, $dt);
-        ?></span><br><span id="year"><?php
-                                $dt = human_to_unix($val->createdTime);
-                                $formate = "%M, %Y";
-                                echo mdate($formate, $dt);
-                                ?></span> 
+                                    $dt = human_to_unix($val->createdTime);
+                                    $formate = "%d";
+                                    echo mdate($formate, $dt);
+                                        ?></span><br><span id="year"><?php
+                                        $dt = human_to_unix($val->createdTime);
+                                        $formate = "%M, %Y";
+                                        echo mdate($formate, $dt);
+                                        ?></span> 
                                 </div> <!--end date-->
 
 
@@ -85,10 +97,10 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>
                                         echo mdate($formate, $dt);
                                         ?></span>  
 
-        <?php if (isset($post['salary'][$loop][0]->val)) : ?>
+                                        <?php if (isset($post['salary'][$loop][0]->val)) : ?>
                                         <span class="tags sallery_tag"><?= $post['salary'][$loop][0]->val; ?>per year</span>
                                     <?php endif; ?>
-        <?php if (isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
+                                    <?php if (isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
                                             <span class="tags">
                 <?php
                 if (isset($post['child'][$loop])):
@@ -96,12 +108,15 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>
                         if ($val1->parent_tag_id == $value->parent_tag_id):
                             ?>
                                                             <a href="javascript:footer_refine(<?= $val1->id ?>)" rel="tag"><?= $val1->name ?></a>
-                        <?php endif;
+                        <?php
+                        endif;
                     endforeach;
-                endif; ?>
+                endif;
+                ?>
                                             </span>
             <?php endforeach;
-        endif; ?>
+        endif;
+        ?>
                                 </div>
                             </div>
                             <div class="entry" style="padding:0 60px;">
@@ -135,15 +150,18 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>
                 </div>
             </div>
 
-        <?php $loop++;
+        <?php
+        $loop++;
     endforeach;
 endif;
 ?>
-    <input type="hidden" name ="board_name" id="board_name" value="<?php if (isset($board_name)) {
+    <input type="hidden" name ="board_name" id="board_name" value="<?php
+if (isset($board_name)) {
     echo $board_name;
 } else {
     echo "home";
-} ?>">
+}
+?>">
 </div>
 
 <script>

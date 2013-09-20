@@ -6,13 +6,15 @@
          
                     <?php
                     $id = $val->id;
+            if(is_dir('assets/css/user/content/'.$id))   
+            { 
             $ar = scandir('assets/css/user/content/'.$id);    
             foreach ($ar as $img_name)
             if($img_name !='.' && $img_name !='..')
             {
                 {?>
                     <a data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> &width=100 &height=100" ></a>
-                <?} }
+            <?} }}
                     ?>
     <br>
 </div>
