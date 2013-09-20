@@ -16,7 +16,7 @@
   *zoom: 1;
 }
 
-.container:before,
+.container:before, 
 .container:after {
   display: table;
   line-height: 0;
