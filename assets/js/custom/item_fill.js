@@ -137,7 +137,7 @@ function savefun(image)
             },
             error: function(res)
             {
-                alert('dsdss');
+                alert('error');
             }
         });
     }
