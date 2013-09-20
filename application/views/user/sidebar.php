@@ -5,7 +5,7 @@
     ?>
 </div>
 
-<div id="right">
+<div id="right"> 
 
     <!-- Sidebar widgets -->
     <div class="sidebar">

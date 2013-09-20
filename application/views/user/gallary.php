@@ -12,7 +12,7 @@
                     $id = $val->id;
             if(is_dir('assets/css/user/content/'.$id))   
             { 
-            $ar = scandir('assets/css/user/content/'.$id);    
+            $ar = scandir('assets/css/user/content/'.$id);     
             foreach ($ar as $img_name)
             if($img_name !='.' && $img_name !='..')
             {
