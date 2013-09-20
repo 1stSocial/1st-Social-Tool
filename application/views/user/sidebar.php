@@ -9,7 +9,7 @@
 
     <!-- Sidebar widgets -->
     <div class="sidebar">
-        <ul>
+        <ul> 
            <? if(isset($latestjob)):?> 
             <li class="sidebox super_recent_posts"><h3 class="sidetitl"><a href="">Latest <?php if(isset($board_name)) if($board_name == 'home') echo 'job';else echo $board_name ?></a></h3>                
                 <?php if (is_array($latestjob)): foreach ($latestjob as $val) : ?>
