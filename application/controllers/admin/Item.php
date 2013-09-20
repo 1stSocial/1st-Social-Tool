@@ -251,11 +251,13 @@ class Item extends CI_Controller {
             $tag = $_SESSION['child_tag'];
 //            var_dump($tag);
 //            die;
-            unset($_SESSION['child_tag']);
+           
             $item_id = $item->item_insert($data, $tag);
             $folder_name =  md5('unique_salt' . $folder_name);
+            if(is_dir('assets/css/user/content/'.$folder_name))
             rename('assets/css/user/content/'.$folder_name, 'assets/css/user/content/'.$item_id);
             echo '';
+             unset($_SESSION['child_tag']);
             die;
         } else {
             echo json_encode($error);
