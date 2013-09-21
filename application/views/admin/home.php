@@ -8,7 +8,16 @@
 		<ul class="nav">
                     <?php if($access_level == 'admin' || $access_level == 'partner') : ?>
 			<li class="<?= $this->uri->segment(1) == "home" ? "active" : ""; ?>"><a href="<?= base_url(); ?>index.php/admin/home">Home</a></li>
-			<li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
+			
+                         <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Domain <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?= base_url(); ?>index.php/admin/home/domain_management">Domain Management</a></li>
+					<li><a href="<?= base_url(); ?>index.php/admin/home/create_domin">Create Domain</a></li>
+				</ul>
+			</li>
+                        
+                        <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="<?= base_url(); ?>index.php/admin/home">Board Management</a></li>
@@ -39,11 +48,13 @@
 				</ul>
 			</li>
                         
+                       
                         
 			<?php if ($settings): ?>
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span></a>
 				<ul class="dropdown-menu">
+                                        <li><a href="<?= base_url(); ?>index.php/admin/new_user/">User Management</a></li>
 					<li><a href="<?= base_url(); ?>index.php/admin/setting/index">Theme Management</a></li>
                                         <li><a href="<?= base_url(); ?>index.php/admin/setting/select_theme">Select Theme</a></li>
 				</ul>

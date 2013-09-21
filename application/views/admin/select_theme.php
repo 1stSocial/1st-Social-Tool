@@ -16,7 +16,7 @@
                     <td><div class="btn-group"> <a href="<?php echo site_url('/admin/setting/edit_theme/' . $Theme->id) ?>" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a><a onclick="return confirm('Are you sure?')" href="<?php echo site_url('/admin/home/delete_parenttag/' . $Theme->id) ?>"class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
                 </tr>
             <? endforeach;
-        endif; ?>
+        endif; ?> 
     </tbody>
 </table>  
 <input type="submit" id="create" name="create" class="btn btn-primary" value="Create Theme" style="display: none">

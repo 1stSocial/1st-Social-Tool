@@ -1296,7 +1296,7 @@ input[type="checkbox"] {
 
 
 
-    display: inline;
+    display: inline!important;
 
 
 
@@ -5430,10 +5430,10 @@ h3.bothead {
 
 {
 
-	color:#444444; font-weight:normal; 
+	color:#444444!important; font-weight:normal!important; 
 	/*font-family:'OpenSansRegular';*/ 
-	font-family:Oswald, Arial, Tahoma, Sans serif;
-	font-size:13px; line-height: 21px;
+	font-family:Oswald, Arial, Tahoma, Sans serif!important;
+	font-size:13px; line-height: 21px!important;
 
 }
 
