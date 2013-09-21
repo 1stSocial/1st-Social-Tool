@@ -140,5 +140,10 @@ class Setting extends CI_Controller {
           $this->load->view('admin/gallary',$data);
           $this->load->view('footer');
       }
+      
+      public function add_user()
+      {
+          
+      }
 }
 ?>

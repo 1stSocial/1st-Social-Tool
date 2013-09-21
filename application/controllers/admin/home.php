@@ -312,6 +312,79 @@ class Home extends CI_Controller {
         echo '';
         die();
     }
+    
+    
+    function domain_management()
+    {
+         $this->load->helper('form');
+        $this->load->model('domain_model');
+        $dom_model = new domain_model();
+        
+      $data['domain'] =   $dom_model->get_Domain();
+        
+        $this->load->view('admin/domain_management',$data);
+    }
+            
+    function create_domin()
+    {
+        $this->load->helper('form');
+        $this->load->model('domain_model');
+        $dom_model = new domain_model();
+        $data['domain'] =   $dom_model->get_Domain();
+        
+            if($this->input->post())
+            {
+                $data1['id'] = NULL;
+                $data1['createdTime'] = date('Y-m-d h:m:s');
+                $data1['name'] = $this->input->post('name');
+                $data1['parent_tags'] = "";
+                
+                $val = $dom_model->create_domain($data1);
+                echo $val;
+                die;
+            }
+            else
+            {
+                    $this->load->view('admin/create_domain',$data);
+            }
+    }
+    
+    
+    function edit_domain()
+    {
+        $this->load->helper('form');
+        $this->load->model('domain_model');
+        $dom_model = new domain_model();
+        $data['domain'] =   $dom_model->get_Domain();
+         
+        $id = $this->uri->segment(4);
+        
+         if($this->input->post())
+            {
+                $data1['id'] = $this->input->post('id');
+                $data1['name'] = $this->input->post('name');
+                
+                
+                $val = $dom_model->update_domain($data1);
+                echo $val;
+                die;
+            }
+            else
+            {
+                $data['value'] =  $dom_model->edit_domain($id);
+                $this->load->view('admin/edit_domain',$data);
+            }
+    }
+    
+    function delete_domain()
+    {
+        $id = $this->uri->segment(4);
+        
+        $this->load->model('domain_model');
+        $dom_model = new domain_model();
+        $dom_model->delete_domain($id);
+        $this->domain_management();
+    }
 
 }
 
