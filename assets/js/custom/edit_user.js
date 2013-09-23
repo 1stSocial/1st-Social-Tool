@@ -11,7 +11,7 @@ jQuery(document).ready()
    
    $('#myform').ajaxForm({
         beforeSubmit: function() {
-           
+            
            var name = $('#username').val(); 
            var url = $('#url').val(); 
            var name_default = $('#default').val();
