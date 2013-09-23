@@ -18,7 +18,7 @@ $('#create_user').click(function ()
 });
 
 });
-
+ 
 function edit(uri)
 {
     $.ajax({
