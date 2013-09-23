@@ -1,6 +1,6 @@
 <?php
 Class Adduser extends CI_Model {
-
+ 
     public function get_user($user_name)
     {
         $this->db->select('*');
