@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 16, 2013 at 04:46 AM
+-- Generation Time: Sep 23, 2013 at 04:43 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `board` (
   PRIMARY KEY (`id`),
   KEY `board_id` (`id`),
   KEY `created_by` (`created_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `board`
@@ -137,7 +137,16 @@ CREATE TABLE IF NOT EXISTS `domain` (
   `parent_tags` varchar(100) NOT NULL,
   `createdTime` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `domain`
+--
+
+INSERT INTO `domain` (`id`, `name`, `parent_tags`, `createdTime`) VALUES
+(1, 'job', '', '2013-09-09 00:00:00'),
+(2, 'car', '', '2013-09-10 00:00:00'),
+(3, 'ankit', '', '2013-09-21 02:09:58');
 
 -- --------------------------------------------------------
 
@@ -172,24 +181,45 @@ CREATE TABLE IF NOT EXISTS `items` (
   `image` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `created_by` (`created_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`id`, `name`, `title`, `body`, `created_by`, `status`, `createdTime`, `board_id`, `image`) VALUES
-(10, 'driving', 'test', '<p>jdsfjaf</p><p>safjasf</p><p>asdf;lkdsa</p><p>fsdf</p><p><br></p>', 1, '0', '2013-09-05 03:09:42', 21, ''),
 (11, 'test2', 'test2', 'hi this is a test job2...<br><p><br></p>', 1, '0', '2013-09-07 06:09:55', 23, ''),
 (12, 'test3', 'test3', '<blockquote>hi this is a test job3<br></blockquote><p><br></p>', 1, '0', '2013-09-07 06:09:49', 23, ''),
 (13, 'test4', 'test4', 'dsbkshdfkghdlkfghlk<p><br></p>', 1, '0', '2013-09-07 06:09:24', 23, ''),
 (14, 'test5', 'test5', '<blockquote>dfjsleejflj</blockquote><p><br></p>', 1, '0', '2013-09-07 06:09:03', 23, ''),
 (15, 'test6', 'driving', '<p>asdffsadf<br></p>', 1, '0', '2013-09-07 08:09:03', 23, ''),
-(16, 'bmw', 'bmw', 'ajfld<p><br></p>', 1, '0', '2013-09-07 09:09:15', 24, 'assets/css/user/itemimage/upload1378972982.jpg'),
+(16, 'bmw', 'bmw', '<p><img style="width: 123.186px; height: 92px;" src="http://localhost/1st-Social-Tool-master/1st-Social-Tool/assets/css/user/content/Desert.jpg"></p><img src="vjbhk"><img style="width: 126.593px; height: 96px;" src="http://media1.santabanta.com/full1/Cars/BMW/bmw-26v.jpg"> BMW<br><br><b><span style="color: #fbd5b5;"><font color="#548dd4"><strike><span style="background-color: rgb(255, 255, 0);"></span></strike></font></span><iframe src="//www.youtube.com/embed/b_Oyt8jxTi8" allowfullscreen="" frameborder="0" height="315" width="560"></iframe></b><p></p><p></p><br><p></p>\n', 1, '0', '2013-09-07 09:09:15', 24, 'assets/css/user/itemimage/upload1379495227.jpg'),
 (17, 'new', 'new', 'lkjs;ak;f<p><br></p>', 1, '0', '2013-09-07 09:09:49', 23, ''),
-(18, 'car', 'car', 'mksadfl<p><br></p>', 1, '0', '2013-09-07 01:09:10', 24, ''),
-(21, 'image', 'new car ', 'lsdfj;l<p><br></p>', 1, '0', '2013-09-12 06:09:08', 24, ''),
-(22, 'image', 'image', 'hi<br><br><a href="http://img.planespotters.net/photo/199000/original/CS-TFY-Masterjet-Airbus-A320-200_PlanespottersNet_199054.jpg">http://img.planespotters.net/photo/199000/original/CS-TFY-Masterjet-Airbus-A320-200_PlanespottersNet_199054.jpg</a><p><br></p>', 1, '0', '2013-09-13 06:09:12', 24, 'assets/css/user/itemimage/upload1379050750.jpg');
+(18, 'car', 'car', 'mksadfl<p><br></p>', 1, '0', '2013-09-07 01:09:10', 24, 'assets/css/user/itemimage/upload1379405593.jpg'),
+(21, 'new car ', 'new car ', 'lsdfj;l<p><br></p>', 1, '0', '2013-09-12 06:09:08', 24, ''),
+(28, 'tm', 'tm', 'flsjdfakjflfjlkfljljf;lk<p><br></p>', 1, '0', '2013-09-16 01:09:51', 24, 'assets/css/user/itemimage/upload1379334591.jpg'),
+(30, 'gghjhj', 'gghjhj', '<img style="width: 203.277px; height: 152px;" src="http://localhost/1st-Social-Tool-master/1st-Social-Tool/assets/css/user/content/Hydrangeas.jpg"><br><p></p><p><br></p>\n', 1, '0', '2013-09-17 10:09:34', 24, 'assets/css/user/itemimage/upload1379409453.jpg'),
+(31, 'new vehicle', 'new vehicle', 'ahdsflkhlakd<p><br></p>', 1, '0', '2013-09-19 11:09:02', 24, 'assets/css/user/itemimage/upload1379585822.jpg'),
+(32, 'new vehicle', 'new vehicle', 'ahdsflkhlakd<p><br></p>', 1, '0', '2013-09-19 11:09:14', 24, 'assets/css/user/itemimage/upload1379585834.jpg'),
+(33, 'fjladfskj;lajfkl', 'fjladfskj;lajfkl', 'j;ldfjsdfj;lj<p><br></p>', 1, '0', '2013-09-19 11:09:38', 24, 'assets/css/user/itemimage/upload1379585918.jpg'),
+(34, 'fjladfskj;lajfkl', 'fjladfskj;lajfkl', 'j;ldfjsdfj;lj<p><br></p>', 1, '0', '2013-09-19 11:09:44', 24, 'assets/css/user/itemimage/upload1379585924.jpg'),
+(35, 'xv', 'xv', '<p>vcb<br></p>', 1, '0', '2013-09-19 11:09:13', 24, 'assets/css/user/itemimage/upload1379586193.jpg'),
+(36, 'xv', 'xv', '<p>vcb<br></p>', 1, '0', '2013-09-19 11:09:19', 24, 'assets/css/user/itemimage/upload1379586199.jpg'),
+(37, 'gsdgf', 'gsdgf', '<p>dfsgsdfgs<br></p>', 1, '0', '2013-09-19 11:09:40', 24, 'assets/css/user/itemimage/upload1379586400.jpg'),
+(38, 'sfdsaf', 'sfdsaf', '<p>asdfasdf<br></p>', 1, '0', '2013-09-19 11:09:05', 24, 'assets/css/user/itemimage/upload1379586545.jpg'),
+(39, 'sfdsaf', 'sfdsaf', '<p>asdfasdf<br></p>', 1, '0', '2013-09-19 11:09:28', 24, 'assets/css/user/itemimage/upload1379586687.jpg'),
+(40, 'ankit', 'ankit', '<blockquote>ankit</blockquote><p><br></p>', 1, '0', '2013-09-19 04:09:01', 24, 'assets/css/user/itemimage/upload1379604001.jpg'),
+(41, 'reg', 'reg', '<p>reg<br></p>', 1, '0', '2013-09-20 06:09:48', 25, 'assets/css/user/itemimage/upload1379654868.jpg'),
+(42, 'rtyj', 'rtyj', '<p>hgjfj<br></p>', 1, '0', '2013-09-20 07:09:48', 24, 'assets/css/user/itemimage/upload1379656907.jpg'),
+(43, 'rtyj', 'rtyj', '<p>hgjfj<br></p>', 1, '0', '2013-09-20 07:09:49', 24, 'assets/css/user/itemimage/upload1379656909.jpg'),
+(44, 'rtyj', 'rtyj', '<p>hgjfj<br></p>', 1, '0', '2013-09-20 07:09:04', 24, 'assets/css/user/itemimage/upload1379656924.jpg'),
+(45, 'rtyj', 'rtyj', '<p>hgjfj<br></p>', 1, '0', '2013-09-20 07:09:37', 24, 'assets/css/user/itemimage/upload1379656956.jpg'),
+(46, 'rtyj', 'rtyj', '<p>hgjfj<br></p>', 1, '0', '2013-09-20 07:09:57', 24, 'assets/css/user/itemimage/upload1379657097.jpg'),
+(47, 'yiuiu', 'yiuiu', '<p>6676<br></p>', 1, '0', '2013-09-20 07:09:51', 24, 'assets/css/user/itemimage/upload1379657151.jpg'),
+(48, 'yiuiu', 'yiuiu', '<p>6676<br></p>', 1, '0', '2013-09-20 07:09:01', 24, 'assets/css/user/itemimage/upload1379657161.jpg'),
+(49, 'yiuiu', 'yiuiu', '<p>6676<br></p>', 1, '0', '2013-09-20 07:09:14', 24, 'assets/css/user/itemimage/upload1379657174.jpg'),
+(50, 'sdfg', 'sdfg', '<p>sdg<br></p>', 1, '0', '2013-09-20 07:09:14', 24, ''),
+(51, 'sfgdsfgs', 'sfgdsfgs', '<p>fgsdfgsdgsdg<br></p>', 1, '0', '2013-09-20 07:09:27', 24, '');
 
 -- --------------------------------------------------------
 
@@ -204,18 +234,13 @@ CREATE TABLE IF NOT EXISTS `item_tags` (
   PRIMARY KEY (`id`),
   KEY `tag_id` (`tag_id`),
   KEY `item_id` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=210 ;
 
 --
 -- Dumping data for table `item_tags`
 --
 
 INSERT INTO `item_tags` (`id`, `tag_id`, `item_id`) VALUES
-(70, 6, 10),
-(71, 7, 10),
-(72, 11, 10),
-(73, 12, 10),
-(74, 18, 10),
 (75, 11, 11),
 (76, 6, 11),
 (77, 18, 11),
@@ -244,21 +269,32 @@ INSERT INTO `item_tags` (`id`, `tag_id`, `item_id`) VALUES
 (102, 10, 17),
 (103, 5, 17),
 (104, 17, 17),
-(105, 5, 18),
-(106, 6, 18),
 (117, 5, 19),
 (118, 5, 20),
-(122, 6, 21),
-(123, 5, 22),
-(124, 6, 23),
-(125, 6, 24),
-(126, 6, 25),
-(127, 6, 26),
-(128, 6, 27),
 (129, 6, 28),
-(130, 5, 29),
-(131, 6, 16),
-(132, 6, 22);
+(139, 6, 28),
+(172, 5, 18),
+(173, 6, 18),
+(188, 7, 30),
+(191, 6, 16),
+(192, 6, 21),
+(193, 7, 31),
+(194, 7, 33),
+(195, 6, 35),
+(196, 6, 37),
+(197, 6, 38),
+(198, 7, 40),
+(199, 11, 41),
+(200, 12, 41),
+(201, 18, 41),
+(202, 19, 41),
+(203, 6, 41),
+(204, 7, 41),
+(205, 7, 42),
+(206, 7, 47),
+(207, 9, 47),
+(208, 9, 50),
+(209, 7, 51);
 
 -- --------------------------------------------------------
 
@@ -272,15 +308,13 @@ CREATE TABLE IF NOT EXISTS `item_taxo` (
   `taxo_id` int(5) NOT NULL,
   `value` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=156 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=320 ;
 
 --
 -- Dumping data for table `item_taxo`
 --
 
 INSERT INTO `item_taxo` (`id`, `item_id`, `taxo_id`, `value`) VALUES
-(79, 10, 2, '45000'),
-(80, 10, 3, 'sjflssdfkjglfglksjdfglj'),
 (81, 11, 2, '45000'),
 (82, 11, 3, 'sfkjdhfkshdlkfdsl'),
 (83, 12, 2, '20000'),
@@ -293,47 +327,58 @@ INSERT INTO `item_taxo` (`id`, `item_id`, `taxo_id`, `value`) VALUES
 (90, 15, 3, 'sadfkhsadflk'),
 (93, 17, 2, '45000'),
 (94, 17, 3, 'abc'),
-(95, 18, 4, '50000'),
-(96, 18, 5, 'ca 400'),
-(97, 18, 6, '4500'),
 (109, 19, 4, '22'),
 (110, 19, 5, '22'),
 (111, 19, 6, '222'),
 (112, 20, 4, '33'),
 (113, 20, 5, '33'),
 (114, 20, 6, '33'),
-(124, 21, 4, '22'),
-(125, 21, 5, '22'),
-(126, 21, 6, '22'),
-(127, 22, 4, '22'),
-(128, 22, 5, '22'),
-(129, 22, 6, '22'),
-(130, 23, 4, '222'),
-(131, 23, 5, 'jioui'),
-(132, 23, 6, '98788'),
-(133, 24, 4, '88'),
-(134, 24, 5, 'sf'),
-(135, 24, 6, '45'),
-(136, 25, 4, '56'),
-(137, 25, 5, '22'),
-(138, 25, 6, '88'),
-(139, 26, 4, '222'),
-(140, 26, 5, '44'),
-(141, 26, 6, '44'),
-(142, 27, 4, '222'),
-(143, 27, 5, '222'),
-(144, 27, 6, '222'),
-(145, 28, 4, '11'),
-(146, 28, 5, 'dsdsdsds'),
-(147, 28, 6, '11'),
-(148, 29, 4, '111'),
-(149, 29, 5, '11'),
-(150, 29, 6, '11'),
-(151, 16, 4, '4500'),
-(152, 16, 5, 'asdf;l'),
-(153, 22, 4, '45000'),
-(154, 22, 5, 'ssa'),
-(155, 22, 6, '56');
+(173, 28, 4, '45000'),
+(174, 28, 5, 'ankit'),
+(175, 28, 6, '45000'),
+(240, 18, 4, '50000'),
+(241, 18, 5, 'ca 400'),
+(242, 18, 6, '4500'),
+(276, 30, 4, '5454'),
+(277, 30, 5, 'bkkj'),
+(278, 30, 6, '5454'),
+(283, 16, 4, '4500'),
+(284, 16, 5, 'asdf;l'),
+(285, 21, 4, '22'),
+(286, 21, 5, '22'),
+(287, 21, 6, '22'),
+(288, 31, 4, '4500'),
+(289, 31, 5, 'a20'),
+(290, 31, 6, '4500'),
+(291, 33, 4, '455'),
+(292, 33, 5, '5456'),
+(293, 33, 6, '4646'),
+(294, 35, 4, '3333'),
+(295, 35, 5, '333'),
+(296, 35, 6, '3333'),
+(297, 37, 4, '233232'),
+(298, 37, 5, '232323'),
+(299, 37, 6, '232323'),
+(300, 38, 4, '111111'),
+(301, 38, 5, '111'),
+(302, 38, 6, '1111'),
+(303, 40, 4, '45454'),
+(304, 40, 5, '45454'),
+(305, 40, 6, '45454'),
+(306, 41, 2, '45000'),
+(307, 41, 3, 'abkafjlds'),
+(308, 42, 4, '45445'),
+(309, 42, 5, '455454'),
+(310, 42, 6, '455454'),
+(311, 47, 4, '5454'),
+(312, 47, 5, '54454'),
+(313, 47, 6, '54554'),
+(314, 50, 4, '3333'),
+(315, 50, 5, '3333'),
+(316, 50, 6, '33333'),
+(317, 51, 4, '223323'),
+(318, 51, 5, '2322323'),
+(319, 51, 6, '233223');
 
 -- --------------------------------------------------------
 
@@ -390,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `tags`
@@ -416,7 +461,8 @@ INSERT INTO `tags` (`id`, `name`) VALUES
 (19, 'Semi-Skilled Labour '),
 (20, 'Driving '),
 (21, 'vehicle'),
-(24, 'Vermont');
+(24, 'Vermont'),
+(25, 'Prop');
 
 -- --------------------------------------------------------
 
@@ -429,7 +475,7 @@ CREATE TABLE IF NOT EXISTS `tag_parent` (
   `tag_id` int(5) NOT NULL,
   `parent_tag_id` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `tag_parent`
@@ -457,7 +503,8 @@ INSERT INTO `tag_parent` (`id`, `tag_id`, `parent_tag_id`) VALUES
 (33, 21, 0),
 (34, 3, 1),
 (35, 3, 21),
-(39, 24, 3);
+(39, 24, 3),
+(40, 25, 0);
 
 -- --------------------------------------------------------
 
@@ -572,20 +619,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(100) NOT NULL,
   `type` varchar(30) NOT NULL,
   `access_level` enum('admin','partner','client','user') NOT NULL,
+  `parent_user_id` int(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `domain_id` (`domain_id`),
   KEY `user_id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `domain_id`, `username`, `password`, `type`, `access_level`) VALUES
-(1, 'admin', 1, '1stSocialDev', 'f3da537183bd618bf1334e5ca5b2ce35', '', 'admin'),
-(2, 'DemoAccount', 1, 'DemoAccount', '02107703511892efb7b6b8202d57238e', '', 'partner'),
-(3, 'Test_partner', 0, 'user', 'f3da537183bd618bf1334e5ca5b2ce35', '', 'client'),
-(4, 'Rahul', 0, 'ankit', 'f3da537183bd618bf1334e5ca5b2ce35', '', 'partner');
+INSERT INTO `users` (`id`, `name`, `domain_id`, `username`, `password`, `type`, `access_level`, `parent_user_id`) VALUES
+(1, 'admin', 0, '1stSocialDev', 'f3da537183bd618bf1334e5ca5b2ce35', '', 'admin', 0),
+(2, 'DemoAccount', 1, 'DemoAccount', '02107703511892efb7b6b8202d57238e', '', 'partner', 1),
+(3, 'Test_partner', 1, 'user', 'f3da537183bd618bf1334e5ca5b2ce35', '', 'user', 1),
+(4, 'Rahul', 2, 'temp', 'f3da537183bd618bf1334e5ca5b2ce35', '', 'partner', 1),
+(6, 'ankit', 1, 'ankit_aranya', '124578', '', 'user', 1),
+(31, 'DemoAccount', 1, 'DemoAccount', '467b617fec4d9fcb63505734ee224851', '', 'user', 1);
 
 -- --------------------------------------------------------
 
