@@ -37,7 +37,7 @@
                     </select></div>
                 </div>
             </div>
-            
+            <div style="clear: both"></div>
             <div class="control-group">
                 <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label")); ?>
                 <div class="controls">
@@ -51,7 +51,9 @@
                     </select>
                 </div>
             </div>
+             <div style="clear: both"></div>
             <?php if($access_level == 'admin') :?>
+            
             <div class="control-group">
                     <?php echo form_label('Domain :', 'domain', array('class' => "control-label")); ?>
                                     <div class="controls">
