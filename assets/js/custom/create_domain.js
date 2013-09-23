@@ -1,5 +1,5 @@
 jQuery(document).ready()
-{
+{ 
      setTimeout(function() {
         jQuery('#dom').click();
     }, 100);

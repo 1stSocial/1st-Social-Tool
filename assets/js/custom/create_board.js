@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
-
+ 
     jQuery('#theme_chosen').css('width', '49%');
     jQuery('#taxo_chosen').css('width', '49%');
     jQuery('#domain_chosen').css('width', '49%');
