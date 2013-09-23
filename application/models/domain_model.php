@@ -56,5 +56,37 @@ Class Domain_model extends CI_Model {
     {
         $this->db->delete('domain', array('id'=>$id));
     }
+    
+    public function save_domain_board($data)
+    {
+        $this->db->insert('board_domain', $data);
+    }
+    
+    
+    public function user_domain($id)
+    {
+        $temp = $this->db->get_where('users', array('id'=>$id));
+        if($temp->num_rows())
+        {
+            $data = $temp->result_array();
+            return $data['0']['domain_id'];
+        }
+        else 
+        {
+            return "";
+        }
+        
+    }
+    
+    public function board_domain($id)
+    {
+        $temp = $this->db->get_where('board_domain', array('board_id'=>$id));
+        if($temp->num_rows())
+        {
+            $data = $temp->result_array();
+            return $data['0']['domain_id'];
+        }
+    }
+    
 }
 ?>

@@ -48,11 +48,27 @@ Class Item_model extends CI_Model {
         if($id == 1)
         {
             $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by ';
+        
+             $query = $this->db->query($q);
         }
         else
-        $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by where i.created_by = '.$id;
+//        $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by where i.created_by = '.$id;
+        {
+            
+            $t = $this->db->get_where('users' ,array('id'=>$id));
+           $temp = $t->result_array();
+            $did= $temp['0']['domain_id'];
+            
+        $this->db->select('i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by');
+        $this->db->from('users as u');
+        $this->db->join('items as i','u.id = i.created_by' );
+        $this->db->join('board_domain as b', 'b.board_id = i.board_id');
+        $this->db->where('b.domain_id',$did); 
+        $query = $this->db->get();
+        }
         
-        $query = $this->db->query($q);
+        
+//       
         return $query->result();
     }
     
@@ -139,17 +155,24 @@ Class Item_model extends CI_Model {
     
     function get_board($id)
     {
-        $this->db->select('b.*');  
-        $this->db->from('board_users as b_u');
-        $this->db->join('board as b', 'b.id = b_u.board_id');
-        $this->db->distinct();
+        $this->db->select('domain_id');
+        $val = $this->db->get_where('users',array('id'=>$id));
+        if($val->num_rows()>0)
+        {
+            $temp = $val->result_array();
+            $dom_id = $temp['0']['domain_id'];
+        }
         
+        $this->db->select('b.*');  
+        $this->db->from('board_domain as b_u');
+        $this->db->join('board as b', 'b.id = b_u.board_id');
         if($id == '1')
         {
             
         }
         else
-        $this->db->where('user_id', $id); 
+        $this->db->where('b_u.domain_id', $dom_id); 
+        
         $query = $this->db->get();
          if ($query->num_rows() > 0) {
              return $query->result_array();

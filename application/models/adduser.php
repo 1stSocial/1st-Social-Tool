@@ -22,7 +22,8 @@ Class Adduser extends CI_Model {
                  $this->db->select('u.*,dom.name as domain_name');
                  $this->db->from('users as u');
                  $this->db->join('domain as dom','dom.id = u.domain_id');
-                 $this->db->where('users',array('parent_user_id'=>$id));
+//                 var_dump($id);die;
+                 $this->db->where('parent_user_id',$id);
                  $value =  $this->db->get();
                  
              }

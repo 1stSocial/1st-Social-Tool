@@ -130,10 +130,21 @@ Class Board_model extends CI_Model {
     // get board using userId 
     public function getBoards($userId) {
         //$query = $this->db->get_where('board', array("created_by" => $userId));
+        
+        $this->db->select('domain_id');
+        $val = $this->db->get_where('users',array('id'=>$userId));
+        if($val->num_rows()>0)
+        {
+            $temp = $val->result_array();
+            $dom_id = $temp['0']['domain_id'];
+        }
         $this->db->select('*,u.name as user_name,b.name as board_name,b.id as board_id');
         $this->db->from('board as b');
         $this->db->join('users as u', 'b.created_by = u.id');
-        $this->db->where('created_by', $userId);
+        $this->db->join('board_domain as dom', 'dom.board_id = b.id');
+        if($dom_id != 0)
+        $this->db->where('dom.domain_id', $dom_id);
+        
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->result();
@@ -179,13 +190,11 @@ Class Board_model extends CI_Model {
 
         $query = $this->db->update('board_tags', $data2);
 
-        $this->db->delete('board_users', array('board_id' => $data['id']));
-        if (is_array($data['user_id']))
-            foreach ($data['user_id'] as $value) {
-                $data3 = array('board_id' => "$data[id]", 'user_id' => "$value");
-                $this->db->insert('board_users', $data3);
-            }
-    }
+        $this->db->delete('board_domain', array('board_id' => $data['id']));
+        
+                $data3 = array('board_id' => "$data[id]", 'domain_id' => "$data[domain]");
+                $this->db->insert('board_domain', $data3);
+         }
 
     function bord_tag($id) {
         $this->db->select('tag_id');
