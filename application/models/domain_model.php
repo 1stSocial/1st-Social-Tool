@@ -8,7 +8,7 @@ Class Domain_model extends CI_Model {
         {
             return $data->result();
         }
-    }
+    } 
     
     public function create_domain($data)
     {
