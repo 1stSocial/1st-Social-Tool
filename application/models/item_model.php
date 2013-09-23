@@ -2,7 +2,7 @@
  
 
 Class Item_model extends CI_Model {
-
+ 
     function get_taxonomy($pid)
     {
         $query = $this->db->get_where('taxonomy', array('tag_id'=>$pid));
