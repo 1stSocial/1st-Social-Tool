@@ -8,7 +8,7 @@ $(document).ready(
                                 
 			});
                         
-                       
+                        
 		}
 	);
 $(document).ready()
