@@ -1,9 +1,3 @@
-<?php 
-//$path = $_SERVER['SCRIPT_NAME'];
-//$startpath = $_SERVER['DOCUMENT_ROOT'];
-//$val = str_replace('/index.php', '/application/views/admin/dropdown.php', $path);
-//include $startpath . $val;
-?>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_board.js"></script>
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <?php echo form_open('', 'class="horizontal-form"'); ?>
@@ -86,29 +80,25 @@
             </div> 
             
             <div class="component"><!-- Partner-->
+             <?php 
+             if($access_level == 'admin') :?>
                 <div class="control-group">
-<?php echo form_label('Board User (Partner):', 'user_id', array('class' => "control-label")); ?>
+                <?php echo form_label('Domain :', 'domain', array('class' => "control-label")); ?>
                     <div class="controls">
-                        <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
-                            <?php
-                            if (!empty($partners)): foreach ($partners as $val):
-                                    $selected = '';
-                                    if (!empty($selectedPartners)) {
-                                        foreach ($selectedPartners as $sePartner) {
-                                            if ($val->id == $sePartner->user_id) {
-                                                $selected = 'selected';
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                    <option  <?= $selected ?> value="<?= $val->id ?>"><?= $val->name ?></option>
-                                <? endforeach;
-                            endif;
-                            ?>
+                         <select data-placeholder="Choose a Domain..." class="chosen-select" style="width:350px;" tabindex="4" id="domain" name="user_id[]" required="please select Domain">
+                           <? if (!empty($domain)): foreach ($domain as $val): 
+                               ?>
+                             <option value="<?= $val->id ?>" <?php if($val->id == $selected_domain) echo 'selected' ?>><?= $val->name ?></option>
+                            <? endforeach;
+                            endif; ?>
                         </select>
                     </div>
                 </div>
-
+               <?php
+            endif;
+               if($access_level != 'admin') : ?>
+                <input type="hidden" value="<?php echo $domain;?>" id="domain">
+            <?php endif;?> 
             </div>
 
         </div></div>
