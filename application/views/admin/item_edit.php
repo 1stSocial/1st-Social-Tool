@@ -7,20 +7,19 @@
 </div>
 <div class="container">
 
-    <div class="control-group">
-        <div class="controls">
-            <label style=" float: left;" class="control-label"  >Upload Image :</label>
-            <div style='magrin-top:33px;padding-left:20%;'>
-                <div class="fileupload fileupload-new" data-provides="fileupload">
-                    <input type="hidden" name="imgscr" value="<?php echo $item['0']['image']; ?>">
-                    <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="<?php echo base_url() . '/' . $item['0']['image']; ?>" /></div>
-                    <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-                    <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" /></span>
-                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                </div></div>
+      <div class="control-group">
+            <div class="controls">
+                <label style=" float: left;" class="control-label"  >Upload Image :</label>
+                <div style='magrin-top:33px;padding-left:20%;'>
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="<?php echo base_url() . '/' . $item['0']['image']; ?>" /></div>
+                        <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
+                        <span class="btn btn-file"><span id="select_btn" class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/tiff" onchange ="change_fun()"/></span>
+                        <a href="#" class="btn fileupload-exists" id="clo" data-dismiss="fileupload">Remove</a>
+                    </div><div id="img_msg" name="img_msg" style = "display:none">Warning : Please Select jpg image.</div>
+                </div>
+            </div>
         </div>
-    </div>
-
 <!--    <div class="control-group">
         <div class="controls">
             <label style=" float: left;" class="control-label"  >Name :</label>
