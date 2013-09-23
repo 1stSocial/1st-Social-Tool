@@ -6,7 +6,7 @@ jQuery(document).ready(function() {
 
     jQuery('#theme_chosen').css('width', '49%');
     jQuery('#taxo_chosen').css('width', '49%');
-
+    jQuery('#domain_chosen').css('width', '49%');
     jQuery('#parentTag1').change(function()
     {
         var dataval = {
@@ -54,7 +54,7 @@ jQuery('#add').click(function() {
 
     var name = jQuery('#name1').val();
     var parentTag = jQuery('#parentTag1').val();
-    var user_id = jQuery('#user_id').val();
+    var domain = jQuery('#domain').val();
     var theme_id = jQuery('#theme').val();
     var taxo_id = jQuery('#taxo').val();
     if (name == "")
@@ -77,12 +77,12 @@ jQuery('#add').click(function() {
     }
 
 
-    if (name != "" && parentTag != "0" && user_id != " ")
+    if (name != "" && parentTag != "0" && domain != "0")
     {
         var dataval = {
             name: name,
             parentTag: parentTag,
-            user_id: user_id,
+            domain : domain,
             theme_id: theme_id,
             filterable_taxo :taxo_id
         };

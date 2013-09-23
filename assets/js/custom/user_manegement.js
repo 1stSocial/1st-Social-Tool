@@ -30,7 +30,7 @@ function edit(uri)
             },
             error:function (res)
             {
-                alert('edit');  
+             
             }
         });
 }

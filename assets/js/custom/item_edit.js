@@ -34,7 +34,20 @@ $(document).ready()
      });
 }
  
-
+function change_fun()
+{
+    var val = $('#img').val();
+    var ext = /^.+\.([^.]+)$/.exec(val);
+    if (ext[1] != 'jpg')
+    {
+        $('#img_msg').html('Warning : Please Select jpg image.');
+        $('#clo').click();
+    }
+    else
+    {
+        $('#img_msg').hide();
+    }
+}
 
 function savefun(image)
 {

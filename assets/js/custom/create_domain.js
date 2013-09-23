@@ -14,7 +14,6 @@ jQuery(document).ready()
            if(res=="")
            {
                $('#closebtn').click();
-               window.location.href = url +'/admin/home/domain_management';
            }
            else
                {
@@ -30,5 +29,5 @@ jQuery(document).ready()
  function close_fun()
      {
          var url = $('#url').val(); 
-         window.location.href = url +'/admin/home/domain_management';
+         window.location.href = './'+'domain_management';
      };

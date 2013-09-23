@@ -1,7 +1,7 @@
 var values = 'no'; 
 jQuery(document).ready()
 {
-    alert('edit');  
+//    alert('edit');  
      jQuery('.chosen-select').chosen(); 
      $('#access_level_chosen').css('width','220px');
      $('#domain_chosen').css('width','220px');

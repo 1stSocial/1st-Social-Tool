@@ -4,6 +4,7 @@ jQuery(document).ready()
      jQuery('.chosen-select').chosen(); 
      $('#access_level_chosen').css('width','220px');
      $('#domain_chosen').css('width','220px');
+     $('#parent_user_chosen').css('width','220px');
      setTimeout(function(){
        $('#mod1').click();
    },100);
@@ -59,41 +60,48 @@ function val(i)
     values = i;
 }
 
-
-function domain_new()
+function call()
 {
-    var id = $('#domain').val();
+     var acc =  $('#access_level').val();
+     if(acc == 'partner')
+         {
+             $('#domain_div').css('display','block');
+             $('#partner_div').css('display','none');
+             var old_par = $('#old_par').val();
+             $('#parent_user_id').val(old_par);
+              
+         }
+     if(acc == 'client')
+     {
+         $('#domain_div').hide();
+             $('#partner_div').show();
+     }
+}
 
-    if(id=='0')
-        {
-            var site_url = $('#url').val();
+function change_partner()
+{
+     var old_par = $('#parent_user').val();
+     $('#parent_user_id').val(old_par);
+     var site_url = $('#url').val();
     
                 $.ajax({
                     type: "POST",
-                    url: site_url+'/admin/home/create_domin',
+                    url: site_url+'/admin/home/get_domain',
+                    data: {id:$('#parent_user').val()},
                     success: function(res) {
-//                        alert(res);
-                     $('#create_dom').html(res);
-                      setTimeout(function(){
-                         //    $("#username12").prop("disabled", false);
-                          //   $("#username12").removeAttr( "readonly" );
-                    
-                      
-                          $('#dom').click();
-                              
-    
-   },100);  
-    setTimeout(function(){
-         var inputboxhtml =     '<textarea>asdf</textarea><input type="text" style="float: left" id="username12"  placeholder="Domain Name" name="domainname" required="Please Enter Domain name" >';
-      
-        $("#inputbox").html(inputboxhtml);},300);
+                         $('#domain_id').val(res);   
+                         alert(res);
                     },
                     error:function (res)
                     {
                         alert(res);  
                     }
                 }); 
-        }
-    
-    
+     
+}
+
+function domain_new()
+{
+    var id = $('#domain').val();
+    $('#domain_id').val(id);    
 }
