@@ -97,7 +97,7 @@ function num_refine(min,max)
 $(document).ready(function() {
 
     var siteurl = $('#side_url').val();
-      alert('test');
+     
     var nj = jQuery.noConflict();
     nj(function() {
         nj("#slider-range").slider({
