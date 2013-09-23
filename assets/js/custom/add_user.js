@@ -1,4 +1,5 @@
 var values = 'no'; 
+
 jQuery(document).ready()
 {
      jQuery('.chosen-select').chosen(); 
