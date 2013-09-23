@@ -13,8 +13,10 @@
             <?php echo form_label('Name :', 'nametag', array('class' => "control-label", 'style' => "float:left;padding-right:69px")); ?>
             <div class="controls">
                 <input type="text" style="float: left" id="name" placeholder="Name" name="name" title="Please Enter Name" required="Please Enter Name">
-                <input type="hidden" name="parent_user_id" value="<?=$parent_user_id?>" id="parent_user_id">
+                <input type="hidden" name="parent_user_id" value="<?=$parent_user_id?>" id="parent_user_id" required="">
                 <input type="hidden" name="type" value="" id="type">
+                <input type="hidden" id="old_par" value="<?=$parent_user_id?>" id="type">
+                <input type="hidden" name="domain_id" value="" id="domain_id">
             </div>
         </div>
         <div style="clear: both"></div>
@@ -37,9 +39,11 @@
         <div class="control-group">    
             <?php echo form_label('access_level :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:24px")); ?>
             <div class="controls" style="float: left">
-                <select data-placeholder="Choose a access_level..." class="chosen-select" style="width:350px;" tabindex="4" id="access_level" name="access_level" onselect="call()" required="*">
+                <select data-placeholder="Choose a access_level..." class="chosen-select" style="width:350px;" tabindex="4" id="access_level" name="access_level" onchange="call()" required="*">
+                  <?php if(isset($session['access_level']) &&  $session['access_level']=='admin') {?>
                     <option value="partner">Partner</option>
-                    <option value="user">user</option>
+                  <?php }?> 
+                    <option value="client">client</option>
                 </select>
             </div><div style =" color: red; display: none;" id="perror"> Select access level </div>
         </div><div style="height: 15px;clear: both"></div>
@@ -47,10 +51,10 @@
         <?php if(isset($session['access_level']) &&  $session['access_level']=='admin')
         {
             ?>
-        <div class="control-group" >    
+        <div id="domain_div" class="control-group" >    
             <?php echo form_label('Select Domain :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:13px")); ?>
-            <div class="controls" style="float: left">
-                <select data-placeholder="Choose a domain..." class="chosen-select" style="width:350px;" tabindex="4" id="domain" name="domain_id" onchange="domain_new()" required="please">
+            <div  class="controls" style="float: left">
+                <select data-placeholder="Choose a domain..." class="chosen-select" style="width:350px;" tabindex="4" id="domain" onchange="domain_new()">
                     <option></option>
                    
                     <?php
@@ -65,11 +69,35 @@
                     }
                     ?>
                 </select>
+                <div style =" color: red; display: none;" id="perror"> Select access level </div>
+        </div><div style="height: 15px;clear: both"></div>
+            </div>
+        <?php
+        }else{?>
+            <input type="hidden" value="<?php echo $domain;?>" id="domain" name="domain_id">
+        <?}?>
+        
+            <div id="partner_div" style="display: none" class="control-group">    
+            <?php echo form_label('Select Partner :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:13px")); ?>
+            <div class="controls" style="float: left;">
+                <select data-placeholder="Choose a partner..." class="chosen-select" style="width:350px;" tabindex="4" id="parent_user" onchange="change_partner()">
+                    <option></option>
+                   
+                    <?php
+                    if(is_array($partner) && !is_null($partner))
+                    {
+                        foreach ($partner as $val1)
+                        {
+                            ?>
+                    <option value="<?=$val1->id?>"><?=$val1->name?></option>
+                    <?php 
+                        }
+                    }
+                    ?>
+                </select>
             </div><div style =" color: red; display: none;" id="perror"> Select access level </div>
         </div><div style="height: 15px;clear: both"></div>
-        <?php
-        }
-        ?>
+        
         
         
     </div>
