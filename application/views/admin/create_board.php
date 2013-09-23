@@ -13,12 +13,12 @@
         <div class="div_wrapper">
             <?php echo form_label('Board Name:', 'name', array('class' => "control-label", 'style' => "float:left;margin-left:10px")); ?>
             <div class="controls">
-                <input type="text" style="margin-left: 55px"  class = "control-label" placeholder="Board Name" id="name1" name="name" ><div style =" color: red; display: none;padding-left:43%" id="berror"> Enter Board Name </div>
+                <input required="" type="text" style="margin-left: 55px"  class = "control-label" placeholder="Board Name" id="name1" name="name" ><div style =" color: red; display: none;padding-left:43%" id="berror"> Enter Board Name </div>
             </div>
             <div class="control-group">
                 <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label")); ?>
                 <div class="controls">
-                    <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
+                    <select required="" data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
                         <option value="0"></option>
                         <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                                 <option value="<?= $key ?>"><?= $Tag ?></option>
@@ -32,7 +32,7 @@
                 <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label")); ?>
                 <div class="controls">
                     <div id="select_box" style="width:451px;">
-                    <select data-placeholder="Choose a Filterable Taxonomy..." class="chosen-select" style="width:350px;" tabindex="4" id="taxo" name="taxo" >
+                        <select required="" data-placeholder="Choose a Filterable Taxonomy..." class="chosen-select" style="width:350px;" tabindex="4" id="taxo" name="taxo" >
                         <option></option>
                     </select></div>
                 </div>
@@ -51,19 +51,22 @@
                     </select>
                 </div>
             </div>
-            
+            <?php if($access_level == 'admin') :?>
             <div class="control-group">
-<?php echo form_label('Board User (Partner):', 'user_id1', array('class' => "control-label")); ?>
-                <div class="controls">
-                    <select data-placeholder="Choose a Partner..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="user_id" name="user_id[]" >
-                        <option value="0"></option>
-                        <? if (!empty($partners)): foreach ($partners as $val): ?>
-                                <option value="<?= $val->id ?>"><?= $val->name ?></option>
-    <? endforeach;
-endif; ?>
+                    <?php echo form_label('Domain :', 'domain', array('class' => "control-label")); ?>
+                                    <div class="controls">
+                                        <select data-placeholder="Choose a Domain..." class="chosen-select" style="width:350px;" tabindex="4" id="domain" name="user_id[]" required="please select Domain">
+                                            <option value="0"></option>
+                                            <? if (!empty($domain)): foreach ($domain as $val): ?>
+                                                    <option value="<?= $val->id ?>"><?= $val->name ?></option>
+                        <? endforeach;
+                    endif; ?>
                     </select>
                 </div>
             </div>
+            <?php else : ?>
+            <input type="hidden" value="<?php echo $domain;?>" id="domain">
+            <?php endif;?>
         </div> 
     </div>
     <div class="modal-footer ">
