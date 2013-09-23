@@ -68,6 +68,7 @@ class Item extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
 
         $itemModel = new Item_model();
+//        $boardModel = new Board_model();
         $boards = $itemModel->get_board($session_data['id']);
 
         $data['boards'] = $boards;

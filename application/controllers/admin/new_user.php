@@ -44,10 +44,13 @@ class New_user extends CI_Controller {
     {
          $this->load->model('setting/setting_model');
          $this->load->model('adduser');
+         $this->load->model('domain_model');
+         $this->load->model('user_model');
          
         $session_data = $this->session->userdata('logged_in');
         
          $user_model = new adduser();
+         $domain_model = new domain_model();
          
          if($this->input->post())
          {
@@ -58,7 +61,9 @@ class New_user extends CI_Controller {
         else 
           {
 
+                $user_mod = new User_model();
                 $value['parent_user_id'] =$user_model->user_id($session_data['username']);
+                $value['partner'] = $user_mod->getAllPartners() ;
                 if($session_data['access_level'] == 'admin')
                 {
                     $value['session'] = $session_data;
@@ -68,6 +73,7 @@ class New_user extends CI_Controller {
                else
                {
                     $value['session'] = $session_data;
+                    $value['domain'] = $domain_model->user_domain($session_data['id']);
                }
                $data = $this->load->view('admin/add_user',$value,TRUE);
                echo $data;

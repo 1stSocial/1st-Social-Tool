@@ -77,7 +77,13 @@ class Home extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('board_tag_model');
         $this->load->model('setting/setting_model');
+        $this->load->model('adduser');
+        $this->load->model('domain_model');
+        
         $this->load->helper('form');
+
+         $session_data = $this->session->userdata('logged_in');
+        
         // get all parent tag
         $tagModel = new Tag_model();
         $parentTags = $tagModel->root_parent();
@@ -88,13 +94,26 @@ class Home extends CI_Controller {
         //get all theme.
         $setting_model = new Setting_model();
         $Theme = $setting_model->theme_name();
-        $viewData = array('parenTag' => $parentTags, 'partners' => $partners, 'theme' => $Theme);
+        
+        $user_model = new adduser();
+        $domain_model = new domain_model();
+        if($session_data['access_level'] == 'admin')
+        {
+            $domain = $user_model->domain();
+        }
+        else
+        {
+            $domain = $domain_model->user_domain($session_data['id']);
+        }
+        
+        
+        $viewData = array('parenTag' => $parentTags, 'partners' => $partners, 'theme' => $Theme,'domain' => $domain);
 
         if ($this->input->post()) {
 
-            $session_data = $this->session->userdata('logged_in');
+           
             $data = $this->input->post();
-            $userId = $data['user_id'];
+            $domain_id = $data['domain'];
             unset($data['save']);
             unset($data['user_id']);
             $data['createdBy'] = $session_data['id'];
@@ -106,8 +125,9 @@ class Home extends CI_Controller {
             $boardId = $boardModel->saveBoard($val);
             if (is_numeric($boardId)) {
                 // save user information 
-                $boardUserModel = new Board_user_model(array('boardId' => $boardId, 'userId' => $userId));
-                $boardUserModel->saveBoardUser();
+                $domian_data = array('board_id' => $boardId, 'domain_id' => $domain_id);
+                $domain_model->save_domain_board($domian_data);
+                
                 $tagmod = new Tag_model();
                 $data['tagId'] = $tagmod->AllchildTagsid($data['parentTag']);
                 // save tags information
@@ -133,6 +153,10 @@ class Home extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('setting/setting_model');
         $this->load->model('board_tag_model');
+        $this->load->model('adduser');
+        $this->load->model('domain_model');
+        
+        $session_data = $this->session->userdata('logged_in');
         $boardId = $this->input->post('bid');
 
         $viewData = array();
@@ -156,10 +180,27 @@ class Home extends CI_Controller {
             $viewData['selectedChildTag'] = $selectedChildTag;
 
             //get all partners 
-            $userModel = new User_model();
-            $partners = $userModel->getAllPartners();
-            $viewData['partners'] = $partners;
+//            $userModel = new User_model();
+//            $partners = $userModel->getAllPartners();
+//            $viewData['partners'] = $partners;
 
+            //get domian 
+             $user_model = new adduser();
+             $domain_model = new domain_model();
+            
+             $viewData['selected_domain'] = $domain_model->board_domain($boardId);
+             if($session_data['access_level'] == 'admin')
+            {
+                $viewData['domain'] = $user_model->domain();
+            }
+            else
+            {
+                $viewData['domain'] = $domain_model->user_domain($session_data['id']);
+            }
+        
+            $viewData['selected_domain']= $domain_model->board_domain($boardId);
+            
+            $viewData['access_level'] = $session_data['access_level'];
             // get select partners 
             $boardUserModel = new Board_user_model();
             $selectPartners = $boardUserModel->getSelectedUserByBoardId($boardId);
@@ -170,7 +211,7 @@ class Home extends CI_Controller {
             $viewData['theme'] = $Theme;
 
             $viewData['selected_theme'] = $boardModel->get_theme($boardId);
-
+            
             echo $this->load->view('admin/edit_board', $viewData, TRUE);
             die;
         }
@@ -249,7 +290,7 @@ class Home extends CI_Controller {
         $tagModel = new Tag_model();
         $data['parentTags'] = $tagModel->AllTag();
         $obj = new Tag_model();
-        $data['parenTag'] = $obj->AllParentTags();
+        $data['parenTag'] = $obj->AllTag();
         if (isset($val)) {
             $data['option'] = $val;
             $data['id1'] = $val2;
@@ -384,6 +425,17 @@ class Home extends CI_Controller {
         $dom_model = new domain_model();
         $dom_model->delete_domain($id);
         $this->domain_management();
+    }
+    
+    
+    function  get_domain()
+    {
+        $id = $this->input->post('id');
+         $this->load->model('domain_model');
+        $dom_model = new domain_model();
+        $val = $dom_model->user_domain($id);
+        echo $val;
+        die;
     }
 
 }
