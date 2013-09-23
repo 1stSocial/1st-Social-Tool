@@ -4,7 +4,7 @@ jQuery(document).ready()
         jQuery('#dom').click();
     }, 100);
     
-    
+     
      $('#my').ajaxForm({
         beforeSubmit: function() {
            
