@@ -1,3 +1,44 @@
+<?php 
+
+switch ($access_level) 
+{
+    case 'admin':
+    {
+        $domain_check = TRUE;
+        $board_check = TRUE;
+        $Tag_check = TRUE;
+        $Taxonomy_check = TRUE;
+        $Item_check =TRUE;
+        $settings = TRUE;
+    }
+        break;
+    case 'partner':
+    {
+        $domain_check = FALSE;
+        $board_check = TRUE;
+        $Tag_check = TRUE;
+        $Taxonomy_check = TRUE;
+        $Item_check =TRUE;
+        $settings = TRUE;
+    }
+        break;
+    case 'client':
+    {
+        $domain_check = FALSE;
+        $board_check = FALSE;
+        $Tag_check = FALSE;
+        $Taxonomy_check = FALSE;
+        $Item_check =TRUE;
+        $settings = FALSE;
+    }
+        break;
+    default:
+        
+        break;
+}
+
+
+?>
 <div class="navbar">
 	<div class="menu-topbar">
 		<div class="pull-left menu-logo">
@@ -6,8 +47,7 @@
 			</a>
 		</div>
 		<ul class="nav">
-                    <?php if($access_level == 'admin' || $access_level == 'partner') : ?>
-			
+                    <?php if($domain_check) : ?>
                          <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Domain <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -15,7 +55,9 @@
 					<li><a href="<?= base_url(); ?>index.php/admin/home/create_domin">Create Domain</a></li>
 				</ul>
 			</li>
-                        
+                     <?php endif;?>   
+                     
+                     <?php if($board_check) : ?>   
                         <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -23,6 +65,9 @@
 					<li><a href="<?= base_url(); ?>index.php/admin/home/index/createbord">Create Board</a></li>
 				</ul>
 			</li>
+                      <?php endif;?>
+                      
+                      <?php if($Tag_check) : ?>  
                         <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tag <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -30,7 +75,9 @@
 					<li><a href="<?= base_url(); ?>index.php/admin/home/tag_Management/createtag">Create Tag</a></li>
 				</ul>
 			</li>
+                      <?php endif;?>
                         
+                     <?php if($Taxonomy_check) : ?>   
                         <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Taxonomy <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -38,7 +85,9 @@
 					<li><a href="<?= base_url(); ?>index.php/taxonomy/index/addtaxonomy">Create Taxonomy</a></li>
 				</ul>
 			</li>  
-                        <?php endif;?>
+                     <?php endif;?>  
+                     
+                    <?php if($Item_check) : ?>    
                         <li class="dropdown <?= $this->uri->segment(1) == "board_controller" ? "active" : ""; ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Items <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -46,7 +95,7 @@
 					<li><a href="<?= base_url(); ?>index.php/admin/Item/Add_item">Create Item</a></li>
 				</ul>
 			</li>
-                        
+                    <?php endif;?>    
                        
                         
 			<?php if ($settings): ?>
