@@ -9,7 +9,7 @@ Class Board_model extends CI_Model {
     private $_createdBy;
     private $_filterable_taxo;
 
-    /**
+    /** 
      * @return the $_id
      */
     public function getId() {
