@@ -1,5 +1,6 @@
 function refine()
 {
+   
     var siteurl = $('#side_url').val();
     var value = '';
     var i = 0;
@@ -19,7 +20,7 @@ function refine()
         }
      else
      {
-         tempurl = siteurl + '/'+b_name;
+         tempurl = siteurl + '/user/user/board/'+b_name;
      }
 
     $.ajax({
@@ -115,8 +116,9 @@ $(document).ready(function() {
                 "k - $" + nj("#slider-range").slider("values", 1) + "k");
     });
 
-    
-    
+  var temp = 0;
+   
+localStorage.setItem("temp", 0);
     $('#searchsubmit').click(function()
     {
         var b_name = $('#board_name').val();
@@ -129,17 +131,23 @@ $(document).ready(function() {
                 'search': search,
                 'b_name':b_name
             };
-            
+            var x = localStorage.getItem("temp");
+         if(x == 0)   
+             {
             $.ajax({
                 type: "POST",
                 url: siteurl + "/user/user/keyword_search",
                 data: dataval,
                  beforeSend:function(){
-                $('#searchsubmit').unbind('click');
+                     temp =1;
+                     localStorage.setItem("temp", 1);
+                     $('#searchsubmit').unbind('click');
+//                $('#searchsubmit').unbind('click');
             },    
                 success: function(res)
                 {
-//                    alert(res);
+//                    var x = localStorage.getItem("temp");
+//                    alert('abc-'+x);
                     
                     $('#left').fadeOut('slow',
                             function() {
@@ -154,7 +162,7 @@ $(document).ready(function() {
                 {
                     aler('error');
                 }
-            });
+            });}
         }
     });
 
@@ -232,7 +240,7 @@ $(document).ready(function() {
             taxoid = 2;
         }
    var b_name = $('#board_name').val();
-   
+
         var dataval = {
             min: $('#min').val(),
             max: $('#max').val(),
