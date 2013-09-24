@@ -7,7 +7,7 @@ class User_model extends CI_Model
         
     }
     
-    function page_count($page)
+    function page_count($page,$b_id=FALSE)
     {
         switch ($page) {
             case 'post_job':
@@ -16,6 +16,10 @@ class User_model extends CI_Model
                     
                 $this->db->from('items as i');
                 $this->db->join('users as u','u.id =i.created_by','inner');
+                if($b_id)
+                {
+                    $this->db->where('i.board_id',$b_id);
+                }
         //      $this->db->distinct();
                 $result = $this->db->get();
                 return $result->num_rows();
@@ -33,6 +37,10 @@ class User_model extends CI_Model
                 $this->db->join('users as u','u.id =i.created_by','inner');
                 $this->db->where('taxo.name','salary');
                 $this->db->where("t.value BETWEEN $min AND $max");
+                 if($b_id)
+                {
+                     $this->db->where('i.board_id',$b_id);
+                }
        
 //        $query = $this->db->get();
                 $result = $this->db->get();
@@ -56,13 +64,64 @@ class User_model extends CI_Model
         
     }
     
-    function refine_post_count($id)
+    function refine_post_count($id,$b_id=FALSE)
     {
-                $this->db->select('item_id');
+        $data = array();
+        $data1 = array();
+        $temp1 = array();
+       $result1 = array();
+        $key =array();
+                  $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
+         
                 $result = $this->db->get();
-                return $result->num_rows();
+                if($result->num_rows()>0)
+                {
+                $data = $result->result();
+                    foreach ($data as $val)
+                    {
+                        $temp1[] = $val->item_id;
+                    }
+                    $temp = array_count_values($temp1);
+                    foreach ($temp as $tempkey => $val)
+                    {
+                        if(count($id)-1 == $val)
+                        {
+                            $key[] = $tempkey;
+                        }
+                    }
+                  
+                }
+        
+                if((count($id))-1 == 1)
+                {              
+                    if(!is_array($temp1))
+                    {
+                        $key = $temp1;
+                    }
+                }
+                if(count($id)-1 == 0) 
+                {
+                    return $this->post_job();
+//                    die;
+                }
+                if(count($key))
+               {
+                    $this->db->select('*');
+                    $this->db->from('items');
+                    if($b_id)
+                    {
+                        $this->db->where('board_id',$b_id);
+                    }
+                    $this->db->where_in('id',$key);
+                    $tem = $this->db->get();
+                    return $tem->num_rows();
+               }
+               else
+               {
+                   return '0';
+               }
     } 
     function post_job($start,$board_id =  FALSE)
     {
@@ -157,9 +216,11 @@ class User_model extends CI_Model
        $result1 = array();
         $key =array();
                                               
-            $this->db->select('item_id');
+                $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
+                
+         
 //                $this->db->limit(5, $start);
                 $result = $this->db->get();
                 if($result->num_rows()>0)
@@ -182,17 +243,22 @@ class User_model extends CI_Model
                   
                 }
         
-                if(count($id)-1 == 1)
+                if((count($id))-1 == 1)
                 {              
                     if(!is_array($temp1))
-                    $key = $temp1;
-                    
+                    {
+                        $key = $temp1;
+                    }
                 }
                 if(count($id)-1 == 0) 
                 {
                     return $this->post_job();
+//                    die;
                 }
-//                var_dump($key);
+//                var_dump($key);die;
+         
+               if(count($key))
+               {
                     $this->db->select('i.*,t.item_id ,u.name as user_name');
                     $this->db->from('item_tags as t');
                     $this->db->join('items as i','i.id=t.item_id','inner');
@@ -256,6 +322,8 @@ class User_model extends CI_Model
                     
                     }
                     return($result1);
+               }
+                    
                     
        
     }
@@ -269,7 +337,7 @@ class User_model extends CI_Model
         
         echo $taxoid;
         
-        $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+        $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
         $this->db->from('taxonomy as taxo');
         $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
         $this->db->join('items as i','i.id=t.item_id','inner');
@@ -289,7 +357,7 @@ class User_model extends CI_Model
                     if($result->num_rows()>0)
                     {
                         $result1['item'] = $result->result();
-//                        var_dump($result1['item']);
+//                        var_dump($result1['item']);die;
                $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
@@ -301,7 +369,7 @@ class User_model extends CI_Model
                         $this->db->from('item_tags as taxo');
                         $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id','inner');
                         $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
-                        $this->db->where('taxo.item_id',$val->item_id);
+                        $this->db->where('taxo.item_id',$val->id);
                         $this->db->distinct();
                         $temp1 = $this->db->get();
                         $T = $temp1->result();
@@ -318,7 +386,7 @@ class User_model extends CI_Model
                         $this->db->join('tag_parent as t_p','taxo.tag_id=t_p.tag_id','inner');
                         $this->db->join('tags as tag','t_p.tag_id=tag.id','inner');
 //                        $this->db->join('tags as tag','taxo.tag_id=tag.id','inner');
-                        $this->db->where('taxo.item_id',$val->item_id);
+                        $this->db->where('taxo.item_id',$val->id);
                         $temp3 = $this->db->get();
                         $temp[] =$temp3->result();
                     }
@@ -333,7 +401,7 @@ class User_model extends CI_Model
                         $this->db->join('items as i','i.id=t.item_id','inner');
                         $this->db->join('users as u','u.id =i.created_by','inner');
                         $this->db->where('taxo.name','salary');
-                        $res = $this->db->where('i.id',$val->item_id);
+                        $res = $this->db->where('i.id',$val->id);
                         $temp4 = $this->db->get();
                         $temp5[] =$temp4->result();
                     }   
@@ -345,6 +413,7 @@ class User_model extends CI_Model
                     }
 //                    var_dump($result1);
 //                    die;
+                   
                     return($result1);
     }
     
