@@ -90,7 +90,7 @@ function change_partner()
                     data: {id:$('#parent_user').val()},
                     success: function(res) {
                          $('#domain_id').val(res);   
-                         alert(res);
+                         
                     },
                     error:function (res)
                     {
