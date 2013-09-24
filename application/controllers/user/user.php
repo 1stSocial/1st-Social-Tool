@@ -305,8 +305,7 @@ class User extends CI_Controller {
         
         if($data_str)
             $id = $temp ->get_boardid($data_str);
-            
-        
+   
         
          if($id!="")
          {
@@ -315,11 +314,14 @@ class User extends CI_Controller {
         $data['max_min'] =$this->user_model->taxo_val($id[0]->id);
          }
         else
+        {
         $data['tag'] = $tag_model->semi_parent();
-        
         $data['latestjob'] = $this->user_model->latest_job();
+        }
+
         
 //        print_r($data);
+      
       
         
         $this->load->view('user/sidebar', $data);
