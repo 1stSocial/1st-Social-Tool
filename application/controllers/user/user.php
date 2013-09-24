@@ -110,18 +110,28 @@ class User extends CI_Controller {
             $id = $this->input->post('val');
             $id_array = explode(",", $id);
             if (count($id_array) - 1 == 0) {
-                $config['total_rows'] = $this->user_model->page_count('post_job');
+               
+               
                 if(isset($board_id))
+                {
                 $data['post'] = $this->user_model->post_job($val * 5,$board_id);
+                 $config['total_rows'] = $this->user_model->page_count('post_job',$board_id);
+                
+                }
                 else {
                     $data['post'] = $this->user_model->post_job($val * 5);
+                    $config['total_rows'] = $this->user_model->page_count('post_job');
                 }
                 $data['pageno'] = $this->input->post('pageno');
 //            $data['parent_id'] = $this->user_model->parent_id();
                 $this->pagination->initialize($config);
                 echo $this->load->view('user/mainpage_content', $data, TRUE);
             } else {
+                if(isset($board_id))
+                $config['total_rows'] = $this->user_model->refine_post_count($id_array,$board_id);
+                else
                 $config['total_rows'] = $this->user_model->refine_post_count($id_array);
+                
                 $this->pagination->initialize($config);
                 if(isset($board_id))
                 $data['post'] = $this->user_model->refine_post_job($id_array, $val * 5,$board_id);
@@ -132,7 +142,11 @@ class User extends CI_Controller {
             }
             die;
         } else {
+             if(isset($board_id))
+            $config['total_rows'] = $this->user_model->page_count('post_job',$board_id);
+             else
             $config['total_rows'] = $this->user_model->page_count('post_job');
+             
             $this->pagination->initialize($config);
 //            echo $val ; die;
             if(isset($board_id))
@@ -227,7 +241,7 @@ class User extends CI_Controller {
         
         $config['base_url'] = site_url() . '/user/user/index';
         $config['per_page'] = 5;
-        $config['total_rows'] = $this->user_model->refine_post_count($id_array);
+        $config['total_rows'] = $this->user_model->refine_post_count($id_array,$board_id);
         $this->pagination->initialize($config);
         $val = $this->uri->segment(4);
         if($board_id=="")
@@ -250,16 +264,22 @@ class User extends CI_Controller {
         $this->load->library('pagination');
 //        $config['base_url'] = site_url().'/user/user/index';
         $config['per_page'] = 5;
+        $data_str = $this->input->post('b_name');
+         $board_id = $this->user_model->get_boardid($data_str);
+        
+        if($data_str == 'home')
         $config['total_rows'] = $this->user_model->page_count('refine_job_salary');
+        else
+        $config['total_rows'] = $this->user_model->page_count('refine_job_salary',$board_id);
+        
         $this->pagination->initialize($config);
         $val = $this->uri->segment(4);
           $data_str = $this->input->post('b_name');
-         $board_id = $this->user_model->get_boardid($data_str);
          if($board_id == "")
         $data['post'] = $this->user_model->refine_job_salary($val);
          else
         $data['post'] = $this->user_model->refine_job_salary($val,$board_id['0']->id);
-         
+
         $data['pagename'] = 'salary_refine';
         $data['board_name']=$data_str;
         echo $this->load->view('user/content', $data, TRUE);
@@ -269,18 +289,39 @@ class User extends CI_Controller {
     public function detail() {
         $this->load->model('tag_model');
         $tag_model = new Tag_model();
-
+        $data_str = $this->uri->segment(5);;
+       
         $boardId = $this->uri->segment(4);
         $base = base_url();
         
         $data['post'] = $this->user_model->view_detail($boardId);
 //        var_dump($data['post']);die;
 //        scandir($base.'assets/css/user/content/'.);
+        $data['board_name']=$data_str;
         $data['content'] = $this->load->view('user/more_detail', $data, TRUE);
 
+         $temp = new User_model;
+         $id = "";
+        
+        if($data_str)
+            $id = $temp ->get_boardid($data_str);
+            
+        
+        
+         if($id!="")
+         {
+        $data['tag'] = $tag_model->semi_parent($id[0]->id);
+         $data['latestjob'] = $this->user_model->latest_job($id[0]->id);
+        $data['max_min'] =$this->user_model->taxo_val($id[0]->id);
+         }
+        else
         $data['tag'] = $tag_model->semi_parent();
+        
         $data['latestjob'] = $this->user_model->latest_job();
+        
 //        print_r($data);
+      
+        
         $this->load->view('user/sidebar', $data);
         $this->load->view('user/footer', $data['tag']);
     }
