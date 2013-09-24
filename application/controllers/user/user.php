@@ -9,7 +9,7 @@ class User extends CI_Controller {
         $theme = $temp->apply_theme();
 
 
-        $str = "";
+        $str = ""; 
 
         if (is_array($theme)) {
             foreach ($theme as $val) {
