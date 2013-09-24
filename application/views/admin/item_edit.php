@@ -1,6 +1,6 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/item_edit.js"></script>
 
-<?php echo form_open_multipart(site_url("/admin/item/test/")); ?>
+<?php echo form_open_multipart(site_url("/admin/Item/test/")); ?>
 
 <div class="header" style="margin-left: 40%">
     <h3>Edit Item <?= $item['0']['name'] ?></h3>
@@ -95,7 +95,7 @@ endif;
 
   
         <div class="control-group div_wrapper">
-            <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/item/update_item/"); ?>">
+            <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/update_item/"); ?>">
             <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Update Item" onclick="//savefun('<?php // echo site_url("/admin/item/update_item/");  ?>')" />
             <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close();">
         </div>

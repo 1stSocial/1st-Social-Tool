@@ -2,7 +2,7 @@
 
 <!--<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
         
-    <?php echo form_open_multipart(site_url("/admin/item/test/")); ?>
+    <?php echo form_open_multipart(site_url("/admin/Item/test/")); ?>
 <div class="header" style="margin-left  : 40%">
         <input type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
         <h3>Add Item <?= $board_name ?></h3> 
@@ -69,7 +69,7 @@
        <!--image upload-->
    
         <div class="control-group div_wrapper">
-            <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/item/insert_item/"); ?>">
+            <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/insert_item/"); ?>">
             <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Create Item"/>
             <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
         </div>
