@@ -129,7 +129,7 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val):
                                 </div>
 
                                 <div class="clear"></div>
-                                <a class="readmore" href="">Apply Now</a>		
+                               	
                             </div>
                             <div class="orange_saperator"> </div>
                             <span id="list">

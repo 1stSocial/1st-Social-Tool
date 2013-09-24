@@ -20,9 +20,7 @@
          
          
      
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_002.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>
+         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/less-1.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/buttons.js"></script>
@@ -30,7 +28,7 @@
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/devicepx-jetpack.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/gprofiles.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-1.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
+         
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/loader.js"></script>
          <script type="text/javascript" src="<?//=base_url();?>assets/js/user/st.js"></script>
            
@@ -45,7 +43,10 @@
          <script src="<?= base_url(); ?>assets/js/gallery/load-image.js"></script>
         <script src="<?= base_url(); ?>assets/js/gallery/bootstrap-image-gallery.js"></script>
         <script src="<?= base_url(); ?>assets/js/gallery/main.js"></script>
-         
+        <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_002.js"></script>
+         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
+         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>
+         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
 </head>
  
     <body class="home blog">

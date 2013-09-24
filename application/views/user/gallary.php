@@ -24,7 +24,7 @@
 </div>
 <!-- modal-gallery is the modal dialog used for the image gallery -->
 
-<div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="" style="margin-top: 0px!important;width: auto!important; height: auto!important;">
+<div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="" style="width: auto!important; height: auto!important;">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">&times;</a>
         <h3 class="modal-title"></h3>

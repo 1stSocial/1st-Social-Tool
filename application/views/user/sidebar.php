@@ -28,7 +28,7 @@
                             <ul id="lct-widget">
         <?php foreach ($tag['child'] as $val): if ($val['parent_tag_id'] == $data['tag_id']) : ?>
                                         <li class="cat-item">
-                                            <a href="javascript:refine();" title="View all posts filed under <?= $val['name']; ?>"><input type="checkbox" name="child" id="child" value="<?= $val['tag_id']; ?>"/><?= $val['name'] ?></a>
+                                            <input onchange="refine()" type="checkbox" name="child" id="child" value="<?= $val['tag_id']; ?>"/><?= $val['name'] ?>
                                         </li>
             <?php endif;
             endforeach; ?>
@@ -45,7 +45,7 @@ endif; ?>
                                 $val=0; 
                           for($i=1;$i<5;$i++){?>
                             <li>    
-                                <a href="javascript:num_refine(<?=$val?>,<?=($val+$temp)-1?>);" title=""><input type="radio" name="salref" id="salref" value="<?php echo $val."-".($val+$temp)-1?>"/><?php echo $val; echo "&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;";  echo ($val+$temp)-1 ;?></a>    
+                                <input onchange="num_refine(<?=$val?>,<?=($val+$temp)-1?>)" type="radio" name="salref" id="salref" value="<?php echo $val."-".($val+$temp)-1?>"/><?php echo $val; echo "&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;";  echo ($val+$temp)-1 ;?>   
                           </li>
                                 <?php 
                             $val = $val + $temp;
@@ -107,4 +107,5 @@ endif; ?>
     </div>
 </div>
 <div class="clear"></div>
+<input type="hidden" name ="b_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
 <input type="hidden" value="<?= site_url(); ?>" id="side_url">

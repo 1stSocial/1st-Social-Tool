@@ -57,7 +57,7 @@
                     ?>
                     </div>
                     <div class="clear"></div>
-                    <a class="readmore" href="">Apply Now</a>		
+                   
                 </div>
             </div>
         </div>
