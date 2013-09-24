@@ -419,17 +419,20 @@ class User_model extends CI_Model
     
     function latest_job($board_id = FALSE)
     {
-        $this->db->select('items.id,items.name,items.title,items.createdTime');
+        $this->db->select('items.id,items.name,items.title,items.createdTime,items.board_id');
         $this->db->from('items');
         if($board_id)
         $this->db->where('board_id',$board_id);
-        
         $this->db->order_by('createdTime','DESC');
         $this->db->limit(5);
         $query = $this->db->get();
         if($query->num_rows()>0)
+            
+        {
+          
+//var_dump($query->result_array());die;
             return $query->result_array();
-        
+        }
     }
     
     function taxo_val($bid)
