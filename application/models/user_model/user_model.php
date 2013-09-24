@@ -4,7 +4,7 @@ class User_model extends CI_Model
 {
     function get_parent()
     {
-        
+         
     }
     
     function page_count($page,$b_id=FALSE)
