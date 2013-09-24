@@ -72,7 +72,7 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val):
 
                             <div class="title">
 
-                                <h1 style="padding-left:60px;"><a style="font-size:28px;" href="<?= site_url() ?>/user/user/detail/<?= $val->id ?>" rel="bookmark" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a></h1>
+                                <h1 style="padding-left:60px;"><a style="font-size:28px;" href="<?= site_url() ?>/user/user/detail/<?= $val->id ?>/<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>" rel="bookmark" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a></h1>
 
 
                                 <div id="date"> <!--start date-->
@@ -155,7 +155,7 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val):
     endforeach;
 endif;
 ?>
-    <input type="hidden" name ="board_name" id="board_name" value="<?php
+    <input type="hidden" name ="b_name" id="board_name" value="<?php
 if (isset($board_name)) {
     echo $board_name;
 } else {
