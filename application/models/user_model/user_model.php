@@ -27,37 +27,57 @@ class User_model extends CI_Model
 
             case 'refine_job_salary':
             {
+
                 $max = $this->input->post('max');
                 $min = $this->input->post('min');
+                $taxoid = $this->input->post('taxoid');
 
-                $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
+
+
+                $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
                 $this->db->from('taxonomy as taxo');
                 $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
                 $this->db->join('items as i','i.id=t.item_id','inner');
                 $this->db->join('users as u','u.id =i.created_by','inner');
-                $this->db->where('taxo.name','salary');
+        //        $this->db->where('taxo.name','salary');
                 $this->db->where("t.value BETWEEN $min AND $max");
-                 if($b_id)
+                $this->db->where('t.taxo_id',$taxoid);
+                if($b_id)
                 {
-                     $this->db->where('i.board_id',$b_id);
+                    $this->db->where('i.board_id',$b_id);
                 }
-       
-//        $query = $this->db->get();
-                $result = $this->db->get();
-                return $result->num_rows();
+                   $result = $this->db->get();
+
+                   return $result->num_rows();
+                   
             }break;
             
             case 'keyword_search':
             {
-                $keyword = $this->input->post('search');
+               $keyword = $this->input->post('search');
+           $this->db->select('*');
+            $this->db->from('items');
+            $this->db->like('name',$keyword);
+            $this->db->or_like('title',$keyword);
+            $this->db->or_like('body',$keyword);
+            $query = $this->db->get();
        
-                $this->db->select('id');
-                $this->db->from('items');
-                $this->db->like('name',$keyword);
-                $this->db->or_like('title',$keyword);
-                $query = $this->db->get();
-                
-                return $query->num_rows();
+                if($query->num_rows()>0)
+                {
+
+                    $var = $query->result_array();
+         //          var_dump($var);die;
+                    $arr = array();
+                    if($b_id)
+                    {
+                    foreach ($var as $va) {
+                        if($va['board_id'] == $b_id)
+                        $arr[] = $va['id'];
+                    }
+                    return count($arr) ;
+                    }
+
+                }
             }break;
         } 
        
@@ -335,7 +355,7 @@ class User_model extends CI_Model
         $min = $this->input->post('min');
         $taxoid = $this->input->post('taxoid');
         
-        echo $taxoid;
+     
         
         $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
         $this->db->from('taxonomy as taxo');
@@ -512,9 +532,10 @@ class User_model extends CI_Model
                         }
                         else
                         {
-                          
+                         
                             $this->db->where('i.id','1');
                             $result=  $this->db->get();
+                            
                         }
                         
                         
@@ -528,7 +549,7 @@ class User_model extends CI_Model
                     if($result->num_rows()>0)
                     {
                     $result1['item'] = $result->result();
-//                    var_dump($result1['item']);die;
+//                    var_dump($result1['item']);
                     $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
@@ -589,41 +610,51 @@ class User_model extends CI_Model
     
     function keyword_search($start,$board_id=FALSE)
     {
+//     echo $board_id;
        $keyword = $this->input->post('search');
            $this->db->select('*');
             $this->db->from('items');
             $this->db->like('name',$keyword);
             $this->db->or_like('title',$keyword);
             $this->db->or_like('body',$keyword);
-            $this->db->limit(5, $start);
+        
             $query = $this->db->get();
        
        if($query->num_rows()>0)
        {
            
            $var = $query->result_array();
-//          var_dump($var);die;
            $arr = array();
-//           if(!$board_id)
+           if($board_id)
            {
+               if(!$start)
+               {
+                   
+                   $start=0;
+                    $i = 0;
+               }
+               else
+               {    
+                     $i = $start;
+               }
            foreach ($var as $va) {
-               
-               $arr[] = $va['id'];
+               if($va['board_id'] == $board_id)
+               {
+                        $arr[] = $va['id'];
+               }
            }
            
-           return $this->view_detail($arr);
+           $new = array();
+           
+           for($i=$start;$i<$start+5;$i++)
+           {
+               if($i < count($arr))
+               $new[] = $arr[$i];
            }
-//           else
-//           {
-//             foreach ($var as $va) 
-//                 {
-//                        if($board_id == $va['board_id'])
-//                        {
-//                            $arr[] = $va['id'];
-//                        }
-//                 }
-//                 return $this->view_detail($arr);
-//           }
+           
+           return $this->view_detail($new);
+           }
+       
        }
  else {
             
