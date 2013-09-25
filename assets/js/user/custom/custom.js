@@ -96,7 +96,10 @@ function num_refine(min,max)
 }
 
 $(document).ready(function() {
-
+var str = $('#navigation1 strong').html();  
+if(str)
+$('#navigation1').html($('#navigation1').html().replace('<strong>' + str + '</strong>', '<a href=' + str + '>' + str + '</a>'));
+               
     var siteurl = $('#side_url').val();
      
     var nj = jQuery.noConflict();
@@ -126,7 +129,7 @@ localStorage.setItem("temp", 0);
 //        alert(b_name);
         if (search != "search")
         {
-
+            
             var dataval = {
                 'search': search,
                 'b_name':b_name
@@ -167,10 +170,16 @@ localStorage.setItem("temp", 0);
     });
 
     $('#navigation1 a').click(function (){
-        
+       
          var id = $(this).text();
          var b_name = $('#board_name').val();
          var pagename = $('#pagename').val();
+         var taxoid =  $('#taxo_id').val();
+         var search = $('#s').val();
+        if(taxoid == "")
+            {
+                taxoid = 2;
+            }
          var uri = siteurl;
          
          switch (pagename)
@@ -178,29 +187,40 @@ localStorage.setItem("temp", 0);
              case 'keyword_search':
                  {
                      uri = uri + "/user/user/keyword_search";
+                    var dataval = {
+                        'search': search,
+                        'page' :  id,
+                        'b_name' :b_name
+                    };
                  }
                  break;
              case 'salary_refine':
                 {
                     uri = uri + '/user/user/salary_refine';
+                    var dataval = {
+                        'search': search,
+                        'page' :  id,
+                        'b_name' :b_name,
+                        'min': $('#min').val(),
+                        'max': $('#max').val(),
+                         'taxoid' : taxoid
+                    };
                 }break;
              case 'footer_refine':
                 {
                     uri = uri + '/user/user/footer_refine';
+                    var dataval = {
+                        'search': search,
+                        'page' :  id,
+                        'b_name' :b_name
+                    };
                 }
          }
          
-        var search = $('#s').val();
+        
 //           alert(id);
         if (search != "job search")
         {
-
-            var dataval = {
-                'search': search,
-                'page' :  id,
-                'b_name' :b_name
-            };
-
             $.ajax({
                 type: "POST",
                 url: uri ,
@@ -220,7 +240,6 @@ localStorage.setItem("temp", 0);
                             function() {
                                 $('#left').html(res);
                             }).fadeIn('slow');
-                            
                 },
                 error: function(res)
                 {
@@ -228,9 +247,15 @@ localStorage.setItem("temp", 0);
                 }
             });
         }
+               
         return false;
+      
+        
     });
 
+var refine = 0;
+   
+localStorage.setItem("refine", 0);
     $('#refine_btn').click(function() {
 //  alert("tt34");
 
@@ -248,12 +273,16 @@ localStorage.setItem("temp", 0);
             taxoid : taxoid
         };
         var siteurl = $('#side_url').val();
-
+ var y = localStorage.getItem("refine");
+         if(y == 0)  
+             {
         $.ajax({
             type: 'POST',
             url: siteurl + '/user/user/salary_refine',
                 data: dataval,           
             beforeSend:function(){
+                refine =1;
+                     localStorage.setItem("refine", 1);
                 $('#refine_btn').unbind('click');
             },           
             success: function(res)
@@ -274,7 +303,7 @@ localStorage.setItem("temp", 0);
                 alert('error');
             }
         });
-    
+             }
 
     });
 
