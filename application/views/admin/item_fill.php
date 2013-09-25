@@ -21,13 +21,7 @@
                 </div>
             </div>
         </div>
-<!--        <input type="file" class="file fileupload fileupload-preview">-->
-<!--        <div class="control-group">
-            <div class="controls">
-                <label style=" float: left;" class="control-label"  >Name :</label>
-                <div style='magrin-top:33px;padding-left:20%;'><input type="text" id ="item_name"name="name" class="control-label" style="width: 90%"/> <div id="item_name_error"></div></div>
-            </div>
-        </div>-->
+
 
         <div class="control-group">
             <div class="controls">
@@ -68,6 +62,10 @@
                      </form>
        <!--image upload-->
    
+       <div id="image_div">
+           
+       </div>
+       
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/insert_item/"); ?>">
             <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Create Item"/>
@@ -80,16 +78,33 @@
     
 		
 		$(function() {
+             
+//                alert(temp);
                 var base = $('#base').val();
+                 var dataval = {
+            name: <?php echo $timestamp;?>,
+            id:""
+        };
 			$('#file_upload').uploadify({
 				'formData'     : {
 					'timestamp' : '<?php echo $timestamp;?>',
                                         'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
 				},
 				'swf'      : base +'assets/extra/uploadify.swf',
-				'uploader' : base +'assets/extra/uploadify.php'
-			});
+				'uploader' : base +'assets/extra/uploadify.php',
+                              'onUploadSuccess' : function(file, data, response) {
+                                        $.ajax({
+                                                type: "POST",
+                                                url: './gallery',
+                                                data:dataval,
+                                                success: function(res) {
+                                                   $('#image_div').html(res);
+                                               }
+                                                }); 
+                                     
+                                
+			}
 		});
-               
+              }); 
                
 	</script>

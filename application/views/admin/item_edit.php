@@ -92,8 +92,23 @@ endif;
 
         </div>    
     </div>
-
-  
+     <label style=" float: left;" class="control-label"  >Upload Gallery Images :</label>
+<form>
+                             <div id="queue"></div>
+                             <input id="file_upload" name="file_upload" type="file" multiple="true">
+                             <input id='base' type="hidden" value="<?php echo base_url();?>">
+                             <?php $timestamp = time();
+                             ?>
+                             <input id='folder_name' type="hidden" value="<?php echo $timestamp;?>">
+                     </form>
+  <div id="image_div">
+           <?php
+           if(isset($image_div))
+           {
+               echo $image_div;
+           }
+           ?>
+       </div>
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/update_item/"); ?>">
             <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Update Item" onclick="//savefun('<?php // echo site_url("/admin/item/update_item/");  ?>')" />
@@ -107,3 +122,41 @@ endif;
                             alert('shfkj');
                          });
 </script>
+<script type="text/javascript">
+    
+		
+		$(function() {
+             
+               
+                var base = $('#base').val();
+                var id = $('#item_id').val();
+           
+        var dataval = {
+            id: id,
+            name:""
+        };
+			$('#file_upload').uploadify({
+				'formData'     : {
+					'timestamp' : id,
+                                        'token'     : id,
+                                       'id': id
+				},
+				'swf'      : base +'assets/extra/uploadify.swf',
+				'uploader' : base +'assets/extra/uploadify.php',
+                              'onUploadSuccess' : function(file, data, response) {
+                                   
+                                        $.ajax({
+                                                type: "POST",
+                                                url: '../gallery',
+                                                data:dataval,
+                                                success: function(res) {
+                                                 $('#image_div').html(res);
+                                               }
+                                                }); 
+                                     
+                              
+			}
+		});
+              }); 
+               
+	</script>
