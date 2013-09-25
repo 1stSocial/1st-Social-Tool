@@ -12,17 +12,19 @@ $(document).ready(
         
 );
 
+function temp()
+{
+    alert('temp');
+}
+function temp1()
+{
+    alert('temp1');
+}
 $(document).ready()
 {
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
-    
-    
-    $('.fileupload').fileupload(
-            {
-                uploadtype: 'image/jpg'
-            });
 
     $('form').ajaxForm({
         beforeSubmit: function() {

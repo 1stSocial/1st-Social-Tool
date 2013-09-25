@@ -57,6 +57,7 @@ function savefun(image)
 //    var itemname = $('#name').val();
     var title = $('#title').val();
     var body = $('#body').val();
+    var folder_name = $('#folder_name').val();
     var unlink = $('#imgsrc').attr('src');
     var tag = [];
     var taxo = [];
@@ -89,7 +90,8 @@ function savefun(image)
             tag_id: tag,
              ids : ids,
              image : image,
-             unlink : unlink
+             unlink : unlink,
+             folder_name:folder_name
         };
 
         $.ajax({
