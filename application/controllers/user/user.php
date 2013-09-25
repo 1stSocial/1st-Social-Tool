@@ -172,6 +172,48 @@ class User extends CI_Controller {
         
     }
 
+    public function theme($data_str = FALSE)
+    {
+          $temp = new User_model;
+        if($data_str)
+        {
+            $id = $temp ->get_boardid($data_str);
+            
+            if($id!="")
+            {
+                $board_id = $id[0]->id;
+                $theme = $temp->apply_theme2($id[0]->id);
+            }else
+                $theme = $temp->apply_theme();    
+        }
+        else
+        {
+            $theme = $temp->apply_theme();
+        }
+        
+        $str = "";
+        $myarr = array();
+        if (is_array($theme)) {
+            foreach ($theme as $val) {
+                $str .= '@' . $val['key'] . ':' . $val['value'] . '!important;';
+            }  
+        } else {
+            $str = ""; 
+        }
+       $filepath = 'assets/css/user/temp.less';
+      
+        if($temp->board_exist($data_str))
+        {    
+            $fp = fopen($filepath, "w+");
+             flock($fp,LOCK_EX);
+             fwrite($fp, $str);
+             flock($fp,LOCK_UN);
+             fclose($fp);
+             $data['board_name'] = $data_str;
+//             $this->load->view('user/header');
+        }
+    }
+    
 
     public function index() {
        
@@ -267,10 +309,10 @@ class User extends CI_Controller {
         $data_str = $this->input->post('b_name');
          $board_id = $this->user_model->get_boardid($data_str);
         
-        if($data_str == 'home')
+        if($board_id == '')
         $config['total_rows'] = $this->user_model->page_count('refine_job_salary');
         else
-        $config['total_rows'] = $this->user_model->page_count('refine_job_salary',$board_id);
+        $config['total_rows'] = $this->user_model->page_count('refine_job_salary',$board_id['0']->id);
         
         $this->pagination->initialize($config);
         $val = $this->uri->segment(4);
@@ -304,8 +346,10 @@ class User extends CI_Controller {
          $id = "";
         
         if($data_str)
+        {
             $id = $temp ->get_boardid($data_str);
-   
+            $this->theme($data_str);
+        }
         
          if($id!="")
          {
@@ -332,16 +376,20 @@ class User extends CI_Controller {
        
         $data_str = $this->input->post('b_name');
         $board_id = $this->user_model->get_boardid($data_str);
-//        var_dump($board_id) ;
         $this->load->library('pagination');
-//        $config['base_url'] = site_url().'/user/user/index';
         $config['per_page'] = 5;
+        if($board_id!="")
+         {
+        $config['total_rows'] = $this->user_model->page_count('keyword_search',$board_id['0']->id);
+         }
+ else {
         $config['total_rows'] = $this->user_model->page_count('keyword_search');
+        
+ }
         $var = $this->input->post('page');
 
         if ($var) {
             $config['current_page'] = $var;
-//            $config['use_page_numbers'] = TRUE;
             $var = $var - 1;
             $val = $var * $config['per_page'];
         } else {
@@ -354,12 +402,13 @@ class User extends CI_Controller {
          }
         else
          {
-            $this->user_model->keyword_search($val,$board_id['0']->id);
+//            echo $board_id['0']->id;
+            $data['post'] = $this->user_model->keyword_search($val,$board_id['0']->id);
          }
         
 
-        $data['post'] = $this->user_model->keyword_search($val);
         $data['pagename'] = 'keyword_search';
+        $data['board_name']=$data_str;
         echo $this->load->view('user/content', $data, TRUE);
         die;
     }
