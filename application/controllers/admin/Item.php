@@ -116,7 +116,7 @@ class Item extends CI_Controller {
         $this->load->model('Item_model');
         $this->load->model('tag_model');
         $this->load->helper('form');
-
+     
         $tag_model = new Tag_model();
 
         $itemid = $this->uri->segment(4);
@@ -126,6 +126,9 @@ class Item extends CI_Controller {
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
 
         $data['Tag'] = $tag_model->tag_val($data['item']['0']['board_id']);
+        $temp_data['name'] = $itemid;
+        
+        $data['image_div'] = $this->load->view('admin/gallary',$temp_data,TRUE);;
         $this->load->view('admin/item_edit', $data);
         
     }
@@ -137,6 +140,7 @@ class Item extends CI_Controller {
         $error_iden = TRUE;
         $item = new Item_model();
 
+        $folder_name = $this->input->post('folder_name');
         $taxoarr = $this->input->post('taxo');
         $ids = $this->input->post('ids');
         foreach ($ids as $id) {
@@ -177,6 +181,9 @@ class Item extends CI_Controller {
             $this->load->model('Item_model');
             $item_model = new Item_model();
             $item_model->update_item();
+            $folder_name =  md5('unique_salt' . $folder_name);
+            if(is_dir('assets/css/user/content/'.$folder_name))
+            rename('assets/css/user/content/'.$folder_name, 'assets/css/user/content/'.$this->input->post('id'));
 //            unlink($this->input->post('unlink'));
             echo '';
             die;
@@ -327,14 +334,15 @@ class Item extends CI_Controller {
     function uploadify()
     {
         $targetFolder = '/uploads'; // Relative to the root
+        
+            
+//        $verifyToken = md5('unique_salt' . $_POST['timestamp']);
 
-        $verifyToken = md5('unique_salt' . $_POST['timestamp']);
-
-        if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
+//        if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
                 $tempFile = $_FILES['Filedata']['tmp_name'];
                 $targetPath = $_SERVER['DOCUMENT_ROOT'] ;
                 $targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
-
+                
                 // Validate the file type
                 $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
                 $fileParts = pathinfo($_FILES['Filedata']['name']);
@@ -345,9 +353,51 @@ class Item extends CI_Controller {
                 } else {
                         echo 'Invalid file type.';
                 }
-        }
+//        }
+//        if(isset($_POST['id']))
+//        {
+//             $tempFile = $_FILES['Filedata']['tmp_name'];
+//                $targetPath = $_SERVER['DOCUMENT_ROOT'] ;
+//                var_dump($targetPath);die;
+//                $targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
+//
+//                // Validate the file type
+//                $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+//                $fileParts = pathinfo($_FILES['Filedata']['name']);
+//
+//                if (in_array($fileParts['extension'],$fileTypes)) {
+//                        move_uploaded_file($tempFile,$targetFile);
+//                        echo '1';
+//                } else {
+//                        echo 'Invalid file type.';
+//                }
+//        }
+//        
     }
     
+    function gallery()
+    {
+        if($this->input->post('name') != "")
+        {
+         $data['name'] = $this->input->post('name');
+            $data['name'] = md5('unique_salt' . $data['name']);
+        }
+        if($this->input->post('id') !="")
+        {
+            $data['name'] = $this->input->post('id');
+//            $data['name'] = md5('unique_salt' . $data['name']);
+        }
+         echo  $this->load->view('admin/gallary',$data,TRUE);
+         die;
+    }
+    function delete_image()
+    {
+        $name = $this->uri->segment(4);
+        $folder = $this->uri->segment(5);
+        unlink('assets/css/user/content/'.$folder.'/'.$name);
+        echo "";
+        die;
+    }
 }
 
 ?>
