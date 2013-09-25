@@ -42,37 +42,43 @@
                 <div class="clear"></div>
             </div>
         </div>
-    <?php $loop++; endforeach;endif; ?>;
+    <?php $loop++; endforeach;endif; ?>
     <div class="clear"></div>
       <input type="hidden" name ="b_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
 </div>
 <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
 <script>
-$('#navigation1 a').click(function() {
-
-        var id = $(this).text();
-        var pageno = $('#pageno').val();
-
-        $('#pageno').val(id);
-
-    });
-
-    $(document).ready()
-    {
-        var str = $('#navigation1 strong').html();
-        var value = $('#t').val();
-        var b_name = $('#board_name').val();
-        if (b_name == 'home')
-        {
-            $('#navigation1').html($('#navigation1').html().replace('<strong>' + str + '</strong>', '<a href=' + value + '/user/user/index/' + str + '>' + str + '</a>'));
-
-            $('#navigation1').html($('#navigation1').html().replace('<a href=' + value + '/user/user/index/' + $('#pageno').val() + '>' + $('#pageno').val() + '</a>', '<strong>' + $('#pageno').val() + '</strong>'));
-        }
-        else
-        {
-            $('#navigation1').html($('#navigation1').html().replace('<strong>' + str + '</strong>', '<a href=' + value + '/user/user/board/' + b_name + '/' + str + '>' + str + '</a>'));
-
-            $('#navigation1').html($('#navigation1').html().replace('<a href=' + value + '/user/user/board/' + b_name + '/' + $('#pageno').val() + '>' + $('#pageno').val() + '</a>', '<strong>' + $('#pageno').val() + '</strong>'));
-        }
-    }
+//  
+//$('#navigation1 a').click(function() {
+//
+//        var id = $(this).text();
+//        var pageno = $('#pageno').val();
+//
+//        $('#pageno').val(id);
+//        
+//    });
+//
+//    $(document).ready()
+//    {
+//        var str = $('#navigation1 strong').html();
+//        var value = $('#t').val();
+//        var b_name = $('#board_name').val();
+//        
+//        
+//        
+//        if (b_name == 'home')
+//        {
+//            $('#navigation1').html($('#navigation1').html().replace('<strong>' + str + '</strong>', '<a href=' + str + '>' + str + '</a>'));
+//
+//            $('#navigation1').html($('#navigation1').html().replace('<a href='+ $('#pageno').val() +'>' + $('#pageno').val() + '</a>', '<strong>' + $('#pageno').val() + '</strong>'));
+//            
+//            
+//        }
+//        else
+//        {
+//            $('#navigation1').html($('#navigation1').html().replace('<strong>' + str + '</strong>', '<a href=' + str + '>' + str + '</a>'));
+//
+//            $('#navigation1').html($('#navigation1').html().replace('<a href=' + $('#pageno').val() +'>' + $('#pageno').val() + '</a>', '<strong>' + $('#pageno').val() + '</strong>'));
+//        }
+//    }
     </script>
