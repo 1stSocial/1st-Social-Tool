@@ -132,7 +132,7 @@ Class Adduser extends CI_Model {
         
         $this->db->where('id',$id);
         $this->db->update('users',$data);
-//        $this->db->get();
+//        $this->db->get(); 
     }
     
     
