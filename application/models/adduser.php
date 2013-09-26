@@ -121,7 +121,14 @@ Class Adduser extends CI_Model {
         
         $id = $data['id'];
         unset($data['id']);
-        $data['password'] = md5($data['password']);
+        if($data['password']!="")
+        {
+            $data['password'] = md5($data['password']);
+        }
+        else
+        {
+            unset($data['password']); 
+        }
         
         $this->db->where('id',$id);
         $this->db->update('users',$data);
