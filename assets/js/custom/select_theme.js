@@ -11,6 +11,7 @@ jQuery(document).ready(function(){
                     $('.dataTables_length').insertAfter($("#tab_id_info"));
                     $('#create').show();
                     $('#tab_id_length').show();
+                    $('#tab_id_filter').css("margin-right",'1%');
                 });
          
     $(".chosen-select").chosen({width: "50%"});

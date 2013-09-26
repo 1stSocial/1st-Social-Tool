@@ -1012,7 +1012,7 @@ var RLANG = {
 						whendone = null;
 					}
 				}
-
+                                
 				// editor
 				this.textareamode = true;
 				if (this.$el.get(0).tagName === 'TEXTAREA')

@@ -14,6 +14,10 @@ jQuery(document).ready()
            
            var name = $('#username').val(); 
            var url = $('#url').val(); 
+           
+            var regex = /^[\s]*$/ ;
+           if(!regex.test(name) && !regex.test($('#name').val()) &&  !regex.test($('#inputPassword').val()) && !regex.test($('#access_level').val()) && !regex.test($('#domain').val()) && !regex.test($('#parent_user_id').val()))
+               {
            $.ajax({
             type: "POST",
             url: url+'/admin/new_user/username_check',
@@ -39,7 +43,7 @@ jQuery(document).ready()
             {
                
             }
-        });
+        });}
         
         if(values == 'ok')
             return true;

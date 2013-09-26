@@ -11,12 +11,20 @@ jQuery(document).ready()
        $('#mod1').click();
    },100);
    
+ 
+         
+   
    $('#myform').ajaxForm({
+         
         beforeSubmit: function() {
-            
-           var name = $('#username').val(); 
+             var regex = /^[\s]*$/;
+   if(!regex.test($('#username').val()) && !regex.test($('#name').val()) && !regex.test($('#access_level').val()) && !regex.test($('#domain').val()) && !regex.test($('#parent_user_id').val()))
+               { 
+             var name = $('#username').val(); 
            var url = $('#url').val(); 
            var name_default = $('#default').val();
+           
+            
            if(!name_default == name)
            {    
            $.ajax({
@@ -28,6 +36,7 @@ jQuery(document).ready()
                    {
                         values = 'ok';
                         $('#usererror').html("");
+                        values = 'ok';
                         val('ok');
 //                        return bool;
                    }
@@ -42,14 +51,23 @@ jQuery(document).ready()
             },
             error: function(res)
             {
-               
+                           
             }
         });
-        
+           }
+           else
+               {
+                   values ='ok';
+               }
+       }
+           else
+               {
+                   values = 'no';
+               }
         if(values == 'ok')
             return true;
         if(values == 'no')
-                return  false;}
+                return  false;
         },
         success: function(data) {
             if(data=="")
@@ -59,7 +77,7 @@ jQuery(document).ready()
                 }
         }
     });
-    
+
      $('#closebtn').click(function ()
      {
          var url = $('#url').val(); 

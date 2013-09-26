@@ -10,6 +10,7 @@ $(document).ready(
                         
                         
 		}
+                
 	);
 $(document).ready()
 {

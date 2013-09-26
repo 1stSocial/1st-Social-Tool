@@ -1,9 +1,10 @@
 <?php date_default_timezone_set('Europe/London'); ?>
+<!DOCTYPE html> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-
-        <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/temp.less"></link>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"></meta>
+        <!--<link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/temp.less"></link>-->
 
         <script>
 
@@ -66,28 +67,9 @@
             }
 
      </script>
-        
+       <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/validation.js"></script>
         
         <script src="<?= base_url(); ?>assets/js/jquery.uploadify.min.js" type="text/javascript"></script>
-<!--        <script src="<?= base_url(); ?>assets/js/image_upload/js/vendor/jquery.ui.widget.js"></script>
-        <script src="<?= base_url(); ?>assets/js/image_upload/js/tmpl.min.js"></script>
-        <script src="<?= base_url(); ?>assets/js/image_upload/js/load-image.min.js"></script>
-        <script src="<?= base_url(); ?>assets/js/image_upload/js/canvas-to-blob.min.js"></script>
-         The File Upload processing plugin 
-<script src="<?= base_url(); ?>assets/js/image_upload/js/jquery.fileupload-process.js"></script>
- The File Upload image preview & resize plugin 
-<script src="<?= base_url(); ?>assets/js/image_upload/js/jquery.fileupload-image.js"></script>
- The File Upload audio preview plugin 
-<script src="<?= base_url(); ?>assets/js/image_upload/js/jquery.fileupload-audio.js"></script>
- The File Upload video preview plugin 
-<script src="<?= base_url(); ?>assets/js/image_upload/js/jquery.fileupload-video.js"></script>
- The File Upload validation plugin 
-<script src="<?= base_url(); ?>assets/js/image_upload/js/jquery.fileupload-validate.js"></script>
- The File Upload user interface plugin 
-<script src="<?= base_url(); ?>assets/js/image_upload/js/jquery.fileupload-ui.js"></script>
-<script src="<?= base_url(); ?>assets/js/image_upload/js/main.js"></script>-->
-        
-        
         <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/uploadify.css">
         <style type="text/css">
         body {

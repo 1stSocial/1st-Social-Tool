@@ -7,7 +7,7 @@ $(document).ready(function() {
     $("#tab_id_length").css("width", "28%");
     $('.dataTables_length').insertAfter($("#tab_id_info"));
     $('#tab_id_length').show();
-
+     $('#tab_id_filter').css("margin-right",'1%');
 });
 function deletbox(urllink)
 {

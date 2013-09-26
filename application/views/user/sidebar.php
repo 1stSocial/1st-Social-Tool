@@ -88,17 +88,17 @@ endif; ?>
     <div class="squarebanner ">
         <h3 class="sidetitl"> Sponsors </h3>
         <ul>
-            <li>
+<!--            <li>
                 <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?>" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
-            </li>			
+            </li>			-->
 
             <li class="rbanner">
                 <a href="" title=""><div class="rimg"></div></a>
             </li>
 
-            <li>
+<!--            <li>
                 <a href="" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
-            </li>
+            </li>-->
 
             <li class="rbanner">
                 <a href="" title=""><div class="limg"></div></a>

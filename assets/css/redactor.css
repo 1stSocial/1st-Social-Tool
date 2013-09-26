@@ -95,13 +95,25 @@ body .redactor_box_fullscreen {
 	color: #15c !important;
 	text-decoration: underline !important;
 }
-
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+iframe{
+    position: relative!important;
+    z-index: -999 !important;
+    
+}
+.body_img{
+   position: relative !important;
+   z-index: 11 !important;
+   
+}
+}
 .redactor_editor object,
 .redactor_editor embed,
 .redactor_editor video,
 .redactor_editor img {
 	width: auto;
 	max-width: 100%;
+       
 }
 .redactor_editor video,
 .redactor_editor img {
@@ -126,6 +138,7 @@ body .redactor_box_fullscreen {
 .redactor_editor object,
 .redactor_editor hr {
 	margin-bottom: 15px !important;
+        
 }
 .redactor_editor blockquote {
 	margin-left: 3em !important;
