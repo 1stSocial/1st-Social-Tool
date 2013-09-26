@@ -21,7 +21,7 @@
         ?>
     </tbody>
 </table>  
-<input type="submit" id="create" name="create" class="btn btn-primary" value="Create Theme" style="display: none">
+<input type="submit" id="create" name="create" class="btn btn-primary" value="Create Theme" style="display: none;float: left;">
 <input type ="hidden" id ="edit_url" value="<?= site_url(); ?>"/>
 <?php echo form_close(); ?>
 <script>
@@ -35,6 +35,7 @@
         $('.dataTables_length').insertAfter($("#tab_id_info"));
         $('#create').show();
         $('#tab_id_length').show();
+        $('#tab_id_filter').css("margin-right",'1%');
     });
 
     function deletbox(urllink)

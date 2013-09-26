@@ -6,7 +6,7 @@
         <input type="hidden" id="url" value="<?= site_url(); ?>">
         <h3> Create Item </h3>
     </div>
-    <div class="modal-body"> 
+    <div class="modal-body div_wrapper"> 
         <br/>
         <label class="control-label" style="float: left">Choose Board :</label>
         <select data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">

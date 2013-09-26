@@ -35,12 +35,12 @@
             <?php echo form_label('Password :', 'pass', array('class' => "control-label", 'style' => "float:left;padding-right:43px")); ?>
             <div class="controls">
                 <input type="password" style="float: left" id="inputPassword"  placeholder="******" name="password">
-                <div style =" color: red; display: none;" id="usererror"></div>
+                <div style =" color: red; display: none;" id="passerror"></div>
             </div>
         </div>
         
 <!--        <div class="control-group">    
-            <?php echo form_label('access_level :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:24px")); ?>
+            <?php // echo form_label('access_level :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:24px")); ?>
             <div class="controls" style="float: left">
                 <select data-placeholder="Choose a access_level..." class="chosen-select" style="width:350px;" tabindex="4" id="access_level" name="access_level" onselect="call()" required="*">
                    <?php // if($val['0']['access_level'] == 'partner')
@@ -116,7 +116,7 @@
                         foreach ($partner as $val1)
                         {
                             ?>
-                    <option value="<?php echo $val1->id;?>" <?php if($val1->id == $val['0']['parent_user_id']) echo 'selected';passs?>><?=$val1->name?></option>
+                    <option value="<?php echo $val1->id;?>" <?php if($val1->id == $val['0']['parent_user_id']) echo 'selected';?>><?=$val1->name?></option>
                     <?php 
                         }
                     }

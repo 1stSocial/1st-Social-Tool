@@ -19,7 +19,7 @@
                             ?>
                             <div id='img_<?= $i ?>' style="position:relative;float:left;padding:10px">
                                 <img src="<?= base_url() ?>assets/extra/resize.php?path=<?php echo base_url(); ?>assets/css/user/content/<?php echo $id . "/" . $img_name ?> &width=100 &height=100" >
-                                <div style='position:absolute;top:5px;left:96px'>   <a  href="javascript:deletbox('<?php echo site_url('/admin/Item/delete_image/' . $img_name . '/' . $id) ?>','<?= $i ?>')" ><img src="<?php echo base_url(); ?>assets/img/remove.png"  height="25px" width="25px"></a>
+                                <div style='position:absolute;top:5px;left:96px'>   <a  href="javascript:deletbox('<?php echo site_url('/admin/Item/delete_image/' . $img_name . '/' . $id) ?>','<?= $i ?>')" ><img src="<?php echo base_url(); ?>assets/img/remove.png"></a>
                                 </div> </div>
             <?
             }

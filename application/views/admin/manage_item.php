@@ -1,6 +1,9 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/manage_item.js"></script>
-
-
+<style>
+video {
+  -webkit-transform-style: preserve-3d;
+}
+</style>
 <table id="tab_id" class="table table-striped ">
     <thead>
         <tr>

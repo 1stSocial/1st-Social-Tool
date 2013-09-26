@@ -19,7 +19,7 @@
         endif; ?> 
     </tbody>
 </table>  
-<input type="submit" id="create" name="create" class="btn btn-primary" value="Create Theme" style="display: none">
+<input type="submit" id="create" name="create" class="btn btn-primary" value="Create Theme" style="display: none;float: left;">
 
 <?php echo form_close(); ?>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/select_theme.js"></script>

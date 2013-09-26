@@ -42,6 +42,7 @@
         $('.dataTables_length').insertAfter($("#tab_id_info"));
         $('#create').show();
         $('#tab_id_length').show();
+        $('#tab_id_filter').css("margin-right",'1%');
     });
 
     function deletbox(urllink)
@@ -67,6 +68,7 @@
 
     <div class="modal-body " style="height:100px "><!-- Password input-->
         <div class="div_wrapper">
+            <div style="margin-top: 5%" ></div>
         <div class="control-group">
             <?php echo form_label('Domain name :', 'domain', array('class' => "control-label", 'style' => "float:left;padding-right:41px")); ?>
             <div class="controls">
