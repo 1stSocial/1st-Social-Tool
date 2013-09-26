@@ -5,6 +5,8 @@ jQuery(document).ready()
      jQuery('.chosen-select').chosen(); 
      $('#access_level_chosen').css('width','220px');
      $('#domain_chosen').css('width','220px');
+     $('#parent_user_chosen').css('width','220px');
+     
      setTimeout(function(){
        $('#mod1').click();
    },100);
@@ -69,4 +71,25 @@ jQuery(document).ready()
 function val(i)
 {
     values = i;
+}
+function change_partner()
+{
+//     var old_par = $('#parent_user').val();
+//     $('#parent_user_id').val(old_par);
+     var site_url = $('#url').val();
+    
+                $.ajax({
+                    type: "POST",
+                    url: site_url+'/admin/home/get_domain',
+                    data: {id:$('#parent_user').val()},
+                    success: function(res) {
+                         $('#domain_new').val(res);   
+                         
+                    },
+                    error:function (res)
+                    {
+                        alert(res);  
+                    }
+                }); 
+     
 }

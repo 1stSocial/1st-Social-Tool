@@ -105,3 +105,9 @@ function domain_new()
     var id = $('#domain').val();
     $('#domain_id').val(id);    
 }
+
+$('#closebtn').click(function ()
+     {
+         var url = $('#url').val(); 
+         window.location.href = url +'/admin/new_user/index';
+     });
