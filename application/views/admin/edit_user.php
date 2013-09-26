@@ -7,10 +7,11 @@
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
-        <h3 id="myModalLabel">Edit User</h3>
+        <h3 id="myModalLabel">Edit <?=$val['0']['access_level'];?></h3>
     </div>
 
-    <div class="modal-body div_wrapper" style="height: 250px">
+    <div class="modal-body div_wrapper" style="height: 200px">
+        <div style="height: 15px;clear: both"></div>
         <div class="control-group">
             <?php echo form_label('Name :', 'nametag', array('class' => "control-label", 'style' => "float:left;padding-right:69px")); ?>
             <div class="controls">
@@ -33,45 +34,48 @@
            <div class="control-group">
             <?php echo form_label('Password :', 'pass', array('class' => "control-label", 'style' => "float:left;padding-right:43px")); ?>
             <div class="controls">
-                <input type="password" style="float: left" id="inputPassword"  placeholder="******" name="password" required="password" >
+                <input type="password" style="float: left" id="inputPassword"  placeholder="******" name="password">
                 <div style =" color: red; display: none;" id="usererror"></div>
             </div>
         </div>
         
-        <div class="control-group">    
+<!--        <div class="control-group">    
             <?php echo form_label('access_level :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:24px")); ?>
             <div class="controls" style="float: left">
                 <select data-placeholder="Choose a access_level..." class="chosen-select" style="width:350px;" tabindex="4" id="access_level" name="access_level" onselect="call()" required="*">
-                   <?php if($val['0']['access_level'] = 'partner')
-                    { ?>
+                   <?php // if($val['0']['access_level'] == 'partner')
+//                    { ?>
                     <option value="partner" selected>Partner</option>
                     <?php 
-                    }
-                    else
-                    {
+//                    }
+//                    else
+//                    {
                         ?>
                          <option value="partner">Partner</option>
                             <?php
-                    }
-                    if($val['0']['access_level'] = 'user')
-                    {
+//                    }
+//                    if($val['0']['access_level'] == 'client')
+//                    {
                             ?>
                          
-                    <option value="user" selected>User</option>
+                    <option value="client" selected>Client</option>
                     <?php
-                    }
-                    else
-                    {
+//                    }
+//                    else
+//                    {
                         ?>
-                         <option value="user">User</option>
+                         <option value="client">Client</option>
                             <?php
-                    } 
+//                    } 
                     ?>
                 </select>
-            </div><div style =" color: red; display: none;" id="perror"> Select access level </div>
-        </div><div style="height: 15px;clear: both"></div>
+            </div><div style =" color: red; display: none;" id="perror"> Select access level </div>-->
+        <!--</div><div style="height: 15px;clear: both"></div>-->
     
-        <?php if(isset($session['access_level']) &&  $session['access_level']=='admin')
+        <?php 
+        if($val['0']['access_level'] == 'partner')
+        {
+        if(isset($session['access_level']) &&  $session['access_level']=='admin')
         {
             ?>
         <div class="control-group" >    
@@ -95,6 +99,34 @@
             </div><div style =" color: red; display: none;" id="perror"> Select access level </div>
         </div><div style="height: 15px;clear: both"></div>
         <?php
+        }
+        }
+        if($val['0']['access_level'] == 'client')
+        {?>
+            <input type="hidden" value="<?php echo $val['0']['domain_id'];?>" id="domain_new" name="domain_id">
+            <div id="partner_div"  class="control-group">    
+            <?php echo form_label('Select Partner :', 'level', array('class' => "control-label", 'style' => "clear:both;float:left;padding-right:13px")); ?>
+            <div class="controls" style="float: left;">
+                <select data-placeholder="Choose a partner..." class="chosen-select" name="parent_user_id" style="width:350px;" tabindex="4" id="parent_user" onchange="change_partner()">
+                    <option></option>
+                   
+                    <?php
+                    if(is_array($partner) && !is_null($partner))
+                    {
+                        foreach ($partner as $val1)
+                        {
+                            ?>
+                    <option value="<?php echo $val1->id;?>" <?php if($val1->id == $val['0']['parent_user_id']) echo 'selected';passs?>><?=$val1->name?></option>
+                    <?php 
+                        }
+                    }
+                    ?>
+                </select>
+            </div><div style =" color: red; display: none;" id="perror"> Select access level </div>
+        </div><div style="height: 15px;clear: both"></div>
+            
+        <?php
+        
         }
         ?>
         
