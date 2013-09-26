@@ -84,13 +84,16 @@ class New_user extends CI_Controller {
     public function edit_user()
     {
         $this->load->model('setting/setting_model');
+        $this->load->model('user_model');
          $this->load->model('adduser');
          
         $session_data = $this->session->userdata('logged_in');
         $id = $this->uri->segment(4);
      
          $user_model = new adduser();
+          $user_mod = new User_model();
          $value['val'] = $user_model->detail($id);
+         $value['partner'] = $user_mod->getAllPartners() ;
 //         var_dump($value);die;
          
          if($this->input->post())
