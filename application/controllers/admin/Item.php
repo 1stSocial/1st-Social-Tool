@@ -23,7 +23,7 @@ class Item extends CI_Controller {
             redirect('/login');
         }
     } 
-
+ 
     function temp() 
     {
 //        die;
