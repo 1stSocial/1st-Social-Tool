@@ -21,7 +21,7 @@ class Home extends CI_Controller {
         } else {
             //If no session, redirect to login page
             redirect('/login');
-        }
+        } 
     }
 
     function index($option = FALSE) {
@@ -42,7 +42,7 @@ class Home extends CI_Controller {
 
 
         $this->load->view('admin/index', $viewData);
-
+ 
         $this->load->view('footer');
     }
 
