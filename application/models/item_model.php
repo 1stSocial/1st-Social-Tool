@@ -9,7 +9,7 @@ Class Item_model extends CI_Model {
         if($query->num_rows()>0)
         return $query->result();
     }
-    
+     
     function item_insert($data,$tag_id)
     {
         $this->db->insert('items',$data);
