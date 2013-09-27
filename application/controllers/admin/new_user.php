@@ -25,7 +25,7 @@ class New_user extends CI_Controller {
         $this->load->helper('form');
     }
 
-     public function index()
+     public function index() 
     {
          $this->load->model('adduser');
          $this->load->model('setting/setting_model');
