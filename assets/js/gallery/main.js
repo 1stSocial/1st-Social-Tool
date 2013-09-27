@@ -54,7 +54,7 @@ $(function () {
 
     // Load images via flickr for demonstration purposes:
     $.ajax({
-        url: 'http://api.flickr.com/services/rest/',
+        url: '',
         data: {
             format: 'json',
             method: 'flickr.interestingness.getList',
