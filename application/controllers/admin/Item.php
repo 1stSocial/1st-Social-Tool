@@ -22,7 +22,7 @@ class Item extends CI_Controller {
             //If no session, redirect to login page
             redirect('/login');
         }
-    }
+    } 
 
     function temp() 
     {
