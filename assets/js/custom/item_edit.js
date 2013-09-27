@@ -11,7 +11,7 @@ $(document).ready(
                         
 		}
                 
-	);
+	); 
 $(document).ready()
 {
     setTimeout(function() {
