@@ -26,7 +26,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	} else {
 		echo 'Invalid file type.';
 	}
-}
+} 
 
 if(isset($_POST['id']))
 {
