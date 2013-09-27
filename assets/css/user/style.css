@@ -93,7 +93,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
     vertical-align: baseline;
 
-
+    -webkit-font-smoothing: antialiased;
+     
+    -webkit-text-shadow: rgba(255,255,255,0.01) 0 0 1px;
 
 }
 
@@ -1545,7 +1547,7 @@ label span,
 
 .price_skale {
 
-	position: absolute;
+	position: relative;
 
 	 margin-left: 5px; 
 
