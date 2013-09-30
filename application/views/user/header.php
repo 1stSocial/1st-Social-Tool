@@ -50,11 +50,11 @@
 </head>
  
     <body class="home blog">
-         
+
         <div id="masthead">
             <div class="header">
                 <div id="top">
-                    <a href="<?=  site_url()?>/user/user/index"><div id="toplogo"></div></a>
+                    <a href="<?=  site_url()?>/<?php if(isset($main['0']->name)) echo $main['0']->name; else  echo 'user/user/index'; ?>"><div id="toplogo" <?php if(isset($main['0']->image)) if($main['0']->image!="") {?> style="background:url(<?php echo base_url().$main['0']->image;?>)" <?php }?>></div></a>
                 </div>
                <div id="Header_content">
                    <li class="botwid widget_text">			
