@@ -64,7 +64,6 @@ function footer_refine(id)
         b_name:b_name
     };
 
-
     $.ajax({
         type: "POST",
         url: siteurl + '/user/user/footer_refine',
