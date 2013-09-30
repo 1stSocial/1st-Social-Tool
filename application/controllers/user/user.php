@@ -37,7 +37,10 @@ class User extends CI_Controller {
             fwrite($fp, $str);
             flock($fp,LOCK_UN);
             fclose($fp);
-            $this->load->view('user/header');
+            
+            $data['main'] = $temp ->get_boardid($isboardjobs1);
+            
+            $this->load->view('user/header',$data);
         }
         }
 //          chmod($filepath,'0750');
@@ -52,7 +55,7 @@ class User extends CI_Controller {
         if($data_str)
         {
             $id = $temp ->get_boardid($data_str);
-            
+            $values['main'] =$id;
             if($id!="")
             {
                 $board_id = $id[0]->id;
@@ -84,7 +87,7 @@ class User extends CI_Controller {
              flock($fp,LOCK_UN);
              fclose($fp);
              $data['board_name'] = $data_str;
-             $this->load->view('user/header');
+             $this->load->view('user/header',$values);
         }
         //body start here..
         
@@ -159,12 +162,20 @@ class User extends CI_Controller {
         }
 //       echo $board_id;
         if(isset($board_id))
-        $data['tag'] = $tag_model->semi_parent($board_id);
-        else
-        $data['tag'] = $tag_model->semi_parent();
-        
-        $data['latestjob'] = $this->user_model->latest_job($board_id);
+        {
+            $data['tag'] = $tag_model->semi_parent($board_id);
+             $data['latestjob'] = $this->user_model->latest_job($board_id);
         $data['max_min'] =$this->user_model->taxo_val($board_id);
+        }
+        else
+        {
+        $data['tag'] = $tag_model->semi_parent();
+         $data['latestjob'] = $this->user_model->latest_job();
+        $data['max_min'] =$this->user_model->taxo_val();
+        
+        }
+        
+       
  //            var_dump($data);
 //        $data['board_name'] = $
         $this->load->view('user/sidebar', $data);
@@ -272,7 +283,11 @@ class User extends CI_Controller {
         $data_str = $this->input->post('b_name');
         
         $board_id = $this->user_model->get_boardid($data_str);
-         
+        if(isset($board_id['0']->id))
+        {
+            $id_t = $board_id['0']->id;
+            
+        }
         
         $id_array = array(
             '0' => $id,
@@ -283,22 +298,24 @@ class User extends CI_Controller {
         
         $config['base_url'] = site_url() . '/user/user/index';
         $config['per_page'] = 5;
-        $config['total_rows'] = $this->user_model->refine_post_count($id_array,$board_id);
+        $config['total_rows'] = $this->user_model->refine_post_count($id_array,$id_t);
         $this->pagination->initialize($config);
         $val = $this->uri->segment(4);
-        if($board_id=="")
+       
+        if(isset($board_id['0']->id))
          {
+//              var_dump($board_id);
             $data['post'] = $this->user_model->refine_post_job($id_array, $val);
          }
         else
          {
-//             var_dump($board_id);
-            $data['post'] = $this->user_model->refine_post_job($id_array, $val,$board_id['0']->id);
+            $data['post'] = $this->user_model->refine_post_job($id_array, $val,$id_t);
          }
         
+         
         $data['pagename'] = 'footer_refine';
         $data['board_name']=$data_str;
-        echo $this->load->view('user/content', $data, TRUE);
+         echo $this->load->view('user/content', $data, TRUE);
         die;
     }
 
