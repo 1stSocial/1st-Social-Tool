@@ -235,7 +235,6 @@ class User_model extends CI_Model
         $temp1 = array();
        $result1 = array();
         $key =array();
-                                              
                 $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
@@ -276,7 +275,7 @@ class User_model extends CI_Model
 //                    die;
                 }
 //                var_dump($key);die;
-         
+        
                if(count($key))
                {
                     $this->db->select('i.*,t.item_id ,u.name as user_name');
@@ -341,6 +340,7 @@ class User_model extends CI_Model
                     $result1['salary'] = $temp5;
                     
                     }
+//                    var_dump($result1);die;
                     return($result1);
                }
                     
@@ -455,10 +455,11 @@ class User_model extends CI_Model
         }
     }
     
-    function taxo_val($bid)
+    function taxo_val($bid = FALSE)
     {
         $this->db->select('Filterable_taxo');
         $this->db->from('board');
+        if($bid)
         $this->db->where('id',$bid);
         $res = $this->db->get();
         
@@ -715,7 +716,9 @@ class User_model extends CI_Model
     {
         $query = $this->db->get_where('board', array('name'=>$name));
         if($query->num_rows()>0)
-        return $query->result();
+        {
+            return $query->result();
+        }
         else
         {
             return "";
