@@ -5,6 +5,26 @@ jQuery(document).ready(function(){
        jQuery('#mod1').click();
        
    },100);
+   
+   $('form').ajaxForm({
+        beforeSubmit: function() {
+            if(jQuery('#name1').val() =="" && jQuery('#parentTag1').val() =="0" && jQuery('#domain').val()=="0")
+                {
+                    return  false;
+                }
+        },
+        success: function(data) {
+          
+            update(data);
+        }
+    });
+   
+   jQuery('#parentTag1_chosen').css('margin-left','6%');
+    jQuery('#taxo_chosen').css('margin-left', '2.6%');
+    jQuery('#theme_chosen').css('margin-left', '11%');
+    jQuery('#domain_chosen').css('margin-left', '18.9%');
+    
+   
     jQuery('#theme_chosen').css('width','49%');
      jQuery('#taxo_chosen').css('width', '49%');
      change();
@@ -17,6 +37,21 @@ jQuery(document).ready(function(){
     });
     
 });
+ 
+ function change_fun()
+{
+    var val = $('#img').val();
+    var ext = /^.+\.([^.]+)$/.exec(val);
+    if (ext[1] != 'jpg')
+    {
+        $('#img_msg').html('Warning : Please Select jpg image.');
+        $('#clo').click();
+    }
+    else
+    {
+        $('#img_msg').hide();
+    }
+}
  
 function change()
 {
@@ -50,13 +85,13 @@ function change()
                  $('#select_box').html(val);
                      jQuery('.chosen-select').chosen();
                      jQuery('#taxo_chosen').css('width', '49%');
-
+                     jQuery('#taxo_chosen').css('margin-left', '2.6%');
             }
         });
 }
 
-jQuery('#update').click(function(){ 
-   
+    function update(img)
+    {
     var name = jQuery('#name1').val();
      var parentTag = jQuery('#parentTag1').val();
      var domain = jQuery('#domain').val();
@@ -89,7 +124,8 @@ jQuery('#update').click(function(){
         domain:domain,
         id:id,
         theme_id:theme_id,
-         filterable_taxo :taxo_id
+         filterable_taxo :taxo_id,
+         image:img
        };
     jQuery.ajax({
        type: "POST",
@@ -111,4 +147,4 @@ jQuery('#update').click(function(){
        }
     });
    }
-});
+};

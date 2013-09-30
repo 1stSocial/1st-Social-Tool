@@ -4,9 +4,27 @@ jQuery(document).ready(function() {
         jQuery('#mod1').click();
     }, 100);
  
+     jQuery('form').ajaxForm({
+        beforeSubmit: function() {
+            if(jQuery('#name1').val() =="" && jQuery('#parentTag1').val() =="" && jQuery('#domain').val()=="")
+                {
+                    return  false;
+                }
+        },
+        success: function(data) {
+          
+            savefun(data);
+        }
+    });
+    jQuery('#parentTag1_chosen').css('margin-left','6%');
+    jQuery('#taxo_chosen').css('margin-left', '2.6%');
+    jQuery('#theme_chosen').css('margin-left', '11%');
+    jQuery('#domain_chosen').css('margin-left', '18.9%');
+    
     jQuery('#theme_chosen').css('width', '49%');
     jQuery('#taxo_chosen').css('width', '49%');
     jQuery('#domain_chosen').css('width', '49%');
+   
     jQuery('#parentTag1').change(function()
     {
         var dataval = {
@@ -34,7 +52,7 @@ jQuery(document).ready(function() {
                  $('#select_box').html(val);
                      jQuery('.chosen-select').chosen();
                      jQuery('#taxo_chosen').css('width', '49%');
-
+                     jQuery('#taxo_chosen').css('margin-left', '2.6%');
             }
         });
     });
@@ -50,7 +68,9 @@ jQuery('#closebtn').click(function() {
 
 });
 
-jQuery('#add').click(function() {
+//jQuery('#add').click(function() {
+function savefun(image)
+{
 
     var name = jQuery('#name1').val();
     var parentTag = jQuery('#parentTag1').val();
@@ -84,7 +104,8 @@ jQuery('#add').click(function() {
             parentTag: parentTag,
             domain : domain,
             theme_id: theme_id,
-            filterable_taxo :taxo_id
+            filterable_taxo :taxo_id,
+            image : image
         };
         var ur = jQuery('#ur').val();
         jQuery.ajax({
@@ -110,6 +131,19 @@ jQuery('#add').click(function() {
         });
     }
 
-});
+}
 
-
+function change_fun()
+{
+    var val = $('#img').val();
+    var ext = /^.+\.([^.]+)$/.exec(val);
+    if (ext[1] != 'jpg')
+    {
+        $('#img_msg').html('Warning : Please Select jpg image.');
+        $('#clo').click();
+    }
+    else
+    {
+        $('#img_msg').hide();
+    }
+}
