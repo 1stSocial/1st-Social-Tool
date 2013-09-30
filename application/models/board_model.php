@@ -103,13 +103,14 @@ Class Board_model extends CI_Model {
         }
     }
 
-    public function saveBoard($val) {
+    public function saveBoard($val,$img) {
         $data = array(
             "name" => $this->_name,
             "parent_tags" => $this->_parentTag,
             "createdTime" => $this->_createdTime,
             "created_by" => $this->_createdBy,
-            "Filterable_taxo" =>  $val
+            "Filterable_taxo" =>  $val,
+            "image" => $img
         );
         // select clause to check if board is exist
         $query = $this->db->get_where('board', array("name" => $this->_name,
@@ -179,7 +180,7 @@ Class Board_model extends CI_Model {
          $this->db->where('board_id',$data['id']);
          $this->db->update('board_page',$data3);
         
-        $data1 = array('name' => "$data[name]", 'parent_tags' => "$data[parentTag]",'Filterable_taxo' =>"$data[filterable_taxo]");
+        $data1 = array('name' => "$data[name]", 'parent_tags' => "$data[parentTag]",'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]");
 
         $this->db->where(array('id' => $data['id']));
         //print_r($data1);die;
@@ -217,4 +218,17 @@ Class Board_model extends CI_Model {
         }
     }
 
+    function board_img($id)
+    {
+        $this->db->select('image');
+        $this->db->from('board');
+        $this->db->where('id',$id);
+        $res = $this->db->get();
+        
+       if($res->num_rows())
+       {
+           return $res->result_array();
+       }
+        
+    }
 }

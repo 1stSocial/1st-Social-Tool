@@ -62,8 +62,12 @@ Class Domain_model extends CI_Model {
         $this->db->insert('board_domain', $data);
     }
     
-    
-    public function user_domain($id)
+    public function delete_domain_board($id)
+    {
+        $this->db->delete('board_domain', array('board_id'=>$id));
+    }
+
+        public function user_domain($id)
     {
         $temp = $this->db->get_where('users', array('id'=>$id));
         if($temp->num_rows())
