@@ -119,10 +119,11 @@ class Home extends CI_Controller {
             $data['createdBy'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
             $val = $data['filterable_taxo'];
+            $img = $data['image'];
 
             // save board information 
             $boardModel = new Board_model($data);
-            $boardId = $boardModel->saveBoard($val);
+            $boardId = $boardModel->saveBoard($val,$img);
             if (is_numeric($boardId)) {
                 // save user information 
                 $domian_data = array('board_id' => $boardId, 'domain_id' => $domain_id);
@@ -222,8 +223,13 @@ class Home extends CI_Controller {
         $this->load->model('board_model');
         $this->load->model('Board_user_model');
         $this->load->model('board_tag_model');
+         $this->load->model('domain_model');
         // delete board details
         $boardModel = new Board_model();
+        $img = $boardModel->board_img($boardId);
+        
+        var_dump($img);
+               
         $boardModel->deleteBoard($boardId);
 
         // delete tags of corresponding board
@@ -233,6 +239,16 @@ class Home extends CI_Controller {
         // delete user assigned of board 
         $boardUserModel = new Board_user_model();
         $boardUserModel->deleteTags($boardId);
+        
+        //delete domain relation
+        $domain_model = new domain_model();
+        $domain_model->delete_domain_board($boardId);
+        
+ 
+        if($img['0']['image']!="")
+        {
+            unlink($img['0']['image']);
+        }
         redirect('/admin/home');
     }
 
@@ -273,7 +289,7 @@ class Home extends CI_Controller {
                 $data['id'] = NULL;
                 $data['name'] = $this->input->post('parenttag');
                 $data['parent_tag_id'] = $this->input->post('Parentid');
-
+                
                 $this->tag_model->addTag($data);
                 echo '';
             }
@@ -437,6 +453,56 @@ class Home extends CI_Controller {
         echo $val;
         die;
     }
+    
+    
+    function logo_image()
+    {
+        $imgname = "upload" . time() . ".jpg";
 
+        if (isset($_FILES["img"])) {
+
+            if ($_FILES["img"]["error"] > 0) {
+                echo "";
+                die;
+            } else {
+                $Upload = 'assets/css/user/temp/' . $_FILES["img"]["name"];
+                $Type = $_FILES["img"]["type"];
+                $Storedin = $_FILES["img"]["tmp_name"];
+                if ($_FILES["img"]["name"] != "") {
+//                    chmod('assets/css/user/temp/', '0777');
+                    move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["img"]["name"]);
+                    if (file_exists('assets/css/user/temp/' . $_FILES["img"]["name"])) {
+                        list($x, $y) = getimagesize($Upload);
+                        $new = imagecreatetruecolor(90, 150);
+                        $newtemp = imagecreatefromjpeg($Upload);
+                        imagecopyresized($new, $newtemp, 0, 0, 0, 0, 90, 150, $x, $y);
+                        imagejpeg($new, 'assets/img/internal/logo_img/' . $imgname);
+                        unlink($Upload);
+                        if(isset($_POST['imgscr']))
+                        {
+                            unlink($_POST['imgscr']);
+                        }
+                        echo 'assets/img/internal/logo_img/' . $imgname;
+                    } else {
+                        echo 'not uploaded';
+                    }
+                } else {
+                    echo "";
+                }
+            }
+        } else {
+           if(isset($_POST['imgscr']))
+            {
+               echo $this->input->post("imgscr");
+            }
+           else
+             {
+               echo '';
+             }
+               
+           
+        }
+        die;
+    }
 }
 
