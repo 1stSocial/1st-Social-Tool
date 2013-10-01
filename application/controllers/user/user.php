@@ -93,7 +93,10 @@ class User extends CI_Controller {
                 
                 if(isset($data))
               $this->load->view('user/header',$data);
-          
+                if($isboardjobs1 == 'user')
+                {
+                    $this->load->view('user/header');
+                }
            
             
         }
@@ -147,6 +150,7 @@ class User extends CI_Controller {
              $data['board_name'] = $data_str;
              $this->load->view('user/header',$values);
         }
+        
         //body start here..
         
         $this->load->model('tag_model');
