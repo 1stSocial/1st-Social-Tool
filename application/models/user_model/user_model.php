@@ -202,12 +202,24 @@ class User_model extends CI_Model
                     $temp5 = array();
                     foreach ($result1['item'] as $val)
                     {
+                        if($board_id)
+                        {
+                            $new_temp = $this->db->get_where('board', array('id'=>$board_id));
+                                $tag_id = $new_temp->result_array();
+        //                        var_dump($tag_id);die;
+                                $t_id = $tag_id['0']['Filterable_taxo'];
+                        }
+                        else
+                        {
+                            $t_id = 2;
+                        }
+                                
                         $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
                         $this->db->from('taxonomy as taxo');
                         $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
                         $this->db->join('items as i','i.id=t.item_id','inner');
                         $this->db->join('users as u','u.id =i.created_by','inner');
-                        $this->db->where('taxo.name','salary');
+                        $this->db->where('taxo.id',$t_id);
                         $res = $this->db->where('i.id',$val->id);
                         $temp4 = $this->db->get();
                         $temp5[] =$temp4->result();
@@ -222,7 +234,7 @@ class User_model extends CI_Model
                         $result1['Location'] =  $query->result();
                     
                     }
-                    
+//                    print_r($result1);die;
                       return($result1);
                     
                     
@@ -326,12 +338,24 @@ class User_model extends CI_Model
                     
                     foreach ($result1['item'] as $val)
                     {
+                        if($board_id)
+                        {
+                            $new_temp = $this->db->get_where('board', array('id'=>$board_id));
+                                $tag_id = $new_temp->result_array();
+        //                        var_dump($tag_id);die;
+                                $t_id = $tag_id['0']['Filterable_taxo'];
+                        }
+                        else
+                        {
+                            $t_id = 2;
+                        }
+                        
                         $this->db->select('i.*,taxo.id,t.item_id ,u.name as user_name,t.value as val');
                         $this->db->from('taxonomy as taxo');
                         $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
                         $this->db->join('items as i','i.id=t.item_id','inner');
                         $this->db->join('users as u','u.id =i.created_by','inner');
-                        $this->db->where('taxo.name','salary');
+                        $this->db->where('taxo.id',$t_id);
                         $res = $this->db->where('i.id',$val->id);
                         $temp4 = $this->db->get();
                         $temp5[] =$temp4->result();
