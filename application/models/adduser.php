@@ -132,6 +132,13 @@ Class Adduser extends CI_Model {
         
         $this->db->where('id',$id);
         $this->db->update('users',$data);
+        
+        $data2 = array(
+            'domain_id' => $data['domain_id']
+        );
+        
+        $this->db->where('parent_user_id',$id);
+        $this->db->update('users',$data2);
 //        $this->db->get(); 
     }
     

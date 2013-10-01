@@ -47,9 +47,17 @@ Class Item_model extends CI_Model {
     {
         if($id == 1)
         {
-            $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by ';
+//            $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by ';
         
-             $query = $this->db->query($q);
+            $this->db->select('i.id, i.name,i.title,i.body,i.status,i.createdTime,boards.name as board_name,u.name as created_by');
+        $this->db->from('users as u');
+        $this->db->join('items as i','u.id = i.created_by' );
+        $this->db->join('board_domain as b', 'b.board_id = i.board_id');
+        $this->db->join('board as boards','boards.id = i.board_id');
+//        $this->db->where('b.domain_id',$id); 
+        $query = $this->db->get();
+            
+//             $query = $this->db->query($q);
         }
         else
 //        $q = 'SELECT i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by FROM users u inner join items i on u.id = i. created_by where i.created_by = '.$id;
@@ -59,15 +67,16 @@ Class Item_model extends CI_Model {
            $temp = $t->result_array();
             $did= $temp['0']['domain_id'];
             
-        $this->db->select('i.id, i.name,i.title,i.body,i.status,i.createdTime,u.name as created_by');
+        $this->db->select('i.id, i.name,i.title,i.body,i.status,i.createdTime,boards.name as board_name,u.name as created_by');
         $this->db->from('users as u');
         $this->db->join('items as i','u.id = i.created_by' );
         $this->db->join('board_domain as b', 'b.board_id = i.board_id');
+        $this->db->join('board as boards','boards.id = i.board_id');
         $this->db->where('b.domain_id',$did); 
         $query = $this->db->get();
         }
         
-        
+//        var_dump($query->result());die;
 //       
         return $query->result();
     }

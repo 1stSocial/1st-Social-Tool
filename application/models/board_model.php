@@ -195,6 +195,8 @@ Class Board_model extends CI_Model {
         
                 $data3 = array('board_id' => "$data[id]", 'domain_id' => "$data[domain]");
                 $this->db->insert('board_domain', $data3);
+                
+                
          }
 
     function bord_tag($id) {
