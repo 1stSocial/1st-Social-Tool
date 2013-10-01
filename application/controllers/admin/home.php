@@ -470,22 +470,10 @@ class Home extends CI_Controller {
                 $Storedin = $_FILES["img"]["tmp_name"];
                 if ($_FILES["img"]["name"] != "") {
 //                    chmod('assets/css/user/temp/', '0777');
-                    move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["img"]["name"]);
-                    if (file_exists('assets/css/user/temp/' . $_FILES["img"]["name"])) {
-                        list($x, $y) = getimagesize($Upload);
-                        $new = imagecreatetruecolor(90, 150);
-                        $newtemp = imagecreatefromjpeg($Upload);
-                        imagecopyresized($new, $newtemp, 0, 0, 0, 0, 90, 150, $x, $y);
-                        imagejpeg($new, 'assets/img/internal/logo_img/' . $imgname);
-                        unlink($Upload);
-                        if(isset($_POST['imgscr']))
-                        {
-                            unlink($_POST['imgscr']);
-                        }
+                    move_uploaded_file($Storedin,'assets/img/internal/logo_img/'. $imgname);
+                
                         echo 'assets/img/internal/logo_img/' . $imgname;
-                    } else {
-                        echo 'not uploaded';
-                    }
+                  
                 } else {
                     echo "";
                 }
