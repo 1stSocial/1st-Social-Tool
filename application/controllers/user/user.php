@@ -27,21 +27,73 @@ class User extends CI_Controller {
         $isboardjobs1 = $this->uri->segment(1) ; 
         $isboardjobs2 = $this->uri->segment(2) ; 
         $isboardjobs3 = $this->uri->segment(3) ; 
-      
-        if($isboardjobs1 != "board" && $isboardjobs2!="board" && $isboardjobs3!="board")
+         
+        
+        if($isboardjobs1 != "board" && $isboardjobs2!="board" )
         {
+             
         if(!$temp->board_exist($isboardjobs1))
         {
+         
             $fp = fopen($filepath, "w+");
             flock($fp,LOCK_EX);
             fwrite($fp, $str);
             flock($fp,LOCK_UN);
             fclose($fp);
             
-            $data['main'] = $temp ->get_boardid($isboardjobs1);
             
-            $this->load->view('user/header',$data);
+            
+            if($this->uri->segment(5))
+            {
+                $data_str =$this->uri->segment(5);
+                if($data_str)
+                {
+                    $id = $temp ->get_boardid($data_str);
+                    $data['main'] =$id;
+                    if($id!="")
+                    {
+                        $board_id = $id[0]->id;
+                        $theme = $temp->apply_theme2($id[0]->id);
+                    }else
+                        $theme = $temp->apply_theme();    
+                }
+                else
+                {
+                    $theme = $temp->apply_theme();
+                }
+                        $str = "";
+                    $myarr = array();
+                    if (is_array($theme)) {
+                        foreach ($theme as $val) {
+                            $str .= '@' . $val['key'] . ':' . $val['value'] . '!important;';
+                        }  
+                    } else {
+                        $str = ""; 
+                    }
+                   $filepath = 'assets/css/user/temp.less';
+
+                    if($temp->board_exist($data_str))
+                    {    
+                        $fp = fopen($filepath, "w+");
+                         flock($fp,LOCK_EX);
+                         fwrite($fp, $str);
+                         flock($fp,LOCK_UN);
+                         fclose($fp);
+                         $data['board_name'] = $data_str;
+                         
+                    }
+                }
+                if(isset($data))
+              $this->load->view('user/header',$data);
+          else {
+                  $this->load->view('user/header');
+          }
+           
+            
         }
+       
+        
+        
         }
 //          chmod($filepath,'0750');
         $this->load->helper('date');
@@ -51,7 +103,7 @@ class User extends CI_Controller {
     {
      
         $temp = new User_model;
-    
+     
         if($data_str)
         {
             $id = $temp ->get_boardid($data_str);
