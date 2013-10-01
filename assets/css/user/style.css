@@ -5743,3 +5743,4 @@ h3.bothead {
 	padding-right: 0px;
 	width: 565px !important;
 }
+.contain { background-size: contain; }

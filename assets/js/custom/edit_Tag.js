@@ -1,11 +1,14 @@
 
 jQuery(document).ready(function(){
+     
      jQuery('.chosen-select').chosen(); 
+     
+     
   setTimeout(function(){
        jQuery('#mod1').click();
    },100);
  });
-
+jQuery('.selectpicker').selectpicker();
 jQuery('#updatebtn').click(function(){
   var id = jQuery("#id").val();   
      var name = jQuery('#name').val();
