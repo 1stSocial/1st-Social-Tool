@@ -82,12 +82,18 @@ class User extends CI_Controller {
                          $data['board_name'] = $data_str;
                          
                     }
+                    else
+                {
+                    unset($data);
                 }
+                     if(isset($data));
+//                    $this->load->view('user/header',$data);
+                }
+                
+                
                 if(isset($data))
               $this->load->view('user/header',$data);
-          else {
-                  $this->load->view('user/header');
-          }
+          
            
             
         }
