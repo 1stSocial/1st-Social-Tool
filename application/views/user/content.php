@@ -37,7 +37,7 @@
                 <p><?=$val->title;?></p>
                 
                 
-                <p><?php $str_val = $val->body ;$val_new = str_split($str_val,300); echo $val_new[0].'[..]'; ?></p>
+                <p><?php echo $val->body ?></p>
                 <!--<a class="readmore" href="<?//=site_url()?>/user/user/detail/<?//=$val->id ;?>/<?php //  if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">Read More </a>-->
                 <div class="clear"></div>
             </div>
