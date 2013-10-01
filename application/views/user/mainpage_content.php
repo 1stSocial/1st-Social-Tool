@@ -32,17 +32,17 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val):
 
                                 <h2><a rel="bookmark" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
                                 <div id="outer">
-                                    <span class="location">Location: <?php
-                                        if (isset($post['child'][$loop])):
-                                            foreach ($post['child'][$loop] as $val1) :
-                                                if ($val1->parent_tag_id == $post['Location'][0]->id):
-                                                    ?>
-                                                    <a href="javascript:footer_refine(<?= $val1->id ?>)" rel="tag"><?= $val1->name ?></a>
-                                                <?php
-                                                endif;
-                                            endforeach;
-                                        endif;
-                                        ?></span><br>
+<!--                                    <span class="location">Location: <?php
+//                                        if (isset($post['child'][$loop])):
+//                                            foreach ($post['child'][$loop] as $val1) :
+//                                                if ($val1->parent_tag_id == $post['Location'][0]->id):
+//                                                    ?>
+                                                    <a href="javascript:footer_refine(//<?//= $val1->id ?>)" rel="tag"><?//= $val1->name ?></a>
+                                                //<?php
+//                                                endif;
+//                                            endforeach;
+//                                        endif;
+                                        ?></span><br>-->
                                     <span class="posted">Posted: <?php
                                         $dt = human_to_unix($val->createdTime);
                                         $formate = "%d %M %Y";
@@ -133,8 +133,8 @@ if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val):
                             </div>
                             <div class="orange_saperator"> </div>
                             <span id="list">
-                                <a id="viewlist" class="view_list">VIEW LIST</a> 
-                                <a href="http://1stworld.1stsocial.com.au/jobs/inside-sales-consultant-3/" id="nextjob" class="next_job">NEXT JOB</a>
+                                <!--<a id="viewlist" class="view_list">VIEW LIST</a>--> 
+                                <!--<a href="http://1stworld.1stsocial.com.au/jobs/inside-sales-consultant-3/" id="nextjob" class="next_job">NEXT JOB</a>-->
                                 <div class="link_hidden" style="display:none;">
                                     « <a href="http://1stworld.1stsocial.com.au/jobs/inside-sales-consultant-3/" rel="prev">Inside Sales Consultant</a>            </div>
                             </span>

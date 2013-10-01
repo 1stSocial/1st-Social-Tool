@@ -7,7 +7,7 @@
 
                 <div class="title">
 
-                    <h1 style="padding-left:60px;"><a style="font-size:28px;" href="<?= site_url() ?>/user/user/detail/<?= $val->id ?>" rel="bookmark" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a></h1>
+                    <h1 style="padding-left:60px;"><?= $val->title; ?></h1>
 
 
                     <!--end date-->

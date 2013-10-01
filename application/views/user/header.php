@@ -47,6 +47,9 @@
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
+         <style>
+         .contain { background-size: contain; }
+         </style>
 </head>
  
     <body class="home blog">
@@ -54,7 +57,7 @@
         <div id="masthead">
             <div class="header">
                 <div id="top">
-                    <a href="<?=  site_url()?>/<?php if(isset($main['0']->name)) echo $main['0']->name; else  echo 'user/user/index'; ?>"><div id="toplogo" <?php if(isset($main['0']->image)) if($main['0']->image!="") {?> style="background:url(<?php echo base_url().$main['0']->image;?>)" <?php }?>></div></a>
+                    <a href="<?=  site_url()?>/<?php if(isset($main['0']->name)) echo $main['0']->name; else  echo 'user/user/index'; ?>"><div id="toplogo" <?php if(isset($main['0']->image)) if($main['0']->image!="") {?> style="background:url(<?php echo base_url().$main['0']->image;?>);background-size: cover !important;" <?php }?>></div></a>
                 </div>
                <div id="Header_content">
                    <li class="botwid widget_text">			

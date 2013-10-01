@@ -14,7 +14,7 @@
             <li class="sidebox super_recent_posts"><h3 class="sidetitl"><a href="">Latest <?php if(isset($board_name)) if($board_name == 'home') echo 'job';else echo $board_name ?></a></h3>                
                 <?php if (is_array($latestjob)): foreach ($latestjob as $val) : ?>
                         <div class="super_recent_posts_item">
-                            <b> <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?>" title="<?= $val['title'] ?>" class="super_recent_posts_item_title"><?= $val['title'] ?></a> </b> 
+                            <b> <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?><?php if(isset($board_name)) { echo '/'.$board_name;}else{echo "/home";} ?>" title="<?= $val['title'] ?>" class="super_recent_posts_item_title"><?= $val['title'] ?></a> </b> 
                             <!--<span>(<a href="" rel="tag">Regional TAS</a>)</span>-->
                         </div>
                     <?php endforeach;

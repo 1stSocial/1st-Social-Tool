@@ -11,7 +11,7 @@
         <div class="post" id="post-<?php echo $val->id; ?>">
             <div class="title">
                 <input type="hidden" value='<?=$pagename;?>' id="pagename" name="pagename">
-                <h2><a href="" class="title_link" rel="" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
+                <h2><a href="<?=site_url()?>/user/user/detail/<?=$val->id ;?>/<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>" class="title_link" rel="" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
                 <div class="postmeta"> 	
                     <span class="user">Posted by <a href="" title="Posts by " rel="author"><?php echo $val->user_name; ?></a></span>  
                     <span class="clock"><?php $dt = human_to_unix($val->createdTime); $formate="%l,%d %M %Y"; echo mdate($formate,$dt); ?></span>  
@@ -38,7 +38,7 @@
                 
                 
                 <p><?php $str_val = $val->body ;$val_new = str_split($str_val,300); echo $val_new[0].'[..]'; ?></p>
-                <a class="readmore" href="<?=site_url()?>/user/user/detail/<?=$val->id ;?>/<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">Read More </a>
+                <!--<a class="readmore" href="<?//=site_url()?>/user/user/detail/<?//=$val->id ;?>/<?php //  if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">Read More </a>-->
                 <div class="clear"></div>
             </div>
         </div>
