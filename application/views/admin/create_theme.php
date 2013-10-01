@@ -19,7 +19,7 @@
               
           </ul>
     
-    <input type="submit" id="save" name="btn" value="Save" class="btn btn-primary" />
+    
     </div>
     
 <div id="data" style="margin-left: 30%; width: 60%;background: transparent;float: left;">
@@ -226,4 +226,6 @@
         
         </div>
      </div>
+    
+    <input style="margin-left: 50%" type="submit" id="save" name="btn" value="Save" class="btn btn-primary" />
 </div>

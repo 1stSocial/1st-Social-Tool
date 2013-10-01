@@ -12,7 +12,7 @@ foreach ($val as $a)
 <?php  echo form_open('admin/setting/theme_update','class="horizontal-form"');  ?>
 <input type="hidden" value="<?php if(isset($id)) echo $id;?>" id='id' name='id'> 
 <div class="col-md-3">
-<div class="bs-sidebar hidden-print affix" style="margin-left: 40px; width: 20%;background: transparent;float: left; font-size: 15px;height: auto!important;">
+<div class="bs-sidebar hidden-print affix" style="margin-left: 40px; width: 20%;background: transparent;float: left; font-size: 20px">
     
     <ul class="nav bs-sidenav" style="overflow-y: auto!important;">
               <li class=""><a href="#variables-body">Body</a></li>
@@ -29,7 +29,7 @@ foreach ($val as $a)
               <li class=""><a href="#variables-footer">Footer</a></li>
           </ul>
     
-    <input type="submit" id="save" name="btn" value="Update" class='btn btn-primary'/>
+    
     
 </div>
 <div id="data" style="margin-left: 30%; width: 60%;background: transparent;float: left;">
@@ -236,4 +236,7 @@ foreach ($val as $a)
         
         </div>
      </div>
+    
+    <input style="margin-left: 50%  " type="submit" id="save" name="btn" value="Update" class='btn btn-primary'/>
+    
 </div>

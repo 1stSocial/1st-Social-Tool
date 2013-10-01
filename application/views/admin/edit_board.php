@@ -25,7 +25,7 @@
               <label style=" float: left;" class="control-label"  >Upload Images :</label>
            <div>
                <div style="margin-left: 33%" class="fileupload fileupload-new" data-provides="fileupload">
-                        <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="<?php if($boardData[0]->image!="") echo base_url() . '/' . $boardData[0]->image; ?>" /></div>
+                   <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="<?php if(isset($boardData[0]->image)) if($boardData[0]->image !="") echo base_url() . '/' . $boardData[0]->image; ?>" /></div>
                         <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
                         <span class="btn btn-file" style="margin-left: 0%!important;"><span id="select_btn" class="fileupload-new" style="margin-left: 0%!important;">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/tiff" onchange ="change_fun()"/></span>
                         <a style="margin-left: 0%!important;" href="#" class="btn fileupload-exists" id="clo" data-dismiss="fileupload">Remove</a>
