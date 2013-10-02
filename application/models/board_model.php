@@ -109,8 +109,9 @@ Class Board_model extends CI_Model {
             "parent_tags" => $this->_parentTag,
             "createdTime" => $this->_createdTime,
             "created_by" => $this->_createdBy,
-            "Filterable_taxo" =>  $val,
-            "image" => $img
+            "Filterable_taxo" =>  $val['taxo'],
+            "image" => $img,
+            "board_title" => $val['title']
         );
         // select clause to check if board is exist
         $query = $this->db->get_where('board', array("name" => $this->_name,
@@ -180,7 +181,7 @@ Class Board_model extends CI_Model {
          $this->db->where('board_id',$data['id']);
          $this->db->update('board_page',$data3);
         
-        $data1 = array('name' => "$data[name]", 'parent_tags' => "$data[parentTag]",'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]");
+        $data1 = array('name' => "$data[name]",'parent_tags' => "$data[parentTag]",'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]",'board_title'=>"$data[title]");
 
         $this->db->where(array('id' => $data['id']));
         //print_r($data1);die;

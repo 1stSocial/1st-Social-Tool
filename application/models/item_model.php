@@ -19,14 +19,21 @@ Class Item_model extends CI_Model {
       if(is_array($tag_id))
       {
           foreach ($tag_id as $value) {
-              $rs['tag_id'] = $value;
-              $this->db->insert('item_tags',$rs);
+              $temp_ar = array(
+                    'item_id' =>$rs['item_id'],
+                    'tag_id' => $value        
+              );
+              
+              $this->db->insert('item_tags',$temp_ar);
           } 
       }
       else
       {
-          $rs['tag_id'] = $tag_id;
-          $this->db->insert('item_tags',$rs);
+          $temp_ar = array(
+                    'item_id' =>$rs['item_id'],
+                    'tag_id' => $tag_id        
+              );
+          $this->db->insert('item_tags',$temp_ar);
       }
         $taxoarr = $this->input->post('taxo');
        foreach ($taxoarr as $taxo_id => $taxo_val) {
@@ -74,6 +81,7 @@ Class Item_model extends CI_Model {
         $this->db->join('board as boards','boards.id = i.board_id');
         $this->db->where('b.domain_id',$did); 
         $query = $this->db->get();
+        
         }
         
 //        var_dump($query->result());die;
