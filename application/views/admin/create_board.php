@@ -29,6 +29,12 @@
             <div class="controls">
                 <input required="" type="text" style="margin-left: 60px"  class = "control-label" placeholder="Board Name" id="name1" name="name" ><div style =" color: red; display: none;padding-left:43%" id="berror"> Enter Board Name </div>
             </div>
+              
+           <?php echo form_label('Board Title:', 'title', array('class' => "control-label", 'style' => "float:left")); ?>
+            <div class="controls">
+                <input required="" type="text" style="margin-left: 70px"  class = "control-label" placeholder="Board Title" id="title1" name="title" ><div style =" color: red; display: none;padding-left:43%" id="terror"> Enter Board Title </div>
+            </div>   
+              
             <div class="control-group">
                 <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label",'style' => "float:left")); ?>
                 <div class="controls">

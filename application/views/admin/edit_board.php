@@ -44,6 +44,13 @@
                     <input type="hidden" id="mainid" value=<?= $id ?> >
                 </div>
             </div>
+            
+                
+           <?php echo form_label('Board Title:', 'title', array('class' => "control-label", 'style' => "float:left")); ?>
+            <div class="controls">
+                <input required="" type="text" style="margin-left: 70px"  class = "control-label" placeholder="Board Title" id="title1" value="<?= $boardData[0]->board_title ?>" name="title" ><div style =" color: red; display: none;padding-left:43%" id="terror"> Enter Board Title </div>
+            </div>   
+            
             <div class="component">
                 <div class="control-group">
                     <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label", 'style' => "float:left"));

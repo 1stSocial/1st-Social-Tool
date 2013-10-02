@@ -6,6 +6,8 @@
 <div class="header" style="margin-left  : 40%">
         <input type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
         <h3>Add Item <?= $board_name ?></h3> 
+        
+        
     </div>
 <div class="container">
         <div class="control-group">
@@ -21,8 +23,15 @@
                 </div>
             </div>
         </div>
+    <div id='tagdiv' >
+        <?php 
+        foreach ($abc as $value) {?>
+            <input type="hidden" id='abc' name="abc[]" value="<?=$value?>">
+        <?
 
-
+        }?>
+            </div>
+    
         <div class="control-group">
             <div class="controls">
                 <label style=" float: left;" class="control-label"  >Title :</label>
