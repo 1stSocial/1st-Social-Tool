@@ -1,11 +1,13 @@
 <?php
- 
+ session_start();
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-session_start(); //we need to call PHP's session object to access it through CI
+//session_start(); //we need to call PHP's session object to access it through CI
 
 class Item extends CI_Controller {
 
+    public $abc_temp;
+            
     function __construct() {
         parent::__construct(); 
         $this->load->view('header');
@@ -86,6 +88,7 @@ class Item extends CI_Controller {
         $boardModel = new Board_model();
         $taxonomy = new Taxonomy_model();
         $item = new Item_model();
+        
         $session_data = $this->session->userdata('logged_in');
         $borad_id = $this->input->post('boardval');
         $boards = $boardModel->getBoardByBoardId($borad_id);
@@ -98,8 +101,8 @@ class Item extends CI_Controller {
 
         $data['tag_id'] = $tagid['0']['tag_id']; // 
 
-        $_SESSION['child_tag'] = $this->input->post('tag');
-       
+        $data['abc'] = $this->input->post('tag');
+
         $data['items'] = $this->item_model->get_item($session_data['id']);
         $this->load->view('admin/item_fill', $data);
     }
@@ -194,6 +197,8 @@ class Item extends CI_Controller {
     } 
 
     function insert_item() {
+        
+     
         $session_data = $this->session->userdata('logged_in');
         $data['name'] = $this->input->post('name');
         $data['title'] = $this->input->post('title');
@@ -256,16 +261,14 @@ class Item extends CI_Controller {
             $data['createdTime'] = date('Y-m-d h:m:s');
             $data['status'] = '0';
 //            var_dump($_SESSION['child_tag']);
-            $tag = $_SESSION['child_tag'];
-//            var_dump($tag);
-//            die;
+            $tag = $this->input->post('abc');
            
             $item_id = $item->item_insert($data, $tag);
             $folder_name =  md5('unique_salt' . $folder_name);
             if(is_dir('assets/css/user/content/'.$folder_name))
             rename('assets/css/user/content/'.$folder_name, 'assets/css/user/content/'.$item_id);
             echo '';
-             unset($_SESSION['child_tag']);
+//             unset($_SESSION['child_tag']);
             die;
         } else {
             echo json_encode($error);

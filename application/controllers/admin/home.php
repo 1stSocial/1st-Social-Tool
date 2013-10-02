@@ -118,7 +118,8 @@ class Home extends CI_Controller {
             unset($data['user_id']);
             $data['createdBy'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
-            $val = $data['filterable_taxo'];
+            $val['taxo'] = $data['filterable_taxo'];
+            $val['title'] = $data['title'];
             $img = $data['image'];
 
             // save board information 
