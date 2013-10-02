@@ -45,7 +45,11 @@ endif; ?>
                                 $val=0; 
                           for($i=1;$i<5;$i++){?>
                             <li>    
-                                <input onchange="num_refine(<?=$val?>,<?=($val+$temp)-1?>)" type="radio" name="salref" id="salref" value="<?php echo $val."-".($val+$temp)-1?>"/><?php echo $val; echo "&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;";  echo ($val+$temp)-1 ;?>   
+                                <?php 
+                                    $t1 = number_format($val);
+                                    $t2 = number_format(($val+$temp)-1)
+                                ?>
+                                <input onchange="num_refine(<?=$val?>,<?=($val+$temp)-1?>)" type="radio" name="salref" id="salref" value="<?php echo $val ."-".  ($val+$temp)-1?>"/><?php echo $t1; echo "&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;";  echo $t2 ;?>   
                           </li>
                                 <?php 
                             $val = $val + $temp;
