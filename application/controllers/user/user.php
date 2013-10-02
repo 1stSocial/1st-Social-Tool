@@ -120,6 +120,7 @@ class User extends CI_Controller {
             if($id!="")
             {
                 $board_id = $id[0]->id;
+                $data['title'] = $id[0]->board_title;
                 $theme = $temp->apply_theme2($id[0]->id);
             }else
                 $theme = $temp->apply_theme();    
@@ -255,6 +256,7 @@ class User extends CI_Controller {
             if($id!="")
             {
                 $board_id = $id[0]->id;
+                $data['title'] = $id[0]->board_title;
                 $theme = $temp->apply_theme2($id[0]->id);
             }else
                 $theme = $temp->apply_theme();    
@@ -336,6 +338,7 @@ class User extends CI_Controller {
         $data['latestjob'] = $this->user_model->latest_job();
 //            var_dump($data);
         $data['board_name']='home';
+        $data['title'] = 'home';
         $this->load->view('user/sidebar', $data);
         $this->load->view('user/footer', $data['tag']);
     }
@@ -348,7 +351,7 @@ class User extends CI_Controller {
         if(isset($board_id['0']->id))
         {
             $id_t = $board_id['0']->id;
-            
+            $data['title'] = $board_id['0']->board_title;
         }
         
         $id_array = array(
@@ -367,11 +370,11 @@ class User extends CI_Controller {
         if(isset($board_id['0']->id))
          {
 //              var_dump($board_id);
-            $data['post'] = $this->user_model->refine_post_job($id_array, $val);
+            $data['post'] = $this->user_model->refine_post_job($id_array, $val,$id_t);
          }
         else
          {
-            $data['post'] = $this->user_model->refine_post_job($id_array, $val,$id_t);
+            $data['post'] = $this->user_model->refine_post_job($id_array, $val);
          }
         
          
@@ -399,8 +402,11 @@ class User extends CI_Controller {
          if($board_id == "")
         $data['post'] = $this->user_model->refine_job_salary($val);
          else
+         {
         $data['post'] = $this->user_model->refine_job_salary($val,$board_id['0']->id);
-
+        $data['title'] = $board_id[0]->board_title; 
+        
+         }
         $data['pagename'] = 'salary_refine';
         $data['board_name']=$data_str;
         echo $this->load->view('user/content', $data, TRUE);
@@ -414,6 +420,10 @@ class User extends CI_Controller {
        
         $boardId = $this->uri->segment(4);
         $base = base_url();
+        
+        $board_id = $this->user_model->get_boardid($data_str);
+        if($board_id != "")
+          $data['title'] = $board_id[0]->board_title; 
         
         $data['post'] = $this->user_model->view_detail($boardId);
 //        var_dump($data['post']);die;
@@ -482,6 +492,7 @@ class User extends CI_Controller {
         else
          {
 //            echo $board_id['0']->id;
+              $data['title'] = $board_id[0]->board_title; 
             $data['post'] = $this->user_model->keyword_search($val,$board_id['0']->id);
          }
         
