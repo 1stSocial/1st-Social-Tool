@@ -98,7 +98,8 @@ function change()
      var id = jQuery('#mainid').val();
      var taxo_id = jQuery('#taxo').val();
       var theme_id = jQuery('#theme').val();
-      
+       var title = jQuery('#title1').val();
+       
     if(name=="")
         {
              $('#berror').show();
@@ -115,17 +116,28 @@ function change()
             {
                 $('#perror').hide();
             }        
-     
-   if (name != "" && parentTag!="0"  && domain != "0") {   
+     if(title == "")
+        {
+            jQuery("#terror").show();
+        }
+        else
+            {
+                jQuery("#terror").hide();
+            }
+
+
+   if (name != "" && parentTag!="0"  && domain != "0" && title !="") {   
      
      var dataval ={
         name : name,
         parentTag : parentTag,
+         title:title,
         domain:domain,
         id:id,
         theme_id:theme_id,
          filterable_taxo :taxo_id,
          image:img
+         
        };
     jQuery.ajax({
        type: "POST",

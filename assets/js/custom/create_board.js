@@ -77,6 +77,8 @@ function savefun(image)
     var domain = jQuery('#domain').val();
     var theme_id = jQuery('#theme').val();
     var taxo_id = jQuery('#taxo').val();
+    var title = jQuery('#title1').val();
+    
     if (name == "")
     {
         jQuery("#berror").css('padding-left:40%')
@@ -95,12 +97,23 @@ function savefun(image)
     {
         jQuery("#perror").hide();
     }
+    
+    if(title == "")
+        {
+            jQuery("#terror").show();
+        }
+        else
+            {
+                jQuery("#terror").hide();
+            }
 
 
-    if (name != "" && parentTag != "0" && domain != "0")
+    if (name != "" && parentTag != "0" && domain != "0" && title !="")
     {
+        alert(title);
         var dataval = {
             name: name,
+            title:title,
             parentTag: parentTag,
             domain : domain,
             theme_id: theme_id,

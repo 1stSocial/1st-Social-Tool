@@ -72,7 +72,8 @@ function savefun(image)
     var board_id = $('#bord_id').val();
     var taxoid = $('#taxoid').val();
     var folder_name = $('#folder_name').val();
-
+    var abc = [];
+    
     var taxo = [];
     var ids = [];
     $('#taxodiv').find('input:text')
@@ -84,6 +85,14 @@ function savefun(image)
             .each(function() {
         ids[i] = $(this).val();
         i++;
+    });
+    
+    var j=0;
+     $('#tagdiv').find('input:hidden')
+            .each(function() {
+       
+        abc[j] = $(this).val();
+        j++;
     });
 
     var imgval;
@@ -111,7 +120,8 @@ function savefun(image)
             ids: ids,
             img: imgval,
             image: image,
-            folder_name : folder_name
+            folder_name : folder_name,
+            abc : abc
         }
 
         $.ajax({
