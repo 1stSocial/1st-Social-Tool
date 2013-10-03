@@ -156,6 +156,7 @@ class User_model extends CI_Model
                     {
                         $this->db->where('board_id',$board_id);
                     }
+                    $this->db->order_by('createdTime','DESC');
                      $this->db->limit(5, $start);
 //                    $this->db->distinct();
                     $result = $this->db->get();
@@ -233,9 +234,22 @@ class User_model extends CI_Model
                         $query = $this->db->get();
                         $result1['Location'] =  $query->result();
                     
+                        $temp7 = array();
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('it.item_id,taxo.id,it.value,taxo.name');
+                        $this->db->from('item_taxo as it');
+                        $this->db->join('taxonomy as taxo','taxo.id = it.taxo_id','inner');
+                        $this->db->where('it.item_id',$val->id);
+                        $temp6 = $this->db->get();
+                        $temp7[] =  $temp6->result();
+                    }    
+                    $result1['taxonomy'] = $temp7;
+                    
                     }
 //                    print_r($result1);die;
-                      return($result1);
+//        var_dump($result1['taxonomy']);die; 
+                    return($result1);
                     
                     
     }
@@ -250,7 +264,7 @@ class User_model extends CI_Model
                 $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
-                
+//                $this->db->order_by('createdTime','DESC');
          
 //                $this->db->limit(5, $start);
                 $result = $this->db->get();
@@ -299,6 +313,7 @@ class User_model extends CI_Model
                     {
                         $this->db->where('i.board_id',$board_id);
                     }
+//                    $this->db->order_by('createdTime','DESC');
                     $this->db->limit(5, $start);
                     $this->db->distinct();
                     $result = $this->db->get();
@@ -363,6 +378,18 @@ class User_model extends CI_Model
                     
                     $result1['salary'] = $temp5;
                     
+                    
+                      $temp7 = array();
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('it.item_id,taxo.id,it.value,taxo.name');
+                        $this->db->from('item_taxo as it');
+                        $this->db->join('taxonomy as taxo','taxo.id = it.taxo_id','inner');
+                        $this->db->where('it.item_id',$val->id);
+                        $temp6 = $this->db->get();
+                        $temp7[] =  $temp6->result();
+                    }    
+                    $result1['taxonomy'] = $temp7;
                     }
 //                    var_dump($result1);die;
                     return($result1);
@@ -452,7 +479,17 @@ class User_model extends CI_Model
                     
                     $result1['salary'] = $temp5;
                     
-                    
+                      $temp7 = array();
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('it.item_id,taxo.id,it.value,taxo.name');
+                        $this->db->from('item_taxo as it');
+                        $this->db->join('taxonomy as taxo','taxo.id = it.taxo_id','inner');
+                        $this->db->where('it.item_id',$val->id);
+                        $temp6 = $this->db->get();
+                        $temp7[] =  $temp6->result();
+                    }    
+                    $result1['taxonomy'] = $temp7;
                     
                     }
 //                    var_dump($result1);
@@ -627,6 +664,19 @@ class User_model extends CI_Model
                     }
                     
                     $result1['salary'] = $temp5;    
+                    
+                      $temp7 = array();
+                    foreach ($result1['item'] as $val)
+                    {
+                        $this->db->select('it.item_id,taxo.id,it.value,taxo.name');
+                        $this->db->from('item_taxo as it');
+                        $this->db->join('taxonomy as taxo','taxo.id = it.taxo_id','inner');
+                        $this->db->where('it.item_id',$val->id);
+                        $temp6 = $this->db->get();
+                        $temp7[] =  $temp6->result();
+                    }    
+                    $result1['taxonomy'] = $temp7;
+                    
 //                    print_r($result1);
                     }
                     return($result1);
