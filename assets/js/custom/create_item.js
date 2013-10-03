@@ -1,3 +1,5 @@
+var tag_id = [];
+
 jQuery(document).ready(function() {
     setTimeout(function() {
         jQuery('#mod1').click();
@@ -9,10 +11,16 @@ jQuery('#sub1').click(function (){
     var id = jQuery('#boardval').val();
    if(id==0)
        {
-           
+//           alert('abcd');
        }
    else
        {
+
+//           for(var i=0;i< tag_id.length;i++)
+//               {
+//                   alert(tag_id[i]);
+//               }
+           
            jQuery('#sub').click();
        }
 });    
@@ -42,10 +50,12 @@ function change_val()
             var value = "";
             var val2 = "";
             var obj = jQuery.parseJSON(res);
+            var j =0 ;
             $.each(obj['tag']['Parent'], function(i, data) {
-               value = "";
+               tag_id[j] =  data['tag_id'];
+                value = "";
                 value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label' style='float: left;width:165px'>" + data['name'] + ":</label>" +
-                        "<select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
+                        "<select required='' data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
                         + "<option> </option>";
                 val2 = "";
                 $.each(obj['tag']['child'], function(i, val) {
@@ -56,6 +66,7 @@ function change_val()
                 val2 += "</select></div>";
                 $('#add').append(value + val2);
                 $(".chosen-select").chosen({width: "50%"});
+                j++;
             });
 
 
