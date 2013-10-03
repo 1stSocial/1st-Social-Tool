@@ -87,15 +87,18 @@ class User extends CI_Controller {
                     unset($data);
                 }
                      if(isset($data));
-//                    $this->load->view('user/header',$data);
+                  
                 }
                 
                 
                 if(isset($data))
-              $this->load->view('user/header',$data);
-                if($isboardjobs1 == 'user')
+                $this->load->view('user/header',$data);
+                else
+                {
+                if($isboardjobs1 == 'user' && $this->uri->segment(3) != 'board')
                 {
                     $this->load->view('user/header');
+                }
                 }
            
             
