@@ -45,11 +45,23 @@
                 </div>
                 <div class="entry" style="padding:0 60px;">
                     <div style="text-align: justify">
-        <?= $val->body ?>
-                        <div></div>
-                        <div><a href="http://youtu.be/AGsYz2YTExg">&nbsp;</a></div>
-                        <div></div>
-                        <div></div>
+                        
+                    <div style="margin-top:20px">
+                                        <?= $val->body ?>
+                                    </div>
+                         <div id="taxonomy">
+                                        <h3> About </h3>
+                                            <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
+                                                <div id="<?= $value->item_id; ?>">
+                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= $value->value; ?></span>
+                                                </div>
+                                                <div style="clear: both"></div>
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
+
+                                    </div>
                     </div>
                     <div> 
                     <?php

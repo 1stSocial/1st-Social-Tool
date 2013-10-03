@@ -35,7 +35,7 @@
             <i class="icon-download"></i>
             <span>Download</span>
         </a>
-        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000">
+        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="1000">
             <i class="icon-play icon-white"></i>
             <span>Slideshow</span>
         </a>

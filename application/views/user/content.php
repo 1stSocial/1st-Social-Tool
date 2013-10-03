@@ -39,9 +39,20 @@
             <div class="entry">
 
                 <p><?=$val->title;?></p>
-                
-                
                 <p><?php echo $val->body ?></p>
+                <div id="taxonomy">
+                                        <h3> About </h3>
+                                            <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
+                                                <div id="<?= $value->item_id; ?>">
+                                                    <div style="float: left;width: 15%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= $value->value; ?></span>
+                                                </div>
+                                                <div style="clear: both"></div>
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
+
+                                    </div>
                 <!--<a class="readmore" href="<?//=site_url()?>/user/user/detail/<?//=$val->id ;?>/<?php //  if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">Read More </a>-->
                 <div class="clear"></div>
             </div>
