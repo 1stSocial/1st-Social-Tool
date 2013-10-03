@@ -9,7 +9,7 @@
     <div class="modal-body div_wrapper"> 
         <br/>
         <label class="control-label" style="float: left">Choose Board :</label>
-        <select data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
+        <select required="" data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
             <option value="0"></option>
             <? if (!empty($boards)): foreach ($boards as $val): ?>
                     <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
