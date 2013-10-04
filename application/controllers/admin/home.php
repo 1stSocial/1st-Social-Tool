@@ -463,7 +463,9 @@ class Home extends CI_Controller {
         if (isset($_FILES["img"])) {
 
             if ($_FILES["img"]["error"] > 0) {
-                echo "";
+              
+                   echo '';
+                
                 die;
             } else {
                 $Upload = 'assets/css/user/temp/' . $_FILES["img"]["name"];
@@ -472,17 +474,22 @@ class Home extends CI_Controller {
                 if ($_FILES["img"]["name"] != "") {
 //                    chmod('assets/css/user/temp/', '0777');
                     move_uploaded_file($Storedin,'assets/img/internal/logo_img/'. $imgname);
-                
+                     if(isset($_POST['im']))
+                    {
+                         if($_POST['im'] != "")
+                        unlink($this->input->post("im"));
+                    }
                         echo 'assets/img/internal/logo_img/' . $imgname;
-                  
+                   
                 } else {
                     echo "";
                 }
             }
         } else {
-           if(isset($_POST['imgscr']))
+         
+           if(isset($_POST['im']))
             {
-               echo $this->input->post("imgscr");
+               echo $this->input->post("im");
             }
            else
              {
