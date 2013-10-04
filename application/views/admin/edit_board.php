@@ -34,7 +34,7 @@
 
               <input type="hidden" name="im" id="imgsrc" value="<?php if(isset($boardData[0]->image)) if($boardData[0]->image !="") echo $boardData[0]->image; else echo ""; ?>">
                 
-            </div> 
+            </div>  
         </div>
             
             <div class="control-group">
