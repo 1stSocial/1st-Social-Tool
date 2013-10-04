@@ -110,7 +110,7 @@ function savefun(image)
 
     if (name != "" && parentTag != "0" && domain != "0" && title !="")
     {
-        alert(title);
+      
         var dataval = {
             name: name,
             title:title,
@@ -135,7 +135,9 @@ function savefun(image)
 
                 }
                 else
-                    alert(res);
+                    {
+//                    alert(res);
+                        }
             },
             error: function(res)
             {

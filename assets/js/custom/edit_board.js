@@ -12,6 +12,7 @@ jQuery(document).ready(function(){
                 {
                     return  false;
                 }
+               
         },
         success: function(data) {
           
@@ -52,7 +53,7 @@ jQuery(document).ready(function(){
         $('#img_msg').hide();
     }
 }
- 
+   
 function change()
 {
      var val = $('#selected_tag').val();
