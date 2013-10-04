@@ -3,7 +3,7 @@
     
      
 <div id="test">
-<div class="container-fluid">
+    <div class="" style="margin-top: 2%">
  
 
      <div id="gallery1" data-toggle="modal-gallery" data-target="#modal-gallery">
@@ -17,7 +17,7 @@
             if($img_name !='.' && $img_name !='..')
             {
                 {?>
-                    <a data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> &width=100 &height=100" ></a>
+                    <a data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> &width=150 &height=150" ></a>
             <?} }}
                     ?>
     <br>
@@ -35,7 +35,7 @@
             <i class="icon-download"></i>
             <span>Download</span>
         </a>
-        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="1000">
+        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000">
             <i class="icon-play icon-white"></i>
             <span>Slideshow</span>
         </a>

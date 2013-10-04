@@ -21,7 +21,7 @@
                     <span class="clock"><?php $dt = human_to_unix($val->createdTime); $formate="%l,%d %M %Y"; echo mdate($formate,$dt); ?></span>  
                     
                     <?php if(isset($post['salary'][$loop][0]->val)) :?>
-                                <span class="tags sallery_tag"><?=$post['salary'][$loop][0]->val;?></span>
+                                <span class="tags sallery_tag"><?= is_numeric($post['salary'][$loop][0]->val) ? number_format((int)$post['salary'][$loop][0]->val) : $post['salary'][$loop][0]->val; ?></span>
                                 <?php endif;?>
                                 <?php if(isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
                                 <span class="tags">
@@ -44,7 +44,7 @@
                                         <h3> About </h3>
                                             <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
                                                 <div id="<?= $value->item_id; ?>">
-                                                    <div style="float: left;width: 15%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= $value->value; ?></span>
+                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= is_numeric($value->value) ? number_format((int)$value->value) : $value->value; ?></span>
                                                 </div>
                                                 <div style="clear: both"></div>
                                                 <?php
