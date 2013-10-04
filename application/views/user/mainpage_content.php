@@ -38,7 +38,7 @@
                         <div style="float:left;"> <!--start-->
                             <div class="title">
 
-                                <h2><a rel="bookmark" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
+                                <h2><a rel="bookmark" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a></h2>
                                 <div id="outer">
         <!--                                    <span class="location">Location: <?php
 //                                        if (isset($post['child'][$loop])):
