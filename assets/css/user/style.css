@@ -205,8 +205,14 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 #toplogo
 {
     
-    width: 90px;
-    height: 150px;
+/*    width: 90px;
+    height: 150px;*/
+
+width: 727px;
+height: 242px;
+top: 22px;
+position: relative;
+left: 2px;
 }
 
 .rimg
@@ -1407,7 +1413,7 @@ label span,
 
 
 
-	height:150px;
+	height:280px;
 
     border-top: 4px solid #808080;
 
@@ -1453,7 +1459,7 @@ label span,
 
 
 
-	height:100px;
+	height:220px;
 
 
 
@@ -1732,14 +1738,13 @@ ul.social li{
 {
 
 	 background: none repeat scroll 0 0 #808080;
-
-    float: left;
-
-   padding-bottom: 3px;
-
-    padding-left: 20px;
-
-    padding-right: 25px;
+	float: left;
+	padding-bottom: 6px;
+	padding-left: 5px;
+	padding-right: 4px;
+	left: 66px;
+	position: relative;
+	padding-top: 6px;
 
 }
 
@@ -2215,17 +2220,12 @@ ul.social li{
 
 	border: 1px solid #F3C28E;
 
-    display: inline-block;
-
-    float: right;
-
-    height: 32px;
-
-    margin: 30px 0 0 10px;
-
-    padding: 0;
-
-    width: 259px;
+	 display: inline-block;
+	float: left;
+	height: 32px;
+	margin: 54px 0 0 75px;
+	padding: 0;
+	width: 259px;
 
 
 
@@ -4894,6 +4894,7 @@ ol.commentlist li ul.children li.depth-2,ol.commentlist li ul.children li.depth-
 
 
 
+
     list-style: none;
 
 
@@ -5462,13 +5463,13 @@ h3.bothead {
 
 	border-bottom:1px solid #ff931f;
 
-	margin-left: 35px;
+	margin-left: 4px;
 
     margin-right: 35px; 
 
 	width:626px; 
 
-	width:94%;
+	width:100%;
 
 	float:left;
 
@@ -5480,13 +5481,13 @@ h3.bothead {
 
 {
 
-	margin-left: 35px; margin-left: 35px;
+	margin-left: 4px;
 
     margin-right: 35px; 
 
 	width:626px;
 
-	width:94%; 
+	width:100%; 
 
 	float:left;
 
@@ -5584,7 +5585,13 @@ h3.bothead {
 
 {
 
+	width: 725px;
+
 	margin:0px;
+
+    top: -25px;
+
+    position: relative;
 
 }
 
