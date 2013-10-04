@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
         $('#img_msg').hide();
     }
 }
-   
+    
 function change()
 {
      var val = $('#selected_tag').val();
