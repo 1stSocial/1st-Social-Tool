@@ -61,19 +61,21 @@
 
 <a href="#domain1" style="display: none" role="button" id="dom"  class="btn" data-toggle="modal" value="add"></a>
 
-<div id="domain1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="domain1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+        <div class="modal-content">
     <div class="modal-header">
-        <h3 id="myModalLabel">Create Domain</h3>
+        <h3 id="myModalLabel" style="margin-left:34%">Edit Domain</h3>
     </div>
 
     <div class="modal-body " style="height:100px "><!-- Password input-->
         <div class="div_wrapper">
         <div class="control-group">
-            <?php echo form_label('Domain name :', 'domain', array('class' => "control-label", 'style' => "float:left;padding-right:41px")); ?>
+            <?php echo form_label('Domain name :', 'domain', array('class' => "control-label label label-info", 'style' => "float:left;padding-right:41px;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?>
             <div class="controls">
                 <input type="hidden" value="<?=$value['0']['id']?>" id ="id" name="id">
                 <input type="hidden" value="<?=$value['0']['name']?>" id="old_name">
-                <input type="text" style="float: left" id="name" placeholder="Name" name="name" title="Please Enter Name" value="<?=$value['0']['name']?>" required="Please Enter Name">
+                <input type="text" class="form-control" style="float: left;width: 50%" id="name" placeholder="Name" name="name" title="Please Enter Name" value="<?=$value['0']['name']?>" required="Please Enter Name">
                 <div style =" color: red; display: none;" id="usererror"></div>
             </div>
         </div>
@@ -81,15 +83,16 @@
     </div>
    <div class="modal-footer">
         <div class="control-group">  
-            <div class="div_wrapper" style="padding-left: 33%">
+            <div class="" style="padding-left: 28%">
 
                 <input type="submit" id="updatebtn" class="btn btn-primary footer_btn" value="Update Domain">
-                <input type="button" id="closebtn" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close">
+                <input type="button" id="closebtn" class=" btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close">
             </div>
         </div>
     </div>
     <input type="hidden" value="<?=  site_url();?>" id="url"> 
-    
+    </div>
+        </div>
 </div>
 <?php
 echo form_close();

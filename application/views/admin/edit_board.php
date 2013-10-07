@@ -1,9 +1,11 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_board.js"></script>
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <?php echo form_open_multipart(site_url("/admin/home/logo_image/")); ?>
-<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"> 
     <div class="modal-header">
-        <h3 style="margin-left:5px;">Edit Board</h3>
+        <h3 style="margin-left:35%;">Edit Board</h3>
         <p> <? if (isset($success)) echo $success; ?> </p>
     </div>
     <div class="modal-body "><!-- Password input-->
@@ -11,18 +13,8 @@
             
              <div class="control-group">
             <div class="controls">
-<!--                <label style=" float: left;" class="control-label"  >Upload Image :</label>
-                <div style='magrin-top:33px;padding-left:20%;'>
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                        <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="<?php // echo base_url() . '/' . $boardData[0]->image; ?>" /></div>
-                        <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-                        <span class="btn btn-file"><span id="select_btn" class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/tiff" onchange ="change_fun()"/></span>
-                        <a href="#" class="btn fileupload-exists" id="clo" data-dismiss="fileupload">Remove</a>
-                    </div><div id="img_msg" name="img_msg" style = "display:none">Warning : Please Select jpg image.</div>
-                </div>-->
-                
-                
-              <label style=" float: left;" class="control-label"  >Upload Images :</label>
+
+              <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%" class="control-label label label-info"  >Upload Images :</label>
            <div>
                <div style="margin-left: 33%" class="fileupload fileupload-new" data-provides="fileupload">
                    <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc1" src="<?php if(isset($boardData[0]->image)) if($boardData[0]->image !="") echo base_url() . '/' . $boardData[0]->image; ?>" /></div>
@@ -38,25 +30,26 @@
         </div>
             
             <div class="control-group">
-                <?php echo form_label('Board Name:', 'name', array('class' => "control-label", 'style' => "float:left")); ?>
-                <div class="controls">
-                    <input type="text"  style="margin-left: 60px" id="name1" placeholder="Board Name" value="<?= $boardData[0]->name ?>" name="name" ><div style =" color: red; display: none;padding-left:43%" id="berror"> Enter Board Name </div>
+            <?php echo form_label('Board Name:', 'name', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;")); ?>
+      <div class="controls">
+                    <input class="form-control" type="text"  style="margin-left: 33%!important;width: 46%" id="name1" placeholder="Board Name" value="<?= $boardData[0]->name ?>" name="name" ><div style =" color: red; display: none;padding-left:43%" id="berror"> Enter Board Name </div>
                     <input type="hidden" id="mainid" value=<?= $id ?> >
                 </div>
             </div>
             
-                
-           <?php echo form_label('Board Title:', 'title', array('class' => "control-label", 'style' => "float:left")); ?>
+              <div style="margin-top: 5px"></div>   
+            <?php echo form_label('Board Title:', 'title', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?>
             <div class="controls">
-                <input required="" type="text" style="margin-left: 70px"  class = "control-label" placeholder="Board Title" id="title1" value="<?= $boardData[0]->board_title ?>" name="title" ><div style =" color: red; display: none;padding-left:43%" id="terror"> Enter Board Title </div>
+                <input class="form-control" required="" type="text" style="margin-left: 33%!important;width: 46%"  class = "control-label" placeholder="Board Title" id="title1" value="<?= $boardData[0]->board_title ?>" name="title" ><div style =" color: red; display: none;padding-left:43%" id="terror"> Enter Board Title </div>
             </div>   
-            
+             <div style="margin-top: 5px"></div>
             <div class="component">
                 <div class="control-group">
-                    <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label", 'style' => "float:left"));
+               <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label label label-info",'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:11.5%"));
+               
                     $sel = $boardData[0]->parent_tags;?>
                     <div class="controls">
-                        <select data-placeholder="Choose a Parent..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
+                        <select data-placeholder="Choose a Parent..." style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
                             <option value="0"></option>
                             <?
                             if(!empty($parenTag)):
@@ -83,19 +76,19 @@
             <input type="text" style="display: none" value="<?=$sel?>" id="selected_tag">
             <input type="text" style="display: none" value="<?= $boardData[0]->Filterable_taxo ?>" id="selected_taxo">
             <div class="control-group">
-                <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label", 'style' => "float:left"));?>
-                <div class="controls">
+               <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:8%")); ?>
+                 <div class="controls">
                     <div id="select_box" style="width:451px;">
-                    <select data-placeholder="Choose a Filterable Taxonomy..." class="chosen-select" style="width:350px;" tabindex="4" id="taxo" name="taxo" >
+                    <select data-placeholder="Choose a Filterable Taxonomy..." style="width:350px;" tabindex="4" id="taxo" name="taxo" >
                         <option></option>
                     </select></div>
                 </div>
             </div>
             <div style="clear: both"></div>
             <div class="control-group">
-                <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label", 'style' => "float:left")); ?>
-                <div class="controls">
-                    <select data-placeholder="Choose a Theme..." class="chosen-select" style="width:350px;" tabindex="4" id="theme" name="theme" >
+                    <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:14.5%")); ?>
+            <div class="controls">
+                    <select data-placeholder="Choose a Theme..." style="width:350px;" tabindex="4" id="theme" name="theme" >
                         <option value="0"></option>
                         <option <?php if($selected_theme==0) echo 'selected';?> value="0">Default</option>
                         <? if (!empty($theme)): foreach ($theme as $Theme_val): 
@@ -119,9 +112,9 @@
              <?php 
              if($access_level == 'admin') :?>
                 <div class="control-group">
-                <?php echo form_label('Domain :', 'domain', array('class' => "control-label", 'style' => "float:left")); ?>
-                    <div class="controls">
-                         <select data-placeholder="Choose a Domain..." class="chosen-select" style="width:350px;" tabindex="4" id="domain" name="user_id[]" required="please select Domain">
+              <?php echo form_label('Domain :', 'domain', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:20.5%")); ?>
+                          <div class="controls">
+                         <select data-placeholder="Choose a Domain..." style="width:350px;" tabindex="4" id="domain" name="user_id[]" required="please select Domain">
                            <? if (!empty($domain)): foreach ($domain as $val): 
                                ?>
                              <option value="<?= $val->id ?>" <?php if($val->id == $selected_domain) echo 'selected' ?>><?= $val->name ?></option>
@@ -142,10 +135,12 @@
         <div class="div_wrapper">
             <div class="control-group" style="margin-left: 15%">
                 <input type="submit" id="update" name="update" class="btn btn-primary footer_btn" value="Update Board" />
-                <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" id="cl">
+                <input type="button" class=" btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" id="cl">
                 <input type="hidden" id="site" value="<?= site_url();?>">
                 
             </div> 
         </div>
     </div>
 </div>
+        </div>
+    </div>

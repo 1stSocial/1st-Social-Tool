@@ -61,34 +61,36 @@
 
 <a href="#domain1" style="display: none" role="button" id="dom"  class="btn" data-toggle="modal" value="add"></a>
 
-<div id="domain1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3 id="myModalLabel">Create Domain</h3>
-    </div>
+<div id="domain1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="myModalLabel" style="margin-left: 33%">Create Domain</h3>
+                </div>
 
     <div class="modal-body " style="height:100px "><!-- Password input-->
         <div class="div_wrapper">
-            <div style="margin-top: 5%" ></div>
+            <div style="margin-top: 4%" ></div>
         <div class="control-group">
-            <?php echo form_label('Domain name :', 'domain', array('class' => "control-label", 'style' => "float:left;padding-right:41px")); ?>
-            <div class="controls">
-            <input type="text" style="float: left" id="name" placeholder="Name" name="name" title="Please Enter Name" required="Please Enter Name">
+            <?php // echo form_label('Domain name :', 'domain', array('class' => "control-label", 'style' => "float:left;padding-right:41px")); ?>
+            <span style="float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%" class="label label-info">Domain name :</span>
+            <input type="text" class="form-control" id="name" style="width: 50%" placeholder="Name" name="name" title="Please Enter Name" required="Please Enter Name">
                 <div style =" color: red; display: none;" id="usererror"></div>
-            </div>
+            
         </div>
     </div>
     </div>
    <div class="modal-footer">
         <div class="control-group">  
-            <div class="div_wrapper" style="padding-left: 33%">
-
+            <div class="div_wrapper" style="margin-left: 10%!important">
                 <input type="submit" id="updatebtn" class="btn btn-primary footer_btn" value="Create Domain">
-                <input type="button" id="closebtn" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" onclick="close_fun()" value="Close">
+                <input type="button" id="closebtn" class="btn footer_btn" data-dismiss="modal" aria-hidden="true" onclick="close_fun()" value="Close">
             </div>
         </div>
     </div>
     <input type="hidden" value="<?=  site_url();?>" id="url"> 
-    
+    </div>
+        </div>
 </div>
 <?php
 echo form_close();
