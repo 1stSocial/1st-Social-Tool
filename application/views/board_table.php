@@ -1,7 +1,7 @@
-<table class="board-table row-fluid" cellpadding="10" id="board_table">
+<table class="table table-bordered" cellpadding="10" id="board_table" style="text-align:center">
 	<thead>
 		<tr>
-			<th>Board Name</th>
+                    <th style="text-align: center">Board Name</th>
 			<th>Board URL</th>
 			<th class="small-col">Board Preview</th>
 			<th>Actions</th>
