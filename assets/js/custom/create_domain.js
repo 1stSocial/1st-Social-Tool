@@ -1,10 +1,10 @@
-jQuery(document).ready()
+$(document).ready()
 { 
 //    jQuery.noConflict();
-  
+//    alert('abc');
 
      setTimeout(function() {
-        jQuery('#dom').click();
+        $('#dom').click();
     }, 100);
     
     var regex = /^[\s]*$/ ;  

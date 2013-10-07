@@ -27,6 +27,8 @@ margin-left:20%;
 /*    margin:0 auto!important;*/
    vertical-align: central;
     padding-left: 18%;
+    margin-left: auto!important;
+    margin-right: auto!important;
     /*text-align:0px auto;*/
     /*height: 200px;*/
 }

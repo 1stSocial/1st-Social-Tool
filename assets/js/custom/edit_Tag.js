@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function(){
      
-     jQuery('.chosen-select').chosen(); 
+//     jQuery('.chosen-select').chosen(); 
      
      
   setTimeout(function(){
