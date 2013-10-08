@@ -17,7 +17,7 @@
                                         <script src="<?= base_url(); ?>assets/js/jquery.tagsinput.js"></script>
                                         <script src="<?= base_url(); ?>assets/js/jquery.placeholder.js"></script> 
             
-            
+             
             
         <!--old js-->    
         <script>

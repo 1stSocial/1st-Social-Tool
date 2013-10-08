@@ -13,7 +13,7 @@
         <h3 style="margin-left:33%">Edit Taxonomy</h3>
         <p> <? if (isset($success)) echo $success; ?> </p>
     </div>
-    <div class="modal-body div_wrapper"><!-- Password input-->
+    <div class="modal-body div_wrapper"><!-- Password input--> 
         <div class="control-group">
            <?php echo form_label('Name:', 'name', array("class"=>"control-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?> 
              <div class="controls" style="float:left;">

@@ -2,7 +2,7 @@
 <?php
 if (isset($option))
     switch ($option) {
-        case 'addtaxonomy': {
+        case 'addtaxonomy': { 
                 echo "<script>
                         $(document).ready(function() {   
                         setTimeout(function(){
