@@ -34,6 +34,7 @@
         $("#tab_id_info").css("float", "left");
         $("#tab_id_length").css("width", "20%");
         $("#tab_id_length").css("margin-left", "20%");
+        
         $("#create").insertBefore($('#tab_id_filter'));
         $('.dataTables_length').insertAfter($("#tab_id_info"));
         $('#create').show();
