@@ -2,11 +2,11 @@ var values = 'no';
 jQuery(document).ready()
 {
 //    alert('edit');  
-     jQuery('.chosen-select').chosen(); 
+//     jQuery('.chosen-select').chosen(); 
      $('#access_level_chosen').css('width','220px');
      $('#domain_chosen').css('width','220px');
      $('#parent_user_chosen').css('width','220px');
-     
+      $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});  
      setTimeout(function(){
        $('#mod1').click();
    },100);

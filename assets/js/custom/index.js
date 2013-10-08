@@ -1,16 +1,21 @@
 jQuery(document).ready(function() {
 //    jQuery('.chosen-select').chosen(); 
+
     $('#tab_id').dataTable({
         "sPaginationType": "full_numbers"
     });
-    jQuery("#tab_id_info").css("width", "33%");
-    jQuery("#tab_id_length").css("width", "28%");
+    $("#tab_id_info").css("width", "20%");
+        $("#tab_id_info").css("float", "left");
+        $("#tab_id_length").css("width", "20%");
+        $("#tab_id_length").css("margin-left", "20%");
+        $("#tab_id_info").attr("class", "btn btn-info");
+    jQuery("#tab_id_paginate").css('width',"40%");
     jQuery('.dataTables_length').insertAfter($("#tab_id_info"));
     jQuery('#tab_id_length').show();
     jQuery('#tab_id_filter').css("margin-right",'1%');
     
-//$("select").selectpicker({style: 'label label-info', menuStyle: 'dropdown-inverse'});
-   
+//   $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});  
+//$("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
 });
 function deletbox(urllink)
 {

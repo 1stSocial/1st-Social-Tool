@@ -4,12 +4,15 @@ $(document).ready(function() {
        
     });
     
-    $("#tab_id_info").css("width", "33%");
-    $("#tab_id_length").css("width", "28%");
+   $("#tab_id_info").css("width", "20%");
+        $("#tab_id_info").css("float", "left");
+        $("#tab_id_length").css("width", "20%");
+        $("#tab_id_length").css("margin-left", "20%");
+        $("#tab_id_info").attr("class", "btn btn-info");
     $('.dataTables_length').insertAfter($("#tab_id_info"));
     $('#tab_id_length').show();
     $('#tab_id_filter').css("margin-right",'1%');
-     
+    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
     $(".body_img img").css({
         'width': 100,
         'height': 100

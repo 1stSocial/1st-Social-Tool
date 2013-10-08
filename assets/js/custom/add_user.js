@@ -1,7 +1,7 @@
 var values = 'no'; 
 jQuery(document).ready()
-{
-     jQuery('.chosen-select').chosen(); 
+{  $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+//     jQuery('.chosen-select').chosen(); 
      $('#access_level_chosen').css('width','220px');
      $('#domain_chosen').css('width','220px');
      $('#parent_user_chosen').css('width','220px');

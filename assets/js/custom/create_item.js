@@ -1,6 +1,7 @@
 var tag_id = [];
-
+ 
 jQuery(document).ready(function() {
+    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
@@ -54,8 +55,8 @@ function change_val()
             $.each(obj['tag']['Parent'], function(i, data) {
                tag_id[j] =  data['tag_id'];
                 value = "";
-                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label' style='float: left;width:165px'>" + data['name'] + ":</label>" +
-                        "<select required='' data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
+                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 20%;'>" + data['name'] + ":</label>" +
+                        "<select required='' data-placeholder='Choose...' multiple  style='width:350px;margin-right:5px!important' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
                         + "<option> </option>";
                 val2 = "";
                 $.each(obj['tag']['child'], function(i, val) {
@@ -65,7 +66,8 @@ function change_val()
                 });
                 val2 += "</select></div>";
                 $('#add').append(value + val2);
-                $(".chosen-select").chosen({width: "50%"});
+                  $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+//                $(".chosen-select").chosen({width: "50%"});
                 j++;
             });
 

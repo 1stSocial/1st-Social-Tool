@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
 
-$("select").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+$("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});    
 //    jQuery('.chosen-select').chosen();
     setTimeout(function() {
         jQuery('#mod1').click();
@@ -52,7 +52,7 @@ $("select").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
                  val +="</select>";
                  $('#select_box').html("");
                  $('#select_box').html(val);
-                 $("select").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+                 $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
 //                     jQuery('.chosen-select').chosen();
 //                     jQuery('#taxo_chosen').css('width', '49%');
 //                     jQuery('#taxo_chosen').css('margin-left', '2.6%');

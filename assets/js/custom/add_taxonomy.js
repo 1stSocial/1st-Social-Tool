@@ -1,6 +1,6 @@
 jQuery(document).ready()
 {
-     jQuery('.chosen-select').chosen(); 
+//     jQuery('.chosen-select').chosen(); 
      setTimeout(function(){
        $('#mod1').click();
    },100);

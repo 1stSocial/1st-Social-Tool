@@ -1,8 +1,9 @@
 $(document).ready(
+        
 		function()
 		{
                     var url = $('#url').val();
-             
+                     $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
 			$('#body').redactor({
 				imageUpload: url+'/admin/item/temp',
                                 
@@ -22,14 +23,13 @@ $(document).ready()
     
      $('.fileupload').fileupload();
      
-    $(".chosen-select").chosen({width: "50%"});
+//    $(".chosen-select").chosen({width: "50%"});
  
     $('form').ajaxForm({
         beforeSubmit: function() {
-            
+          
         },
         success: function(data) {
-         
             savefun(data);
         }
      });
