@@ -10,6 +10,8 @@
  * http://www.opensource.org/licenses/MIT
  */
 body{
+    *padding: 0px!important;
+    *margin: 0px!important;
 background-attachment: fixed !important;	
 	}
 .horizontal-form .control-group label{

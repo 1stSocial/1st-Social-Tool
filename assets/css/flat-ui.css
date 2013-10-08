@@ -1668,6 +1668,11 @@ address {
 .select.select-block .btn {
   width: 50%;
 }
+label .select .btn
+{
+    width: 70px ! important;
+}
+
 .select .btn {
   width: 220px;
 }
