@@ -1,6 +1,7 @@
 <?php
 //include '/dropdown.php';
 ?>
+
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/create_board.js"></script>
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <?php echo form_open_multipart(site_url("/admin/home/logo_image/")); ?>
@@ -16,7 +17,7 @@
 
             
               <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%" class="control-label label label-info"  >Upload Images :</label>
-           <div>
+                   <div>
                <div style="margin-left: 33%" class="fileupload fileupload-new" data-provides="fileupload">
                         <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="" /></div>
                         <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
@@ -27,21 +28,22 @@
 
             
              <div>
- <?php echo form_label('Board Name:', 'name', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;")); ?>
-            <div class="controls">
+             
+ <?php echo form_label('Board Name:', 'name', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 15.5%;margin-top: 0.52%;")); ?>
+                     <div class="controls">
                 <input required="" class="form-control" type="text" style="margin-left: 33%!important;width: 46%"  class = "control-label" placeholder="Board Name" id="name1" name="name" ><div style =" color: red; display: none;padding-left:43%" id="berror"> Enter Board Name </div>
             </div>
                  </div>
               <div style="margin-top: 5px"></div>
              <div>  
-           <?php echo form_label('Board Title:', 'title', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?>
+           <?php echo form_label('Board Title:', 'title', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 17%;margin-top: 0.52%")); ?>
             <div class="controls">
                 <input required="" class="form-control" type="text" style="margin-left: 33%!important;width: 46%"  class = "control-label" placeholder="Board Title" id="title1" name="title" ><div style =" color: red; display: none;padding-left:43%" id="terror"> Enter Board Title </div>
             </div>   
               </div>
               <div style="margin-top: 5px"></div>
             <div class="control-group">
-                <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label label label-info",'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:11.5%")); ?>
+                <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label label label-info",'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;margin-right:10%")); ?>
                 <div class="controls">
                     <select required="" data-placeholder="Choose a Parent Tag..." tabindex="4" id="parentTag1" name="parentTag1" >
                         <option value="0"></option>
@@ -54,7 +56,7 @@
             </div>
             
              <div class="control-group">
-                <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:8%")); ?>
+                <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;margin-right:6.5%")); ?>
                 <div class="controls">
                     <div id="select_box" style="width:451px;">
                         <select required="" data-placeholder="Choose a Filterable Taxonomy..."  tabindex="4" id="taxo" name="taxo" >
@@ -64,7 +66,7 @@
             </div>
             <div style="clear: both"></div>
             <div class="control-group">
-                <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:14.5%")); ?>
+                <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;margin-right:14%")); ?>
                 <div class="controls">
                     <select data-placeholder="Choose a Theme..."  tabindex="4" id="theme" name="theme" >
                         <option value="0"></option>
@@ -80,7 +82,7 @@
             <?php if($access_level == 'admin') :?>
             
             <div class="control-group">
-                    <?php echo form_label('Domain :', 'domain', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:20.5%")); ?>
+                    <?php echo form_label('Domain :', 'domain', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;margin-right:20%")); ?>
                                     <div class="controls">
                                         <select data-placeholder="Choose a Domain..."   tabindex="4" id="domain" name="user_id[]" required="please select Domain">
                                             <option value="0"></option>
@@ -144,5 +146,6 @@
 		});
               }); 
                 jQuery('#file_upload').css('margin-left','33%');
-   
+                
+                
 	</script>
