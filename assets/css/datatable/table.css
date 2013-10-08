@@ -575,3 +575,115 @@ div.box {
 	border: 1px solid #8080FF;
 	background-color: #E5E5FF;
 }
+
+
+.pagination span a {
+  display: inline-block;
+  margin-right: -3px;
+  vertical-align: middle;
+}
+.pagination span a.active > a,
+.pagination span a.active > span {
+  background-color: #3498db;
+  color: #ffffff;
+}
+.pagination span a.active.previous > a,
+.pagination span a.active.next > a,
+.pagination span a.active.previous > span,
+.pagination span a.active.next > span {
+  margin: 0;
+}
+.pagination span a.active.previous > a,
+.pagination span a.active.next > a,
+.pagination span a.active.previous > span,
+.pagination span a.active.next > span,
+.pagination span a.active.previous > a:hover,
+.pagination span a.active.next > a:hover,
+.pagination span a.active.previous > span:hover,
+.pagination span a.active.next > span:hover,
+.pagination span a.active.previous > a:focus,
+.pagination span a.active.next > a:focus,
+.pagination span a.active.previous > span:focus,
+.pagination span a.active.next > span:focus {
+  background-color: #3498db;
+  color: #ffffff;
+}
+.pagination span a:first-child > a,
+.pagination span a:first-child > span {
+  border-radius: 6px 0 0 6px;
+  border-left: none;
+}
+.pagination span a:first-child.previous + li > a,
+.pagination span a:first-child.previous + li > span {
+  border-left-width: 0;
+}
+.pagination span a:last-child {
+  margin-right: 0;
+}
+.pagination span a:last-child > a,
+.pagination span a:last-child > span,
+.pagination span a:last-child > a:hover,
+.pagination span a:last-child > span:hover,
+.pagination span a:last-child > a:focus,
+.pagination span a:last-child > span:focus {
+  border-radius: 0 6px 6px 0;
+}
+.pagination span a.previous > a,
+.pagination span a.next > a,
+.pagination span a.previous > span,
+.pagination span a.next > span {
+  border-right: 2px solid #e3eef6;
+  font-size: 16px;
+  min-width: auto;
+  padding: 12px 17px;
+}
+.pagination span a.next > a,
+.pagination span a.next > span {
+  border-right: none;
+}
+@media (max-width: 480px) {
+  .pagination span a.next,
+  .pagination span a.previous {
+    background-color: #d4e6f1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    border-radius: 0 6px 6px 0;
+  }
+  .pagination span a.previous {
+    left: 0;
+    right: auto;
+    border-radius: 6px 0 0 6px;
+  }
+}
+.pagination span a > a,
+.pagination span a > span {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  border-left: 2px solid #e3eef6;
+  color: #ffffff;
+  line-height: 16px;
+  min-height: 41px;
+  min-width: 41px;
+  outline: none;
+  padding: 12px 10px;
+  text-align: center;
+  -webkit-transition: 0.2s ease-out;
+  -moz-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+  -webkit-backface-visibility: hidden;
+}
+.pagination span a > a:hover,
+.pagination span a > span:hover,
+.pagination span a > a:focus,
+.pagination span a > span:focus {
+  background-color: #3498db;
+}
+.pagination span a > a:active,
+.pagination span a > span:active {
+  background-color: #3498db;
+  color: #ffffff;
+}
