@@ -9,7 +9,7 @@
 
       <div class="control-group">
             <div class="controls">
-                <label style=" float: left;" class="control-label"  >Upload Image :</label>
+                <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Image :</label>
                 <div style='magrin-top:33px;padding-left:20%;'>
                     <div class="fileupload fileupload-new" data-provides="fileupload">
                         <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="<?php echo base_url() . '/' . $item['0']['image']; ?>" /></div>
@@ -28,19 +28,21 @@
     </div>-->
     <div class="control-group">
         <div class="controls">
-            <label style="float: left;" class="control-label" >Title :</label>
-            <div style='magrin-top:33px;padding-left:20%;'><input style="width: 90%" type="text" name="title" id="title" class="control-label" value="<?= $item['0']['title'] ?>" ></div>
+               <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info"  >Title :</label>
+             <div style='magrin-top:33px;padding-left:20%;'><input style="width: 90%" type="text" name="title" id="title" class="form-control" value="<?= $item['0']['title'] ?>" ></div>
         </div>
     </div>
-    <div class="control-group">
+      <div style="clear: both;margin: 1%"></div>
+<div class="control-group">
         <div class="controls">
-            <label style="float: left;" class="control-label " >body :</label>
-            <div style="width: auto;height: auto; overflow: scroll; margin-left: 20%;margin-right: 6%">
+            <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info">Body :</label>
+         <div style="width: auto;height: auto; overflow: scroll; margin-left: 20%;margin-right: 6%">
                 <textarea id="body" name="body"><?= $item['0']['body'] ?></textarea>
                 <input type="hidden" value="<?= $item['0']['item_id'] ?>" name="id" id="item_id">
             </div>
         </div>
     </div>
+       <div style="clear: both;margin: 1%"></div>
     <div class="controls" id="maintaddiv">
         <div id="taddiv">
             <?php
@@ -49,8 +51,11 @@
             foreach ($Tag['Parent'] as $data):
                 ?>
                 <div style='magrin-top:33px;padding-top:8px;'>
-                    <label class="control-label" style="float: left;width:20%"> <?= $data['name']; ?>  </label>
-                    <select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' id = '<?= $data['tag_id'] ?>' name=tag[]>
+                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info" ><?= $data['name']; ?> :</label>
+                       
+                    <!--<label class="control-label" style="float: left;width:20%"> <?= $data['name']; ?>  </label>-->
+                    <div style='magrin-top:33px;padding-left:20%;'>
+                     <select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' id = '<?= $data['tag_id'] ?>' name=tag[]>
                         <?php if (!empty($Tag['child'])): foreach ($Tag['child'] as $val): if ($val['parent_tag_id'] == $data['tag_id']): ?>
                                     <?php
                                     var_dump($item);
@@ -76,23 +81,28 @@
                         ?> 
                     </select>
 <?php endforeach; ?> 
-
+</div>
             </div>
         </div>
     </div>    
-
+ 
     <div class="controls" id="taxonomydiv">
         <div id="taxodiv" style="padding-top: 5px">
             <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
-                    <label style=" float: left;" class="control-label" ><?= $val['name'] ?> :</label>
-                    <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width:90%" class="control-label" id="<?= $val['id'] ?>" name="taxo" value="<?= $val['ival'] ?>"/><input type="hidden" value="<?= $val['id'] ?>" id="taxoid"/><div id="<?= $val['id'] ?>d"></div><div style="clear: both"></div></div>
+                    <!--<label style=" float: left;" class="control-label" ><?= $val['name'] ?> :</label>-->
+            <div style="clear: both;margin: 1%"></div>
+                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info" ><?= $val['name'] ?> :</label>
+                       
+                    <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width:90%" class="form-control" id="<?= $val['id'] ?>" name="taxo" value="<?= $val['ival'] ?>"/><input type="hidden" value="<?= $val['id'] ?>" id="taxoid"/><div id="<?= $val['id'] ?>d"></div><div style="clear: both"></div></div>
     <?php endforeach;
 endif;
 ?>
 
         </div>    
     </div>
-     <label style=" float: left;" class="control-label"  >Upload Gallery Images :</label>
+  <div style="clear: both;margin: 1%"></div>
+     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Gallery Images :</label>
+               
 <form>
                              <div id="queue"></div>
                              <input id="file_upload" name="file_upload" type="file" multiple="true">
@@ -101,7 +111,7 @@ endif;
                              ?>
                              <input id='folder_name' type="hidden" value="<?php echo $timestamp;?>">
                      </form>
-  <div id="image_div">
+        <div style="margin-left: 19%" id="image_div">
            <?php
            if(isset($image_div))
            {
@@ -109,10 +119,11 @@ endif;
            }
            ?>
        </div>
+     <div style="clear: both"></div>
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/update_item/"); ?>">
             <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Update Item" onclick="//savefun('<?php // echo site_url("/admin/item/update_item/");  ?>')" />
-            <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close();">
+            <input type="button" class="btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close();">
         </div>
    
     <input type="hidden" value="<?= site_url(); ?>" id="url">

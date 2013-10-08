@@ -27,9 +27,11 @@
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
 
-<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+        <div class="modal-content"> 
     <div class="modal-header">
-        <h3 style="margin-left:5px;">Select Theme</h3>
+        <h3 style="margin-left:33%;">Select Theme</h3>
 
     </div>
     <div class="modal-body">
@@ -54,10 +56,11 @@ endif; ?>
     <div class="modal-footer">
         <div class="control-group div_wrapper">
              <input type="button" style="margin-left: 20%" id="selectbtn" name="add" class="btn btn-primary footer_btn" value="Select Theme" />
-            <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
+            <input type="button" class=" btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn">
         </div>     
 
     </div>
     <input type ="hidden" id="ur" value="<?php echo site_url(); ?>">
 </div>
-
+</div>
+    </div>

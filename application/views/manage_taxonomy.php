@@ -48,22 +48,24 @@ if (isset($option))
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 
-<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content"> 
     <div class="modal-header">
-        <h3 style="margin-left:5px;">Create Taxonomy</h3>
+        <h3 style="margin-left:33%;">Create Taxonomy</h3>
         <p> <? if (isset($success)) echo $success; ?> </p>
     </div>
     <div id="con" class="modal-body div_wrapper"><!-- Password input-->
         <div class="control-group" >
-            <?php echo form_label('Name:', 'name', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?> 
+            <?php echo form_label('Name:', 'name', array("class"=>"control-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?> 
             <div class="controls" style="float:left;">
-                <input type="text" style="margin-left: 55px;"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" />
+                <input  type="text" class="form-control" style="margin-left: 55px;width: 92%"  class = "control-label" placeholder="Taxonomy Name" id="name" name="name" />
             </div><div style =" color: red; display: none;padding-left:43%;clear: both;" id="taxoname"> Enter Taxonomy Name </div>
         </div> 
         <div id="error" style ="color:red; display: none; ">Enter Taxonomy Name</div> 
-        <div style="clear: both;"></div>
+        <div style="clear: both;margin: 9%"></div>
         <div class="control-group">
-            <?php echo form_label('Type:', 'type', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?>
+            <?php echo form_label('Type:', 'type', array("class"=>"control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 17%;margin-top: 0.52%")); ?>
             <div class="controls">
                 <select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="type" name="type" style="margin-left: 60px;">
                     <option value="select">Select</option>
@@ -73,7 +75,7 @@ if (isset($option))
             </div>
         </div>    
         <div class="control-group">
-            <?php echo form_label('Parent Tag:', 'parent_tag', array('class' => "control-label", 'style' => "float:left;margin-left:10px;")); ?>
+            <?php echo form_label('Parent Tag:', 'parent_tag',  array("class"=>"control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 10.5%;margin-top: 0.52%")); ?>
             <div style="margin-left: 100px">
                 <select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
                     <option value="0">Select</option>
@@ -91,8 +93,10 @@ if (isset($option))
         <div class="control-group"> 
             <div class="controls">
                 <input type="button" style="float: left; margin-left:170px; " name="save" class="btn btn-primary footer_btn" value="Create Taxonomy" onclick="savefun()" />
-                <input type="button" id="close" style="float: left;" class="close btn btn-primary footer_btn  " data-dismiss="modal" aria-hidden="true" value="Close" onclick="c()">      
+                <input type="button" id="close" style="float: left;" class="btn btn-primary footer_btn  " data-dismiss="modal" aria-hidden="true" value="Close" onclick="c()">      
             </div>
         </div> 
     </div>
 </div>
+</div>
+    </div>

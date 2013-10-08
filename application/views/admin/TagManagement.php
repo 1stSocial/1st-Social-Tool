@@ -43,26 +43,26 @@ switch ($option) {
 
 <a href="#myModal" role="button" id="mod" style="display: none" class="btn" data-toggle="modal"></a>
 
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <?php
-//    include '/dropdown.php';
-    ?>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+        <div class="modal-content"> 
+    
 <?php echo form_open('admin/home/create_tags', array('name' => 'myform')); ?>
 
     <div class="modal-header">
-        <h3 id="myModalLabel">Create Tag</h3>
+        <h3 id="myModalLabel" style="margin-left: 35%">Create Tag</h3>
     </div>
-    <div class="modal-body div_wrapper">
-        <div class="control-group">
-<?php echo form_label('Name :', 'nametag', array('class' => "control-label", 'style' => "float:left;padding-right:41px")); ?>
+            <div class="modal-body div_wrapper" style="height: 130px">
+        <div class="control-group" style="margin-left: 5%">
+<?php echo form_label('Name :', 'nametag', array('class' => "control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 10%;margin-top: 0.52%")); ?>
             <div class="controls">
-                <input type="text" style="float: left" id="name" placeholder="TagName" name="name" onblur="check()">
+                <input type="text" class="form-control" style="float: left;width:47%" id="name" placeholder="TagName" name="name" onblur="check()">
                 <div><?php echo validation_errors(); ?></div> <div style =" color: red; display: none;" id="error"> Enter tag Name </div>
             </div>
         </div>
-        <br>
-        <div class="control-group">    
-<?php echo form_label('Parent Tag :', 'id', array('class' => "control-label", 'style' => "clear:both;float:left")); ?>
+        
+     <div class="control-group" style="margin-left: 5%!important;margin-top:8%!important ">    
+        <?php echo form_label('Parent Tag :', 'id', array('class' => "control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 4%;margin-top: 0.52%")); ?>
             <div class="controls" style="float: left">
                 <select data-placeholder="Choose a Parent Tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" >
                     <option value="0">No Parent</option>
@@ -74,18 +74,20 @@ endif;
                 </select>
             </div><div style =" color: red; display: none;" id="perror"> Select Parent tag </div>
         </div><div style="height: 20px"></div>
+       
     </div>
     <div class="modal-footer">
         <div class="control-group">  
             <div class="div_wrapper" style="padding-left: 33%">
                 <input type="button" id="savebtn" name="save" class="btn btn-primary footer_btn" value="Create Tag" onclick="savefun()">
-                <input type="button" id="close" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" onclick="cl()">
+                <input type="button" id="close" class="btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" onclick="cl()">
             </div>
         </div>
     </div>    
 <?php form_close(); ?>
 </div>
-
+</div>
+</div>
 <input type="hidden" id="ur" value="<?= site_url('/admin/home/tag_Management') ?>">
 <div id="edit1"></div>
 <div id="createboard"></div>          

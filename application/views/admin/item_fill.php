@@ -4,15 +4,14 @@
         
     <?php echo form_open_multipart(site_url("/admin/Item/test/")); ?>
 <div class="header" style="margin-left  : 40%">
-        <input type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
+        <input class="form-control" type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
         <h3>Add Item <?= $board_name ?></h3> 
-        
-        
+         
     </div>
 <div class="container">
         <div class="control-group">
             <div class="controls">
-                <label style=" float: left;" class="control-label"  >Upload Image :</label>
+                <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Image :</label>
                 <div style='magrin-top:33px;padding-left:20%;'>
                     <div class="fileupload fileupload-new" data-provides="fileupload">
                         <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc" src="" /></div>
@@ -34,23 +33,24 @@
     
         <div class="control-group">
             <div class="controls">
-                <label style=" float: left;" class="control-label"  >Title :</label>
-                <div style='magrin-top:33px;padding-left:20%;'><input type="text" id="item_title" name="title" class="control-label" style="width: 90%"></div>
+                <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info"  >Title :</label>
+                <div style='magrin-top:33px;padding-left:20%;'><input type="text" id="item_title" name="title" class="form-control" style="width: 90%"></div>
             </div>
         </div>
-
-
-        <label style=" float: left;" class="control-label"  >Body :</label>
-        <div style="width: auto;height: auto; overflow: scroll; margin-left: 20%;margin-right: 6%">
+    
+    <div style="clear: both;margin: 1%"></div>
+    
+        <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info">Body :</label>
+        <div style="width: auto;height: auto; overflow: scroll; margin-left: 22%;margin-right: 6%">
             <textarea id="body1" name="body1" ></textarea>
         </div>
-        
+        <div style="clear: both;margin: 1%"></div>
         <div class="controls" id="taxonomydiv" style="margin-top: 8px">
             <div id="taxodiv">
                 <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
-                        <label style=" float: left;" class="control-label" ><?= $val->name ?> :</label>
-                        <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width: 90%;" class="control-label" id="<?= $val->id ?>" name="taxo"/><input type="hidden" value="<?= $val->id ?>" id="taxoid"/><div id="<?= $val->id ?>d"></div><div style="clear: both"></div></div>
-
+                        <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info" ><?= $val->name ?> :</label>
+                        <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width: 90%;" class="form-control" id="<?= $val->id ?>" name="taxo"/><input type="hidden" value="<?= $val->id ?>" id="taxoid"/><div id="<?= $val->id ?>d"></div><div style="clear: both"></div></div>
+                        <div style="clear: both;margin: 1%"></div>
                         <?php
                     endforeach;
                 endif;
@@ -59,7 +59,7 @@
         </div>
        <!--  image upload  -->
       
-                <label style=" float: left;" class="control-label"  >Upload Gallery Images :</label>
+                <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Gallery Images :</label>
                
                 <form>
                              <div id="queue"></div>
@@ -78,7 +78,7 @@
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/insert_item/"); ?>">
             <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Create Item"/>
-            <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
+            <input type="button" class="btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
         </div>
    
     <input type="hidden" value="<?= site_url(); ?>" id="url">
