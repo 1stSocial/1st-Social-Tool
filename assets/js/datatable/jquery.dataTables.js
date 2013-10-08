@@ -11438,9 +11438,9 @@
 		"sPageJUIPrev": "",
 		
 		/* Full numbers paging buttons */
-		"sPageButton": "paginate_button",
+		"sPageButton": "btn btn-info",
 		"sPageButtonActive": "paginate_active",
-		"sPageButtonStaticDisabled": "paginate_button paginate_button_disabled",
+		"sPageButtonStaticDisabled": "btn btn-info paginate_button_disabled",
 		"sPageFirst": "first",
 		"sPagePrevious": "previous",
 		"sPageNext": "next",
@@ -11457,7 +11457,7 @@
 		"sWrapper": "dataTables_wrapper",
 		"sFilter": "dataTables_filter",
 		"sInfo": "dataTables_info",
-		"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
+		"sPaging": "dataTables_paginate pagination pagination-info paging_", /* Note that the type is postfixed */
 		"sLength": "dataTables_length",
 		"sProcessing": "dataTables_processing",
 		
@@ -11667,10 +11667,10 @@
 	
 				$(nPaging).append(
 					'<a  tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+" "+oClasses.sPageFirst+'">'+oLang.sFirst+'</a>'+
-					'<a  tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+" "+oClasses.sPagePrevious+'">'+oLang.sPrevious+'</a>'+
+					'<a  tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+"  "+oClasses.sPagePrevious+'">'+oLang.sPrevious+'</a>'+
 					'<span></span>'+
-					'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+" "+oClasses.sPageNext+'">'+oLang.sNext+'</a>'+
-					'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+" "+oClasses.sPageLast+'">'+oLang.sLast+'</a>'
+					'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+"  "+oClasses.sPageNext+'">'+oLang.sNext+'</a>'+
+					'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+"  "+oClasses.sPageLast+'">'+oLang.sLast+'</a>'
 				);
 				var els = $('a', nPaging);
 				var nFirst = els[0],
@@ -11760,7 +11760,7 @@
 				{
 					sList += (iCurrentPage !== i) ?
 						'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+'">'+oSettings.fnFormatNumber(i)+'</a>' :
-						'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButtonActive+'">'+oSettings.fnFormatNumber(i)+'</a>';
+						'<a tabindex="'+oSettings.iTabIndex+'" class="'+oClasses.sPageButton+'">'+oSettings.fnFormatNumber(i)+'</a>';
 				}
 				
 				/* Loop over each instance of the pager */
