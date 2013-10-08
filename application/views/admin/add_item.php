@@ -1,6 +1,8 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/create_item.js"></script>
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
-<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"> 
     <?php echo form_open('admin/Item/fill_value', 'additem'); ?>
     <div class="modal-header">
         <input type="hidden" id="url" value="<?= site_url(); ?>">
@@ -8,8 +10,8 @@
     </div>
     <div class="modal-body div_wrapper"> 
         <br/>
-        <label class="control-label" style="float: left">Choose Board :</label>
-        <select required="" data-placeholder="Choose a Board..." class="chosen-select" style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
+        <label class="control-label label label-info" style=" float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%">Choose Board :</label>
+        <select required="" data-placeholder="Choose a Board..."  style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
             <option value="0"></option>
             <? if (!empty($boards)): foreach ($boards as $val): ?>
                     <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
@@ -26,11 +28,13 @@
         <div class="modal-footer div_wrapper">
             <input type="submit" value="Create" id="sub" name="sub" class="btn btn-primary " style="display: none">
             <input type="button" style="margin-left: 30%" value="Create" id="sub1" name="sub1" class="btn btn-primary footer_btn">
-            <input type="button" class="close btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
+            <input type="button" class="btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close()">
         </div>
     </div>
 <?php echo form_close(); ?>
 </div>
+</div>
+    </div>
 <table class="table table-striped ">
     <thead>
         <tr>
