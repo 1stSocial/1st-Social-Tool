@@ -2075,12 +2075,15 @@
 			
 			var sSearchStr = oSettings.oLanguage.sSearch;
 			sSearchStr = (sSearchStr.indexOf('_INPUT_') !== -1) ?
-			  sSearchStr.replace('_INPUT_', '<input type="text" />') :
-			  sSearchStr==="" ? '<input type="text" />' : sSearchStr+' <input type="text" />';
+			  sSearchStr.replace('_INPUT_', '<input type="text" class="form-control" placeholder="Search" style="width:25%;margin-left:75%"/>') :
+			  sSearchStr==="" ? '<input type="text" class="form-control"/>' : ' <input type="text" class="form-control" placeholder="Search" style="width:25%;float:right"/>';
 			
 			var nFilter = document.createElement( 'div' );
 			nFilter.className = oSettings.oClasses.sFilter;
-			nFilter.innerHTML = '<label>'+sSearchStr+'</label>';
+			nFilter.innerHTML = '<div class= "input-group input-group-rounded">'+sSearchStr+
+                                            '<span class="input-group-btn"><button class="btn btn-info" ><span class="fui-search"></span></button>'+
+                                            '</span>'+    
+                                            '</div>';
 			if ( !oSettings.aanFeatures.f )
 			{
 				nFilter.id = oSettings.sTableId+'_filter';
