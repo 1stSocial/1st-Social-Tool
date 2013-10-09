@@ -106,7 +106,7 @@
 
 
                                 <link href="<?= base_url(); ?>assets/css/flat-ui.css" rel="stylesheet">
-                                <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/favicon.ico">
+                                <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/logo_mini.ico">
                                 <link rel="stylesheet" href="<?= base_url(); ?>assets/bootstrap/css/bootstrap.css"/>
                                 <link rel="stylesheet" href="<?= base_url(); ?>assets/js/bootstrap-fileupload/bootstrap-fileupload.css">
 
