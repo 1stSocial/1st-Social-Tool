@@ -45,7 +45,7 @@
             <div class="control-group">
                 <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label label label-info",'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;margin-right:10%")); ?>
                 <div class="controls">
-                    <select required="" data-placeholder="Choose a Parent Tag..." tabindex="4" id="parentTag1" name="parentTag1" >
+                    <select required="" multiple="" data-placeholder="Choose a Parent Tag..." tabindex="4" id="parentTag1" name="parentTag1" >
                         <option value="0"></option>
                         <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                                 <option value="<?= $key ?>"><?= $Tag ?></option>

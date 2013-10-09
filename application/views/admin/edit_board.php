@@ -47,15 +47,17 @@
                 <div class="control-group">
                <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label label label-info",'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;margin-right:10%"));
                
-                    $sel = $boardData[0]->parent_tags;?>
+                    $sel = explode(',', $boardData[0]->parent_tags);
+//                    var_dump($sel);
+                    ?>
                     <div class="controls">
-                        <select data-placeholder="Choose a Parent..." style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
+                        <select data-placeholder="Choose a Parent..." multiple="" style="width:350px;" tabindex="4" id="parentTag1" name="parentTag1" >
                             <option value="0"></option>
                             <?
                             if(!empty($parenTag)):
                                 foreach ($parenTag as $key => $Tag):
                                     $selected = '';
-                                    if ($key == $sel) {
+                                    if (in_array($key, $sel) ) {
                                         $selected = 'selected';  
                                     }
                                     else
