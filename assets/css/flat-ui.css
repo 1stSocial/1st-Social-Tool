@@ -429,7 +429,21 @@ body {
   font-size: 14px;
   line-height: 1.231;
   color: #2980b9;
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
+  
+  
+      margin-bottom:30px;
+    background-color: #D1DFEE!IMPORTANT;
+    /*background-image:url(../img/internal/texture_bg.png);*/
+    /*background-image:-moz-linear-gradient(top,#EBF3F8 0,rgba(0,0,0,0) 100%),url(../img/internal/texture_bg.png);*/
+/*    background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#EBF3F8),color-stop(100%,rgba(0,0,0,0))),url(../img/internal/texture_bg.png);
+    background-image:-webkit-linear-gradient(top,#EBF3F8 0,rgba(0,0,0,0) 100%),url(../img/internal/texture_bg.png);
+    background-image:-o-linear-gradient(top,#EBF3F8) 0,rgba(0,0,0,0) 100%),url(../img/internal/texture_bg.png);
+    background-image:-ms-linear-gradient(top,#EBF3F8 0,rgba(0,0,0,0) 100%),url(../img/internal/texture_bg.png);*/
+    /*background-image:linear-gradient(to bottom,#EBF3F8 0,rgba(0,0,0,0) 100%),url(../img/internal/texture_bg.png);*/
+    /*filter:progid:dximagetransform.microsoft.gradient(startColorstr='#a65e5876', endColorstr='#00000000', GradientType=0),url(../img/internal/texture_bg.png)*/
+
+  
 }
 a {
   color: #16a085;
@@ -3770,6 +3784,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 10px 25px;
   line-height: 1.231;
   border-top: 2px solid #eef0f0;
+  background-color: #EBF3F8;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
