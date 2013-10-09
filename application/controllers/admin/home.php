@@ -133,8 +133,10 @@ class Home extends CI_Controller {
                 $tagmod = new Tag_model();
                 $data['tagId'] = $tagmod->AllchildTagsid($data['parentTag']);
                 // save tags information
-                $boardTagModel = new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['tagId']));
-                $boardTagModel->saveBoardTag();
+              
+                
+                $boardTagModel = new Board_tag_model(array('boardId' => $boardId, 'tagId' => $data['parentTag']));
+                $boardTagModel->save_board_tag($data['parentTag']);
 
                 $boardModel->set_theme(array('board_id' => $boardId, 'theme_id' => $data['theme_id']));
 
@@ -178,7 +180,7 @@ class Home extends CI_Controller {
 
             //get selected child tag
             $boardTagModel = new Board_tag_model();
-            $selectedChildTag = $boardTagModel->getChildTagByBoard($boardId);
+            $selectedChildTag = $boardTagModel->getChildTagByBoard_arr($boardId);
             $viewData['selectedChildTag'] = $selectedChildTag;
 
             //get all partners 
