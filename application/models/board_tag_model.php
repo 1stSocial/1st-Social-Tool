@@ -49,12 +49,12 @@ Class Board_tag_model extends CI_Model {
         {
         foreach($this->_tagId as $value)
         {
-            
-      
+          if($value != 0)
         $data = array("board_id" => $this->_boardId, "tag_id" => $value);
           }
             
         }
+  
         $query = $this->db->get_where('board_tags', $data);
         if ($query->num_rows() > 0) {
             $option = $query->result();
@@ -66,7 +66,28 @@ Class Board_tag_model extends CI_Model {
             $this->db->insert('board_tags', $data);
         }
     }
-     // get child tags of board
+    
+    public function save_board_tag($dt)
+    {
+        if(is_array($dt))
+        {
+        foreach($dt as $value)
+        {
+          if($value != 0)
+          {
+        $data1 = array("board_id" => $this->_boardId, "tag_id" => $value);
+          $this->db->insert('board_tags', $data1);}
+          }
+            
+        }
+        else
+        {
+            $data1 = array("board_id" => $this->_boardId, "tag_id" => $dt);
+          $this->db->insert('board_tags', $data1);
+        }
+    }
+
+        // get child tags of board
         public function getChildTagByBoard($boardId){
              $query = $this->db->get_where('board_tags',array( "board_id" =>$boardId));
             if ($query->num_rows()>0){
@@ -74,7 +95,14 @@ Class Board_tag_model extends CI_Model {
             }
         }
         
-        // delete tags by boardId 
+        public function getChildTagByBoard_arr($boardId){
+             $query = $this->db->get_where('board_tags',array( "board_id" =>$boardId));
+            if ($query->num_rows()>0){
+            return $query->result_array();         
+            }
+        }
+
+                // delete tags by boardId 
         public function deleteTags($boardId){        
           $this->db->delete('board_tags', array('board_id' => $boardId));
         }

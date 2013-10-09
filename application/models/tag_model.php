@@ -319,10 +319,16 @@ Class Tag_model extends CI_Model
 
         public function AllchildTagsid($parentTag)
         {
-           $query =  $this->db->get('tags',array('parent_tag_id'=>$parentTag));
+            $result = array();
+          
+            foreach ($parentTag as $value) 
+            {
+            
+             $query =  $this->db->get('tags',array('parent_tag_id'=>$value));
             foreach ($query->result() as $val)
             {
                 $result[] = $val->id;
+            }
             }
             return $result;
         }

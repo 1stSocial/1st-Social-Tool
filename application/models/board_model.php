@@ -104,9 +104,11 @@ Class Board_model extends CI_Model {
     }
 
     public function saveBoard($val,$img) {
+        
+       
         $data = array(
             "name" => $this->_name,
-            "parent_tags" => $this->_parentTag,
+            "parent_tags" => implode(',',$this->_parentTag),
             "createdTime" => $this->_createdTime,
             "created_by" => $this->_createdBy,
             "Filterable_taxo" =>  $val['taxo'],
@@ -115,7 +117,7 @@ Class Board_model extends CI_Model {
         );
         // select clause to check if board is exist
         $query = $this->db->get_where('board', array("name" => $this->_name,
-            "parent_tags" => $this->_parentTag,
+            "parent_tags" => implode(',',$this->_parentTag),
             "created_by" => $this->_createdBy
         ));
         if ($query->num_rows() > 0) {
