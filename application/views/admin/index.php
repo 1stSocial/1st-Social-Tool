@@ -19,8 +19,8 @@
                     <td><?= $val->parent_tags ?></td>
                     <td><?= $val->user_name ?></td>
                     <td><? echo date('d-m-Y', strtotime($val->createdTime)); ?></td>
-                    <td><div class="btn-group"> <a href="javascript:edit(<?= $val->board_id ?>)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-                            <a href="javascript:deletbox('<?php  echo site_url('/admin/home/delete_board/' . $val->board_id) ?>')"  class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
+                    <td><div class="btn-group"> <a href="javascript:edit(<?= $val->board_id ?>)" class="btn btn-primary fui-new"><i class="icon-edit icon-white"></i> Edit</a>
+                            <a href="javascript:deletbox('<?php  echo site_url('/admin/home/delete_board/' . $val->board_id) ?>')"  class="btn btn-danger fui-trash"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
                 </tr>
             <? endforeach;
         endif;

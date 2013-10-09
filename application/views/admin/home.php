@@ -118,7 +118,7 @@ switch ($access_level)
                                 </li>
 			<?php endif; ?>
                                
-                                    		<a class="btn btn-danger" href="<?= base_url(); ?>index.php/admin/home/logout"><i class="icon-off icon-white"></i> Logout</a>
+                                    		<a class="btn btn-danger fui-user" href="<?= base_url(); ?>index.php/admin/home/logout"><i class="icon-off icon-white"></i> Logout</a>
                                 </ul>
           		
       </div>

@@ -20,8 +20,8 @@
                     <td><?= $val->domain_name ?></td>
                     <td><?= $val->access_level ?></td>
                     <td>
-                     <div class="btn-group"> <a href="javascript:edit('<?php echo site_url('/admin/new_user/edit_user/' . $val->id) ?>')" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-                     <a href="javascript:deletbox('<?php echo site_url('/admin/new_user/delete_user/' . $val->id) ?>')" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div>
+                     <div class="btn-group"> <a href="javascript:edit('<?php echo site_url('/admin/new_user/edit_user/' . $val->id) ?>')" class="btn btn-primary fui-new"><i class="icon-edit icon-white"></i> Edit</a>
+                     <a href="javascript:deletbox('<?php echo site_url('/admin/new_user/delete_user/' . $val->id) ?>')" class="btn btn-danger fui-trash"><i class="icon-trash icon-white"></i> Delete</a> </div>
                     </td>
                 </tr>
             <?

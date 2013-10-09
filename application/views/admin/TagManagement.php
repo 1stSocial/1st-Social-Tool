@@ -16,8 +16,8 @@
                 <tr>
                     <td><?= $val->id ?></td>  
                     <td><?= $val->name ?></td>
-                    <td><div class="btn-group"> <a onclick="edit(<?= $val->id ?>)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-                            <a href="javascript:deletbox('<?php echo site_url('/admin/home/delete_parenttag/' . $val->id) ?>')"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
+                    <td><div class="btn-group"> <a onclick="edit(<?= $val->id ?>)" class="btn btn-primary fui-new"><i class="icon-edit icon-white"></i> Edit</a>
+                            <a href="javascript:deletbox('<?php echo site_url('/admin/home/delete_parenttag/' . $val->id) ?>')"   class="btn btn-danger fui-trash"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
                 </tr>
             <? endforeach;
         endif;

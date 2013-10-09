@@ -36,8 +36,8 @@ video {
                     <td><?= $val->created_by ?></td>  
                     <td><?= $val->status ?></td>  
                     <td><?= $val->createdTime ?></td>  <? /*  href=".$val->id) ?>"  , */ ?>
-                    <td><div class="btn-group"> <a href=<?php echo site_url('/admin/Item/edit_item/'.$val->id);?> class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-                            <a href="javascript:deletbox('<?php echo site_url('/admin/Item/delete_item/' . $val->id) ?>')" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
+                    <td><div class="btn-group"> <a href=<?php echo site_url('/admin/Item/edit_item/'.$val->id);?> class="btn btn-primary fui-new"><i class="icon-edit icon-white"></i> Edit</a>
+                            <a href="javascript:deletbox('<?php echo site_url('/admin/Item/delete_item/' . $val->id) ?>')" class="btn btn-danger fui-trash"><i class="icon-trash icon-white"></i> Delete</a> </div></td>
                 </tr>
     <? endforeach;
 endif; ?>
