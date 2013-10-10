@@ -1,12 +1,13 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/item_edit.js"></script>
 
 <?php echo form_open_multipart(site_url("/admin/Item/test/")); ?>
-
+<div id="load" class="loader"></div>
+        <div id="fad">
 <div class="header" style="margin-left: 40%">
     <h3>Edit Item <?= $item['0']['name'] ?></h3>
 </div>
 <div class="container"> 
-
+    
       <div class="control-group">
             <div class="controls">
                 <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Image :</label>

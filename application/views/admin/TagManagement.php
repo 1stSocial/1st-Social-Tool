@@ -45,7 +45,9 @@ switch ($option) {
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
  <div class="modal-dialog">
-        <div class="modal-content"> 
+      <div id="load" class="loader"></div>
+        <div id="fad">   
+     <div class="modal-content"> 
     
 <?php echo form_open('admin/home/create_tags', array('name' => 'myform')); ?>
 
@@ -87,7 +89,7 @@ endif;
 <?php form_close(); ?>
 </div>
 </div>
-</div>
+</div></div>
 <input type="hidden" id="ur" value="<?= site_url('/admin/home/tag_Management') ?>">
 <div id="edit1"></div>
 <div id="createboard"></div>          

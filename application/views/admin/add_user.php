@@ -5,6 +5,8 @@
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+         <div id="load" class="loader"></div>
+        <div id="fad">   
         <div class="modal-content"> 
     <div class="modal-header">
         <h3 id="myModalLabel" style="margin-left: 35%">Create User</h3>
@@ -114,7 +116,7 @@
     </div>
     <input type="hidden" value="<?=  site_url();?>" id="url">
     
-</div>
+</div></div>
         </div>
     </div>
 <div id="create_dom" >

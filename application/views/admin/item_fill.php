@@ -3,6 +3,8 @@
 <!--<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
         
     <?php echo form_open_multipart(site_url("/admin/Item/test/")); ?>
+<div id="load" class="loader"></div>
+        <div id="fad">
 <div class="header" style="margin-left  : 40%">
         <input class="form-control" type="hidden" value='<?= $board_id; ?>' id="bord_id" name='bord_id'>
         <h3>Add Item <?= $board_name ?></h3> 
@@ -85,6 +87,7 @@
    
     <input type="hidden" value="<?= site_url(); ?>" id="url">
 </div>
+            </div>
 <script type="text/javascript">
     
 		

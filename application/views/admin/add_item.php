@@ -2,6 +2,8 @@
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
 <div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+        <div id="load" class="loader"></div>
+        <div id="fad">
         <div class="modal-content"> 
     <?php echo form_open('admin/Item/fill_value', 'additem'); ?>
     <div class="modal-header">
@@ -36,7 +38,7 @@
     </div>
 <?php echo form_close(); ?>
 </div>
-</div>
+</div></div>
     </div>
 <table class="table table-striped ">
     <thead>

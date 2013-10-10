@@ -7,6 +7,8 @@
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+         <div id="load" class="loader"></div>
+        <div id="fad">   
         <div class="modal-content"> 
     <div class="modal-header">
         <h3 id="myModalLabel" style="margin-left: 35%">Edit <?=$val['0']['access_level'];?></h3>
@@ -142,7 +144,7 @@
                 <input type="button" id="closebtn" class="btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close">
             </div>
         </div>
-    </div>
+    </div></div>
     <input type="hidden" value="<?=  site_url();?>" id="url">
 </div>
         </div>

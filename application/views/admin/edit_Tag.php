@@ -6,6 +6,8 @@
 <a href="#myModal"  role="button" id="mod1"  class="btn" data-toggle="modal" value="add"></a>
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+         <div id="load" class="loader"></div>
+        <div id="fad">
         <div class="modal-content"> 
     <input type="hidden" id="id" name="id" value=<?=$id?>>
     <div class="modal-header">
@@ -51,5 +53,5 @@
         </div>
     </div>
 </div>
-        </div>
+        </div></div>
     </div>
