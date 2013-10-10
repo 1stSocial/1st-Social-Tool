@@ -125,7 +125,7 @@ class Home extends CI_Controller {
             // save board information 
             $boardModel = new Board_model($data);
             $boardId = $boardModel->saveBoard($val,$img);
-            if (is_numeric($boardId)) {
+            if (is_numeric($boardId)) { 
                 // save user information 
                 $domian_data = array('board_id' => $boardId, 'domain_id' => $domain_id);
                 $domain_model->save_domain_board($domian_data);
