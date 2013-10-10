@@ -8,6 +8,8 @@
 <input type="hidden" id="id" value="<?php echo $id; ?>" name="id" >
 <div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
      <div class="modal-dialog">
+          <div id="load" class="loader"></div>
+        <div id="fad">
         <div class="modal-content"> 
     <div class="modal-header">
         <h3 style="margin-left:33%">Edit Taxonomy</h3>
@@ -83,7 +85,7 @@ endif;
         </div> 
 
     </div>
-</div>
+</div></div>
          </div>
 </div>
 <input type ="hidden" id ="ur" value="<? echo site_url('/taxonomy/edit_taxonomy'); ?>"/>

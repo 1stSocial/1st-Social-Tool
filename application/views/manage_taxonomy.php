@@ -50,6 +50,8 @@ if (isset($option))
 
 <div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
+           <div id="load" class="loader"></div>
+        <div id="fad">
         <div class="modal-content"> 
     <div class="modal-header">
         <h3 style="margin-left:33%;">Create Taxonomy</h3>
@@ -99,4 +101,4 @@ if (isset($option))
     </div>
 </div>
 </div>
-    </div>
+    </div></div>
