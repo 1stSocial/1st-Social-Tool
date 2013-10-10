@@ -189,11 +189,13 @@ Class Board_model extends CI_Model {
         //print_r($data1);die;
         $query = $this->db->update('board', $data1);
 
-        $data2 = array('tag_id' => "$data[parentTag]");
-        $this->db->where(array('board_id' => $data['id']));
-
-        $query = $this->db->update('board_tags', $data2);
-
+        $this->db->delete('board_tags', array('board_id' => $data['id']));
+        foreach ($data["parentTag"] as $tag_val)
+        {
+            $data2 = array('board_id' => $data['id'],'tag_id' => "$tag_val");
+            $query = $this->db->insert('board_tags', $data2);
+        }
+        
         $this->db->delete('board_domain', array('board_id' => $data['id']));
         
                 $data3 = array('board_id' => "$data[id]", 'domain_id' => "$data[domain]");
