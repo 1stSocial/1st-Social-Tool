@@ -182,8 +182,8 @@ Class Board_model extends CI_Model {
         
          $this->db->where('board_id',$data['id']);
          $this->db->update('board_page',$data3);
-        
-        $data1 = array('name' => "$data[name]",'parent_tags' => "$data[parentTag]",'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]",'board_title'=>"$data[title]");
+        $val = implode(',',$data["parentTag"]);
+        $data1 = array('name' => "$data[name]",'parent_tags' => $val,'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]",'board_title'=>"$data[title]");
 
         $this->db->where(array('id' => $data['id']));
         //print_r($data1);die;
