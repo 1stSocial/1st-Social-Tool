@@ -9,33 +9,59 @@ jQuery(document).ready(function() {
 jQuery('#body').redactor();
 
 jQuery('#sub1').click(function (){
+      
     var id = jQuery('#boardval').val();
+    var parent_id = jQuery('#parent_id').val();
+  
    if(id==0)
        {
-//           alert('abcd');
+
        }
    else
        {
-
-//           for(var i=0;i< tag_id.length;i++)
-//               {
-//                   alert(tag_id[i]);
-//               }
-           
+           if(parent_id != 0)
            jQuery('#sub').click();
        }
 });    
 });
 
 
-
-
-
-function change_val()
+function get_parent_change_val()
 {
     var id = jQuery('#boardval').val();
     var url = jQuery('#url').val();
     
+    var dataval = {
+        'id': id
+    };
+    $('#parent_tag').html("");
+    $('#add').html("");
+     
+    jQuery.ajax({
+        type: "POST",
+        url: url + '/admin/Item/parenttag',
+        data: dataval,
+        success: function(res) {
+
+                value = "";
+                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 23%;'>" + "Select Parent Tag" + ":</label>" +res+'</div>'
+                $('#parent_tag').html(value);
+                  $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+
+        },
+        error: function(res)
+        {
+            alert(res);
+        }
+   });
+}
+
+
+function change_val()
+{
+    var id = jQuery('#parent_id').val();
+    var url = jQuery('#url').val();
+   
     var dataval = {
         'id': id
     };
@@ -55,7 +81,7 @@ function change_val()
             $.each(obj['tag']['Parent'], function(i, data) {
                tag_id[j] =  data['tag_id'];
                 value = "";
-                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 20%;'>" + data['name'] + ":</label>" +
+                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 23%;'>" + data['name'] + ":</label>" +
                         "<select required='' data-placeholder='Choose...' multiple  style='width:350px;margin-right:5px!important' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
                         + "<option> </option>";
                 val2 = "";
