@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
                 {
                     return  false;
                 }
-               
+             show();  
         },
         success: function(data) {
           
@@ -88,6 +88,7 @@ function change()
 //                     jQuery('.chosen-select').chosen();
 //                     jQuery('#taxo_chosen').css('width', '49%');
 //                     jQuery('#taxo_chosen').css('margin-left', '2.6%');
+               
             }
         });
 }
@@ -101,7 +102,7 @@ function change()
      var taxo_id = jQuery('#taxo').val();
       var theme_id = jQuery('#theme').val();
        var title = jQuery('#title1').val();
-       
+       show();
     if(name=="")
         {
              $('#berror').show();
@@ -153,12 +154,23 @@ function change()
                     window.location.href ="home";    
                    },200);
                    
-               }
+               }hide();
        },
        error:function(res)
        {
+                hide();
            alert(res);
        }
     });
    }
 };
+function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
+}

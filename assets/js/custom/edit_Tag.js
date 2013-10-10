@@ -31,7 +31,8 @@ jQuery('#updatebtn').click(function(){
                 $('#perror').hide();
             }        
      
-   if (name != "") {  
+   if (name != "") {
+        show();
     var dataval ={
         id: id,
         name : name,
@@ -51,11 +52,23 @@ jQuery('#updatebtn').click(function(){
                    },200);
                    
                }
+                hide();
     },
         error:function(res)
        {
            alert(res);
+           hide();
        }
     });
    }
 });
+     function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
+}

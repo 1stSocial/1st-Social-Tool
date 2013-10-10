@@ -18,3 +18,13 @@ jQuery(document).ready()
      });
         
     });
+         function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
+}

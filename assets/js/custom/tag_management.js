@@ -67,6 +67,9 @@ function savefun()
             }        
             
     if (name != "" ) {
+        
+        show();
+        
         var dataval = {
             parenttag: name,
             Parentid: id
@@ -86,9 +89,11 @@ function savefun()
                 }
                 else
                     $('#msg').text(res);
+                hide();
             },
             error: function(res)
             {
+                hide();
                 alert(res);
             }
         });
@@ -97,4 +102,14 @@ function savefun()
     {
        
     }
+}
+     function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
 }

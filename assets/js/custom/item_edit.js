@@ -27,7 +27,7 @@ $(document).ready()
  
     $('form').ajaxForm({
         beforeSubmit: function() {
-          
+          show();
         },
         success: function(data) {
             savefun(data);
@@ -139,19 +139,32 @@ function savefun(image)
 
                     }
                 }
+                hide();
             },
             error: function(res)
             {
+                hide();
                 alert(res);
             }
         });
     }
     else
     {
+        hide();
         $("#error").show();
     }
 }
 function _close()
 {
     window.location.href = '../';
+}
+function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'white', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
 }

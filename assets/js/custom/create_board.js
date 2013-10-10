@@ -1,5 +1,8 @@
 jQuery(document).ready(function() {
 
+
+   
+
 $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});    
 //    jQuery('.chosen-select').chosen();
     setTimeout(function() {
@@ -8,9 +11,11 @@ $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inve
  
      jQuery('form').ajaxForm({
         beforeSubmit: function() {
+             show();
             if(jQuery('#name1').val() =="" && jQuery('#parentTag1').val() =="" && jQuery('#domain').val()=="")
                 {
                     return  false;
+                   hide();
                 }
         },
         success: function(data) {
@@ -18,22 +23,15 @@ $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inve
             savefun(data);
         }
     });
-//    jQuery('#parentTag1_chosen').css('margin-left','6%');
-//    jQuery('#taxo_chosen').css('margin-left', '2.6%');
-//    jQuery('#theme_chosen').css('margin-left', '11%');
-//    jQuery('#domain_chosen').css('margin-left', '18.9%');
-//    
-//    jQuery('#theme_chosen').css('width', '49%');
-//    jQuery('#taxo_chosen').css('width', '49%');
-//    jQuery('#domain_chosen').css('width', '49%');
+
    
     jQuery('#parentTag1').change(function()
     {
+        show();
         var dataval = {
             'tag_id': this.value
         };
         $('#taxo').empty();
-        
         var site = $('#site').val() + '/admin/home/taxoval';
         jQuery.ajax({
             url: site,
@@ -42,6 +40,7 @@ $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inve
             success: function(res)
             {
                 
+               
                 var val = "<select data-placeholder='Choose a Filterable Taxonomy...' style=width:350px; tabindex=4 id=taxo name=taxo>";
                         val += "<option value=0></option>";
                 
@@ -56,6 +55,9 @@ $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inve
 //                     jQuery('.chosen-select').chosen();
 //                     jQuery('#taxo_chosen').css('width', '49%');
 //                     jQuery('#taxo_chosen').css('margin-left', '2.6%');
+            },
+             error: function(res)
+            { 
             }
         });
     });
@@ -70,11 +72,20 @@ jQuery('#closebtn').click(function() {
 
 
 });
-
+    function show()
+    {
+        $("#load").show();
+        $('#fad').css({'background': 'white', 'opacity':0.5 });
+    }
+    function hide()
+    { 
+        $("#load").hide();
+        $('#fad').css({'background': '', 'opacity':1});
+    }
 //jQuery('#add').click(function() {
 function savefun(image)
 {
-
+   
     var name = jQuery('#name1').val();
     var parentTag = jQuery('#parentTag1').val();
     var domain = jQuery('#domain').val();
@@ -129,13 +140,16 @@ function savefun(image)
             url: "../create_board",
             data: dataval,
             success: function(res) {
+             
                 if (res == '')
                 {
+                    
                     setTimeout(function() {
                         jQuery('#closebtn').click();
                         window.location.href = ur;
+                          hide();
                     }, 200);
-
+                   
                 }
                 else
                     {
@@ -144,6 +158,7 @@ function savefun(image)
             },
             error: function(res)
             {
+                hide();
                 alert(res);
             }
         });

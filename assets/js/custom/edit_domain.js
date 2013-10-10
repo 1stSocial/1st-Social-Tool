@@ -7,7 +7,7 @@ jQuery(document).ready()
     
      $('#my').ajaxForm({
         beforeSubmit: function() {
-           
+           show();
         },
         success:function (res)
         {
@@ -32,6 +32,7 @@ jQuery(document).ready()
                    $('#closebtn').click();
                    window.location.href = url +'/admin/home/domain_management';
                }
+               hide();
         }});
     
     $('#closebtn').click(function ()
@@ -40,4 +41,14 @@ jQuery(document).ready()
          window.location.href = url +'/admin/home/domain_management';
      });
     
+}
+function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
 }

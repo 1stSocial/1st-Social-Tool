@@ -42,7 +42,7 @@ function savefun()
         var id = $("#id").val();
         var ur = $('#ur').val();
         var ur2 = $('#ur2').val();
-
+        show();
         $.ajax({
             type: "POST",
             url: ur,
@@ -62,11 +62,23 @@ function savefun()
 
                 }
                 window.location.href = ur2;
+                hide();
             },
             error: function(res)
             {
+                hide();
                 alert(res);
             }
         });
     }
  }
+   function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
+}

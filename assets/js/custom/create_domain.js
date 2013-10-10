@@ -16,6 +16,7 @@ $(document).ready()
                    $('#usererror').show();
                    return false;
                }
+               show();
         },
         success:function (res)
         {
@@ -28,6 +29,7 @@ $(document).ready()
                    $('#usererror').html('Name all ready exist');
                    $('#usererror').show();
                }
+               hide();
         }});
     
   
@@ -39,3 +41,14 @@ $(document).ready()
          var url = $('#url').val(); 
          window.location.href = './'+'domain_management';
      };
+     
+     function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'black', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
+}

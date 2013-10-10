@@ -28,6 +28,7 @@ $(document).ready()
 
     $('form').ajaxForm({
         beforeSubmit: function() {
+            show();
         },
         success: function(data) {
           
@@ -146,15 +147,18 @@ function savefun(image)
                         $($id).html(val[1]);
                     }
                 }
+                hide();
             },
             error: function(res)
             {
+                hide();
                 alert('error');
             }
         });
     }
     else
     {
+        hide();
         $("#error").show();
     }
 }
@@ -165,4 +169,13 @@ function savefun(image)
 
                     window.location.href = './';
                 }
-               
+function show()
+{
+    $("#load").show();
+    $('#fad').css({'background': 'white', 'opacity': 0.2});
+}
+function hide()
+{
+    $("#load").hide();
+    $('#fad').css({'background': '', 'opacity': 1});
+}
