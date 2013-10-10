@@ -10,16 +10,19 @@
     </div>
     <div class="modal-body div_wrapper"> 
         <br/>
-        <label class="control-label label label-info" style=" float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%">Choose Board :</label>
-        <select required="" data-placeholder="Choose a Board..."  style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="change_val()">
+        <label class="control-label label label-info" style=" float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 23%;">Choose Board :</label>
+        <select required data-placeholder="Choose a Board..."  style="width:350px;" tabindex="4" id="boardval" name="boardval" onchange="get_parent_change_val()">
             <option value="0"></option>
             <? if (!empty($boards)): foreach ($boards as $val): ?>
                     <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
-
                 <?php endforeach;
             endif;
             ?>
         </select>
+        <div id="parent_tag">
+            
+        </div>
+        
         <div id="add">
         </div>
         <br/><br/>

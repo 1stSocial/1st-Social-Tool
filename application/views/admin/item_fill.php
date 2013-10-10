@@ -41,7 +41,7 @@
     <div style="clear: both;margin: 1%"></div>
     
         <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info">Body :</label>
-        <div style="width: auto;height: auto; overflow: scroll; margin-left: 22%;margin-right: 6%">
+        <div style="width: auto;height: auto; overflow: scroll; margin-left: 20%;margin-right: 6%">
             <textarea id="body1" name="body1" ></textarea>
         </div>
         <div style="clear: both;margin: 1%"></div>
@@ -74,6 +74,8 @@
        <div id="image_div">
            
        </div>
+       
+       <div style="clear: both"></div>
        
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/insert_item/"); ?>">
