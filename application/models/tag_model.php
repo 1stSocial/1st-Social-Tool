@@ -333,6 +333,41 @@ Class Tag_model extends CI_Model
             return $result;
         }
         
+        public function tag_val_new($id)
+        {
+            $this->db->select('t_p.*,t.name');
+                    $this->db->from('tag_parent as t_p');
+                    $this->db->join('tags as t','t_p.tag_id=t.id');
+                    $this->db->where('t_p.parent_tag_id',$id);
+                    $query2 = $this->db->get_where();
+                    if($query2->num_rows()>0)
+                    {
+                        $result2 = $query2->result_array();
+                        
+                        foreach($result2 as $val2) {
+                             $this->db->select('t_p.*,t.name');
+                            $this->db->from('tag_parent as t_p');
+                            $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                            $this->db->where('t_p.parent_tag_id',$val2['tag_id']);
+                            $query3 = $this->db->get();
+//                            $query3 = $this->db->get_where('tags',array('parent_tag_id'=>$val2['id']));
+                            if($query3->num_rows()>0)
+                            {
+                                $arr[] = $val2;
+                                foreach($query3->result_array() as $val3)
+                                {
+                                    $arr2[] = $val3;
+                                }
+                            }
+                        }
+                        }
+                        
+              $result_send['Parent'] = $arr;
+                $result_send['child'] =$arr2;
+                
+                return $result_send;          
+        }
+
         public function tag_val($bid)
         {
             $query = $this->db->get_where('board',array('id'=>$bid));
@@ -498,5 +533,26 @@ Class Tag_model extends CI_Model
                 
             }
             
-          
+            public function get_board_tag($id)
+            {
+                $this->db->select('tags.*');
+                $this->db->from('board_tags');
+                $this->db->join('tags', 'board_tags.tag_id=tags.id');
+                $this->db->where('board_tags.board_id',$id);
+                $value = $this->db->get();
+                
+                if($value->num_rows()>0)
+                {
+                    $new = array();
+                    $new[0] = "";
+                    $arr = $value->result_array();
+                    foreach ($arr as $val)
+                    {
+                        $new[$val['id']] = $val['name'];
+                    }
+                    return $new;
+                    
+                }
+                
+            }
  } 
