@@ -91,9 +91,11 @@ class Item extends CI_Controller {
         
         $session_data = $this->session->userdata('logged_in');
         $borad_id = $this->input->post('boardval');
+        $parent_id = $this->input->post('parent');
+       
         $boards = $boardModel->getBoardByBoardId($borad_id);
         $data['board_id'] = $borad_id;
-        $taxonomy = $item->get_taxonomy($boards['0']->parent_tags);
+        $taxonomy = $item->get_taxonomy($parent_id);
         $tagid = $boardModel->bord_tag($borad_id); // 
         $data['board_name'] = $boards['0']->name;
         $data['created_by'] = $boards['0']->created_by;
@@ -329,7 +331,7 @@ class Item extends CI_Controller {
         $this->load->model('tag_model');
         $tag_model = new Tag_model();
         $id = $this->input->post('id');
-        $data['tag'] = $tag_model->tag_val($id);
+        $data['tag'] = $tag_model->tag_val_new($id);
         echo json_encode($data);
         die;
     }
@@ -399,6 +401,16 @@ class Item extends CI_Controller {
         $folder = $this->uri->segment(5);
         unlink('assets/css/user/content/'.$folder.'/'.$name);
         echo "";
+        die;
+    }
+    
+    function parenttag()
+    {
+          $this->load->helper('form');
+         $this->load->model('tag_model');
+        $id = $this->input->post('id');
+        $val =  $this->tag_model->get_board_tag($id);
+       echo form_dropdown('parent', $val,'','id = parent_id  onchange="change_val()" ');
         die;
     }
 }
