@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
     jQuery('.dataTables_length').insertAfter($("#tab_id_info"));
     jQuery('#tab_id_length').show();
     jQuery('#tab_id_filter').css("margin-right",'1%');
-    
+    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
 //   $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});  
 //$("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
 });
