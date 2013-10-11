@@ -60,9 +60,7 @@ switch ($option) {
 ?>
 <a href="#myModal" role="button" id="mod" style="display: none" class="btn" data-toggle="modal"></a>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <?php
-    include '/dropdown.php';
-    ?>
+   
 <?php echo form_open('admin/home/create_tags', array('name' => 'myform')); ?>
     <div class="modal-header">
         <h3 id="myModalLabel">Create Tag</h3>
@@ -75,7 +73,7 @@ switch ($option) {
         <label id="msg" class="control-label"></label>
 <?php echo form_label('Parent Tag :', 'id', array('class' => "control-label", 'style' => "clear:both")); ?>
         <div class="controls">
-            <select data-placeholder="Choose a Parent Tag..." class="chosen-select" style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
+            <select data-placeholder="Choose a Parent Tag..."  style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" style="margin-left:px;">
                 <option value="0">No Parent</option>
                 <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                         <option value="<?= $key ?>"><?= $Tag ?></option>
