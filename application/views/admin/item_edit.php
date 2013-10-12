@@ -1,7 +1,12 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/item_edit.js"></script>
-
+<style>
+#progress {display: none;position:relative; width:250px;z-index: 11; border: 1px solid #ddd; padding: 1px; border-radius: 3px;margin-top: 1.5%;float: right;margin-right: 47%}
+#bar { background-color: #2980B9; width:0%; height:20px; border-radius: 3px; }
+#percent { position:absolute; display:inline-block; top:3px; left:48%; }
+</style>
 <?php echo form_open_multipart(site_url("/admin/Item/test/")); ?>
 <div id="load" class="loader"></div>
+
         <div id="fad">
 <div class="header" style="margin-left: 40%">
     <h3>Edit Item <?= $item['0']['name'] ?></h3>
@@ -17,6 +22,9 @@
                         <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
                         <span class="btn btn-file"><span id="select_btn" class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/tiff" onchange ="change_fun()"/></span>
                         <a href="#" class="btn fileupload-exists" id="clo" data-dismiss="fileupload">Remove</a>
+                        <div id="progress" style="display: none;position:relative; width:250px;z-index: 11; border: 1px solid #ddd; padding: 1px; border-radius: 3px;margin-top: 1.5%;float: right;margin-right: 47%">
+                        <div id="bar"></div>
+                        <div id="percent"></div >
                     </div><div id="img_msg" name="img_msg" style = "display:none">Warning : Please Select jpg image.</div>
                 </div>
             </div>
@@ -29,14 +37,14 @@
     </div>-->
     <div class="control-group">
         <div class="controls">
-               <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info"  >Title :</label>
+               <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info"  >Title :</label>
              <div style='magrin-top:33px;padding-left:20%;'><input style="width: 90%" type="text" name="title" id="title" class="form-control" value="<?= $item['0']['title'] ?>" ></div>
         </div>
     </div>
       <div style="clear: both;margin: 1%"></div>
 <div class="control-group">
         <div class="controls">
-            <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info">Body :</label>
+            <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info">Body :</label>
          <div style="width: auto;height: auto; overflow: scroll; margin-left: 20%;margin-right: 6%">
                 <textarea id="body" name="body"><?= $item['0']['body'] ?></textarea>
                 <input type="hidden" value="<?= $item['0']['item_id'] ?>" name="id" id="item_id">
@@ -52,7 +60,7 @@
             foreach ($Tag['Parent'] as $data):
                 ?>
                 <div style='magrin-top:33px;padding-top:8px;'>
-                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info" ><?= $data['name']; ?> :</label>
+                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info" ><?= $data['name']; ?> :</label>
                        
                     <!--<label class="control-label" style="float: left;width:20%"> <?= $data['name']; ?>  </label>-->
                     <div style='magrin-top:33px;padding-left:20%;'>
@@ -93,7 +101,7 @@
             <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
                     <!--<label style=" float: left;" class="control-label" ><?= $val['name'] ?> :</label>-->
             <div style="clear: both;margin: 1%"></div>
-                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;width: 8.5%" class="control-label label label-info" ><?= $val['name'] ?> :</label>
+                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info" ><?= $val['name'] ?> :</label>
                        
                     <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width:90%" class="form-control" id="<?= $val['id'] ?>" name="taxo" value="<?= $val['ival'] ?>"/><input type="hidden" value="<?= $val['id'] ?>" id="taxoid"/><div id="<?= $val['id'] ?>d"></div><div style="clear: both"></div></div>
     <?php endforeach;
@@ -122,9 +130,11 @@ endif;
            ?>
        </div>
      <div style="clear: both"></div>
+     <input type="hidden" id="image" value="<?=$item['0']['image'];?>"/>
         <div class="control-group div_wrapper">
             <input type="hidden" id ="url_temp" name="temp" value="<?php echo site_url("/admin/Item/update_item/"); ?>">
-            <input type="submit" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Update Item" onclick="//savefun('<?php // echo site_url("/admin/item/update_item/");  ?>')" />
+             <input id="btn_sub" type="submit" style="display: none"  value="Create Item"/>
+             <input type="button" style="margin-left: 27%" class="btn btn-primary footer_btn" value="Update Item" onclick="savefun()" />
             <input type="button" class="btn btn-primary footer_btn" data-dismiss="modal" aria-hidden="true" value="Close" name="closebtn" id="closebtn" onclick="_close();">
         </div>
    
