@@ -367,6 +367,42 @@ Class Tag_model extends CI_Model
                 
                 return $result_send;          
         }
+        
+        public function tag_val_id($parent_id)
+        {
+            $arr = array();
+            $arr2 = array();
+            
+            $this->db->select('t_p.*,t.name');
+                    $this->db->from('tag_parent as t_p');
+                    $this->db->join('tags as t','t_p.tag_id=t.id');
+                    $this->db->where('t_p.parent_tag_id',$val['parent_tags']);
+                    $query2 = $this->db->get_where();
+                    if($query2->num_rows()>0)
+                    {
+                        $result2 = $query2->result_array();
+//                        var_dump($result2);
+//                        die;
+                        foreach($result2 as $val2) {
+                             $this->db->select('t_p.*,t.name');
+                            $this->db->from('tag_parent as t_p');
+                            $this->db->join('tags as t','t_p.tag_id=t.id','inner');
+                            $this->db->where('t_p.parent_tag_id',$val2['tag_id']);
+                            $query3 = $this->db->get();
+//                            $query3 = $this->db->get_where('tags',array('parent_tag_id'=>$val2['id']));
+                            if($query3->num_rows()>0)
+                            {
+                                $arr[] = $val2;
+                                foreach($query3->result_array() as $val3)
+                                {
+                                    $arr2[] = $val3;
+                                }
+                            }
+                        }
+                       }
+            
+        }
+        
 
         public function tag_val($bid)
         {
@@ -544,7 +580,7 @@ Class Tag_model extends CI_Model
                 if($value->num_rows()>0)
                 {
                     $new = array();
-                    $new[0] = "";
+                    $new['a'] = "";
                     $arr = $value->result_array();
                     foreach ($arr as $val)
                     {

@@ -9,9 +9,24 @@ Class Item_model extends CI_Model {
         if($query->num_rows()>0)
         return $query->result();
     }
-     
+    
+    function change()
+    {
+        $temp = $this->db->get('items');
+        $arr = $temp->result();
+        foreach ($arr as $val)
+        {
+            $res =  $this->db->get_where('board',array('id'=>$val->board_id));
+            $res_val = $res->result();
+//            var_dump($res_val);die;
+             $this->db->update('items', array('parent_tag_id'=> $res_val[0]->parent_tags),array('board_id'=>$val->board_id));
+             
+        }
+    }
+            
     function item_insert($data,$tag_id)
     {
+        
         $this->db->insert('items',$data);
        $rs['item_id'] = $this->db->insert_id();   
 //        $tag_id = $this->input->post('tag_id');
