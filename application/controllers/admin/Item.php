@@ -68,7 +68,9 @@ class Item extends CI_Controller {
         $this->load->model('Tag_model');
         $this->load->model('Taxonomy_model');
         $session_data = $this->session->userdata('logged_in');
-
+        
+//        $this->item_model->change(); // for doing changes.
+        
         $itemModel = new Item_model();
 //        $boardModel = new Board_model();
         $boards = $itemModel->get_board($session_data['id']);
@@ -92,7 +94,8 @@ class Item extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $borad_id = $this->input->post('boardval');
         $parent_id = $this->input->post('parent');
-       
+        
+        
         $boards = $boardModel->getBoardByBoardId($borad_id);
         $data['board_id'] = $borad_id;
         $taxonomy = $item->get_taxonomy($parent_id);
@@ -100,11 +103,11 @@ class Item extends CI_Controller {
         $data['board_name'] = $boards['0']->name;
         $data['created_by'] = $boards['0']->created_by;
         $data['Taxonomy'] = $taxonomy;
-
+        
         $data['tag_id'] = $tagid['0']['tag_id']; // 
-
+        $data['parent_tag'] =  $parent_id;
         $data['abc'] = $this->input->post('tag');
-
+       
         $data['items'] = $this->item_model->get_item($session_data['id']);
         $this->load->view('admin/item_fill', $data);
     }
@@ -129,11 +132,13 @@ class Item extends CI_Controller {
 
         $data['item'] = $item_modal->get_item_id($itemid);
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
-
-        $data['Tag'] = $tag_model->tag_val($data['item']['0']['board_id']);
+        
+        
+        
+        $data['Tag'] = $tag_model->tag_val_new($data['item']['0']['parent_tag_id']);
         $temp_data['name'] = $itemid;
         
-        $data['image_div'] = $this->load->view('admin/gallary',$temp_data,TRUE);;
+        $data['image_div'] = $this->load->view('admin/gallary',$temp_data,TRUE);
         $this->load->view('admin/item_edit', $data);
         
     }
@@ -262,6 +267,7 @@ class Item extends CI_Controller {
             $data['created_by'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
             $data['status'] = '0';
+            $data['parent_tag_id'] = $tag_id;
 //            var_dump($_SESSION['child_tag']);
             $tag = $this->input->post('abc');
            
