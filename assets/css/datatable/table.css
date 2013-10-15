@@ -314,7 +314,7 @@ td.details {
 }
 
 .paging_full_numbers {
-	width: 400px;
+	width: auto;
 	height: 22px;
 	line-height: 22px;
 }
