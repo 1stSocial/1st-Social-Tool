@@ -61,8 +61,7 @@ Class Item_model extends CI_Model {
         if($taxo_val != "")
         {
           $val .= '('.$rs['item_id'].','.$taxo_id.','.$taxo_val.'),';
-            
-       }
+        }
        }
        
        
@@ -187,7 +186,7 @@ Class Item_model extends CI_Model {
                     );
 
                     $this->db->insert('item_tags',$taxo);
-               }
+               } 
         }
        
     }
@@ -231,8 +230,6 @@ Class Item_model extends CI_Model {
             return 0;
         }
     }
-    
-   
 }
 
 ?>
