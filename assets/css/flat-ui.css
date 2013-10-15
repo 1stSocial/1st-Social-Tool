@@ -1124,7 +1124,7 @@ address {
   border-color: transparent transparent #2980b9 transparent;
   height: 0;
   position: absolute;
-  left: 15px;
+  left: 19px;
   top: 5px;
   width: 0;
   -webkit-transform: rotate(360deg);
@@ -1737,7 +1737,7 @@ label .select .btn
   right: 13px;
 }
 .select .btn .filter-option {
-  height: 26px;
+  /*height: 26px;*/
   left: 13px;
   overflow: hidden;
   position: absolute;
