@@ -3615,7 +3615,7 @@ stWidget.addEntry = function(a) {
                     _$d1("4x Popup Called");
                     _$d1(j);
                     _$d_();
-                    window.open(stWidget.frameUrl4x + "#" + j, "newstframe", "status=1,toolbar=0,width=345,height=375")
+                    window.open(stWidget.frameUrl4x + "#" + j, "_blank", "status=1,toolbar=0,width=345,height=375")
                 } else {
                     if (stWidget.options.popup && switchTo5x) {
                         var i = "http://sharethis.com/share?url=" + d.url;
@@ -3647,7 +3647,7 @@ stWidget.addEntry = function(a) {
                             }
                             g = "&pageInfo=" + f + "&shareInfo=" + e
                         }
-                        window.open(i + g, "newstframe", "status=1,toolbar=0,width=820,height=950")
+                        window.open(i + g, "_blank", "status=1,toolbar=0,width=820,height=950")
                     } else {
                         stButtons.messageQueueInstance.send(stWidget.createFrag(d), "light");
                         stWidget.positionWidget(d);
