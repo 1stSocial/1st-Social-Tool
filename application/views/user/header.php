@@ -10,7 +10,7 @@
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
           <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>-->
-         <!--<link rel="stylesheet" href="<?//= base_url(); ?>assets/css/user/share.css"></link>-->
+         <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/share.css"></link>-->
          <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css"></link>
          <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less"></link>
          
@@ -30,9 +30,9 @@
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-1.js"></script>
          
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/loader.js"></script>
-         <script type="text/javascript" src="<?//=base_url();?>assets/js/user/st.js"></script>
+         <!--<script type="text/javascript" src="<?//=base_url();?>assets/js/user/st.js"></script>-->
            
-         <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/stcommon.js"></script>-->
+         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/stcommon.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/superfish.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/wpgroho.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
