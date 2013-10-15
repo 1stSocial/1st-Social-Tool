@@ -272,10 +272,11 @@ class Item extends CI_Controller {
             $tag = $this->input->post('abc');
            
             $item_id = $item->item_insert($data, $tag);
+             echo '';
             $folder_name =  md5('unique_salt' . $folder_name);
             if(is_dir('assets/css/user/content/'.$folder_name))
             rename('assets/css/user/content/'.$folder_name, 'assets/css/user/content/'.$item_id);
-            echo '';
+           
 //             unset($_SESSION['child_tag']);
             die;
         } else {
@@ -297,13 +298,33 @@ class Item extends CI_Controller {
                 $Type = $_FILES["img"]["type"];
                 $Storedin = $_FILES["img"]["tmp_name"];
                 if ($_FILES["img"]["name"] != "") {
+                    
+                    $pics = $_FILES["img"]["name"];
 //                    chmod('assets/css/user/temp/', '0777');
-                    move_uploaded_file($Storedin, 'assets/css/user/temp/' . $_FILES["img"]["name"]);
+                    move_uploaded_file($Storedin, 'assets/css/user/temp/' .$_FILES["img"]["name"]);
                     if (file_exists('assets/css/user/temp/' . $_FILES["img"]["name"])) {
                         list($x, $y) = getimagesize($Upload);
                         $new = imagecreatetruecolor(100, 100);
-                        $newtemp = imagecreatefromjpeg($Upload);
-                        imagecopyresized($new, $newtemp, 0, 0, 0, 0, 100, 100, $x, $y);
+                        
+                        if(preg_match("/.jpg/i", "$pics")){
+                        $source = imagecreatefromjpeg($Upload);
+                        }
+                        
+                        if(preg_match("/.jpeg/i", "$pics")){
+                        $source = imagecreatefromjpeg($Upload);
+                        }
+                        if(preg_match("/.jpeg/i", "$pics")){
+                        $source = Imagecreatefromjpeg($Upload);
+                        }
+                        if(preg_match("/.png/i", "$pics")){
+                        $source = imagecreatefrompng($Upload);
+                        }
+                        if(preg_match("/.gif/i", "$pics")){
+                        $source = imagecreatefromgif($Upload);
+                        }
+                        
+                        
+                        imagecopyresized($new, $source, 0, 0, 0, 0, 100, 100, $x, $y);
                         imagejpeg($new, 'assets/css/user/itemimage/' . $imgname);
                         unlink($Upload);
                         if(isset($_POST['imgscr']))
@@ -416,7 +437,7 @@ class Item extends CI_Controller {
          $this->load->model('tag_model');
         $id = $this->input->post('id');
         $val =  $this->tag_model->get_board_tag($id);
-       echo form_dropdown('parent', $val,'','id = parent_id  onchange="change_val()" ');
+       echo form_dropdown('parent', $val,'','id = parent_id  onchange="change_val()" class=chosen-select');
         die;
     }
 }
