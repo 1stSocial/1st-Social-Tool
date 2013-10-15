@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
-//     jQuery('.chosen-select').chosen(); 
-       $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+     jQuery('.chosen-select').chosen(); 
+//       $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);

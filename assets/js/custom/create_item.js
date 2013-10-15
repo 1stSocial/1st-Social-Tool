@@ -1,7 +1,7 @@
 var tag_id = [];
 
 jQuery(document).ready(function() {
-    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+//    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
@@ -44,10 +44,10 @@ function get_parent_change_val()
         success: function(res) {
             hide();
             value = "";
-            value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 23%;'>" + "Select Parent Tag" + ":</label>" + res + '</div>'
+            value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 13%;margin-top: 0.52%;width: 23%;'>" + "Select Parent Tag" + ":</label>" + res + '</div>'
             $('#parent_tag').html(value);
-            $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
-
+//            $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+$(".chosen-select").chosen({width: "45%"});
         },
         error: function(res)
         {
@@ -63,14 +63,16 @@ function change_val()
     var id = jQuery('#parent_id').val();
     var url = jQuery('#url').val();
     
-    show();
+    
 
     var dataval = {
         'id': id
     };
     $('#add').html("");
 
-
+    if(id != 'a')
+        {
+    show();
     jQuery.ajax({
         type: "POST",
         url: url + '/admin/Item/childtag',
@@ -84,8 +86,8 @@ function change_val()
             $.each(obj['tag']['Parent'], function(i, data) {
                 tag_id[j] = data['tag_id'];
                 value = "";
-                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;width: 23%;'>" + data['name'] + ":</label>" +
-                        "<select required='' data-placeholder='Choose...' multiple  style='width:350px;margin-right:5px!important' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
+                value = "<div style='magrin-top:33px;padding-top:8px;'><label class='control-label label label-info' style='float: left;padding: 0.6em 0.7em 0.7em;margin-right: 13%;margin-top: 0.52%;width: 23%;'>" + data['name'] + ":</label>" +
+                        "<select required='' class=chosen-select data-placeholder='Choose...' multiple  style='width:350px;margin-right:5px!important' tabindex=2 id=" + data['tag_id'] + " name=tag[]>"
                         + "<option> </option>";
                 val2 = "";
                 $.each(obj['tag']['child'], function(i, val) {
@@ -95,8 +97,8 @@ function change_val()
                 });
                 val2 += "</select></div>";
                 $('#add').append(value + val2);
-                $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
-//                $(".chosen-select").chosen({width: "50%"});
+//                $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+                $(".chosen-select").chosen({width: "45%"});
                 j++;
             });
 
@@ -109,7 +111,7 @@ function change_val()
         }
 
     });
-
+        }
 }
 function _close()
 {

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-//     jQuery('.chosen-select').chosen(); 
+     jQuery('.chosen-select').chosen(); 
     $('#tab_id').dataTable({
         "sPaginationType": "full_numbers"
     });
@@ -13,7 +13,8 @@ $(document).ready(function() {
     $('.dataTables_length').insertAfter($("#tab_id_info"));
     $('#tab_id_length').show();
     $('#tab_id_filter').css("margin-right",'1%');
-    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+    
+
 });
 function deletbox(urllink)
 {

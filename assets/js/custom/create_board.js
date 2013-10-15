@@ -1,13 +1,21 @@
 jQuery(document).ready(function() {
 
+ jQuery('.chosen-select').chosen();
+//   jQuery('#parentTag1_chosen').css('margin-left','6%');
+    
+    jQuery('.chosen-select').css('width', '49%');
+    
+    jQuery('#theme_chosen').css('width', '69%');
+    jQuery('#taxo_chosen').css('width', '49%');
+    jQuery('#domain_chosen').css('width', '69%');
 
-   
-
-$("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});    
-//    jQuery('.chosen-select').chosen();
+//$("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});    
+    
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
+ 
+ 
  
      jQuery('form').ajaxForm({
         beforeSubmit: function() {
@@ -40,8 +48,8 @@ $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inve
             success: function(res)
             {
                 
-               
-                var val = "<select data-placeholder='Choose a Filterable Taxonomy...' style=width:350px; tabindex=4 id=taxo name=taxo>";
+               hide();
+                var val = "<select class=chosen-select data-placeholder='Choose a Filterable Taxonomy...' style=width:350px; tabindex=4 id=taxo name=taxo>";
                         val += "<option value=0></option>";
                 
                  var obj = jQuery.parseJSON(res);
@@ -51,10 +59,9 @@ $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inve
                  val +="</select>";
                  $('#select_box').html("");
                  $('#select_box').html(val);
-                 $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
-//                     jQuery('.chosen-select').chosen();
-//                     jQuery('#taxo_chosen').css('width', '49%');
-//                     jQuery('#taxo_chosen').css('margin-left', '2.6%');
+//                 $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+                     jQuery('.chosen-select').chosen();
+                     jQuery('#taxo_chosen').css('width', '49%');
             },
              error: function(res)
             { 

@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-   $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+//   $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
    setTimeout(function(){
        
        jQuery('#mod1').click();
@@ -20,16 +20,11 @@ jQuery(document).ready(function(){
         }
     });
    
-//   jQuery('#parentTag1_chosen').css('margin-left','6%');
-//    jQuery('#taxo_chosen').css('margin-left', '2.6%');
-//    jQuery('#theme_chosen').css('margin-left', '11%');
-//    jQuery('#domain_chosen').css('margin-left', '18.9%');
-//    
-//   
-//    jQuery('#theme_chosen').css('width','49%');
-//     jQuery('#taxo_chosen').css('width', '49%');
+jQuery('.chosen-select').chosen();
+    jQuery('#theme_chosen').css('width','69%');
+     jQuery('#taxo_chosen').css('width', '49%');
 //     change();
-//     jQuery('#domain_chosen').css('width','49%');
+     jQuery('#domain_chosen').css('width','69%');
      
     jQuery('#parentTag1').change(function()
     {
@@ -71,7 +66,7 @@ function change()
             success: function(res)
             {
                 
-                var val = "<select data-placeholder='Choose a Filterable Taxonomy...'  style=width:350px; tabindex=4 id=taxo name=taxo>";
+                var val = "<select class=chosen-select data-placeholder='Choose a Filterable Taxonomy...'  style=width:350px; tabindex=4 id=taxo name=taxo>";
                         val += "<option value=0></option>";
                 
                  var obj = jQuery.parseJSON(res);
@@ -84,9 +79,9 @@ function change()
                  val +="</select>";
                  $('#select_box').html("");
                  $('#select_box').html(val);
-                 $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
-//                     jQuery('.chosen-select').chosen();
-//                     jQuery('#taxo_chosen').css('width', '49%');
+//                 $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+                     jQuery('.chosen-select').chosen();
+                     jQuery('#taxo_chosen').css('width', '49%');
 //                     jQuery('#taxo_chosen').css('margin-left', '2.6%');
                
             }
