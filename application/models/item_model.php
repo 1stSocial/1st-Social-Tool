@@ -31,16 +31,21 @@ Class Item_model extends CI_Model {
        $rs['item_id'] = $this->db->insert_id();   
 //        $tag_id = $this->input->post('tag_id');
 //        var_dump($tag_id); die;
+       $val ="";
       if(is_array($tag_id))
       {
           foreach ($tag_id as $value) {
-              $temp_ar = array(
-                    'item_id' =>$rs['item_id'],
-                    'tag_id' => $value        
-              );
-              
-              $this->db->insert('item_tags',$temp_ar);
+              if($value != "")
+              $val .=  '( '.$rs['item_id'].','.$value.'),';
           } 
+          
+            
+         $val[strlen($val)-1] = "";
+          
+          $sql = "insert into item_tags(item_id,tag_id) values ".$val."";
+//       
+          $this->db->query($sql); 
+         
       }
       else
       {
@@ -50,19 +55,21 @@ Class Item_model extends CI_Model {
               );
           $this->db->insert('item_tags',$temp_ar);
       }
+      $val="";
         $taxoarr = $this->input->post('taxo');
        foreach ($taxoarr as $taxo_id => $taxo_val) {
-        if(!$taxo_val=='')
+        if($taxo_val != "")
         {
-            $taxo = array(
-                         'item_id'=>$rs['item_id'],
-                         'taxo_id'=>$taxo_id,
-                         'value' => $taxo_val
-            );
+          $val .= '('.$rs['item_id'].','.$taxo_id.','.$taxo_val.'),';
             
-            $this->db->insert('item_taxo',$taxo);
        }
        }
+       
+       
+      $val[strlen($val)-1] = "";
+       
+       $sql1 = "insert into item_taxo (item_id,taxo_id,value) values ".$val."";
+       $this->db->query($sql1);
        return $rs['item_id'];
     }
     function get_item($id)
