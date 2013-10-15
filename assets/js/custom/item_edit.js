@@ -3,7 +3,7 @@ $(document).ready(
 		function()
 		{
                     var url = $('#url').val();
-                     $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+//                     $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
 			$('#body').redactor({
 				imageUpload: url+'/admin/item/temp',
                                 
@@ -15,43 +15,73 @@ $(document).ready(
 	); 
 $(document).ready()
 {
-    setTimeout(function() {
-        $('#mod1').click();
-    }, 100);
-
     $('#body').redactor();
     
      $('.fileupload').fileupload();
      
-//    $(".chosen-select").chosen({width: "50%"});
+    $(".chosen-select").chosen();
  
     $('form').ajaxForm({
-        beforeSubmit: function() {
-          show();
-        },
-        success: function(data) {
-            savefun(data);
-        }
+
+        
+    beforeSend: function() 
+    {
+  
+    	$("#progress").show();
+    	//clear everything
+    	$("#bar").width('0%');
+    	$("#message").html("");
+		$("#percent").html("0%");
+    },
+    uploadProgress: function(event, position, total, percentComplete) 
+    {
+    	$("#bar").width(percentComplete+'%');
+    	$("#percent").html(percentComplete+'%');
+
+    
+    },
+    success: function(data) 
+    {
+       $('#image').val(data);
+         $("#bar").width('100%');
+        $("#percent").html('100%');
+        $("#progress").hide();
+    },
+    complete: function(response) 
+    {
+	$("#message").html("<font color='green'>"+response.responseText+"</font>");
+    },
+    error: function()
+    {
+    	$("#message").html("<font color='red'> ERROR: unable to upload files</font>");
+
+    }
+        
      });
 }
  
 function change_fun()
 {
+   
     var val = $('#img').val();
     var ext = /^.+\.([^.]+)$/.exec(val);
-    if (ext[1] != 'jpg')
+    if (ext[1] == 'bmp')
     {
-        $('#img_msg').html('Warning : Please Select jpg image.');
-        $('#clo').click();
+        $('#img_msg').html('Warning : bmp image not uploaded .');
+        $('#img_msg').show();
+         $('#clo').click();
     }
     else
     {
         $('#img_msg').hide();
+        $('#btn_sub').click();
+       
     }
 }
 
-function savefun(image)
+function savefun()
 {
+    show();
     ur = $('#url_temp').val();
     ur = ur + '/';
     var id = $('#item_id').val();
@@ -60,6 +90,7 @@ function savefun(image)
     var body = $('#body').val();
     var folder_name = $('#folder_name').val();
     var unlink = $('#imgsrc').attr('src');
+    var image = $('#image').val();
     var tag = [];
     var taxo = [];
     var ids=[];
@@ -122,11 +153,10 @@ function savefun(image)
 //                }
                     if (res == '')
                 {
-                    setTimeout(function() {
-                        $('#closebtn').click();
+                   
+//                        $('#closebtn').click();
                         window.location.href = '../';
-                    }, 200);
-
+                       
                 }
                 else
                 {
