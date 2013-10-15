@@ -64,7 +64,7 @@
                        
                     <!--<label class="control-label" style="float: left;width:20%"> <?= $data['name']; ?>  </label>-->
                     <div style='magrin-top:33px;padding-left:20%;'>
-                     <select data-placeholder='Choose...' class=chosen-select multiple  style='width:350px;' id = '<?= $data['tag_id'] ?>' name=tag[]>
+                     <select data-placeholder='Choose...' class="chosen-select" multiple  style='width:350px;' id = '<?= $data['tag_id'] ?>' name=tag[]>
                         <?php if (!empty($Tag['child'])): foreach ($Tag['child'] as $val): if ($val['parent_tag_id'] == $data['tag_id']): ?>
                                     <?php
                                     var_dump($item);

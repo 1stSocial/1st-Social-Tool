@@ -36,6 +36,8 @@
                 
             </div>
         </div>
+    
+     <div style="clear: both;margin: 1%"></div>
     <div id='tagdiv' >
         <?php 
         foreach ($abc as $value) {?>

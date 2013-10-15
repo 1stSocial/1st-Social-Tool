@@ -24,6 +24,7 @@
         ?>
     </tbody>
 </table>
+
 <input type ="hidden" id ="edit_url" value="<?= site_url('/admin/home/tag'); ?>"/> 
 <div id="edit" style="position: absolute;left:-500px;top:-1000px">
 
@@ -64,7 +65,7 @@ switch ($option) {
         </div>
         
      <div class="control-group" style="margin-left: 5%!important;margin-top:8%!important ">    
-        <?php echo form_label('Parent Tag :', 'id', array('class' => "control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 4%;margin-top: 0.52%")); ?>
+        <?php echo form_label('Parent Tag :', 'id', array('class' => "control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 2.5%;margin-top: 0.52%")); ?>
             <div class="controls" style="float: left">
                 <select data-placeholder="Choose a Parent Tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" id="parentTag" name="parentTag" onselect="call()" >
                     <option value="0">No Parent</option>
@@ -90,6 +91,7 @@ endif;
 </div>
 </div>
 </div></div>
+
 <input type="hidden" id="ur" value="<?= site_url('/admin/home/tag_Management') ?>">
 <div id="edit1"></div>
 <div id="createboard"></div>          
