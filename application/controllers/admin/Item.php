@@ -8,7 +8,7 @@ class Item extends CI_Controller {
 
     public $abc_temp;
             
-    function __construct() {
+    function __construct() { 
         parent::__construct(); 
         $this->load->view('header');
         if ($this->session->userdata('logged_in')) {
