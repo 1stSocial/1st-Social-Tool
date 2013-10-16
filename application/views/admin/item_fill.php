@@ -74,7 +74,17 @@
             </div>
         </div>
        <!--  image upload  -->
+      <div style="clear: both;margin: 1%"></div>
+        <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Item status :</label>
+        <div style='magrin-top:33px;padding-left:20%;'>
+            <select class="chosen-select" id="status" name="status" style="width: 25%">
+               
+                <option value="1">True (Show)</option>
+                <option value="0">False (Hide)</option>
+            </select>
+        </div>
       
+      <div style="clear: both;margin: 1%"></div>
                 <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Gallery Images :</label>
                
                 <form>
@@ -86,7 +96,7 @@
                              <input id='folder_name' type="hidden" value="<?php echo $timestamp;?>">
                      </form>
        <!--image upload-->
-   
+       
        <div id="image_div">
            
        </div>

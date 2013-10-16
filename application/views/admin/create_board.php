@@ -11,16 +11,12 @@
         <div id="load" class="loader"></div>
         <div id="fad">
             <div class="modal-content">
-
                 <div class="modal-header">
-
                     <h3 style="margin-left:33%;">Create Board</h3>
                     <p> <? if (isset($success)) echo $success; ?> </p>
                 </div>
                 <div class="modal-body "><!-- Password input-->
                     <div class="div_wrapper">
-
-
                         <label style=" float: left;padding: 0.6em 0.7em 0.7em   ;margin-top: 0.52%" class="control-label label label-info"  >Upload Images :</label>
                         <div>
                             <div style="margin-left: 33%" class="fileupload fileupload-new" data-provides="fileupload">
@@ -54,15 +50,16 @@
                                     <option value="0"></option>
                                     <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                                             <option value="<?= $key ?>"><?= $Tag ?></option>
-                                        <?php endforeach;
+                                            <?php
+                                        endforeach;
                                     endif;
                                     ?>
                                 </select><div style =" color: red; display: none;padding-left:43%" id="perror"> Select Parent Tag </div>
                             </div>
                         </div>
- <div style="clear: both;margin-top: 5px"></div>
+                        <div style="clear: both;margin-top: 5px"></div>
                         <div class="control-group">
-<?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
+                            <?php echo form_label('Filterable Taxonomy:', 'taxo', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
                             <div style="margin-left: 33%">
                                 <div id="select_box" style="width:451px;">
                                     <select required="" class="chosen-select" data-placeholder="Choose a Filterable Taxonomy..."  tabindex="4" id="taxo" name="taxo" >
@@ -72,38 +69,40 @@
                         </div>
                         <div style="clear: both"></div>
                         <div class="control-group">
-<?php echo form_label('Select Theme:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
+                            <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
                             <div style="margin-left: 33%">
                                 <select class="chosen-select" data-placeholder="Choose a Theme..."  tabindex="4" id="theme" name="theme" >
                                     <option value="0"></option>
                                     <option value="0">Default</option>
                                     <? if (!empty($theme)): foreach ($theme as $Theme_val): ?>
                                             <option value="<?= $Theme_val->id ?>"><?= $Theme_val->theme_name ?></option>
-                                        <?php endforeach;
+                                            <?php
+                                        endforeach;
                                     endif;
                                     ?>
                                 </select>
                             </div>
                         </div>
                         <div style="clear: both"></div>
-                            <?php if ($access_level == 'admin') : ?>
+                        <?php if ($access_level == 'admin') : ?>
 
                             <div class="control-group">
-    <?php echo form_label('Domain :', 'domain', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;")); ?>
+                                <?php echo form_label('Domain :', 'domain', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%;")); ?>
                                 <div style="margin-left: 33%">
                                     <select class="chosen-select" data-placeholder="Choose a Domain..."   tabindex="4" id="domain" name="user_id[]" required="please select Domain">
                                         <option value="0"></option>
                                         <? if (!empty($domain)): foreach ($domain as $val): ?>
                                                 <option value="<?= $val->id ?>"><?= $val->name ?></option>
-        <? endforeach;
-    endif;
-    ?>
+                                                <?
+                                            endforeach;
+                                        endif;
+                                        ?>
                                     </select>
                                 </div>
                             </div>
-<?php else : ?>
+                        <?php else : ?>
                             <input type="hidden" value="<?php echo $domain; ?>" id="domain">
-<?php endif; ?>
+                        <?php endif; ?>
                         <div style="clear: both"></div>
 
                     </div></div>
@@ -127,34 +126,34 @@
 
     $(function() {
 
-    //                alert(temp);
-    var base = $('#base').val();
-    var dataval = {
-    name: <?php echo $timestamp; ?>,
-    id:""
-    };
-    $('#file_upload').uploadify({
-    'formData'     : {
-    'timestamp' : '<?php echo $timestamp; ?>',
-    'token'     : '<?php echo md5('unique_salt' . $timestamp); ?>'
-    },
-    'swf'      : base +'assets/extra/uploadify.swf',
-    'uploader' : base +'assets/extra/uploadify.php',
-    'onUploadSuccess' : function(file, data, response) {
-    $.ajax({
-    type: "POST",
-    url: './gallery',
-    data:dataval,
-    success: function(res) {
-    $('#image_div').html(res);
-    }
-    }); 
+        //                alert(temp);
+        var base = $('#base').val();
+        var dataval = {
+            name: <?php echo $timestamp; ?>,
+            id: ""
+        };
+        $('#file_upload').uploadify({
+            'formData': {
+                'timestamp': '<?php echo $timestamp; ?>',
+                'token': '<?php echo md5('unique_salt' . $timestamp); ?>'
+            },
+            'swf': base + 'assets/extra/uploadify.swf',
+            'uploader': base + 'assets/extra/uploadify.php',
+            'onUploadSuccess': function(file, data, response) {
+                $.ajax({
+                    type: "POST",
+                    url: './gallery',
+                    data: dataval,
+                    success: function(res) {
+                        $('#image_div').html(res);
+                    }
+                });
 
 
-    }
+            }
+        });
     });
-    }); 
-    jQuery('#file_upload').css('margin-left','33%');
+    jQuery('#file_upload').css('margin-left', '33%');
 
 
 </script>
