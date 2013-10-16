@@ -110,7 +110,8 @@ function savefun()
     var taxoid = $('#taxoid').val();
     var folder_name = $('#folder_name').val();
     var image = $('#image').val();
-
+    var status = $('#status').val(); 
+     
     var abc = [];
 
     var taxo = [];
@@ -153,6 +154,7 @@ function savefun()
             tag_id: tag_id, // its to be change ;.l;l;l;l;===
             name: title,
             title: title,
+            status: status,
             body: body,
             board_id: board_id,
             taxo: taxo,
