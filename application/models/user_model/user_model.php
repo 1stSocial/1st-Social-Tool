@@ -12,17 +12,69 @@ class User_model extends CI_Model
         switch ($page) {
             case 'post_job':
             {
-                $this->db->select('i.*,u.name as user_name');
-                    
-                $this->db->from('items as i');
-                $this->db->join('users as u','u.id =i.created_by','inner');
-                if($b_id)
+//                $this->db->select('i.*,u.name as user_name');
+//                    
+//                $this->db->from('items as i');
+//                $this->db->join('users as u','u.id =i.created_by','inner');
+//                if($b_id)
+//                {
+//                    $this->db->where('i.board_id',$b_id);
+//                }
+//        //      $this->db->distinct();
+//                $result = $this->db->get();
+//                return $result->num_rows();
+                
+                  $result1['item'] = array();
+      //$result = $this->db->query('select u.name as user_name,i.* from items i inner join users u on u.id =i.created_by ');
+              
+          $type  = $this->db->get_where('board',array('id'=>$b_id));
+          if($type->num_rows()>0)
+          {
+                $val = $type->result_array();
+//                var_dump($val);
+                $res = $val['0']['parent_tags'];
+                $par_tags =  explode(',', $res);
+                $cou = count(explode(',', $res));
+          }
+            if($cou == 0)
+            {
+                return 0;
+            }
+                if($cou == 1)
                 {
-                    $this->db->where('i.board_id',$b_id);
+                    $this->db->select('i.*,u.name as user_name');
+                    
+                    $this->db->from('items as i');
+                    $this->db->join('users as u','u.id =i.created_by','inner');
+                    if($b_id)
+                    {
+                        $this->db->where('board_id',$b_id);
+                    }
+                    $this->db->order_by('createdTime','DESC');
+                    $result = $this->db->get();
+                      if($result->num_rows()>0)
+                    {
+                        $result1['item'] = $result->result();
+                    }
                 }
-        //      $this->db->distinct();
-                $result = $this->db->get();
-                return $result->num_rows();
+                else 
+                {
+                   
+                        $this->db->select('i.*,u.name as user_name');
+                    
+                    $this->db->from('items as i');
+                    $this->db->join('users as u','u.id =i.created_by','inner');
+                    
+                        $this->db->where_in('parent_tag_id',$par_tags);
+                    $this->db->order_by('createdTime','DESC');
+                    $result = $this->db->get();
+                        if($result->num_rows()>0)
+                        {
+                            $result1['item'] = $result->result();
+                        }
+                    
+                }
+                return count($result1['item']); 
             }break;
 
             case 'refine_job_salary':
@@ -126,12 +178,26 @@ class User_model extends CI_Model
                     return $this->post_job();
 //                    die;
                 }
+                
+                $type  = $this->db->get_where('board',array('id'=>$b_id));
+                
                 if(count($key))
                {
+//                    var_dump($key);
                     $this->db->select('*');
                     $this->db->from('items');
                     if($b_id)
                     {
+                        
+                        if($type->num_rows()>0)
+                        {
+                              $val = $type->result_array();
+              //                var_dump($val);
+                              $res = $val['0']['parent_tags'];
+                              $par_tags =  explode(',', $res);
+                              $cou = count(explode(',', $res));
+                        }
+                        if($cou == 1)
                         $this->db->where('board_id',$b_id);
                     }
                     $this->db->where_in('id',$key);
@@ -147,7 +213,23 @@ class User_model extends CI_Model
     {
         $result1 = array();
       //$result = $this->db->query('select u.name as user_name,i.* from items i inner join users u on u.id =i.created_by ');
-                    
+              
+//        echo $board_id;
+          $type  = $this->db->get_where('board',array('id'=>$board_id));
+          if($type->num_rows()>0)
+          {
+                $val = $type->result_array();
+//                var_dump($val);
+                $res = $val['0']['parent_tags'];
+                $par_tags =  explode(',', $res);
+                $cou = count(explode(',', $res));
+          }
+            if($cou == 0)
+            {
+                die;
+            }
+                if($cou == 1)
+                {
                     $this->db->select('i.*,u.name as user_name');
                     
                     $this->db->from('items as i');
@@ -157,15 +239,33 @@ class User_model extends CI_Model
                         $this->db->where('board_id',$board_id);
                     }
                     $this->db->order_by('createdTime','DESC');
-                     $this->db->limit(5, $start);
-//                    $this->db->distinct();
+                    $this->db->limit(5, $start);
                     $result = $this->db->get();
-                    if($result->num_rows()>0)
+                      if($result->num_rows()>0)
                     {
-                    $result1['item'] = $result->result();
+                        $result1['item'] = $result->result();
+                    }
+                }
+                else 
+                {
+                    $this->db->select('i.*,u.name as user_name');
+                    
+                    $this->db->from('items as i');
+                    $this->db->join('users as u','u.id =i.created_by','inner');
+                    $this->db->limit(5, $start);
+                        $this->db->where_in('parent_tag_id',$par_tags);
+                    $this->db->order_by('createdTime','DESC');
+                    $result = $this->db->get();
+                        if($result->num_rows()>0)
+                        {
+                            $result1['item'] = $result->result();
+                        }
+                }
+                  
 //                    var_dump($result1['item']);
 //                    die;    
-                    
+                 if(count ($result1['item']) > 0)
+                 {
                     $TEMP = array();
                     foreach ($result1['item'] as $val)
                     {
@@ -301,7 +401,8 @@ class User_model extends CI_Model
 //                    die;
                 }
 //                var_dump($key);die;
-        
+         $type  = $this->db->get_where('board',array('id'=>$board_id));
+         
                if(count($key))
                {
                     $this->db->select('i.*,t.item_id ,u.name as user_name');
@@ -311,7 +412,19 @@ class User_model extends CI_Model
                     $this->db->where_in('i.id',$key);
                     if($board_id)
                     {
-                        $this->db->where('i.board_id',$board_id);
+                        //$this->db->where('i.board_id',$board_id);
+                        
+                        if($type->num_rows()>0)
+                        {
+                              $val = $type->result_array();
+              //                var_dump($val);
+                              $res = $val['0']['parent_tags'];
+                              $par_tags =  explode(',', $res);
+                              $cou = count(explode(',', $res));
+                        }
+                        if($cou == 1)
+                        $this->db->where('board_id',$board_id);
+                        
                     }
 //                    $this->db->order_by('createdTime','DESC');
                     $this->db->limit(5, $start);
@@ -500,18 +613,42 @@ class User_model extends CI_Model
     
     function latest_job($board_id = FALSE)
     {
-        $this->db->select('items.id,items.name,items.title,items.createdTime,items.board_id');
-        $this->db->from('items');
-        if($board_id)
-        $this->db->where('board_id',$board_id);
-        $this->db->order_by('createdTime','DESC');
-        $this->db->limit(5);
-        $query = $this->db->get();
+        $type  = $this->db->get_where('board',array('id'=>$board_id));
+          if($type->num_rows()>0)
+          {
+                $val = $type->result_array();
+//                var_dump($val);
+                $res = $val['0']['parent_tags'];
+                $par_tags =  explode(',', $res);
+                $cou = count(explode(',', $res));
+          }
+            if($cou == 0)
+            {
+               die;
+            }
+                if($cou == 1)
+                {
+                    $this->db->select('items.id,items.name,items.title,items.createdTime,items.board_id');
+                    $this->db->from('items');
+                    if($board_id)
+                    $this->db->where('board_id',$board_id);
+                    $this->db->order_by('createdTime','DESC');
+                    $this->db->limit(5);
+                    $query = $this->db->get();
+                }
+                else
+                {
+                    $this->db->select('items.id,items.name,items.title,items.createdTime,items.board_id');
+                    $this->db->from('items');
+               
+                    $this->db->where_in('parent_tag_id',$res);
+                    $this->db->order_by('createdTime','DESC');
+                    $this->db->limit(5);
+                    $query = $this->db->get();
+                }
         if($query->num_rows()>0)
             
         {
-          
-//var_dump($query->result_array());die;
             return $query->result_array();
         }
     }
