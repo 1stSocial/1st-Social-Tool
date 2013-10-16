@@ -60,7 +60,7 @@ Class Item_model extends CI_Model {
        foreach ($taxoarr as $taxo_id => $taxo_val) {
         if($taxo_val != "")
         {
-          $val .= '('.$rs['item_id'].','.$taxo_id.','.$taxo_val.'),';
+          $val .= '('.$rs['item_id'].','.$taxo_id.',"'. $taxo_val.'"),';
         }
        }
        

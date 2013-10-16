@@ -490,9 +490,13 @@ Class Tag_model extends CI_Model
                
                 foreach($result as $val) 
                 {   
-                   
-                  if($val['tag_id']  == $temp_res['0']['parent_tags'])
-                  {
+                   $tag_arr = explode(',', $temp_res['0']['parent_tags']);
+//                   in_array($val['tag_id'], $tag_arr)
+                  //if($val['tag_id']  == $temp_res['0']['parent_tags'])
+                //  var_dump($tag_arr);
+                //  echo $val['tag_id'];
+                if(in_array($val['tag_id'], $tag_arr))  
+                {
                     $this->db->select('t_p.*,t.name');
                     $this->db->from('tag_parent as t_p');
                     $this->db->join('tags as t','t_p.tag_id=t.id','inner');
@@ -502,7 +506,7 @@ Class Tag_model extends CI_Model
                   if($query2->num_rows()>0)
                     {
                         $result2 = $query2->result_array();
-//                        var_dump($result2);die;
+                    //    var_dump($result2);
                         
                         foreach($result2 as $val2) {
                             $this->db->select('t_p.*,t.name');
