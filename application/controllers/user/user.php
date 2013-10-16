@@ -100,18 +100,18 @@ class User extends CI_Controller {
                     $this->load->view('user/header');
                 }
                 }
-           
-            
-        }
-       
-        
-        
-        }
-//          chmod($filepath,'0750');
-        $this->load->helper('date');
+         }
+       }
+       $this->load->helper('date');
     }
 
- public function board($data_str = FALSE)
+    public function fb()
+    {
+//        $this->load->view('user/header',$data);
+    }
+    
+
+    public function board($data_str = FALSE)
     {
      
         $temp = new User_model;
@@ -166,6 +166,7 @@ class User extends CI_Controller {
         $config['uri_segment'] = 5;
         
         $val = $this->uri->segment(5);
+//        echo $val;
 //        var_dump($val);die;
         
         $data['pageno'] = $val;
@@ -178,6 +179,11 @@ class User extends CI_Controller {
         }
 
         if ($this->input->post()) {
+            
+//            echo 'else';
+//            echo $val;
+//            echo $board_id;
+            
             $id = $this->input->post('val');
             $id_array = explode(",", $id);
             if (count($id_array) - 1 == 0) {
@@ -187,7 +193,7 @@ class User extends CI_Controller {
                 {
                 $data['post'] = $this->user_model->post_job($val * 5,$board_id);
                  $config['total_rows'] = $this->user_model->page_count('post_job',$board_id);
-                
+                 
                 }
                 else {
                     $data['post'] = $this->user_model->post_job($val * 5);
@@ -195,6 +201,8 @@ class User extends CI_Controller {
                 }
                 $data['pageno'] = $this->input->post('pageno');
 //            $data['parent_id'] = $this->user_model->parent_id();
+                $choice = $config["total_rows"] / $config["per_page"];
+                $config["num_links"] = round($choice);
                 $this->pagination->initialize($config);
                 echo $this->load->view('user/mainpage_content', $data, TRUE);
             } else {
@@ -202,19 +210,26 @@ class User extends CI_Controller {
                 $config['total_rows'] = $this->user_model->refine_post_count($id_array,$board_id);
                 else
                 $config['total_rows'] = $this->user_model->refine_post_count($id_array);
-                
+                $config['base_url'] ="" ;
+                $choice = $config["total_rows"] / $config["per_page"];
+                $config["num_links"] = round($choice);
                 $this->pagination->initialize($config);
                 if(isset($board_id))
                 $data['post'] = $this->user_model->refine_post_job($id_array, $val * 5,$board_id);
                 else {
                     $data['post'] = $this->user_model->post_job($val * 5);
                 }
+                
+                $data['pagename'] = 'sidebar_refine';
+                
                 $data['total_row'] = $config['total_rows'];
                 
                 echo $this->load->view('user/content', $data, TRUE);
             }
             die;
         } else {
+            
+           
              if(isset($board_id))
             $config['total_rows'] = $this->user_model->page_count('post_job',$board_id);
              else
