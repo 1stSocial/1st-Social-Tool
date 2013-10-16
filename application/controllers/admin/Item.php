@@ -257,6 +257,22 @@ class Item extends CI_Controller {
                             }
                         }
                         break;
+                    
+                    case 'html':
+                    {
+//                        $temp123 = trim(addslashes(htmlspecialchars(
+//        html_entity_decode($taxoarr[$id], ENT_QUOTES, 'UTF-8'),
+//        ENT_QUOTES, 'UTF-8'
+//    )));
+                        $taxoarr[$id] = htmlentities($taxoarr[$id]);
+                        if ($taxoarr[$id] == '') {
+                                $error[] = $id . ":* please give value";
+                                $error_iden = $error_iden && FALSE;
+                            } else {
+                                $error[] = $id . ":";
+                                $error_iden = $error_iden && TRUE;
+                            }
+                    }
                 }
             }
         }
@@ -266,7 +282,7 @@ class Item extends CI_Controller {
             unset($data['user_id']);
             $data['created_by'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
-            $data['status'] = '0';
+            $data['status'] = $data['status'];
             $data['parent_tag_id'] = $tag_id;
 //            var_dump($_SESSION['child_tag']);
             $tag = $this->input->post('abc');
