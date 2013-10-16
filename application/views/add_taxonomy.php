@@ -25,6 +25,7 @@
                     <option>Select</option>
                     <option>String</option>
                     <option>Integer</option>
+                    <option>html</option>
                 </select>
             </div>
         </div>

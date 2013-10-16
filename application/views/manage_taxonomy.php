@@ -73,6 +73,7 @@ if (isset($option))
                     <option value="select">Select</option>
                     <option value="string">String</option>
                     <option value="Integer">Integer</option>
+                    <option value="html">html</option>
                 </select><div style =" color: red; display: none;padding-left:43%" id="type_error"> Select Taxonomy Type </div>
             </div>
         </div>

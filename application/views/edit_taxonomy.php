@@ -46,6 +46,11 @@
                     <?}else{?>
                     <option value="Integer">Integer</option>
                     <?}?>
+                    <?php if($type=='html') {?>
+                    <option selected value="html">html</option>
+                    <?}else{?>
+                    <option value="html">html</option>
+                    <?}?>
                 </select><div style =" color: red; display: none;padding-left:43%" id="type_error"> Select Taxonomy Type </div>
             </div>
         </div>    
