@@ -45,29 +45,30 @@
                 </div>
                 <div class="entry" style="padding:0 60px;">
                     <div style="text-align: justify">
-                        
+                       
                     <div style="margin-top:20px">
                                         <?= $val->body ?>
                                     </div>
-                         <div id="taxonomy">
+                        <div id="taxonomy" style="float: left;width: 45%">
                                         <h3> About </h3>
                                             <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
                                                 <div id="<?= $value->item_id; ?>">
-                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= $value->value; ?></span>
+                                                    <div style="float:left;width:  50%"><?= $value->name." :" ?></div>  <span style=""><?= html_entity_decode($value->value); ?></span>
                                                 </div>
                                                 <div style="clear: both"></div>
                                                 <?php
                                             endforeach;
                                         endif;
                                         ?>
-
                                     </div>
-                    </div>
-                    <div> 
+                        <div style=""> 
                     <?php
                      include 'gallary.php';
                     ?>
                     </div>
+                            
+                    </div>
+                    
                     <div class="clear"></div>
                    
                 </div>

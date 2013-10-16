@@ -17,7 +17,7 @@
             if($img_name !='.' && $img_name !='..')
             {
                 {?>
-                    <a data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> &width=150 &height=150" ></a>
+         <a style="margin:2px " data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> &width=150 &height=150" ></a>
             <?} }}
                     ?>
     <br>

@@ -44,7 +44,7 @@
                                         <h3> About </h3>
                                             <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
                                                 <div id="<?= $value->item_id; ?>">
-                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= is_numeric($value->value) ? number_format((int)$value->value) : $value->value; ?></span>
+                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= is_numeric($value->value) ? number_format((int)$value->value) : html_entity_decode($value->value); ?></span>
                                                 </div>
                                                 <div style="clear: both"></div>
                                                 <?php
@@ -63,18 +63,18 @@
 </div>
 <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
 <script>
-//  
-//$('#navigation1 a').click(function() {
-//
-//        var id = $(this).text();
-//        var pageno = $('#pageno').val();
-//
-//        $('#pageno').val(id);
-//        
-//    });
-//
-//    $(document).ready()
-//    {
+  
+
+
+    $(document).ready()
+    {
+        alert('dsajfg');
+            $('#navigation1 a').click(function() {
+                    alert('abc');
+                  //  return false;
+            });
+        
+    }
 //        var str = $('#navigation1 strong').html();
 //        var value = $('#t').val();
 //        var b_name = $('#board_name').val();
@@ -95,5 +95,5 @@
 //
 //            $('#navigation1').html($('#navigation1').html().replace('<a href=' + $('#pageno').val() +'>' + $('#pageno').val() + '</a>', '<strong>' + $('#pageno').val() + '</strong>'));
 //        }
-//    }
+    
     </script>

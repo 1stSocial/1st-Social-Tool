@@ -57,6 +57,7 @@
                                         $formate = "%d %M %Y";
                                         echo mdate($formate, $dt);
                                         ?></span> 
+                               
                                 </div>
 
                             </div>
@@ -148,7 +149,7 @@
                                         <h3> About</h3>
                                             <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
                                                 <div id="<?= $value->item_id; ?>">
-                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= is_numeric($value->value) ? number_format((int)$value->value) : $value->value; ?></span>
+                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= is_numeric($value->value) ? number_format((int)$value->value) : html_entity_decode($value->value); ?></span>
                                                     <div style="clear: both"></div>
                                                 </div>
                                                 
