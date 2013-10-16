@@ -14,10 +14,10 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];
         mkdir('../css/user/content/'.$verifyToken);
 	$targetPath =  '../css/user/content/'.$verifyToken;
-	$targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
+	$targetFile = rtrim($targetPath,'/') . '/' . str_replace(" ", "a", $_FILES['Filedata']['name']);
 	
 	// Validate the file type
-	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+	$fileTypes = array('jpg','jpeg','gif','png','PNG','GIF','JPEG','JPG'); // File extensions
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 	
 	if (in_array($fileParts['extension'],$fileTypes)) {
