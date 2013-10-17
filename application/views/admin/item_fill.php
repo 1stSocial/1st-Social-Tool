@@ -53,7 +53,13 @@
                 <div style='magrin-top:33px;padding-left:20%;'><input type="text" id="item_title" name="title" class="form-control" style="width: 90%"></div>
             </div>
         </div>
-    
+        
+          <div style="clear: both;margin: 1%"></div>
+        <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >call to action :</label>
+        <div style='magrin-top:33px;padding-left:20%;'>
+            <input type="text" class="form-control" style="width:90%" name="call_to_action" id ="call_to_action"/>
+        </div>
+     
     <div style="clear: both;margin: 1%"></div>
     
         <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info">Body :</label>
@@ -79,10 +85,11 @@
         <div style='magrin-top:33px;padding-left:20%;'>
             <select class="chosen-select" id="status" name="status" style="width: 25%">
                
-                <option value="1">True (Show)</option>
-                <option value="0">False (Hide)</option>
+                <option value="1">Open</option>
+                <option value="0">Close</option>
             </select>
         </div>
+ 
       
       <div style="clear: both;margin: 1%"></div>
                 <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Gallery Images :</label>

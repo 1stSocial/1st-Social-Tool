@@ -42,6 +42,12 @@
         </div>
     </div>
       <div style="clear: both;margin: 1%"></div>
+      <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >call to action :</label>
+        <div style='magrin-top:33px;padding-left:20%;'>
+            <input type="text" class="form-control" style="width:90%" name="call_to_action" id ="call_to_action" value="<?= $item['0']['call_to_action'] ?>" >
+        </div>
+     
+    <div style="clear: both;margin: 1%"></div>
 <div class="control-group">
         <div class="controls">
             <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info">Body :</label>

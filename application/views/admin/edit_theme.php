@@ -15,6 +15,7 @@ foreach ($val as $a)
 <div class="bs-sidebar hidden-print affix" style="margin-left: 40px; width: 20%;background: transparent;float: left; font-size: 20px">
     
   <ul class="nav nav-list nav-list-vivid demo-sidebar hide-on-tablets">
+      <li class=""><a href="#variables-css_box">CSS box</a></li>
               <li class=""><a href="#variables-body">Body</a></li>
               <li class=""><a href="#variables-head">Head</a></li>
               <li class=""><a href="#variables-theme">Theme</a></li>
@@ -33,7 +34,7 @@ foreach ($val as $a)
     
 </div>
 <div id="data" style="margin-left: 30%; width: 60%;background: transparent;float: left;">
-    <div id="variables-body">
+    <div id="variables-css_box">
         <div class="control-group">
             <div class="controls">
             <h2>Theme Name</h2>
@@ -44,7 +45,25 @@ foreach ($val as $a)
             </div>
         
         </div>
-    </div>    
+    </div>   
+    
+        
+    <div id="variables-css_box">
+        <div class="control-group">
+            <div class="controls">
+            <h2>CSS box</h2>
+                <?php echo form_label('css box :', 'font_size', array('class' => "control-label label label-infocontrol-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 15%;margin-top:  2%;")); ?><div style="clear: both;margin-top: 44px">
+                    <!--<input class="form-control" type="text" style="width: 100%;height: 100%" class = "control-label" placeholder="Theme Name" name="themename" >-->
+                    <textarea id="css_box" name="css_box" class="form-control" rows="15" placeholder="body { background-color : red }"> <?php if(isset($str['css_box'])) { echo $str['css_box'];}?> </textarea>
+                        
+                </div>
+            </div>
+        
+        </div>
+    </div> 
+    
+    
+    
     <div id="variables-body">
         <div class="control-group">
             <div class="controls">
@@ -65,6 +84,7 @@ foreach ($val as $a)
         </div>
     </div>
     
+
     <div id="variables-head">
         <div class="control-group">
             <div class="controls">

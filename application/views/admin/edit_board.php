@@ -45,6 +45,14 @@
                 <input class="form-control" required="" type="text" style="width: 68.5%"  class = "control-label" placeholder="Board Title" id="title1" value="<?= $boardData[0]->board_title ?>" name="title" ><div style =" color: red; display: none;padding-left:43%" id="terror"> Enter Board Title </div>
             </div>   
              <div style="margin-top: 5px"></div>
+             
+             <div>
+         <?php echo form_label('Call to action Name:', 'button_name', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
+                            <div style="margin-left: 33%">
+                                <input required="" class="form-control" type="text" style="width: 68.5%"  class = "control-label" placeholder="Call to action Name" id="call_to_action" name="call_to_action"  value="<?= $boardData[0]->call_to_action ?>"><div style =" color: red; display: none;padding-left:43%" id="call_error"> Enter call to action Name </div>
+                            </div>
+                        </div>
+             
             <div class="component">
                 <div class="control-group">
                <?php echo form_label('Board Parent Tag:', 'parent_tag', array('class' => "control-label label label-info",'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;"));
