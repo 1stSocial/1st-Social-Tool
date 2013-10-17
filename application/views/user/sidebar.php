@@ -14,7 +14,7 @@
             <li class="sidebox super_recent_posts"><h3 class="sidetitl"><a href="">Latest Listing</a></h3>                
                 <?php if (is_array($latestjob)): foreach ($latestjob as $val) : ?>
                         <div class="super_recent_posts_item">
-                            <b> <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?><?php if(isset($board_name)) { echo '/'.$board_name;}else{echo "/home";} ?>" title="<?= $val['title'] ?>" class="super_recent_posts_item_title"><?= $val['title'] ?></a> </b> 
+                            <b> <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?><?php if(isset($board_name)) { echo '/'.$board_name;}else{echo "/home";} ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" title="<?= $val['title'] ?>" class="super_recent_posts_item_title"><?= $val['title'] ?></a> </b> 
                             <!--<span>(<a href="" rel="tag">Regional TAS</a>)</span>-->
                         </div>
                     <?php endforeach;
@@ -89,26 +89,26 @@ endif; ?>
     </div>
     <div class="clear"></div>
 
-    <div class="squarebanner ">
+<!--    <div class="squarebanner ">
         <h3 class="sidetitl"> Sponsors </h3>
         <ul>
-<!--            <li>
+            <li>
                 <a href="<?= site_url() ?>/user/user/detail/<?= $val['id'] ?>" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
-            </li>			-->
+            </li>			
 
             <li class="rbanner">
                 <a href="" title=""><div class="rimg"></div></a>
             </li>
 
-<!--            <li>
+            <li>
                 <a href="" title=""><img src="" alt="" style="vertical-align:bottom;"></a>
-            </li>-->
+            </li>
 
             <li class="rbanner">
                 <a href="" title=""><div class="limg"></div></a>
             </li>
         </ul>
-    </div>
+    </div>-->
 </div>
 <div class="clear"></div>
 <input type="hidden" name ="b_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">

@@ -1,4 +1,6 @@
-<?php date_default_timezone_set('Europe/London'); ?>
+<?php date_default_timezone_set('Europe/London'); 
+ session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
@@ -49,6 +51,187 @@
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
          <style>
          .contain { background-size: contain; }
+         </style>
+         <?php
+            if(isset($fb))
+            {
+                $_SESSION['fb'] = "fb";
+                echo '<style>
+         .contain { background-size: contain; }
+         
+         #wrapper {
+    margin: 0 auto;
+    width: 810px;
+    
+     border-color: #DADADA;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 3px 3px 0;
+}
+
+
+#topbg {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+}
+
+
+#latestjob .textwidget {
+    margin-left: 22px;
+    margin-top: -52px;
+    width: 69%;
+}
+
+#left {
+    float: left;
+    margin-top: 25px;
+    width: 520px;
+}
+
+.title {
+    margin-bottom: 20px;
+    width: 405px;
+}
+
+
+
+#right {
+    background: none repeat scroll 0 0 #DCEBF1;
+    border-left: 7px solid #DCEBF1;
+    border-top: 7px solid #DCEBF1;
+    float: right;
+    margin-right: 0;
+    margin-top: 20px;
+    width: 260px;
+}
+
+#date {
+
+    top: -45px;
+     margin-left: 0!important;
+    position: relative;
+}
+
+.title h1 {
+
+   padding-left:83px!important;
+
+}
+
+.sidebar .widget_text .sidetitl {
+    background: #9CD5EE;
+}
+
+#year {
+
+    position: relative;
+    top: 5px;
+}
+
+
+.sidebar .super_recent_posts h3 {
+    background: url("<?=  base_url();?>/assets/css/user/images/ico1.png") no-repeat scroll 10px 5px  #9CD5EE;
+    float: left;
+    padding-left: 29px;
+}
+
+div.even .title {
+    margin-top: 5px;
+}
+
+.sidebar .widget_text .sidetitl {
+    background: url("<?=  base_url();?>/assets/css/user/images/dolar_ico.png") no-repeat scroll 10px 5px #9CD5EE!important;
+    padding-left: 29px;
+}
+
+.squarebanner h3 {
+    background: url("<?=  base_url();?>/assets/css/user/images/spons_ico.png") no-repeat scroll 10px 5px #9CD5EE;
+    float: left;
+    padding-left: 29px;
+}
+
+.sidebar #lct-widget-locations-container h3 {
+background: url("<?=  base_url();?>/assets/css/user/images/location_ico.png") no-repeat scroll 10px 5px #9CD5EE;
+    float: left;
+    padding-left: 29px;
+}
+
+#toplogo {
+    left:0px!important;
+    top: 28px;
+    width: 810px;
+}
+
+.orange_saperator {
+    border: 1px solid #0E95D0;
+    margin: 0 auto 8px 5px;
+    width: 99.5%;
+}
+
+.botwid {
+
+    width: 176px;
+}
+
+
+#taxonomy{
+margin-left: 23px;
+}
+
+h3.sidetitl {
+    width: 225px;
+    margin-left:0px;
+}
+
+#search {
+    margin: 50px 0 0 92px;
+    position: relative;
+    top: 20px;
+    width: 253px;
+}
+
+#casing {
+    background: none repeat scroll 0 0 #F4F4F4;
+    margin-right: 0;
+}
+
+#navigation {
+    letter-spacing: 0.1em!important;
+    margin-bottom: 10px;
+    margin-top:0;
+}
+
+#navigation div{
+margin-left: 70%!important;
+}
+
+.botcover {
+    margin: 0 auto;
+    width: 810px;
+}
+
+.header {
+    margin: 0 auto;
+    width: 810px!important;
+}
+
+         </style>';
+            }
+            else
+            {
+                $_SESSION['fb'] ="";
+            }
+            
+         ?>
+         <style>
+             <?php
+                
+                    if(isset($css))
+                    {
+                        echo $css;
+                    }
+             
+             ?>
          </style>
 </head>
  
