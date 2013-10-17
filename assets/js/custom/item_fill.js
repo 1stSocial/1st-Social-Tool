@@ -19,7 +19,7 @@ function temp1()
     alert('temp1');
 }
 $(document).ready()
-{
+{ 
     $('form').ajaxForm({
 //        beforeSubmit: function() {
 //            show();
@@ -30,7 +30,7 @@ $(document).ready()
 //        }
         beforeSend: function()
         {
-
+          
             $("#progress").show();
             //clear everything
             $("#bar").width('0%');
@@ -99,6 +99,7 @@ function change_fun()
 
 function savefun()
 {
+      
     show();
     ur = $('#url_temp').val();
     ur = ur + '/';
@@ -111,7 +112,9 @@ function savefun()
     var folder_name = $('#folder_name').val();
     var image = $('#image').val();
     var status = $('#status').val(); 
-     
+    var call_to_action = $('#call_to_action').val();
+    
+   
     var abc = [];
 
     var taxo = [];
@@ -162,7 +165,8 @@ function savefun()
             img: imgval,
             image: image,
             folder_name: folder_name,
-            abc: abc
+            abc: abc,
+            call_to_action : call_to_action
         }
 
         $.ajax({
@@ -176,6 +180,7 @@ function savefun()
                 }
                 else
                 {
+                     hide();
                     var obj = jQuery.parseJSON(res);
                     for (var i = 0; i < obj.length; i++)
                     {

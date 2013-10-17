@@ -91,6 +91,8 @@ function savefun()
     var folder_name = $('#folder_name').val();
     var unlink = $('#imgsrc').attr('src');
     var image = $('#image').val();
+     var call_to_action = $('#call_to_action').val();
+     
     var tag = [];
     var taxo = [];
     var ids=[];
@@ -123,7 +125,8 @@ function savefun()
              ids : ids,
              image : image,
              unlink : unlink,
-             folder_name:folder_name
+             folder_name:folder_name,
+              call_to_action : call_to_action
         };
 
         $.ajax({

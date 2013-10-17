@@ -99,6 +99,7 @@ function savefun(image)
     var theme_id = jQuery('#theme').val();
     var taxo_id = jQuery('#taxo').val();
     var title = jQuery('#title1').val();
+    var call_to_action = jQuery('#call_to_action').val();
     
     if (name == "")
     {
@@ -109,7 +110,18 @@ function savefun(image)
     {
         jQuery("#berror").hide();
     }
-
+    
+    if (call_to_action == "")
+    {
+        jQuery("#call_error").css('padding-left:40%')
+        jQuery("#call_error").show();
+    }
+    else
+    {
+        jQuery("#call_error").hide();
+    }
+    
+    
     if (parentTag == "0")
     {
         jQuery("#perror").show();
@@ -139,7 +151,8 @@ function savefun(image)
             domain : domain,
             theme_id: theme_id,
             filterable_taxo :taxo_id,
-            image : image
+            image : image,
+            call_to_action :call_to_action
         };
         var ur = jQuery('#ur').val();
         jQuery.ajax({

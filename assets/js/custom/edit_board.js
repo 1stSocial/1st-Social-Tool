@@ -97,6 +97,8 @@ function change()
      var taxo_id = jQuery('#taxo').val();
       var theme_id = jQuery('#theme').val();
        var title = jQuery('#title1').val();
+        var call_to_action = jQuery('#call_to_action').val();
+       
        show();
     if(name=="")
         {
@@ -106,6 +108,17 @@ function change()
             {
                 $('#berror').hide();
             }
+            
+      if (call_to_action == "")
+    {
+        jQuery("#call_error").css('padding-left:40%')
+        jQuery("#call_error").show();
+    }
+    else
+    {
+        jQuery("#call_error").hide();
+    }       
+            
     if(parentTag=="0")
         {
              $('#perror').show();
@@ -134,8 +147,8 @@ function change()
         id:id,
         theme_id:theme_id,
          filterable_taxo :taxo_id,
-         image:img
-         
+         image:img,
+          call_to_action :call_to_action
        };
     jQuery.ajax({
        type: "POST",
