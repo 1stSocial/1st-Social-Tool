@@ -64,7 +64,7 @@
                        <div class="textwidget"></div>
                     </li>
                </div>
-                <div class="blogright">
+                <!--<div class="blogright">
                     <div class="menu-topmenu-container"><ul id="menu-topmenu" class="menu"><li id="menu-item-182" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-182"><a href=""<?=  site_url()?>/user/user/index"">Jobs</a></li>
                         <li id="menu-item-135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135"><a href="">About Us</a></li>
                         <li id="menu-item-134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134"><a href="">My Account</a></li>
@@ -79,6 +79,7 @@
                                     </div>
                                
                     </div>
+                    -->
                 </div>
                     </div>
             </div>
