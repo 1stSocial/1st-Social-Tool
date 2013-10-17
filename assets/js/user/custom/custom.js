@@ -33,7 +33,7 @@ function refine()
                     function() {
                         $('#left').html("");
                     }).fadeIn('slow');
-            $('#left').fadeOut('slow',
+             $('#left').fadeOut('slow',
                     function() {
                         $('#left').html(res);
                     }).fadeIn('slow');
