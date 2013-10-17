@@ -106,13 +106,13 @@ class User_model extends CI_Model
             
             case 'keyword_search':
             {
-               $keyword = $this->input->post('search');
-           $this->db->select('*');
-            $this->db->from('items');
-            $this->db->like('name',$keyword);
-            $this->db->or_like('title',$keyword);
-            $this->db->or_like('body',$keyword);
-            $query = $this->db->get();
+                $keyword = $this->input->post('search');
+                $this->db->select('*');
+                $this->db->from('items');
+                $this->db->like('name',$keyword);
+                $this->db->or_like('title',$keyword);
+                $this->db->or_like('body',$keyword);
+                $query = $this->db->get();
        
                 if($query->num_rows()>0)
                 {
@@ -122,9 +122,37 @@ class User_model extends CI_Model
                     $arr = array();
                     if($b_id)
                     {
-                    foreach ($var as $va) {
-                        if($va['board_id'] == $b_id)
-                        $arr[] = $va['id'];
+                         $type  = $this->db->get_where('board',array('id'=>$b_id));
+                            if($type->num_rows()>0)
+                            {
+                                  $val = $type->result_array();
+                  //                var_dump($val);
+                                  $res = $val['0']['parent_tags'];
+                                  $par_tags =  explode(',', $res);
+                                  $cou = count(explode(',', $res));
+                            }   
+
+                          if($cou == 1)
+                          {
+                                foreach ($var as $va) {
+                                if($va['board_id'] == $board_id)
+                                {
+                                         $arr[] = $va['id'];
+                                }
+                                }
+                          }
+                          else
+                          {
+                              foreach ($var as $va) {
+                                if(in_array($va['parent_tag_id'], $par_tags))
+                                    {
+                                             $arr[] = $va['id'];
+                                    }
+                                }
+                          }
+//                    foreach ($var as $va) {
+//                        if($va['board_id'] == $b_id)
+//                        $arr[] = $va['id'];
                     }
                     return count($arr) ;
                     }
@@ -134,7 +162,7 @@ class User_model extends CI_Model
         } 
        
         
-    }
+    
     
     function refine_post_count($id,$b_id=FALSE)
     {
@@ -143,11 +171,12 @@ class User_model extends CI_Model
         $temp1 = array();
        $result1 = array();
         $key =array();
+        
                   $this->db->select('item_id');
                 $this->db->from('item_tags');
                 $this->db->where_in('tag_id',$id);
-         
                 $result = $this->db->get();
+              
                 if($result->num_rows()>0)
                 {
                 $data = $result->result();
@@ -162,15 +191,17 @@ class User_model extends CI_Model
                         {
                             $key[] = $tempkey;
                         }
-                    }
+                    } 
                   
                 }
         
                 if((count($id))-1 == 1)
-                {              
+                {   
+                  
                     if(!is_array($temp1))
                     {
                         $key = $temp1;
+                        
                     }
                 }
                 if(count($id)-1 == 0) 
@@ -180,6 +211,7 @@ class User_model extends CI_Model
                 }
                 
                 $type  = $this->db->get_where('board',array('id'=>$b_id));
+         
                 
                 if(count($key))
                {
@@ -259,6 +291,10 @@ class User_model extends CI_Model
                         if($result->num_rows()>0)
                         {
                             $result1['item'] = $result->result();
+                        }
+                        else
+                        {
+                            die;
                         }
                 }
                   
@@ -409,6 +445,7 @@ class User_model extends CI_Model
                     $this->db->from('item_tags as t');
                     $this->db->join('items as i','i.id=t.item_id','inner');
                     $this->db->join('users as u','u.id =i.created_by','inner');
+                     $this->db->limit(5, $start);
                     $this->db->where_in('i.id',$key);
                     if($board_id)
                     {
@@ -823,6 +860,9 @@ class User_model extends CI_Model
     function keyword_search($start,$board_id=FALSE)
     {
 //     echo $board_id;
+        
+     
+        
        $keyword = $this->input->post('search');
            $this->db->select('*');
             $this->db->from('items');
@@ -834,6 +874,8 @@ class User_model extends CI_Model
        
        if($query->num_rows()>0)
        {
+           
+           
            
            $var = $query->result_array();
            $arr = array();
@@ -849,13 +891,35 @@ class User_model extends CI_Model
                {    
                      $i = $start;
                }
-           foreach ($var as $va) {
-               if($va['board_id'] == $board_id)
-               {
-                        $arr[] = $va['id'];
-               }
-           }
-           
+               
+               $type  = $this->db->get_where('board',array('id'=>$board_id));
+                if($type->num_rows()>0)
+                {
+                      $val = $type->result_array();
+      //                var_dump($val);
+                      $res = $val['0']['parent_tags'];
+                      $par_tags =  explode(',', $res);
+                      $cou = count(explode(',', $res));
+                }   
+               
+              if($cou == 1)
+              {
+                    foreach ($var as $va) {
+                    if($va['board_id'] == $board_id)
+                    {
+                             $arr[] = $va['id'];
+                    }
+                    }
+              }
+              else
+              {
+                  foreach ($var as $va) {
+                    if(in_array($va['parent_tag_id'], $par_tags))
+                        {
+                                 $arr[] = $va['id'];
+                        }
+                    }
+              }
            $new = array();
            
            for($i=$start;$i<$start+5;$i++)
@@ -868,9 +932,10 @@ class User_model extends CI_Model
            }
        
        }
- else {
+    else 
+     {
             
-       }
+     }
        
     }
     
@@ -946,6 +1011,16 @@ class User_model extends CI_Model
         else
         {
             return FALSE;
+        }
+    }
+    
+    function btn_name($id)
+    {
+        $val  =  $this->db->get_where('board',array('id'=>$id));
+        if($val->num_rows())
+        {
+            $val2  = $val->result_array();
+            return $val2[0]['call_to_action'];
         }
     }
     
