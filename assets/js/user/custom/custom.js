@@ -78,6 +78,7 @@ function footer_refine(id)
                     function() {
                         $('#left').html(res);
                     }).fadeIn('slow');
+                    
         },
         error: function(res)
         {
@@ -169,8 +170,10 @@ $(document).ready(function() {
         }
     });
 
-    $('#navigation1 a').click(function() {
-        
+
+
+    $('#abc a').click(function() {
+      
         var id = $(this).text();
         var b_name = $('#board_name').val();
         var pagename = $('#pagename').val();
@@ -181,12 +184,11 @@ $(document).ready(function() {
             taxoid = 2;
         }
         var uri = siteurl;
-
         switch (pagename)
         {
             case 'keyword_search':
                 {
-                    uri = uri + "/user/user/keyword_search";
+                    uri = uri + "/user/user/keyword_search/"+id;;
                     var dataval = {
                         'search': search,
                         'page': id,
@@ -196,9 +198,8 @@ $(document).ready(function() {
                 break;
             case 'salary_refine':
                 {
-                    uri = uri + '/user/user/salary_refine';
+                    uri = uri + '/user/user/salary_refine/'+id;;
                     var dataval = {
-                        'search': search,
                         'page': id,
                         'b_name': b_name,
                         'min': $('#min').val(),
@@ -209,15 +210,20 @@ $(document).ready(function() {
                 break;
             case 'footer_refine':
                 {
-                    uri = uri + '/user/user/footer_refine';
+                   
+                    var tag_id = $('#tag_id').val();
+                    uri = uri + '/user/user/footer_refine/'+id;
                     var dataval = {
-                        'search': search,
+                        'val': tag_id,
                         'page': id,
                         'b_name': b_name
                     };
                 }
+                break;
             case 'sidebar_refine':
                 {
+                    var value = "";
+                    
                     $('#lct-widget-locations-container :checked').each(function() {
                         value += $(this).val() + ',';
 
@@ -229,10 +235,10 @@ $(document).ready(function() {
                     };
                     uri = siteurl + '/user/user/board/' + b_name+'/'+id;
                 }
+                break;
         }
 
 
-//           alert(id);
         if (search != "job search")
         {
             $.ajax({
