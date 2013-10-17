@@ -282,8 +282,9 @@ class Item extends CI_Controller {
             unset($data['user_id']);
             $data['created_by'] = $session_data['id'];
             $data['createdTime'] = date('Y-m-d h:m:s');
-            $data['status'] = $data['status'];
+            $data['status'] = $this->input->post('status');
             $data['parent_tag_id'] = $tag_id;
+            $data['call_to_action'] = $this->input->post('call_to_action');
 //            var_dump($_SESSION['child_tag']);
             $tag = $this->input->post('abc');
            

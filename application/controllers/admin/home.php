@@ -120,6 +120,8 @@ class Home extends CI_Controller {
             $data['createdTime'] = date('Y-m-d h:m:s');
             $val['taxo'] = $data['filterable_taxo'];
             $val['title'] = $data['title'];
+            $val['call_to_action'] = $data['call_to_action'];
+            
             $img = $data['image'];
 
             // save board information 
