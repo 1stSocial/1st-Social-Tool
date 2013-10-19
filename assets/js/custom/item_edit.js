@@ -81,6 +81,7 @@ function change_fun()
 
 function savefun()
 {
+//    alert($('#status').val());
     show();
     ur = $('#url_temp').val();
     ur = ur + '/';
@@ -92,7 +93,7 @@ function savefun()
     var unlink = $('#imgsrc').attr('src');
     var image = $('#image').val();
      var call_to_action = $('#call_to_action').val();
-     
+     var status = $('#status').val();
     var tag = [];
     var taxo = [];
     var ids=[];
@@ -126,7 +127,8 @@ function savefun()
              image : image,
              unlink : unlink,
              folder_name:folder_name,
-              call_to_action : call_to_action
+             status : status,
+            call_to_action : call_to_action
         };
 
         $.ajax({

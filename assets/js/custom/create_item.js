@@ -2,10 +2,35 @@ var tag_id = [];
 
 jQuery(document).ready(function() {
 //    $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+    
+    $('#tab_id').dataTable({
+        "sPaginationType": "full_numbers"
+       
+    });
+    
+   $("#tab_id_info").css("width", "20%");
+        $("#tab_id_info").css("float", "left");
+        $("#tab_id_length").css("width", "20%");
+        $("#tab_id_length").css("margin-left", "20%");
+        $("#tab_id_info").attr("class", "btn btn-info");
+    $('.dataTables_length').insertAfter($("#tab_id_info"));
+    $('#tab_id_length').show();
+    $('#tab_id_filter').css("margin-right",'1%');
+  //  $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+    $(".body_img img").css({
+        'width': 100,
+        'height': 100
+    });
+     $("iframe").css({
+        'width': 300,
+        'height': 300
+    });
+    
     setTimeout(function() {
         jQuery('#mod1').click();
-    }, 100);
+    }, 150);
 
+    
     jQuery('#body').redactor();
 
     jQuery('#sub1').click(function() {
