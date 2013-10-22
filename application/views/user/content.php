@@ -16,6 +16,9 @@ background: linear-gradient(to bottom, rgba(186,96,0,1) 0%,rgba(253,223,205,1) 3
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', endColorstr='#ba6000',GradientType=0 ); /* IE6-9 */
     }
     
+    .title h1 {
+    padding-left: 0px !important;
+    }
 </style>
 <div id="left">
     <div id="latestjob"><li class="botwid widget_text">			
@@ -35,9 +38,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
             <div class="title">
                 <input type="hidden" value='<?=$pagename;?>' id="pagename" name="pagename">
                 <h2><a href="<?=site_url()?>/user/user/detail/<?=$val->id ;?>/<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" class="title_link" rel="" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
-                <div class="postmeta"> 	
+               </div>
+                <div class="postmeta" style="margin-left: 3%;margin-top: 3%"> 	
                     <span class="user">Posted by <a href="" title="Posts by " rel="author"><?php echo $val->user_name; ?></a></span>  
-                    <span class="clock"><?php $dt = human_to_unix($val->createdTime); $formate="%l,%d %M %Y"; echo mdate($formate,$dt); ?></span>  
+                    <!--<span class="clock"><?php // $dt = human_to_unix($val->createdTime); $formate="%l,%d %M %Y"; echo mdate($formate,$dt); ?></span>-->  
                     
                     <?php if(isset($post['salary'][$loop][0]->val)) :?>
                                 <span class="tags sallery_tag"><?= is_numeric($post['salary'][$loop][0]->val) ? number_format((int)$post['salary'][$loop][0]->val) : $post['salary'][$loop][0]->val; ?></span>
@@ -54,12 +58,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                                 <?php endforeach; endif;?>
                 
                 </div>
-            </div>
-            <div class="entry">
+            
+            <div class="title" style="margin-left: 3%;margin-top: 3%">
 
-                <p><?=$val->title;?></p>
-                <p><?php echo $val->body ?></p>
-                <div id="taxonomy">
+               <h3> <p><?=$val->title;?></p></h3></div>
+                <div style="margin-top:20px;margin-left: 3%;text-align: justify!important">
+                                        <?= $val->body ?>
+                                    </div>
+                <div id="" style="margin-top:20px;margin-left: 3%">
                                         <h3> About </h3>
                                             <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
                                                 <div id="<?= $value->item_id; ?>">
@@ -80,7 +86,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                                 <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
                                 <?}?>
                                 <div style="margin: 1px;clear: both"></div>
-            </div>
+            
         </div>
     <?php $loop++; endforeach;endif; ?>
     <div class="clear"></div>
@@ -97,4 +103,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
        $('#abc a').attr('href','javascript:temp()');
        
     };
-    </script>
+</script>

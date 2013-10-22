@@ -1,3 +1,5 @@
+<div>
+                        <input type="button" style="margin-left: 5%" class="btn " value="Back" onclick="window.history.back()" />   </div> 
 <div id="left">
     <?php $loop = 0;
     if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>       
@@ -7,20 +9,20 @@
 
                 <div class="title">
 
-                    <h1 style="padding-left:60px;"><?= $val->title; ?></h1>
-
-
+                    <h1 style="padding-left:3%!important;"><?= $val->title; ?></h1>
+                    
+            </div>
                     <!--end date-->
 
-                    <div class="postmeta"> 	
+                    <div class="postmeta" style="margin-left:3%;"> 	
 
                         <span class="user">Posted by <a href="" title="Posts by admin" rel="author"><?php echo $val->user_name; ?></a></span>  
 
-                        <span class="clock"><?php
-                            $dt = human_to_unix($val->createdTime);
-                            $formate = "%l,%d %M %Y";
-                            echo mdate($formate, $dt);
-                            ?></span>  
+<!--                        <span class="clock"><?php
+//                            $dt = human_to_unix($val->createdTime);
+//                            $formate = "%l,%d %M %Y";
+//                            echo mdate($formate, $dt);
+                            ?></span>  -->
 
                         <?php if (isset($post['salary'][$loop][0]->val)) : ?>
                             <span class="tags sallery_tag"><?= $post['salary'][$loop][0]->val; ?> per year</span>
@@ -42,14 +44,14 @@
 
                     </div>
 
-                </div>
-                <div class="entry" style="padding:0 60px;">
+                
+                <div class="entry" style="margin-left:0%">
                     <div style="text-align: justify">
                        
                     <div style="margin-top:20px">
                                         <?= $val->body ?>
                                     </div>
-                        <div id="taxonomy" style="float: left;width: 45%">
+                        <div id="taxonomy" style="width: 49%;margin-left: 0%">
                                         <h3> About </h3>
                                             <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
                                                 <div id="<?= $value->item_id; ?>">
@@ -66,11 +68,13 @@
                      include 'gallary.php';
                     ?>
                     </div>
-                            
+                       
+    
                     </div>
-                    
                     <div class="clear"></div>
-                   
+                    
+                    <div >
+                        <input type="button" style="margin-left: 50%;margin-top: 5%" class="btn " value="Back" onclick="window.history.back()" />   </div>  
                 </div>
             </div>
         </div>
