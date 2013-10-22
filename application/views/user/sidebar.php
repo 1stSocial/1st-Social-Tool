@@ -38,7 +38,7 @@
     <? endforeach;
 endif; ?>
 
-                    <li class="sidebox widget_text"><h3 class="sidetitl"><?php if(isset($max_min['name'])) echo $max_min['name'];else echo 'Salary'; ?></h3><div class="textwidget">
+                    <li class="sidebox widget_text"><h3 class="sidetitl"><?php if(isset($max_min['name'])) echo $max_min['name'];else echo 'Price'; ?></h3><div class="textwidget">
                         <ul id="lct-widget">  
                           <?php if(isset($max_min['name'])){
                           $temp = (($max_min['max']*1000) - ($max_min['min']*1000))/4;
