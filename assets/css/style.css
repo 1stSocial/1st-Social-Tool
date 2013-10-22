@@ -64,3 +64,8 @@ margin-bottom: 0px;
 .table, .table p {
 font-size: 12px !important;
 }
+
+.body_img {
+height: auto !important;	
+}
+
