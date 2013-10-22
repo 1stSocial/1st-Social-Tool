@@ -30,7 +30,6 @@ margin-left:20%;
     float: left;
     position: relative;
     margin-left: 5%;
-    
 }
 
 .modal-body
@@ -60,4 +59,8 @@ top: -10px;
 
 .nav li {
 margin-bottom: 0px;	
+}
+
+.table, .table p {
+font-size: 12px !important;
 }
