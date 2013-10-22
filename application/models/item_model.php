@@ -152,6 +152,7 @@ Class Item_model extends CI_Model {
        $id = $this->input->post('id');
        $data['name'] = $this->input->post('name');
        $data['title'] = $this->input->post('title');
+       $data['status'] = $this->input->post('status');
        $data['body'] = $this->input->post('body');
        $data['image'] = $this->input->post('image');
        $data['call_to_action'] =  $this->input->post('call_to_action');
