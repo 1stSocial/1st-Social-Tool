@@ -171,6 +171,9 @@ class Home extends CI_Controller {
         if (is_numeric($boardId) && !empty($boardId)) {
             //get board details
             $boardData = $boardModel->getBoardByBoardId($boardId);
+            
+          
+            
             $viewData['boardData'] = $boardData;
             // get all parent tag
             $tagModel = new Tag_model();
@@ -216,6 +219,13 @@ class Home extends CI_Controller {
             $Theme = $setting_model->theme_name();
             $viewData['theme'] = $Theme;
 
+            
+            $this->load->model('taxonomy_model');
+            $taxo_model = new Taxonomy_model;
+
+            $id = $this->input->post('tag_id');
+            $viewData['taxo'] = $taxo_model->get_int_taxo($boardData[0]->parent_tags);
+            
             $viewData['selected_theme'] = $boardModel->get_theme($boardId);
             
             echo $this->load->view('admin/edit_board', $viewData, TRUE);
