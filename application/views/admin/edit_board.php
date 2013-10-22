@@ -95,7 +95,11 @@
                  <div style="margin-left: 33%">
                     <div id="select_box" style="width:451px;">
                     <select class="chosen-select" data-placeholder="Choose a Filterable Taxonomy..." style="width:350px;" tabindex="4" id="taxo" name="taxo" >
-                        <option></option>
+                        <option value='0'></option>
+                     <?php foreach ($taxo as $value) {?>
+                        <option <?php if($value['id'] == $boardData[0]->Filterable_taxo) echo 'selected' ?> value="<?=$value['id']?>"><?=$value['name']?></option>
+                                                 <?php   } ?>
+                        
                     </select></div>
                 </div>
             </div>

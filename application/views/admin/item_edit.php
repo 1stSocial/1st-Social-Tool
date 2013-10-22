@@ -121,8 +121,8 @@ endif;
         <div style='magrin-top:33px;padding-left:20%;'>
             <select class="chosen-select" id="status" name="status" style="width: 25%">
                
-                <option value="1">True (Show)</option>
-                <option value="0">False (Hide)</option>
+                <option <?php if($item['0']['status'] == 1) echo 'selected' ?> value="1">Open</option>
+                <option <?php if($item['0']['status'] == 0) echo 'selected' ?> value="0">Close</option>
             </select>
         </div>
          

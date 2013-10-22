@@ -8,7 +8,7 @@ video {
     <thead>
         <tr>
             <th>Name</th> 
-            <th>Title</th>
+           
             <th>Body</th>
             <th>Board Name</th>
             <th>Created By</th>
@@ -30,7 +30,7 @@ video {
                         }
                     ?>
                     <td><?= $val->name ?></td>
-                    <td><?= $val->title ?></td>  
+                    
                     <td><div class="body_img" style="height:200px;width: 450px;  overflow: auto;"><?= str_replace('/content/', '/thumbnail/', $str) ?></div></td> 
                     <td><?= $val->board_name ?></td>
                     <td><?= $val->created_by ?></td>  
