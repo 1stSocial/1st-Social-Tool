@@ -277,6 +277,10 @@ class User_model extends CI_Model
                     {
                         $result1['item'] = $result->result();
                     }
+                    else
+                    {
+                        return("");
+                    }
                 }
                 else 
                 {
