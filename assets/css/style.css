@@ -57,3 +57,7 @@ ul li
 position: relative;
 top: -10px;
 }
+
+.nav li {
+margin-bottom: 0px;	
+}
