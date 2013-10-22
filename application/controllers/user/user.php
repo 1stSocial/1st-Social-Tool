@@ -180,7 +180,7 @@ class User extends CI_Controller {
     {
 //        $this->load->view('user/header_new',$data);
         $_SESSION['fb'] = 'fb';
-        
+        $css="";
         if($this->uri->segment(3))
             {
 //                echo $this->uri->segment(2);
@@ -568,7 +568,12 @@ class User extends CI_Controller {
         $myarr = array();
         if (is_array($theme)) {
             foreach ($theme as $val) {
+                if($val['key'] != 'css_box')
                 $str .= '@' . $val['key'] . ':' . $val['value'] . '!important;';
+                else
+                {
+                    $css = $val['value'];
+                }
             }  
         } else {
             $str = ""; 
