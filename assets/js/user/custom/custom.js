@@ -20,7 +20,13 @@ function refine()
     }
     else
     {
-        tempurl = siteurl + '/user/user/board/' + b_name;
+        var fb = $('#fb').val();
+        
+        if(fb == 'fb')
+        tempurl = siteurl + '/user/user/fb/' + b_name;
+        else
+        tempurl = siteurl + '/user/user/board/' + b_name;    
+    
     }
 
     $.ajax({
@@ -179,6 +185,8 @@ $(document).ready(function() {
         var pagename = $('#pagename').val();
         var taxoid = $('#taxo_id').val();
         var search = $('#s').val();
+        var fb = $('#fb').val();
+        
         if (taxoid == "")
         {
             taxoid = 2;
@@ -204,7 +212,8 @@ $(document).ready(function() {
                         'b_name': b_name,
                         'min': $('#min').val(),
                         'max': $('#max').val(),
-                        'taxoid': taxoid
+                        'taxoid': taxoid,
+                         'fb' : fb
                     };
                 }
                 break;
@@ -285,12 +294,14 @@ $(document).ready(function() {
             taxoid = 2;
         }
         var b_name = $('#board_name').val();
-
+         var fb = $('#fb').val();
+         
         var dataval = {
             min: $('#min').val(),
             max: $('#max').val(),
             b_name: b_name,
-            taxoid: taxoid
+            taxoid: taxoid,
+            fb : fb
         };
         var siteurl = $('#side_url').val();
         var y = localStorage.getItem("refine");
