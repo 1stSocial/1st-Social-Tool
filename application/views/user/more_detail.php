@@ -1,3 +1,11 @@
+<?php
+if(isset($fb) && $fb == 1)
+{
+?>
+<input  type="hidden" value="fb" id='fb' name ='fb'>
+<?php
+}
+?>
 <div>
                         <input type="button" style="margin-left: 5%" class="btn " value="Back" onclick="window.history.back()" />   </div> 
 <div id="left">

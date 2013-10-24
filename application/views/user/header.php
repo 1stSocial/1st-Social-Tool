@@ -1,22 +1,20 @@
-<?php date_default_timezone_set('Europe/London'); 
- session_start();
-?>
+<?php date_default_timezone_set('Europe/London'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
          <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"></META>
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/style.css"></link>
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/css.css"></link>    
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/buttons.css"></link>
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/jquery-ui.css"></link>    
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css"></link>
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/style.css">
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/css.css">    
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/buttons.css">
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/jquery-ui.css">    
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css">
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/pagenavi-css.css">
           <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>-->
-         <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/share.css"></link>-->
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css"></link>
-         <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less"></link>
+         <!--<link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/share.css">-->
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/user/widgets.css">
+         <link rel="stylesheet/less" href="<?= base_url(); ?>assets/css/user/body.less">
          
-         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-responsive.css"></link>
+         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-responsive.css">
        
           
          
@@ -25,8 +23,8 @@
          
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/less-1.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/buttons.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom.js"></script>
+         <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/buttons.js"></script>-->
+         <!--<script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom.js"></script>-->
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/devicepx-jetpack.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/gprofiles.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-1.js"></script>
@@ -39,15 +37,14 @@
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/wpgroho.js"></script>
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
          
-         
          <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/jquery-ui-1.10.1.custom.js"></script>
          <script type="text/javascript" src="<?= base_url(); ?>assets/js/lib/bootstrap.min.js"></script>
          <script src="<?= base_url(); ?>assets/js/gallery/load-image.js"></script>
         <script src="<?= base_url(); ?>assets/js/gallery/bootstrap-image-gallery.js"></script>
         <script src="<?= base_url(); ?>assets/js/gallery/main.js"></script>
         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_002.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
-         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>
+<!--         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_003.js"></script>
+         <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery_004.js"></script>-->
          <script type="text/javascript" src="<?=  base_url();?>assets/js/user/jquery-ui.js"></script>
          <style>
          .contain { background-size: contain; }
@@ -220,6 +217,7 @@ margin-left: 70%!important;
             else
             {
                 $_SESSION['fb'] ="";
+              
             }
             
          ?>

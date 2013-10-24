@@ -32,7 +32,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
     <div id="navigation1" class="clearfix" >
         <div id="abc" style='margin-right: 0%!important;clear: both;float:right;'><?php echo $this->pagination->create_links();?></div>
     </div>
-
+      <input type="hidden" name ="fb" id="fb" value="<?php
+           if (isset($_SESSION['fb'])) {
+               echo $_SESSION['fb'];
+           } else {
+               echo "";
+           }
+           ?>">
     <?php $loop = 0; if(is_array($post) && isset($post['item']) ):foreach ($post['item'] as $val): ?>
         <div class="post" id="post-<?php echo $val->id; ?>">
             <div class="title">

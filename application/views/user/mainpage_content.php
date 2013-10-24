@@ -1,3 +1,10 @@
+  <input type="hidden" name ="fb" id="fb" value="<?php
+           if (isset($_SESSION['fb'])) {
+               echo $_SESSION['fb'];
+           } else {
+               echo "";
+           }
+           ?>">
 <style type="text/css">
     .butun{
         float: right;
@@ -56,7 +63,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                         echo 'odd';
                     else
                         echo'even';
-                    ?> job_head_custom test"> <!--start lpouter-->
+                    ?> job_head_custom test"> 
 
                         <div style="float:left;width:74%"> <!--start-->
                             <div class="title">
@@ -126,6 +133,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                echo "home";
            }
            ?>">
+      
+    
     <input type="hidden" value="<?php
            if (isset($total_row)) {
                echo $total_row;
@@ -137,7 +146,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
 
 <script>
 
-    $("div#lpouter").click(function() {
+    $("#lpouter").click(function() {
         $var = $(this).parent().find("h2 a");
         window.location = $($var).attr('href');
     });
