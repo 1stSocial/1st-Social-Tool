@@ -1,5 +1,4 @@
 <?php
-
 class User extends CI_Controller {
 
     public function __construct() {
@@ -37,9 +36,10 @@ class User extends CI_Controller {
         if($isboardjobs1 != "board" && $isboardjobs2!="board" )
         {
              
+     
         if(!$temp->board_exist($isboardjobs1))
         {
-         
+           
             $fp = fopen($filepath, "w+");
             flock($fp,LOCK_EX);
             fwrite($fp, $str);
@@ -47,27 +47,39 @@ class User extends CI_Controller {
             fclose($fp);
             
 //            echo $this->uri->segment(3);
-            if($this->uri->segment(3))
+            if($this->uri->segment(3) || $this->uri->segment(1) == 'fb')
             {
-//                echo $this->uri->segment(2);
                 
+              
                 if($this->uri->segment(3) == 'fb')
                 {
                      $_SESSION['fb'] = 'fb';
                 $data_str =$this->uri->segment(4);
 //                echo $data_str;
-                
+                $this->session->set_userdata(array('fb','fb'));
                 }
                 else
                 {
-                    $_SESSION['fb'] = '';
-                    $data_str = $this->uri->segment(3);
+                      if($this->uri->segment(1) == 'fb')
+                        {
+                             $_SESSION['fb'] = 'fb';
+                        $data_str =$this->uri->segment(2);
+        //                echo $data_str;
+                        $this->session->set_userdata(array('fb','fb'));
+                        }
+                        else
+                        {
+                            $_SESSION['fb'] = '';
+                            $this->session->set_userdata(array('fb',''));
+                            $data_str = $this->uri->segment(3);
+                        }
                 }       
                 if($this->uri->segment(6) == 'fb' || $this->uri->segment(3) == 'detail')
                 {
                     if($this->uri->segment(6) != 'fb')
                     {
                         $_SESSION['fb'] = '';
+                        $this->session->set_userdata(array('fb',''));
                     }
                     $data_str =$this->uri->segment(5);
                     
@@ -128,18 +140,21 @@ class User extends CI_Controller {
                 
                 if(isset($data))
                 {
+                   
                     if($this->uri->segment(3) == 'fb' || $this->uri->segment(6) == 'fb')
                     {
-                        
                         $data['fb'] = 1;
                          $_SESSION['fb'] = 'fb';
+                         $this->session->set_userdata(array('fb','fb'));
                          $data['css'] = $css;
                         $this->load->view('user/header',$data);
+                        
 //                        die;
                     }
                     else
                     {
                          $_SESSION['fb'] = '';
+                         $this->session->set_userdata(array('fb',''));
                          if($this->uri->segment(3) == 'detail')
                          {
                             $data['css'] = $css;
@@ -153,6 +168,7 @@ class User extends CI_Controller {
                     {
                         $data['fb'] = 1;
                          $_SESSION['fb'] = 'fb';
+                         $this->session->set_userdata(array('fb','fb'));
                          $data['css'] = $css;
                         $this->load->view('user/header',$data);
 //                        die;
@@ -163,6 +179,7 @@ class User extends CI_Controller {
                         if($isboardjobs1 == 'user' && $this->uri->segment(3) != 'board' )
                         {
                              $_SESSION['fb'] = '';
+                             $this->session->set_userdata(array('fb',''));
                              $data['css'] = $css;
                             $this->load->view('user/header',$data);
                         }
@@ -174,12 +191,16 @@ class User extends CI_Controller {
          }
        }
        $this->load->helper('date');
+//      $this->load->view('user/header',$data);
+//      die;
     }
 
     public function fb($a = false,$data_str = FALSE)
     {
 //        $this->load->view('user/header_new',$data);
+       
         $_SESSION['fb'] = 'fb';
+        $this->session->set_userdata(array('fb','fb'));
         $css="";
         if($this->uri->segment(3))
             {
@@ -196,7 +217,8 @@ class User extends CI_Controller {
                         
             }
         $temp = new User_model;
-     
+
+        
         if($data_str)
         {
             $id = $temp ->get_boardid($data_str);
@@ -238,7 +260,8 @@ class User extends CI_Controller {
              flock($fp,LOCK_UN);
              fclose($fp);
              $data['board_name'] = $data_str;
-              $values['fb'] = 1;
+             $data['fb'] = 1;
+               $values['fb'] = 1;
               if($this->uri->segment(3) != 'fb')
               {
                   $values['css'] = $css;
@@ -269,9 +292,9 @@ class User extends CI_Controller {
             $val = 0;
         }
 
-        if ($this->input->post()) {
+        if ($this->input->post() && $this->uri->segment(1)!='fb' ) {
             
-//            echo 'else';
+        
 //            echo $val;
 //            echo $board_id;
             
@@ -295,6 +318,7 @@ class User extends CI_Controller {
                 $choice = $config["total_rows"] / $config["per_page"];
                 $config["num_links"] = round($choice);
                 $this->pagination->initialize($config);
+                $_SESSION['fb'] = 'fb';
                 echo $this->load->view('user/mainpage_content', $data, TRUE);
             } else {
                 if(isset($board_id))
@@ -314,6 +338,8 @@ class User extends CI_Controller {
                 $data['pagename'] = 'sidebar_refine';
                 
                 $data['total_row'] = $config['total_rows'];
+                
+                $data['fb'] = 1 ;
                 
                 echo $this->load->view('user/content', $data, TRUE);
             }
@@ -340,28 +366,24 @@ class User extends CI_Controller {
                 }
                 
               
-                
-            $data['content'] = $this->load->view('user/mainpage_content', $data, TRUE);
+            $_SESSION['fb'] ='fb' ;
+            $data['fb'] ='fb';
+             $data['content'] = $this->load->view('user/mainpage_content', $data, TRUE);
 //         
         }
 //       echo $board_id;
         if(isset($board_id))
         {
             $data['tag'] = $tag_model->semi_parent($board_id);
-             $data['latestjob'] = $this->user_model->latest_job($board_id);
-        $data['max_min'] =$this->user_model->taxo_val($board_id);
+            $data['latestjob'] = $this->user_model->latest_job($board_id);
+            $data['max_min'] =$this->user_model->taxo_val($board_id);
         }
         else
         {
-        $data['tag'] = $tag_model->semi_parent();
-         $data['latestjob'] = $this->user_model->latest_job();
-        $data['max_min'] =$this->user_model->taxo_val();
-        
+            $data['tag'] = $tag_model->semi_parent();
+            $data['latestjob'] = $this->user_model->latest_job();
+            $data['max_min'] =$this->user_model->taxo_val();
         }
-        
-       
-           
-//        $data['board_name'] = $
           
         $this->load->view('user/sidebar', $data);
 //        $this->load->view('user/footer', $data['tag']);
@@ -375,7 +397,7 @@ class User extends CI_Controller {
         $temp = new User_model;
         $css = "";
         $_SESSION['fb'] = '';
-        
+        $this->session->set_userdata(array('fb',''));
         if($data_str)
         {
             $id = $temp ->get_boardid($data_str);
@@ -490,6 +512,10 @@ class User extends CI_Controller {
                 
                 $data['total_row'] = $config['total_rows'];
                 
+                if($_SESSION['fb'] == 'fb')
+                {
+                    $data['fb'] = 1;
+                }
                 echo $this->load->view('user/content', $data, TRUE);
             }
             die;
@@ -733,6 +759,16 @@ class User extends CI_Controller {
          }
         $data['pagename'] = 'salary_refine';
         $data['board_name']=$data_str;
+        
+        $fb = $this->input->post('fb');
+        
+        if($fb == 'fb')
+        {
+            $data['fb'] = 1;
+            $_SESSION['fb'] = 'fb';
+        }
+        
+        
         echo $this->load->view('user/content', $data, TRUE);
         die;
     }
@@ -753,6 +789,10 @@ class User extends CI_Controller {
 //        var_dump($data['post']);die;
 //        scandir($base.'assets/css/user/content/'.);
         $data['board_name']=$data_str;
+        if($this->uri->segment(6) == 'fb')
+        {
+            $data['fb'] = 1;
+        }
         $data['content'] = $this->load->view('user/more_detail', $data, TRUE);
 
          $temp = new User_model;
@@ -782,7 +822,7 @@ class User extends CI_Controller {
       
         
         $this->load->view('user/sidebar', $data);
-        if($_SESSION['fb'] != 'fb')
+        if($_SESSION['fb'] != 'fb' && $this->session->userdata('fb') !='fb' )
         $this->load->view('user/footer', $data['tag']);
     }
 
