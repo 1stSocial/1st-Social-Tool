@@ -58,14 +58,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
             ?>       
             <div class="tuts"> 
                 <div id="tt">
-                    <div id="lpouter" class="<?php
+                    <div onclick="abc('<?= site_url() ?>/user/user/detail/<?= $val->id ?>/<?php
+                                    if (isset($board_name)) {
+                                        echo $board_name;
+                                    } else {
+                                        echo "home";
+                                    }
+                                    ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>')" id="lpouter" class="<?php
                     if ($loop % 2)
                         echo 'odd';
                     else
                         echo'even';
                     ?> job_head_custom test"> 
 
-                        <div style="float:left;width:74%"> <!--start-->
+                        <div class="size_div" style="float:left;width:74%"> <!--start-->
                             <div class="title">
 
                                 <h2><a rel="bookmark" href="<?= site_url() ?>/user/user/detail/<?= $val->id ?>/<?php
@@ -89,7 +95,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
 //                                        endif;
                                     ?></span><br>-->
                                     
-                                <div>Description: <?php
+                                <div style=" text-align: justify; padding-right: 12px;"><?php
                                         echo substr($val->body, '0','150').'...';
                                     ?>    
                                     </div> 
@@ -98,7 +104,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                             </div>
                            
                         </div> <!--end-->   
-                        <div style="float:right; margin:5px;"> <!--start-->
+                        <div class="img_div" style="float:right; margin:5px;"> <!--start-->
                             <img src="<?php
                             if ($val->image != "")
                                 echo base_url() . '/' . $val->image;
@@ -146,10 +152,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
 
 <script>
 
-    $("#lpouter").click(function() {
-        $var = $(this).parent().find("h2 a");
-        window.location = $($var).attr('href');
-    });
+     function abc(link) {
+        window.location = link;
+    };
 
 
     $('#navigation a').click(function() {

@@ -40,60 +40,82 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
            }
            ?>">
     <?php $loop = 0; if(is_array($post) && isset($post['item']) ):foreach ($post['item'] as $val): ?>
-        <div class="post" id="post-<?php echo $val->id; ?>">
-            <div class="title">
-                <input type="hidden" value='<?=$pagename;?>' id="pagename" name="pagename">
-                <h2><a href="<?=site_url()?>/user/user/detail/<?=$val->id ;?>/<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" class="title_link" rel="" title="Permanent Link to <?= $val->name; ?>"><?= $val->name; ?></a></h2>
-               </div>
-                <div class="postmeta" style="margin-left: 3%;margin-top: 3%"> 	
-                    <span class="user">Posted by <a href="" title="Posts by " rel="author"><?php echo $val->user_name; ?></a></span>  
-                    <!--<span class="clock"><?php // $dt = human_to_unix($val->createdTime); $formate="%l,%d %M %Y"; echo mdate($formate,$dt); ?></span>-->  
-                    
-                    <?php if(isset($post['salary'][$loop][0]->val)) :?>
-                                <span class="tags sallery_tag"><?= is_numeric($post['salary'][$loop][0]->val) ? number_format((int)$post['salary'][$loop][0]->val) : $post['salary'][$loop][0]->val; ?></span>
-                                <?php endif;?>
-                                <?php if(isset($post['parent'][$loop])) : foreach ($post['parent'][$loop] as $value) : ?>
-                                <span class="tags">
-                                    <?php if(isset($post['child'][$loop])):
-                                        foreach($post['child'][$loop] as $val1) :
-                                            if($val1->parent_tag_id == $value->parent_tag_id):
-                                        ?>
-                                    <a href="javascript:footer_refine(<?=$val1->tag_id?>)" rel="tag"><?=$val1->name?></a>
-                                    <?php endif; endforeach; endif;?>
-                                </span>
-                                <?php endforeach; endif;?>
-                
-                </div>
-            
-            <div class="title" style="margin-left: 3%;margin-top: 3%">
 
-               <h3> <p><?=$val->title;?></p></h3></div>
-                <div style="margin-top:20px;margin-left: 3%;text-align: justify!important">
-                                        <?= $val->body ?>
-                                    </div>
-                <div id="" style="margin-top:20px;margin-left: 3%">
-                                        <h3> About </h3>
-                                            <?php if (isset($post['taxonomy'][$loop])) : foreach ($post['taxonomy'][$loop] as $value) : ?>
-                                                <div id="<?= $value->item_id; ?>">
-                                                    <div style="float: left;width:  20%"><?= $value->name." :" ?></div>  <span style="margin-right: 10%"><?= is_numeric($value->value) ? number_format((int)$value->value) : html_entity_decode($value->value); ?></span>
-                                                </div>
-                                                <div style="clear: both"></div>
-                                                <?php
-                                            endforeach;
-                                        endif;
-                                        ?>
+                  <div class="tuts"> 
+                <div id="tt">
+                    <div onclick="abc('<?= site_url() ?>/user/user/detail/<?= $val->id ?>/<?php
+                                    if (isset($board_name)) {
+                                        echo $board_name;
+                                    } else {
+                                        echo "home";
+                                    }
+                                    ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>')" id="lpouter" class="<?php
+                    if ($loop % 2)
+                        echo 'odd';
+                    else
+                        echo'even';
+                    ?> job_head_custom test"> 
 
-                                    </div>
-                
-                <!--<a class="readmore" href="<?//=site_url()?>/user/user/detail/<?//=$val->id ;?>/<?php //  if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">Read More </a>-->
-                <div class="clear"></div>
-                <?php if($val->call_to_action != "")
+                        <div class="size_div" style="float:left;width:74%"> <!--start-->
+                            <div class="title">
+
+                                <h2><a rel="bookmark" href="<?= site_url() ?>/user/user/detail/<?= $val->id ?>/<?php
+                                    if (isset($board_name)) {
+                                        echo $board_name;
+                                    } else {
+                                        echo "home";
+                                    }
+                                    ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a></h2>
+                                <div id="outer">
+        <!--                                    <span class="location">Location: <?php
+//                                        if (isset($post['child'][$loop])):
+//                                            foreach ($post['child'][$loop] as $val1) :
+//                                                if ($val1->parent_tag_id == $post['Location'][0]->id):
+//                                                    
+                                    ?>
+                                                    <a href="javascript:footer_refine(//<? //= $val1->id  ?>)" rel="tag"><? //= $val1->name  ?></a>
+                                                //<?php
+//                                                endif;
+//                                            endforeach;
+//                                        endif;
+                                    ?></span><br>-->
+                                    
+                                <div style=" text-align: justify; padding-right: 12px;"><?php
+                                        echo substr($val->body, '0','150').'...';
+                                    ?>    
+                                    </div> 
+                                </div>
+
+                            </div>
+                           
+                        </div> <!--end-->   
+                        <div class="img_div" style="float:right; margin:5px;"> <!--start-->
+                            <img src="<?php
+                            if ($val->image != "")
+                                echo base_url() . '/' . $val->image;
+                            else
+                                echo base_url() . '/assets/css/user/itemimage/default.png';
+                            ?>" alt="admin" height="100" width="100">  
+
+                        </div> <!--end-->
+
+                    </div> <!--endl pouter-->
+
+                    <!--Start Jobs_Home-->
+
+                    <!--End Jobs_home-->
+                    <div class="entry">
+
+                       <div class="clear"></div>
+                            <?php if($val->call_to_action != "")
                                 {?>
                                 <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
                                 <?}?>
                                 <div style="margin: 1px;clear: both"></div>
-            
-        </div>
+ <input type="hidden" value='<?=$pagename;?>' id="pagename" name="pagename">
+                    </div>
+                </div>
+            </div>
     <?php $loop++; endforeach;endif; ?>
     <div class="clear"></div>
       <input type="hidden" name ="b_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
@@ -101,7 +123,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
 </div>
 <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
 <script>
-  
+   function abc(link) {
+        window.location = link;
+    };
+
 
     $(document).ready()
     {
