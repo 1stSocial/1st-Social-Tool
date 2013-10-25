@@ -322,7 +322,10 @@ class User extends CI_Controller {
                 echo $this->load->view('user/mainpage_content', $data, TRUE);
             } else {
                 if(isset($board_id))
-                $config['total_rows'] = $this->user_model->refine_post_count($id_array,$board_id);
+                {
+                     $data['btn_name'] = $this->user_model->btn_name($board_id);
+                    $config['total_rows'] = $this->user_model->refine_post_count($id_array,$board_id);
+                }
                 else
                 $config['total_rows'] = $this->user_model->refine_post_count($id_array);
                 $config['base_url'] ="" ;
@@ -360,6 +363,7 @@ class User extends CI_Controller {
             {
                  $data['btn_name'] = $this->user_model->btn_name($board_id);
                 $data['post'] = $this->user_model->post_job($val * 5,$board_id);
+                $data['btn_name'] = $this->user_model->btn_name($board_id);
             }
                 else {
                     $data['post'] = $this->user_model->post_job($val * 5);
