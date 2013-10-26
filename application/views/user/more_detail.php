@@ -1,3 +1,48 @@
+<script>
+    
+   $(document).ready(function() 
+    {
+       switch(sessionStorage.getItem('fun_name'))
+       {
+           
+           case 'refine':
+               {
+                     var val = sessionStorage.getItem('abc');
+       
+                            $("input:checkbox:not(:checked)").each(function() {
+                                if(val.search($(this).val()) != -1)
+                               {
+                                   $(this).attr('checked','checked');
+                               }
+                    //       alert($(this).val());
+                           
+                        }); $('#back').attr('onclick',sessionStorage.getItem('fun_call'));
+                        $('#back2').attr('onclick',sessionStorage.getItem('fun_call'));
+               }break;
+           case 'footer':
+               {
+                   $('#back').attr('onclick',sessionStorage.getItem('fun_call'));
+                   $('#back2').attr('onclick',sessionStorage.getItem('fun_call'));
+               }break;
+           case 'num_refine':
+               {
+                  
+                    $('#min').val(sessionStorage.getItem('min_val'));
+                    $('#max').val(sessionStorage.getItem('max_val'));
+                    
+                    $('#back').attr('onclick',sessionStorage.getItem('fun_call'));
+                    $('#back2').attr('onclick',sessionStorage.getItem('fun_call'));
+               }break;
+          case 'temp':
+               {
+                    $('#back').attr('onclick','window.history.back()');
+                    $('#back2').attr('onclick','window.history.back()');
+               }break;
+           
+       }
+    });
+   
+</script>
 <?php
 if(isset($fb) && $fb == 1)
 {
@@ -7,7 +52,7 @@ if(isset($fb) && $fb == 1)
 }
 ?>
 <div>
-                        <input type="button" style="margin-left: 5%" class="btn " value="Back" onclick="window.history.back()" />   </div> 
+    <input id="back" type="button" style="margin-left: 5%" class="btn " value="Back" onclick="" />   </div> 
 <div id="left">
     <?php $loop = 0;
     if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>       
@@ -82,7 +127,7 @@ if(isset($fb) && $fb == 1)
                     <div class="clear"></div>
                     
                     <div >
-                        <input type="button" style="margin-left: 50%;margin-top: 5%" class="btn " value="Back" onclick="window.history.back()" />   </div>  
+                        <input id="back2" type="button" style="margin-left: 50%;margin-top: 5%" class="btn " value="Back" onclick="" />   </div>  
                 </div>
             </div>
         </div>
@@ -90,4 +135,3 @@ if(isset($fb) && $fb == 1)
     endforeach;
 endif;
 ?>
-    

@@ -152,6 +152,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
 
 <script>
 
+    sessionStorage.setItem( 'fun_name', 'temp');
+    
      function abc(link) {
         window.location = link;
     };

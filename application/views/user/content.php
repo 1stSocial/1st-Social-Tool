@@ -2,9 +2,10 @@
     .butun{
         float: right;
        color:#fff;
+       margin-right: 23px;
        text-align:center;
         border-radius:5px;
-        padding:10px;
+        padding:8px;
         color:#fff;
         background: rgb(186,96,0); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(186,96,0,1) 0%, rgba(253,223,205,1) 3%, rgba(245,139,77,1) 6%, rgba(232,126,65,1) 52%, rgba(225,93,15,1) 55%, rgba(212,80,3,1) 88%, rgba(210,79,1,1) 94%, rgba(218,113,52,1) 97%, rgba(186,96,0,1) 100%); /* FF3.6+ */
@@ -98,7 +99,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                             ?>" alt="admin" height="100" width="100">  
 
                         </div> <!--end-->
-
+                            <div class="clear"></div>
+                            <?php if($val->call_to_action != "")
+                                {?>
+                                <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
+                                <?}?>
                     </div> <!--endl pouter-->
 
                     <!--Start Jobs_Home-->
@@ -106,16 +111,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                     <!--End Jobs_home-->
                     <div class="entry">
 
-                       <div class="clear"></div>
-                            <?php if($val->call_to_action != "")
-                                {?>
-                                <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
-                                <?}?>
+                      
                                 <div style="margin: 1px;clear: both"></div>
  <input type="hidden" value='<?=$pagename;?>' id="pagename" name="pagename">
                     </div>
                 </div>
             </div>
+      
     <?php $loop++; endforeach;endif; ?>
     <div class="clear"></div>
       <input type="hidden" name ="b_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
@@ -124,8 +126,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
 <script type="text/javascript" src="<?=  base_url();?>assets/js/user/custom/custom.js"></script>
 <script>
    function abc(link) {
+       sessionStorage.setItem( 'data',link );
+//       <% Session["Test"] = "Welcome Mamu"; %>
         window.location = link;
-    };
+       
+//        session.setAttribute("abc",link);
+    }
 
 
     $(document).ready()

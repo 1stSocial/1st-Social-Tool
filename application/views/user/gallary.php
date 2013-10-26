@@ -17,7 +17,7 @@
             if($img_name !='.' && $img_name !='..')
             {
                 {?>
-         <a style="" data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> &width=150 &height=150" ></a>
+         <a style="" data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> <?php if($_SESSION['fb'] != 'fb') echo '&width=150'; else echo '&width=143';?> &height=150" ></a>
             <?} }}
                     ?>
     <br>
