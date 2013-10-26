@@ -486,6 +486,7 @@ class User extends CI_Controller {
                 $data['post'] = $this->user_model->post_job($val * 5,$board_id);
                  $config['total_rows'] = $this->user_model->page_count('post_job',$board_id);
                   $data['btn_name'] = $this->user_model->btn_name($board_id);
+                  $data['btn_name'] = $this->user_model->btn_name($board_id);
                 }
                 else {
                     $data['post'] = $this->user_model->post_job($val * 5);
@@ -507,7 +508,10 @@ class User extends CI_Controller {
                 $config["num_links"] = round($choice);
                 $this->pagination->initialize($config);
                 if(isset($board_id))
+                {
+                    $data['btn_name'] = $this->user_model->btn_name($board_id);
                 $data['post'] = $this->user_model->refine_post_job($id_array, $val * 5,$board_id);
+                }
                 else {
                     $data['post'] = $this->user_model->post_job($val * 5);
                 }
@@ -778,10 +782,13 @@ class User extends CI_Controller {
     }
 
     public function detail() {
+//        $_SESSION['abc'] = sessionStorage.getItem('abc');
+//        var_dump($_SESSION);
+       
         $this->load->model('tag_model');
         $tag_model = new Tag_model();
         $data_str = $this->uri->segment(5);;
-       
+     
         $boardId = $this->uri->segment(4);
         $base = base_url();
         
@@ -823,7 +830,7 @@ class User extends CI_Controller {
         
 //        print_r($data);
       
-      
+        
         
         $this->load->view('user/sidebar', $data);
         if($_SESSION['fb'] != 'fb' && $this->session->userdata('fb') !='fb' )
