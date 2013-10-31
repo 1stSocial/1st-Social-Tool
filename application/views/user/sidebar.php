@@ -39,7 +39,7 @@
 endif; ?>
 
                     <li class="sidebox widget_text"><h3 class="sidetitl"><?php if(isset($max_min['name'])) echo $max_min['name'];else echo 'Salary'; ?></h3><div class="textwidget">
-                        <ul id="lct-widget">  
+<!--                        <ul id="lct-widget">  
                           <?php if(isset($max_min['name'])){
                           $temp = (($max_min['max']*1000) - ($max_min['min']*1000))/4;
                                 $val=0; 
@@ -59,8 +59,8 @@ endif; ?>
                               echo "<br><br>";
                           }
                           ?>
-                        </ul>    
-                            <br>
+                        </ul>    -->
+                            <br><br><br>
                     <div aria-disabled="false" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range" style="width:240px;">
                         <div style="left: 0%; width: 100%;" class="ui-slider-range ui-widget-header ui-corner-all"></div>
                         <a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
@@ -76,7 +76,7 @@ endif; ?>
                         <div class="price_range_footer_left"><?php if(isset($max_min['min'])) echo "$".$max_min['min']."k+"; else echo '$0k+'; ?></div>
                      <p class="price_range_p"><input value="<?php if(isset($max_min['min'])) echo $max_min['min']."k"; else echo '0'; ?> - <?php if(isset($max_min['max'])) echo $max_min['max']."k"; else echo '200'; ?>" id="amount" type="text">
                   </p>
-                        <div class="price_range_footer_right"><?php if(isset($max_min['max'])) echo "$".$max_min['max']."k+"; else echo '$200k+'; ?></div>
+                        <div class="price_range_footer_right"><?php if(isset($max_min['max'])){ if($max_min['max']/1000 > 1) echo "$". round($max_min['max']/1000,1)."million+"; else echo $max_min['max']."k";} else{ echo '$200k+';} ?></div>
                     </div>
                     <input id="min_sal" value="<?php if(isset($max_min['min'])) echo $max_min['min']*1000;else echo '0'; ?>" type="hidden">
                     <input id="max_sal" value="<?php if(isset($max_min['max'])) echo $max_min['max']*1000;else echo '200000'; ?>" type="hidden">

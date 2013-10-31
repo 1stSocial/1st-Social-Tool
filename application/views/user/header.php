@@ -26,7 +26,7 @@
                                             <script type="text/javascript" src="<?= base_url(); ?>assets/js/user/jquery-1.js"></script>
 
                                             <script type="text/javascript" src="<?= base_url(); ?>assets/js/user/loader.js"></script>
-                                            <!--<script type="text/javascript" src="<? //=base_url(); ?>assets/js/user/st.js"></script>-->
+                                            <!--<script type="text/javascript" src="<? //=base_url();  ?>assets/js/user/st.js"></script>-->
 
 <!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/user/stcommon.js"></script>-->
 <!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/user/superfish.js"></script>-->
@@ -115,14 +115,13 @@
 }
 
 #year {
-
     position: relative;
     top: 5px;
 }
 
 
 .sidebar .super_recent_posts h3 {
-    background: url("<?=  base_url();?>/assets/css/user/images/ico1.png") no-repeat scroll 10px 5px  #9CD5EE;
+  //  background: url("<?=  base_url();?>"/assets/css/user/images/ico1.png) no-repeat scroll 10px 5px  #9CD5EE;
     float: left;
     padding-left: 29px;
 }
@@ -132,18 +131,18 @@ div.even .title {
 }
 
 .sidebar .widget_text .sidetitl {
-    background: url("<?=  base_url();?>/assets/css/user/images/dolar_ico.png") no-repeat scroll 10px 5px #9CD5EE!important;
+  //  background: url("<?=  base_url();?>/assets/css/user/images/dolar_ico.png") no-repeat scroll 10px 5px #9CD5EE!important;
     padding-left: 29px;
 }
 
 .squarebanner h3 {
-    background: url("<?=  base_url();?>/assets/css/user/images/spons_ico.png") no-repeat scroll 10px 5px #9CD5EE;
+ //   background: url("<?=  base_url();?>/assets/css/user/images/spons_ico.png") no-repeat scroll 10px 5px #9CD5EE;
     float: left;
     padding-left: 29px;
 }
 
 .sidebar #lct-widget-locations-container h3 {
-background: url("<?=  base_url();?>/assets/css/user/images/location_ico.png") no-repeat scroll 10px 5px #9CD5EE;
+// background: url("<?=  base_url();?>/assets/css/user/images/location_ico.png") no-repeat scroll 10px 5px #9CD5EE;
     float: left;
     padding-left: 29px;
 }
@@ -245,11 +244,11 @@ margin-bottom:10px!important;
                                             }
                                             ?>
                                             <style>
-                                            <?php
-                                            if (isset($css)) {
-                                                echo $css;
-                                            }
-                                            ?>
+<?php
+if (isset($css)) {
+    echo $css;
+}
+?>
                                             </style>
                                             </head>
 

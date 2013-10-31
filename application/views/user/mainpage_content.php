@@ -132,6 +132,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
         endforeach;
     endif;
     ?>
+    <div id="navigation" class="clearfix">
+
+
+        <div style='margin-right: 0%!important;clear: both;float:right;'><?php echo $this->pagination->create_links(); ?></div>
+        <!--</div>-->
+        <input type="hidden" value="<?= $pageno; ?>" id="pageno" name="pageno">
+        <input type="hidden" value="<?= site_url(); ?>" id="t" name="t">
+
+    </div>
     <input type="hidden" name ="b_name" id="board_name" value="<?php
            if (isset($board_name)) {
                echo $board_name;
