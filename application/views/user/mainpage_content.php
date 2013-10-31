@@ -1,4 +1,4 @@
-  <input type="hidden" name ="fb" id="fb" value="<?php
+<input type="hidden" name ="fb" id="fb" value="<?php
            if (isset($_SESSION['fb'])) {
                echo $_SESSION['fb'];
            } else {
