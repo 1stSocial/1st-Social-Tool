@@ -19,7 +19,7 @@ class User extends CI_Controller {
                     $css = $val['value'];
                 }
             }
-        } else {
+        } else {    
             $str = "";
         }
         $filepath = 'assets/css/user/temp.less';
@@ -742,7 +742,7 @@ class User extends CI_Controller {
         $config['per_page'] = 5;
         $data_str = $this->input->post('b_name');
          $board_id = $this->user_model->get_boardid($data_str);
-        
+        $val = 1;
         if($board_id == '')
         $config['total_rows'] = $this->user_model->page_count('refine_job_salary');
         else
@@ -756,14 +756,18 @@ class User extends CI_Controller {
         
         $this->pagination->initialize($config);
         $val = $this->uri->segment(4);
+
+        if($val == "")
+        {
+            $val = 1;
+        }
           $data_str = $this->input->post('b_name');
          if($board_id == "")
-        $data['post'] = $this->user_model->refine_job_salary($val);
+        $data['post'] = $this->user_model->refine_job_salary(($val-1)*5);
          else
          {
-        $data['post'] = $this->user_model->refine_job_salary($val,$board_id['0']->id);
-        $data['title'] = $board_id[0]->board_title; 
-        
+            $data['post'] = $this->user_model->refine_job_salary(($val-1)*5,$board_id['0']->id);
+            $data['title'] = $board_id[0]->board_title; 
          }
         $data['pagename'] = 'salary_refine';
         $data['board_name']=$data_str;
@@ -796,6 +800,8 @@ class User extends CI_Controller {
         if($board_id != "")
           $data['title'] = $board_id[0]->board_title; 
         
+        $data['btn_name'] = $this->user_model->btn_name($board_id[0]->id);
+   //     echo $data['btn_name'];
         $data['post'] = $this->user_model->view_detail($boardId);
 //        var_dump($data['post']);die;
 //        scandir($base.'assets/css/user/content/'.);
