@@ -28,7 +28,7 @@
                             <ul id="lct-widget">
         <?php foreach ($tag['child'] as $val): if ($val['parent_tag_id'] == $data['tag_id']) : ?>
                                         <li class="cat-item">
-                                            <input onchange="refine()" type="checkbox" name="child" id="child" value="<?= $val['tag_id']; ?>"/><?= $val['name'] ?>
+                                            <input onchange="change_det()" type="checkbox" name="child" id="child" value="<?= $val['tag_id']; ?>"/><?= $val['name'] ?>
                                         </li>
             <?php endif;
             endforeach; ?>
@@ -113,3 +113,4 @@ endif; ?>
 <div class="clear"></div>
 <input type="hidden" name ="b_name" id="board_name" value="<?php if(isset($board_name)) { echo $board_name;}else{echo "home";} ?>">
 <input type="hidden" value="<?= site_url(); ?>" id="side_url">
+<input type="hidden" value="refine_val" id="last_use">

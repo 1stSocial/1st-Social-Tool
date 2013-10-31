@@ -30,8 +30,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
            
            case 'refine':
                {
+                  
                      var val = sessionStorage.getItem('abc');
-       
+                     alert(val);
                             $("input:checkbox:not(:checked)").each(function() {
                                 if(val.search($(this).val()) != -1)
                                {
@@ -154,7 +155,7 @@ if(isset($fb) && $fb == 1)
                                 <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
                                 <?}?>
                         
-                        <input id="back2" type="button" style="margin-left: 3%;margin-top: 5%" class="btn " value="Back" onclick="" />   </div>  
+                        <input id="back2" type="button" style="margin-left: 2%;margin-top: 10%" class="btn " value="Back" onclick="" />   </div>  
                 </div>
             </div>
         </div>
