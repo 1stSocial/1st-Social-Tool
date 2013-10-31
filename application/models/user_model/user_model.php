@@ -99,7 +99,7 @@ class User_model extends CI_Model
                     $this->db->where('i.board_id',$b_id);
                 }
                    $result = $this->db->get();
-
+                  
                    return $result->num_rows();
                    
             }break;
