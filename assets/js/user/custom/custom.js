@@ -1,6 +1,6 @@
-function refine()
+function refine_a()
 {
-
+    
     var siteurl = $('#side_url').val();
     var value = '';
     var i = 0;
@@ -49,11 +49,15 @@ function refine()
             alert(res);
         }
     })
+    localStorage.setItem("refine", 1);
     sessionStorage.setItem( 'abc', value);
-    sessionStorage.setItem( 'fun_call', 'refine()');
+    sessionStorage.setItem( 'fun_call', 'refine_a()');
     sessionStorage.setItem( 'fun_name', 'refine');
+};
+function change_det()
+{
+    $('#last_use').val('side_val');
 }
-
 function change()
 {
     var value = $('#val').val();
@@ -130,6 +134,7 @@ $(document).ready(function() {
                 nj('#min').val(ui.values[ 0 ] + '000');
                 nj('#max').val(ui.values[ 1 ] + '000');
                 nj("#amount").val("$" + ui.values[ 0 ] + "k - $" + ui.values[ 1 ] + "k");
+                $('#last_use').val('abc');
             }
         });
         nj("#amount").val("$" + nj("#slider-range").slider("values", 0) +
@@ -301,7 +306,16 @@ $(document).ready(function() {
     $('#refine_btn').click(function() {
 //  alert("tt34");
 
-        var taxoid = $('#taxo_id').val()
+var call_fun = $('#last_use').val();
+
+var y = localStorage.getItem("refine");
+        if (y == 0)
+        {
+      if(call_fun == 'side_val')      
+        refine_a();
+        else
+            {
+       var taxoid = $('#taxo_id').val()
         if (taxoid == "")
         {
             taxoid = 2;
@@ -322,9 +336,7 @@ $(document).ready(function() {
         sessionStorage.setItem( 'fun_name', 'num_refine');
         
         var siteurl = $('#side_url').val();
-        var y = localStorage.getItem("refine");
-        if (y == 0)
-        {
+        
             $.ajax({
                 type: 'POST',
                 url: siteurl + '/user/user/salary_refine',
@@ -352,6 +364,7 @@ $(document).ready(function() {
                     alert('error');
                 }
             });
+        }
         }
 
     });
