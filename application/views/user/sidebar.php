@@ -74,7 +74,7 @@ endif; ?>
                         &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|</div>
                     <div class="price_range_footer">
                         <div class="price_range_footer_left"><?php if(isset($max_min['min'])) echo "$".$max_min['min']."k+"; else echo '$0k+'; ?></div>
-                     <p class="price_range_p"><input value="<?php if(isset($max_min['min'])) echo $max_min['min']."k"; else echo '0'; ?> - <?php if(isset($max_min['max'])) echo $max_min['max']."k"; else echo '200'; ?>" id="amount" type="text">
+                     <p class="price_range_p"><input value="<?php if(isset($max_min['min'])) echo $max_min['min']."k"; else echo '0'; ?> - <?php if(isset($max_min['max'])){ if($max_min['max']/1000 > 1) echo "$". round($max_min['max']/1000,1)."million+"; else echo $max_min['max']."k";} else{ echo '$200k+';} ?>" id="amount" type="text">
                   </p>
                         <div class="price_range_footer_right"><?php if(isset($max_min['max'])){ if($max_min['max']/1000 > 1) echo "$". round($max_min['max']/1000,1)."million+"; else echo $max_min['max']."k";} else{ echo '$200k+';} ?></div>
                     </div>

@@ -32,7 +32,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                {
                   
                      var val = sessionStorage.getItem('abc');
-                     alert(val);
+       
                             $("input:checkbox:not(:checked)").each(function() {
                                 if(val.search($(this).val()) != -1)
                                {
@@ -140,7 +140,15 @@ if(isset($fb) && $fb == 1)
                                         endif;
                                         ?>
                                     </div>
-                        <div style=""> 
+
+                      <!--<a target="_blank" href="<?= $val->call_to_action; ?>" class="btn pull-right"><?= $btn_name; ?></a>-->
+
+                         <?php if($val->call_to_action != "")
+                                {?>
+                                <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
+                                <?}?>
+                                <div style="clear: both"></div>
+                    <div style=""> 
                     <?php
                      include 'gallary.php';
                     ?>
@@ -150,10 +158,7 @@ if(isset($fb) && $fb == 1)
                     
                     <div>
                         
-                         <?php if($val->call_to_action != "")
-                                {?>
-                                <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
-                                <?}?>
+                        
                         
                         <input id="back2" type="button" style="margin-left: 2%;margin-top: 10%" class="btn " value="Back" onclick="" />   </div>  
                 </div>
