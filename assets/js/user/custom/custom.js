@@ -125,20 +125,59 @@ $(document).ready(function() {
 
     var nj = jQuery.noConflict();
     nj(function() {
+        var min_start = 0;
+        var max_start = 0;
+        if(($('#min').val() / 1000000)>1)
+                    {
+                        var min_start = Math.round((($('#min').val() / 1000000)*10)/10) + 'm';
+                    }
+                    else
+                        {
+                            var min_start = Math.round((($('#min').val() / 1000)*10)/10) + ' k';
+                        }
+                        
+                if(($('#max').val()/ 1000000)>1)
+                {
+                    var max_start =   Math.round((($('#max').val() / 1000000)*10)/10) + ' m';
+                }
+                else
+                    {
+                        var max_start =  Math.round((($('#max').val()/ 1000)*10)/10) +' k' ;
+                    }
         nj("#slider-range").slider({
+            
             range: true,
             min: $('#min_sal').val() / 1000,
             max: $('#max_sal').val() / 1000,
-            values: [$('#min').val() / 1000, $('#max').val() / 1000],
+            values: [$('#min').val() / 1000,$('#max').val() / 1000],
             slide: function(event, ui) {
-                nj('#min').val(ui.values[ 0 ] + '000');
-                nj('#max').val(ui.values[ 1 ] + '000');
-                nj("#amount").val("$" + ui.values[ 0 ] + "k - $" + ui.values[ 1 ] + "k");
+                nj('#min').val(ui.values[ 0 ] * 1000);
+                nj('#max').val(ui.values[ 1 ] * 1000);
+                min_start = ui.values[ 0 ] * 1000;
+                max_start = ui.values[ 1 ] * 1000;
+                
+                if((ui.values[ 0 ]/1000)>1)
+                    {
+                        var min =  Math.round((ui.values[ 0 ]/1000) * 10)/10 + 'm';
+                    }
+                    else
+                        {
+                            var min =  Math.round((ui.values[ 0 ]) * 10)/10 + 'k';
+                        }
+                if((ui.values[ 1 ]/1000)>1)
+                {
+                    var max =  Math.round(ui.values[ 1 ]/1000) + 'm'
+                }
+                else
+                    {
+                        var max =  Math.round((ui.values[ 1 ]) * 10)/10 + 'k';
+                    }
+                nj("#amount").val("$" + min + " - $" + max );
                 $('#last_use').val('abc');
             }
         });
-        nj("#amount").val("$" + nj("#slider-range").slider("values", 0) +
-                "k - $" + nj("#slider-range").slider("values", 1) + "k");
+        nj("#amount").val("$" + min_start +
+                " - $" + max_start);
         
         
     });
