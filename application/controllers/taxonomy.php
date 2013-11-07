@@ -37,15 +37,15 @@ class Taxonomy extends CI_Controller {
               $data['option'] = $option;
               $obj = new Tag_model();
               $data['parenTag'] = $obj->root_parent();
+              
               $this->load->view('manage_taxonomy',$data);
               
             }
             else
             {
-            $this->load->view('manage_taxonomy',$data);
-            
-            
-            }//var_dump($data);
+                $this->load->view('manage_taxonomy',$data);
+            }
+//            var_dump($data);
             
 
 	}
@@ -57,6 +57,9 @@ class Taxonomy extends CI_Controller {
             $data= $this->taxonomy_model->get_taxonomy($id);
                 $obj = new Tag_model();
               $data[0]->parenTag = $obj->root_parent();
+              
+              var_dump($data);
+              
               echo $this->load->view('edit_taxonomy',$data[0],TRUE);
               die();
 	}
