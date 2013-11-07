@@ -50,7 +50,7 @@ class Home extends CI_Controller {
         $this->load->model('taxonomy_model');
         $taxo_model = new Taxonomy_model;
 
-        $id = $this->input->post('tag_id');
+        $id = implode(',',$this->input->post('tag_id')) ;
         $res = $taxo_model->get_int_taxo($id);
 
 //        var_dump($res);die;
