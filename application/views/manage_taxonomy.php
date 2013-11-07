@@ -81,7 +81,7 @@ if (isset($option))
         <div class="control-group">
             <?php echo form_label('Parent Tag:', 'parent_tag',  array("class"=>"control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 8.7%;margin-top: 0.52%")); ?>
             <div style="margin-left: 100px">
-                <select data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
+                <select multiple="" data-placeholder="Choose a Type..." class="chosen-select"  style="width:350px;" tabindex="4" id="parentTag" name="parentTag">
                     <option value="0">Select</option>
                     <? if (!empty($parenTag)): foreach ($parenTag as $key => $Tag): ?>
                             <option value="<?= $key ?>"><?= $Tag ?></option>
