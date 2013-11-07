@@ -83,7 +83,8 @@ class User_model extends CI_Model
                 $max = $this->input->post('max');
                 $min = $this->input->post('min');
                 $taxoid = $this->input->post('taxoid');
-
+                
+                $type  = $this->db->get_where('board',array('id'=>$b_id));
 
 
                 $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
@@ -95,9 +96,29 @@ class User_model extends CI_Model
                 $this->db->where("t.value BETWEEN $min AND $max");
                 $this->db->where('t.taxo_id',$taxoid);
                 if($b_id)
-                {
-                    $this->db->where('i.board_id',$b_id);
-                }
+                    {
+                        if($type->num_rows()>0)
+                      {
+                            $val = $type->result_array();
+            //                var_dump($val);
+                            $res = $val['0']['parent_tags'];
+                            $par_tags =  explode(',', $res);
+                            $cou = count(explode(',', $res));
+                      }
+                        if($cou == 0)
+                        {
+                            die;
+                        }
+                            if($cou == 1)
+                            {
+                                $this->db->where('i.board_id',$b_id);
+                            }
+                            else
+                            {
+                                $this->db->where_in('i.parent_tag_id',$par_tags);
+                            }
+
+                    }
                    $result = $this->db->get();
                   
                    return $result->num_rows();
@@ -560,7 +581,8 @@ class User_model extends CI_Model
         $min = $this->input->post('min');
         $taxoid = $this->input->post('taxoid');
         
-     
+         $type  = $this->db->get_where('board',array('id'=>$board_id));
+         
         
         $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
         $this->db->from('taxonomy as taxo');
@@ -572,7 +594,27 @@ class User_model extends CI_Model
         $this->db->where('t.taxo_id',$taxoid);
         if($board_id)
         {
-            $this->db->where('i.board_id',$board_id);
+            if($type->num_rows()>0)
+          {
+                $val = $type->result_array();
+//                var_dump($val);
+                $res = $val['0']['parent_tags'];
+                $par_tags =  explode(',', $res);
+                $cou = count(explode(',', $res));
+          }
+            if($cou == 0)
+            {
+                die;
+            }
+                if($cou == 1)
+                {
+                    $this->db->where('i.board_id',$board_id);
+                }
+                else
+                {
+                    $this->db->where_in('i.parent_tag_id',$par_tags);
+                }
+            
         }
         
         $this->db->limit(5, $start);
