@@ -35,9 +35,11 @@ jQuery(document).ready(function() {
    
     jQuery('#parentTag1').change(function()
     {
+        var tag_val = jQuery('#parentTag1').val();
+        
         show();
         var dataval = {
-            'tag_id': this.value
+            'tag_id': tag_val
         };
         $('#taxo').empty();
         var site = $('#site').val() + '/admin/home/taxoval';
