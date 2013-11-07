@@ -5,9 +5,32 @@ Class Item_model extends CI_Model {
  
     function get_taxonomy($pid)
     {
-        $query = $this->db->get_where('taxonomy', array('tag_id'=>$pid));
-        if($query->num_rows()>0)
-        return $query->result();
+//       $this->db->select("*");
+//       $this->db->from('taxonomy');
+//        $this->db->like('tag_id','%'.$pid.'%');
+//       $query = $this->db->get(); 
+       
+       $sql = "select * from taxonomy WHERE tag_id REGEXP '[[:<:]]".$pid."[[:>:]]'";
+       $query = $this->db->query($sql);
+//        if($query->num_rows()>0)
+//        {
+//            $res = $query->result();
+//            
+//            foreach ($res as $va)
+//            {
+//                $val = explode(',', $va->tag_id);
+//                
+//                var_dump($val);
+//                
+//                if(count($val) > 1)
+//                {
+//                    
+//                }
+//                
+//            }
+//        var_dump($query->result());
+            return $query->result();
+//        }
     }
     
     function change()

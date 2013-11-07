@@ -9,7 +9,7 @@ class Taxonomy_model extends CI_Model {
     function add_taxonomy() {
 
         $data = array(
-            'tag_id' => $this->input->post('parentid'),
+            'tag_id' => implode(',',$this->input->post('parentid')),
             'taxonomy_id' => NULL,
             'name' => $this->input->post('taxonomyname'),
             'type' => $this->input->post('type'),
@@ -23,16 +23,45 @@ class Taxonomy_model extends CI_Model {
 
     function get_taxonomy($id = '') {
         if ($id == '') {
-            $this->db->select('taxonomy.id,taxonomy.name,taxonomy.type,taxonomy.value,tags.name as parenttag');
+            $this->db->select('taxonomy.id,taxonomy.name,taxonomy.type,taxonomy.value,taxonomy.tag_id as parenttag');
             $this->db->from('taxonomy');
-            $this->db->join('tags', 'tags.id=taxonomy.tag_id');
+//            $this->db->join('tags', 'tags.id=taxonomy.tag_id');
             $query = $this->db->get();
             //echo 'if';
-        } else {
+       
+        
+        $temp_res = $query->result();
+        
+        foreach ($temp_res as $value) {
+            
+             $this->db->select('name');
+             $this->db->from('tags');
+             $this->db->where_in('id',  explode(',',$value->parenttag) );
+             $res_temp = $this->db->get();
+             
+            if($res_temp->num_rows()>1)
+            {
+                $new_val = ""; 
+                foreach ($res_temp->result() as $value1) {
+                    $new_val .= $value1->name . ',';
+                }
+                $new_val[strlen($new_val)-1] = "";
+                $value->parenttag = $new_val;
+              
+            }
+            else
+            {
+               $value1=  $res_temp->result();
+                $value->parenttag =  $value1[0]->name;
+            }
+             
+        } } else {
             $this->db->where(array('id' => $id));
             $query = $this->db->get('taxonomy');
+            $temp_res = $query->result();
         }
-        return $query->result();
+      
+        return $temp_res;
     }
 
     function  get_int_taxo($tag_id = FALSE)
@@ -62,7 +91,7 @@ class Taxonomy_model extends CI_Model {
     function update_taxonomy() {
         $data = array('name' => $this->input->post('taxonomyname'),
             'type' => $this->input->post('type'),
-            'tag_id' => $this->input->post('tag_id'));
+            'tag_id' => implode(',', $this->input->post('tag_id')));
 
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('taxonomy', $data);
