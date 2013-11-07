@@ -68,11 +68,14 @@ class Taxonomy_model extends CI_Model {
     {
         if($tag_id)
         {
-            $this->db->select('*');
-            $this->db->from('taxonomy');
-            $this->db->where('tag_id',$tag_id);
-            $this->db->where('type','Integer');
-            $res = $this->db->get();
+//            $this->db->select('*');
+//            $this->db->from('taxonomy');
+//            $this->db->where('tag_id',$tag_id);
+//            $this->db->where('type','Integer');
+//            $res = $this->db->get();
+            
+            $query = "select * from taxonomy where type = 'Integer' and tag_id  REGEXP '[[:<:]]".$tag_id."[[:>:]]'";
+             $res = $this->db->query($query);
             if($res->num_rows()>0)
             {
                 return $res->result_array(); 
