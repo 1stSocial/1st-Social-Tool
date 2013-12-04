@@ -15,7 +15,7 @@
            if (isset($_SESSION['fb'])) {
                echo $_SESSION['fb'];
            } else {
-               echo "";
+               echo ""; 
            }
            ?>">
     <?php $loop = 0; if(is_array($post) && isset($post['item']) ):foreach ($post['item'] as $val): ?>
