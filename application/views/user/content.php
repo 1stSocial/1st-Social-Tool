@@ -7,7 +7,7 @@
     echo "HOME";
                }}?></div>
         </li></div>
-
+ 
     <div id="navigation1" class="clearfix" >
         <div id="abc" style='margin-right: 0%!important;clear: both;float:right;'><?php echo $this->pagination->create_links();?></div>
     </div>
