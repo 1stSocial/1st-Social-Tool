@@ -13,6 +13,7 @@ class Taxonomy_model extends CI_Model {
             'taxonomy_id' => NULL,
             'name' => $this->input->post('taxonomyname'),
             'type' => $this->input->post('type'),
+            'value' => $this->input->post('value')
         );
         $this->db->insert('taxonomy', $data);
     }
@@ -52,6 +53,7 @@ class Taxonomy_model extends CI_Model {
             else
             {
                $value1=  $res_temp->result();
+              
                 $value->parenttag =  $value1[0]->name;
             }
              
@@ -94,8 +96,10 @@ class Taxonomy_model extends CI_Model {
     function update_taxonomy() {
         $data = array('name' => $this->input->post('taxonomyname'),
             'type' => $this->input->post('type'),
-            'tag_id' => implode(',', $this->input->post('tag_id')));
-
+            'tag_id' => implode(',', $this->input->post('tag_id')),
+            'value' => $this->input->post('value')
+            );
+            
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('taxonomy', $data);
     }
