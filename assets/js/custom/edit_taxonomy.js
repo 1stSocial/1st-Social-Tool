@@ -10,6 +10,7 @@ function savefun()
     var taxonomyname = $('#name').val();
     var type = $('#type').val();
     var tag_id = $('#parentTag2').val();
+    var check;
     
     if(taxonomyname == "")
         {
@@ -37,8 +38,25 @@ function savefun()
         {
             $('#tag_error').hide();
         }
+     if (type = 'Status')
+    {
+        if($('#link_val').val() == "")
+            {
+                $('#linkname').show();
+                check = false;
+            }
+        else
+        {
+                $('#linkname').hide();
+                check = true;
+        }
+        
+    }
+    else{
+        check = true;
+    }
     
-    if (taxonomyname != "" && type !="select" && tag_id !="0") {
+    if (taxonomyname != "" && type !="select" && tag_id !=null && check) {
         var id = $("#id").val();
         var ur = $('#ur').val();
         var ur2 = $('#ur2').val();
@@ -50,7 +68,8 @@ function savefun()
                 taxonomyname: taxonomyname,
                 type: type,
                 tag_id: tag_id,
-                id: id
+                id: id,
+                value: $('#link_val').val()
             },
             success: function(res) {
                 if (res == '')
