@@ -44,7 +44,9 @@
                                     } else {
                                         echo "home";
                                     }
-                                    ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a></h2>
+                                    ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a>
+                                <img src="<?php if ($val->Status != "") echo $val->Status;?>" alt="admin" height="100" width="100">  
+                                </h2>
                                 <div id="outer">
         <!--                                    <span class="location">Location: <?php
 //                                        if (isset($post['child'][$loop])):
