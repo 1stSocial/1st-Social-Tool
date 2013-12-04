@@ -1,7 +1,7 @@
 
 <div id="left">
     <div id="latestjob"><li class="botwid widget_text">			
-               <div class="textwidget"><? if(isset($title) && $title !="") echo strtoupper($title); else {if (isset($board_name)) {
+               <div class="textwidget"><? if(isset($title) && $title !="") echo strtoupper($title); else {if (isset($board_name)) { 
     echo strtoupper($board_name);
 } else {
     echo "HOME";
