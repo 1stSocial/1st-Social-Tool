@@ -134,6 +134,7 @@ class Item extends CI_Controller {
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
         
         
+         $data['taxonomy_val'] = $item_modal->get_taxonomy($data['item']['0']['parent_tag_id']);
         
         $data['Tag'] = $tag_model->tag_val_new($data['item']['0']['parent_tag_id']);
         $temp_data['name'] = $itemid;
