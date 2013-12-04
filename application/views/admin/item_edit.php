@@ -102,10 +102,10 @@
         </div>
     </div>    
  
-    <div class="controls" id="taxonomydiv">
+<!--    <div class="controls" id="taxonomydiv">
         <div id="taxodiv" style="padding-top: 5px">
             <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
-                    <!--<label style=" float: left;" class="control-label" ><?= $val['name'] ?> :</label>-->
+                    <label style=" float: left;" class="control-label" ><?= $val['name'] ?> :</label>
             <div style="clear: both;margin: 1%"></div>
                      <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info" ><?= $val['name'] ?> :</label>
                        
@@ -124,7 +124,39 @@ endif;
                 <option <?php if($item['0']['status'] == 1) echo 'selected' ?> value="1">Open</option>
                 <option <?php if($item['0']['status'] == 0) echo 'selected' ?> value="0">Close</option>
             </select>
+        </div>-->
+
+ <div class="controls" id="taxonomydiv" style="margin-top: 8px">
+            <div id="taxodiv">
+                <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): if($val['type'] != 'Status') : ?>
+<!--                        <label style=" float: left;" class="control-label" ><?= $val['name'] ?> :</label>-->
+            <div style="clear: both;margin: 1%"></div>
+                     <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info" ><?= $val['name'] ?> :</label>
+                       
+                    <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width:90%" class="form-control" id="<?= $val['id'] ?>" name="taxo" value="<?= $val['ival'] ?>"/><input type="hidden" value="<?= $val['id'] ?>" id="taxoid"/><div id="<?= $val['id'] ?>d"></div><div style="clear: both"></div></div>
+                        <?php
+                               endif;
+                    endforeach;
+                endif;
+                ?>
+            </div>
         </div>
+       <!--  image upload  -->
+      <div style="clear: both;margin: 1%"></div>
+        <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Item status :</label>
+        <div style='magrin-top:33px;padding-left:20%;'>
+            <select class="chosen-select" id="status" name="status" style="width: 25%">
+                <? if (!empty($taxonomy_val)): foreach ($taxonomy_val as $val): if($val->type == 'Status') :?>
+                <option value="<?=$val->value?>" <?php if($val->value == $item['0']['status']) echo 'selected'?> ><?=$val->name?></option>
+                  <?php
+                               endif;
+                    endforeach;
+                endif;
+                ?>
+                <!--<option value="0">Close</option>-->
+            </select>
+        </div>
+
          
   <div style="clear: both;margin: 1%"></div>
      <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Upload Gallery Images :</label>

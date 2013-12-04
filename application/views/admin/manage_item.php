@@ -8,11 +8,9 @@ video {
     <thead>
         <tr>
             <th>Name</th> 
-           
             <th>Body</th>
             <th>Board Name</th>
             <th>Created By</th>
-            <th>Status</th>
             <th>Created Time</th>
             <th>Action</th>
         </tr>
@@ -34,7 +32,6 @@ video {
                     <td><div class="body_img" style="height:200px;width: 450px;  overflow: auto;"><?= str_replace('/content/', '/thumbnail/', $str) ?></div></td> 
                     <td><?= $val->board_name ?></td>
                     <td><?= $val->created_by ?></td>  
-                    <td><?= $val->status ?></td>  
                     <td><?= $val->createdTime ?></td>  <? /*  href=".$val->id) ?>"  , */ ?>
                     <td><div class="btn-group"> <a href=<?php echo site_url('/admin/Item/edit_item/'.$val->id);?> class="btn btn-primary fui-new"><i class="icon-edit icon-white"></i> Edit</a>
                             <a href="javascript:deletbox('<?php echo site_url('/admin/Item/delete_item/' . $val->id) ?>')" class="btn btn-danger fui-trash"><i class="icon-trash icon-white"></i> Delete</a> </div></td>

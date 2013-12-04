@@ -69,11 +69,16 @@
         <div style="clear: both;margin: 1%"></div>
         <div class="controls" id="taxonomydiv" style="margin-top: 8px">
             <div id="taxodiv">
-                <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): ?>
+                <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): if($val->type != 'Status') :?>
                         <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;" class="control-label label label-info" ><?= $val->name ?> :</label>
-                        <div style='magrin-top:33px;padding-left:20%;'><input type="text" style="float:left;width: 90%;" class="form-control" id="<?= $val->id ?>" name="taxo"/><input type="hidden" value="<?= $val->id ?>" id="taxoid"/><div id="<?= $val->id ?>d"></div><div style="clear: both"></div></div>
+                        <div style='magrin-top:33px;padding-left:20%;'>
+                            <input type="text" style="float:left;width: 90%;" class="form-control" id="<?= $val->id ?>" name="taxo"/>
+                            <input type="hidden" value="<?= $val->id ?>" id="taxoid"/><div id="<?= $val->id ?>"></div>
+                            <div style="clear: both"></div>
+                        </div>
                         <div style="clear: both;margin: 1%"></div>
                         <?php
+                               endif;
                     endforeach;
                 endif;
                 ?>
@@ -84,9 +89,14 @@
         <label style=" float: left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%" class="control-label label label-info"  >Item status :</label>
         <div style='magrin-top:33px;padding-left:20%;'>
             <select class="chosen-select" id="status" name="status" style="width: 25%">
-               
-                <option value="1">Open</option>
-                <option value="0">Close</option>
+                <? if (!empty($Taxonomy)): foreach ($Taxonomy as $val): if($val->type == 'Status') :?>
+                <option value="<?=$val->value?>"><?=$val->name?></option>
+                  <?php
+                               endif;
+                    endforeach;
+                endif;
+                ?>
+                <!--<option value="0">Close</option>-->
             </select>
         </div>
  
