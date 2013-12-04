@@ -43,7 +43,7 @@ class User_model extends CI_Model
                 if($cou == 1)
                 {
                     $this->db->select('i.*,u.name as user_name');
-                    
+//                    $this->db->where('i.status',1);
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
                     if($b_id)
@@ -61,7 +61,7 @@ class User_model extends CI_Model
                 {
                    
                         $this->db->select('i.*,u.name as user_name');
-                    
+//                    $this->db->where('i.status',1);
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
                     
@@ -89,12 +89,14 @@ class User_model extends CI_Model
 
                 $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
                 $this->db->from('taxonomy as taxo');
+//                $this->db->where('i.status',1);
                 $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
                 $this->db->join('items as i','i.id=t.item_id','inner');
                 $this->db->join('users as u','u.id =i.created_by','inner');
         //        $this->db->where('taxo.name','salary');
                 $this->db->where("t.value BETWEEN $min AND $max");
                 $this->db->where('t.taxo_id',$taxoid);
+                
                 if($b_id)
                     {
                         if($type->num_rows()>0)
@@ -130,6 +132,7 @@ class User_model extends CI_Model
                 $keyword = $this->input->post('search');
                 $this->db->select('*');
                 $this->db->from('items');
+//                $this->db->where('status',1);
                 $this->db->like('name',$keyword);
                 $this->db->or_like('title',$keyword);
                 $this->db->or_like('body',$keyword);
@@ -239,6 +242,7 @@ class User_model extends CI_Model
 //                    var_dump($key);
                     $this->db->select('*');
                     $this->db->from('items');
+//                    $this->db->where('status',1);
                     if($b_id)
                     {
                         
@@ -286,6 +290,7 @@ class User_model extends CI_Model
                     $this->db->select('i.*,u.name as user_name');
                     
                     $this->db->from('items as i');
+//                    $this->db->where('status',1);
                     $this->db->join('users as u','u.id =i.created_by','inner');
                     if($board_id)
                     {
@@ -467,6 +472,7 @@ class User_model extends CI_Model
                if(count($key))
                {
                     $this->db->select('i.*,t.item_id ,u.name as user_name');
+//                    $this->db->where('i.status',1);
                     $this->db->from('item_tags as t');
                     $this->db->join('items as i','i.id=t.item_id','inner');
                     $this->db->join('users as u','u.id =i.created_by','inner');
@@ -585,6 +591,7 @@ class User_model extends CI_Model
          
         
         $this->db->select('i.*,taxo.id,t.item_id as id,u.name as user_name,t.value as val');
+//        $this->db->where('i.status',1);
         $this->db->from('taxonomy as taxo');
         $this->db->join('item_taxo as t','t.taxo_id=taxo.id');
         $this->db->join('items as i','i.id=t.item_id','inner');
@@ -713,6 +720,7 @@ class User_model extends CI_Model
                 {
                     $this->db->select('items.id,items.name,items.title,items.createdTime,items.board_id');
                     $this->db->from('items');
+//                    $this->db->where('status',1);
                     if($board_id)
                     $this->db->where('board_id',$board_id);
                     $this->db->order_by('createdTime','DESC');
@@ -802,7 +810,7 @@ class User_model extends CI_Model
       //$result = $this->db->query('select u.name as user_name,i.* from items i inner join users u on u.id =i.created_by ');
                     
                     $this->db->select('i.*,u.name as user_name');
-                    
+                   
                     $this->db->from('items as i');
                     $this->db->join('users as u','u.id =i.created_by','inner');
                     if(is_array($id))
@@ -911,6 +919,7 @@ class User_model extends CI_Model
         
        $keyword = $this->input->post('search');
            $this->db->select('*');
+//           $this->db->where('status',1);
             $this->db->from('items');
             $this->db->like('name',$keyword);
             $this->db->or_like('title',$keyword);
@@ -990,7 +999,7 @@ class User_model extends CI_Model
     {
         $this->db->select('id');
         $this->db->from('theme');
-        $this->db->where('status','1');
+//        $this->db->where('status','1');
         $query = $this->db->get();
         
         
