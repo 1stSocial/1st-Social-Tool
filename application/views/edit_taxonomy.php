@@ -51,6 +51,11 @@
                     <?}else{?>
                     <option value="html">html</option>
                     <?}?>
+                    <?php if($type=='Status') {?>
+                    <option selected value="Status">Status</option>
+                    <?}else{?>
+                    <option value="Status">Status</option>
+                    <?}?>
                 </select><div style =" color: red; display: none;padding-left:43%" id="type_error"> Select Taxonomy Type </div>
             </div>
         </div>    
@@ -80,7 +85,15 @@ endif;
 ?>
                 </select><div style =" color: red; display: none;padding-left:43%" id="tag_error"> Select Parent Tag </div>
             </div>
-        </div>        
+        </div>  
+        <div style="clear: both;margin: 2%"></div>
+        <div class="control-group" id="link" <?php if($type !='Status') { echo 'style="display:none"'; }?> >
+            <?php echo form_label('Link:', 'value', array("class"=>"control-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?> 
+            <div class="controls" style="float:left;">
+                <input  type="text" class="form-control" style="margin-left: 60px;width: 92%"  class = "control-label" placeholder="Link" id="link_val" name="link_val" value="<?=$value?>" />
+            </div><div style =" color: red; display: none;padding-left:43%;clear: both;" id="linkname"> Enter Link </div>
+        </div> 
+        <div style="clear: both;margin: 10%"></div>
     </div>
 
     <div class="modal-footer ">
@@ -93,6 +106,19 @@ endif;
         </div> 
 
     </div>
+            <script>
+    $('#type').change(function(){
+      
+        if(this.value == "Status")
+            {
+                $('#link').show();
+            }
+        else
+            {
+                $('#link').hide();
+            }
+    })
+</script>
 </div></div>
          </div>
 </div>

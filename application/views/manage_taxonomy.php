@@ -74,10 +74,12 @@ if (isset($option))
                     <option value="string">String</option>
                     <option value="Integer">Integer</option>
                     <option value="html">html</option>
+                    <option value="Status">Status</option>
                 </select><div style =" color: red; display: none;padding-left:43%" id="type_error"> Select Taxonomy Type </div>
             </div>
         </div>
         <div style="clear: both;margin: 8px"></div>
+         
         <div class="control-group">
             <?php echo form_label('Parent Tag:', 'parent_tag',  array("class"=>"control-label label label-info", 'style' => "float: left;padding: 0.6em 0.7em 0.7em;margin-right: 8.7%;margin-top: 0.52%")); ?>
             <div style="margin-left: 100px">
@@ -92,6 +94,16 @@ if (isset($option))
                 </select>
             </div><div style =" color: red; display: none;padding-left:43%" id="tag_error"> Select Parent Tag </div>
         </div>    
+        
+        <div style="clear: both;margin: 2%"></div>
+        <div class="control-group" id="link" style="display: none">
+            <?php echo form_label('Link:', 'value', array("class"=>"control-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?> 
+            <div class="controls" style="float:left;">
+                <input  type="text" class="form-control" style="margin-left: 60px;width: 92%"  class = "control-label" placeholder="Link" id="link_val" name="link_val" />
+            </div><div style =" color: red; display: none;padding-left:43%;clear: both;" id="linkname"> Enter Link </div>
+        </div> 
+        
+        <div style="clear: both;margin: 10%"></div>
     </div>            
     <div class="modal-footer ">      
         <div class="control-group"> 
@@ -101,6 +113,19 @@ if (isset($option))
             </div>
         </div> 
     </div>
+<script>
+    $('#type').change(function(){
+      
+        if(this.value == "Status")
+            {
+                $('#link').show();
+            }
+        else
+            {
+                $('#link').hide();
+            }
+    })
+</script>
 </div>
 </div>
     </div></div>
