@@ -1,6 +1,6 @@
 <?php
 //include '/admin/dropdown.php';
-?>
+?><?php echo form_open_multipart(site_url("/admin/home/logo_image/")); ?>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/custom/edit_taxonomy.js"></script>
 
 <a href="#myModal1" role="button" id="mod1" style="display: none" class="btn" data-toggle="modal"></a>
@@ -88,10 +88,20 @@ endif;
         </div>  
         <div style="clear: both;margin: 2%"></div>
         <div class="control-group" id="link" <?php if($type !='Status') { echo 'style="display:none"'; }?> >
-            <?php echo form_label('Link:', 'value', array("class"=>"control-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?> 
-            <div class="controls" style="float:left;">
+            <?php echo form_label('Status Image:', 'value', array("class"=>"control-label label label-info", 'style' => " float: left;padding: 0.6em 0.7em 0.7em;margin-right: 5%;margin-top: 0.52%")); ?> 
+<!--            <div class="controls" style="float:left;">
                 <input  type="text" class="form-control" style="margin-left: 60px;width: 92%"  class = "control-label" placeholder="Link" id="link_val" name="link_val" value="<?=$value?>" />
-            </div><div style =" color: red; display: none;padding-left:43%;clear: both;" id="linkname"> Enter Link </div>
+            </div><div style =" color: red; display: none;padding-left:43%;clear: both;" id="linkname"> Enter Link </div>-->
+
+             <div>
+               <div style="margin-left: 26%" class="fileupload fileupload-new" data-provides="fileupload">
+                   <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img id="imgsrc1" src="<?php if(isset($value)) if($value !="") echo base_url() . '/' . $value; ?>" /></div>
+                        <div id="imgdiv" class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
+                        <span class="btn btn-file" style="margin-left: 0%!important;"><span id="select_btn" class="fileupload-new" style="margin-left: 0%!important;">Select image</span><span class="fileupload-exists">Change</span><input id="img" name="img" type="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/tiff" onchange =""/></span>
+                        <a style="margin-left: 0%!important;" href="#" class="btn fileupload-exists" id="clo" data-dismiss="fileupload">Remove</a>
+                    </div><div id="img_msg" name="img_msg" style = "display:none">Warning : Please Select jpg image.</div>
+                </div>
+ <input type="hidden" name="im" id="imgsrc" value="<?php if(isset($value)) if($value !="") echo $value; else echo ""; ?>">
         </div> 
         <div style="clear: both;margin: 10%"></div>
     </div>
@@ -99,7 +109,7 @@ endif;
     <div class="modal-footer ">
         <div class="control-group"> 
             <div class="controls">
-                <input type="button" style="float: left; margin-left:170px;  " name="save" class="btn btn-primary" value="Update Taxonomy" onclick="savefun()" />
+                <input type="submit" style="float: left; margin-left:170px;  " name="save" class="btn btn-primary" value="Update Taxonomy"  />
                 <input type="button" style="float: left;" id="close"  class="btn btn-primary" data-dismiss="modal" aria-hidden="true" value="Close">      
 
             </div>
@@ -124,3 +134,4 @@ endif;
 </div>
 <input type ="hidden" id ="ur" value="<? echo site_url('/taxonomy/edit_taxonomy'); ?>"/>
 <input type ="hidden" id ="ur2" value="<? echo site_url('/taxonomy'); ?>"/>
+<?php echo form_close(); ?>
