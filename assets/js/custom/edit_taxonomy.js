@@ -4,8 +4,75 @@ jQuery(document).ready(function() {
     setTimeout(function() {
         jQuery('#mod1').click();
     }, 100);
+    
+    
+     jQuery('form').ajaxForm({
+         
+        beforeSubmit: function() {
+//             show();
+                var taxonomyname = $('#name').val();
+                var type = $('#type').val();
+                var parentid = $('#parentTag2').val();
+                var check;
+
+                if(taxonomyname == "")
+                    {
+                        $('#taxoname').show();
+                    }
+                else
+                    {
+                        $('#taxoname').hide();
+                    }
+
+                if(type == "select")
+                    {
+                        $('#type_error').show();
+                    }
+                else
+                    {
+                        $('#type_error').hide();
+                    }
+
+                if(parentid == "0")
+                    {
+                        $('#tag_error').show();
+                    }
+                else
+                    {
+                        $('#tag_error').hide();
+                    }
+                    
+                if (type == 'Status')
+                {
+                    if($('#imgsrc1').val() == "")
+                        {
+                           
+                            check = false;
+                        }
+                    else
+                    {
+                            check = false;
+                    }
+
+                }
+                else{
+                    check = false;
+                }
+              
+                if (taxonomyname == "" || type =="select" || parentid == null || check) {
+                return  false;
+                   hide();
+                }
+        },
+        success: function(data) {
+            savefun(data);
+        }
+    });
+   
+    
+    
 });
-function savefun()
+function savefun(data_val)
 {
     var taxonomyname = $('#name').val();
     var type = $('#type').val();
@@ -69,7 +136,7 @@ function savefun()
                 type: type,
                 tag_id: tag_id,
                 id: id,
-                value: $('#link_val').val()
+                value: data_val
             },
             success: function(res) {
                 if (res == '')

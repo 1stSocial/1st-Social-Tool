@@ -11,6 +11,73 @@ $(document).ready(function() {
     $('#tab_id_length').show();
      $('#tab_id_filter').css("margin-right",'1%');
 //       $("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});
+  
+        
+       jQuery('form').ajaxForm({
+         
+        beforeSubmit: function() {
+//             show();
+           
+                var taxonomyname = $('#name').val();
+                var type = $('#type').val();
+                var parentid = $('#parentTag').val();
+                var check;
+
+                if(taxonomyname == "")
+                    {
+                        $('#taxoname').show();
+                    }
+                else
+                    {
+                        $('#taxoname').hide();
+                    }
+
+                if(type == "select")
+                    {
+                        $('#type_error').show();
+                    }
+                else
+                    {
+                        $('#type_error').hide();
+                    }
+
+                if(parentid == "0")
+                    {
+                        $('#tag_error').show();
+                    }
+                else
+                    {
+                        $('#tag_error').hide();
+                    }
+                if (type == 'Status')
+                {
+                    if($('#link_val').val() == "")
+                        {
+                            $('#linkname').show();
+                            check = true;
+                        }
+                    else
+                    {
+                            $('#linkname').hide();
+                            check = false;
+                    }
+
+                }
+                else{
+                    check = false;
+                }
+                if (taxonomyname == "" || type =="select" || parentid == null || check) {
+                return  false;
+                   hide();
+                }
+        },
+        success: function(data) {
+            savefun(data);
+        }
+    });
+        
+        
+        
 });
 function deletbox(urllink)
 {
@@ -18,7 +85,7 @@ function deletbox(urllink)
         if(val){ document.location.href = urllink;}
     });
 }
-function savefun()
+function savefun(img_add)
 {
     var taxonomyname = $('#name').val();
     var type = $('#type').val();
@@ -51,7 +118,7 @@ function savefun()
         {
             $('#tag_error').hide();
         }
-    if (type = 'Status')
+    if (type == 'Status')
     {
         if($('#link_val').val() == "")
             {
@@ -75,7 +142,7 @@ function savefun()
             taxonomyname: taxonomyname,
             type: type,
             parentid: parentid,
-            value: $('#link_val').val()
+            value: img_add
         }
         show();
         $.ajax({

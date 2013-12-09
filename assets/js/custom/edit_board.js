@@ -15,7 +15,6 @@ jQuery(document).ready(function(){
              show();  
         },
         success: function(data) {
-          
             update(data);
         }
     });
