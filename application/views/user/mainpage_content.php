@@ -81,7 +81,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                                         echo "home";
                                     }
                                     ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a>
-                                <img src="<?php if ($val->status != "") echo $val->status;?>" alt="" height="50" width="50">
+                                    <img src="<?php if ($val->status != "") echo base_url ().$val->status;?>" alt="" height="50" width="50">
                                 </h2>
                                 <div id="outer">
         <!--                                    <span class="location">Location: <?php
