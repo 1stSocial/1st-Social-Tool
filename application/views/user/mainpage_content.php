@@ -81,7 +81,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                                         echo "home";
                                     }
                                     ?>/<?php if(isset($_SESSION['fb'])) { echo $_SESSION['fb'];} else{echo "";} ?>" title="Permanent Link to <?= $val->title; ?>"><?= $val->title; ?></a>
-                                    <img src="<?php if ($val->status != "") echo base_url ().$val->status;?>" alt="" height="50" width="50">
+                                   
+                                    
                                 </h2>
                                 <div id="outer">
         <!--                                    <span class="location">Location: <?php
@@ -107,7 +108,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                            
                         </div> <!--end-->   
                         <div class="img_div" style="float:right; margin:5px;"> <!--start-->
-                            <img src="<?php
+                            <?php 
+                                   
+                                    if($val->status != '0')
+                                    {
+                                    ?>
+                                    <img class="imgdiv_status" src="<?php echo base_url().$val->status;?>" alt="" height="50" width="50">
+                                    <?php
+                                    }
+                                    ?>
+                            
+                            <img id="newabc" src="<?php
                             if ($val->image != "")
                                 echo base_url() . '/' . $val->image;
                             else
@@ -180,3 +191,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
     });
 
 </script>
+<style>
+    .imgdiv_status {
+        left: 103px;
+        position: relative;
+        top: -50px;
+        z-index: 11;
+    }
+</style>

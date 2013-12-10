@@ -75,12 +75,20 @@ if(isset($fb) && $fb == 1)
 <?php
 }
 ?>
+    <?php 
+                                   
+                                    if($post['item'][0]->status != '0')
+                                    {
+                                    ?>
+                                    <img class="imgdiv_status" src="<?php echo base_url().$post['item'][0]->status;?>" alt="" height="100" width="100">
+                                    <?php
+                                    }
+                                    ?>
 <div>
     <input id="back" type="button" style="margin-left: 5%" class="btn " value="Back" onclick="" />   </div> 
 <div id="left">
     <?php $loop = 0;
     if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>       
-
 
             <div class="tuts" id="post-226"> 
 
@@ -145,7 +153,7 @@ if(isset($fb) && $fb == 1)
 
                          <?php if($val->call_to_action != "")
                                 {?>
-                                <a href="<?=$val->call_to_action;?>" class="butun"><?php if($btn_name!="") echo $btn_name; else echo 'Click Me!'?></a>	
+                                <a href="<?=$val->call_to_action;?>" class="butun" target="_blank"><?php if($btn_name!="") echo $btn_name; else echo 'More Info'?></a>	
                                 <?}?>
                                 <div style="clear: both"></div>
                     <div style=""> 
@@ -168,3 +176,12 @@ if(isset($fb) && $fb == 1)
     endforeach;
 endif;
 ?>
+<style>
+   .imgdiv_status {
+    float: right;
+    left: 26px;
+    position: relative;
+    top: -321px;
+    z-index: 11;
+}
+</style>
