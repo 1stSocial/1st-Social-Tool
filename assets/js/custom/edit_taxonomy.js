@@ -14,6 +14,8 @@ jQuery(document).ready(function() {
                 var type = $('#type').val();
                 var parentid = $('#parentTag2').val();
                 var check;
+                
+                alert($('#type').val());
 
                 if(taxonomyname == "")
                     {
@@ -76,6 +78,7 @@ function savefun(data_val)
 {
     var taxonomyname = $('#name').val();
     var type = $('#type').val();
+    alert($('#type').val());
     var tag_id = $('#parentTag2').val();
     var check;
     
@@ -105,7 +108,7 @@ function savefun(data_val)
         {
             $('#tag_error').hide();
         }
-     if (type = 'Status')
+     if (type == 'Status')
     {
         if($('#link_val').val() == "")
             {
@@ -139,6 +142,7 @@ function savefun(data_val)
                 value: data_val
             },
             success: function(res) {
+            
                 if (res == '')
                 {
                     setTimeout(function() {
@@ -146,6 +150,9 @@ function savefun(data_val)
 
                     }, 200);
 
+                }
+                else{
+                    
                 }
                 window.location.href = ur2;
                 hide();
