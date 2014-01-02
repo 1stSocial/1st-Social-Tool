@@ -322,14 +322,15 @@ class Home extends CI_Controller {
         $data['parentTags'] = $tagModel->AllTag();
         $obj = new Tag_model();
         $data['parenTag'] = $obj->AllTag();
-        if (isset($val)) {
+		if (isset($val)) {
             $data['option'] = $val;
             $data['id1'] = $val2;
-            $this->load->view('admin/TagManagement', $data);
+			$this->load->view('admin/TagManagement', $data);
+			
         }
         else
             $this->load->view('admin/TagManagement', $data);
-        $this->load->view('footer');
+            $this->load->view('footer');
     }
 
     function delete_parenttag() {

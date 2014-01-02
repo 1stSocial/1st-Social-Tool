@@ -28,6 +28,7 @@ class Item extends CI_Controller {
  
     function temp() 
     {
+        
 //        die;
 //        chmod('assets/css/user/content/', '0777');
         copy($_FILES['file']['tmp_name'], 'assets/css/user/content/' . $_FILES['file']['name']);
@@ -128,9 +129,14 @@ class Item extends CI_Controller {
         $tag_model = new Tag_model();
 
         $itemid = $this->uri->segment(4);
+        
+       
+        
         $item_modal = new Item_model();
 
         $data['item'] = $item_modal->get_item_id($itemid);
+    
+        
         $data['Taxonomy'] = $item_modal->get_item_taxo($itemid);
         
         
@@ -140,6 +146,8 @@ class Item extends CI_Controller {
         $temp_data['name'] = $itemid;
         
         $data['image_div'] = $this->load->view('admin/gallary',$temp_data,TRUE);
+        
+       
         $this->load->view('admin/item_edit', $data);
         
     }
@@ -154,6 +162,8 @@ class Item extends CI_Controller {
         $folder_name = $this->input->post('folder_name');
         $taxoarr = $this->input->post('taxo');
         $ids = $this->input->post('ids');
+        if($ids != NULL)
+        {
         foreach ($ids as $id) {
             $val = $item->get_type($id);
 
@@ -187,6 +197,7 @@ class Item extends CI_Controller {
                         break;
                 }
             }
+        }
         }
         if ($error_iden) {
             $this->load->model('Item_model');
@@ -225,7 +236,8 @@ class Item extends CI_Controller {
 
         $taxoarr = $this->input->post('taxo');
         $ids = $this->input->post('ids');
-
+        if($ids != NULL)
+        {
         foreach ($ids as $id) {
 
             $val = $item->get_type($id);
@@ -277,6 +289,8 @@ class Item extends CI_Controller {
                 }
             }
         }
+        }
+     
         if ($error_iden) {
 
             unset($data['save']);
@@ -288,7 +302,7 @@ class Item extends CI_Controller {
             $data['call_to_action'] = $this->input->post('call_to_action');
 //            var_dump($_SESSION['child_tag']);
             $tag = $this->input->post('abc');
-           
+          
             $item_id = $item->item_insert($data, $tag);
              echo '';
             $folder_name =  md5('unique_salt' . $folder_name);
