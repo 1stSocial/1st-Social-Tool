@@ -9,6 +9,7 @@ class User_model extends CI_Model
     
     function page_count($page,$b_id=FALSE)
     {
+        $cou = 0;
         switch ($page) {
             case 'post_job':
             {
