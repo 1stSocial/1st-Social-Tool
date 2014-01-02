@@ -101,12 +101,13 @@ Class Tag_model extends CI_Model
             
             if(is_array($data['parent_tag_id']))
                 {
+					var_dump($data['parent_tag_id']);
                     foreach ($data['parent_tag_id'] as $value) {
                             $val = array(
                                 'tag_id'=>$data['id'],
                                 'parent_tag_id'=>$value
                             );
-                            $this->db->insert('tag_parent', $val);
+						    $this->db->insert('tag_parent', $val);
                     }
 //                    $this->db->insert('tags', $value); die;
 //                die;
@@ -361,11 +362,16 @@ Class Tag_model extends CI_Model
                             }
                         }
                         }
-                        
-              $result_send['Parent'] = $arr;
+              if(isset($arr))
+              {
+                $result_send['Parent'] = $arr;
                 $result_send['child'] =$arr2;
-                
                 return $result_send;          
+              } 
+              else
+              {
+                  return "";
+              }
         }
         
         public function tag_val_id($parent_id)

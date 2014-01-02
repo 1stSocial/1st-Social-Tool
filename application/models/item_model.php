@@ -55,6 +55,9 @@ Class Item_model extends CI_Model {
 //        $tag_id = $this->input->post('tag_id');
 //        var_dump($tag_id); die;
        $val ="";
+       
+      if($tag_id)
+      {
       if(is_array($tag_id))
       {
           foreach ($tag_id as $value) {
@@ -78,6 +81,7 @@ Class Item_model extends CI_Model {
               );
           $this->db->insert('item_tags',$temp_ar);
       }
+    
       $val="";
         $taxoarr = $this->input->post('taxo');
        foreach ($taxoarr as $taxo_id => $taxo_val) {
@@ -92,6 +96,7 @@ Class Item_model extends CI_Model {
        
        $sql1 = "insert into item_taxo (item_id,taxo_id,value) values ".$val."";
        $this->db->query($sql1);
+         }
        return $rs['item_id'];
     }
     function get_item($id)
@@ -145,6 +150,10 @@ Class Item_model extends CI_Model {
     
     function  get_item_id($id)
     {
+        
+        $res = $this->db->get_where('item_tags',array('item_id'=>$id));
+        if($res->num_rows()>0)
+        {
         $this->db->select('*,t.tag_id as tag_id,i.id as item_id,');  
         $this->db->from('items as i');
         $this->db->join('item_tags as t', 'i.id = t.item_id');         
@@ -154,6 +163,21 @@ Class Item_model extends CI_Model {
              return $query->result_array();
              
          }
+        }
+        else
+        {
+            $this->db->select('*,id as item_id,');  
+        $this->db->from('items');
+//        $this->db->join('item_tags as t', 'i.id = t.item_id');         
+        $this->db->where('id', $id); 
+        $query = $this->db->get();
+         if ($query->num_rows() > 0) {
+             return $query->result_array();
+             
+         }
+        }
+        
+        
     }
     
     function get_item_taxo($id)
@@ -183,7 +207,8 @@ Class Item_model extends CI_Model {
        $this->db->update('items',$data,array('id'=>$id));
        $this->db->delete('item_taxo', array('item_id'=>$id));
        $taxoarr = $this->input->post('taxo');
-       
+       if($taxoarr)
+       {
        foreach ($taxoarr as $taxo_id => $taxo_val) 
            {
                 if(!$taxo_val=='')
@@ -197,10 +222,12 @@ Class Item_model extends CI_Model {
                     $this->db->insert('item_taxo',$taxo);
                }
         }
+       }
         
         $this->db->delete('item_tags', array('item_id'=>$id));
         $tagarr = $this->input->post('tag_id');
-       
+        if($tagarr)
+      {
        foreach ($tagarr as $tag_val) 
            {
                 if(!$tag_val=='')
@@ -213,7 +240,7 @@ Class Item_model extends CI_Model {
                     $this->db->insert('item_tags',$taxo);
                } 
         }
-       
+      }
     }
     
     function get_board($id)
