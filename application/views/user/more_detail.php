@@ -75,14 +75,16 @@ if(isset($fb) && $fb == 1)
 <?php
 }
 ?>
-    <?php 
-                                   
-                                    if($post['item'][0]->status != '0')
+    <?php  if($post['item'][0]->status != '0')
                                     {
-                                    ?>
+                                        if($post['item'][0]->status != ''){
+                                        if($post['item'][0]->status != '1'){     
+                                   
+                                    
+                                  ?>
                                     <img class="imgdiv_status" src="<?php echo base_url().$post['item'][0]->status;?>" alt="" height="100" width="100">
                                     <?php
-                                    }
+                                    }}}
                                     ?>
 <div>
     <input id="back" type="button" style="margin-left: 5%" class="btn " value="Back" onclick="" />   </div> 
@@ -134,7 +136,11 @@ if(isset($fb) && $fb == 1)
                     <div style="text-align: justify">
                        
                     <div style="margin-top:20px">
-                                        <?= $val->body ?>
+                                        <?php
+                                        echo str_replace(
+                                         array('<pre>', '</pre>'),
+                                        array('<p>', '</p>'),
+                                        $val->body);?>
                                     </div>
                         <div id="taxonomy" style="width: 49%;margin-left: 0%">
                                         <h3> About </h3>
@@ -179,9 +185,9 @@ endif;
 <style>
    .imgdiv_status {
     float: right;
-    left: 26px;
+    left: 15px;
     position: relative;
-    top: -321px;
+    top: -57px;
     z-index: 11;
 }
 </style>

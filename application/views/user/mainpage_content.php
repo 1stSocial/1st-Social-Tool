@@ -70,8 +70,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                     else
                         echo'even';
                     ?> job_head_custom test"> 
-
-                        <div class="size_div" style="float:left;width:74%"> <!--start-->
+                        <?php if($_SESSION['fb']=='fb') { ?>
+                        <div class="size_div" style="float:left;width:60%"> <!--start-->
+                            <?php 
+                        } else{
+                            ?>
+                       <div class="size_div" style="float:left;width:74%"> <!--start-->
+                        <?php } ?>
                             <div class="title">
 
                                 <h2><a rel="bookmark" href="<?= site_url() ?>/user/user/detail/<?= $val->id ?>/<?php
@@ -99,7 +104,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                                     ?></span><br>-->
                                     
                                 <div style=" text-align: justify; padding-right: 12px;"><?php
-                                        echo substr($val->body, '0','150').'...';
+                                        echo substr(strip_tags($val->body), '0','150').'...';
                                     ?>    
                                     </div> 
                                 </div>
@@ -112,10 +117,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
                                    
                                     if($val->status != '0')
                                     {
+                                        if($val->status != ''){
+                                        if($val->status != '1'){     
                                     ?>
                                     <img class="imgdiv_status" src="<?php echo base_url().$val->status;?>" alt="" height="50" width="50">
                                     <?php
-                                    }
+                                    }}}
                                     ?>
                             
                             <img id="newabc" src="<?php
