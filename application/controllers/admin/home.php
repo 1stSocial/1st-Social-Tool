@@ -121,6 +121,7 @@ class Home extends CI_Controller {
             $val['taxo'] = $data['filterable_taxo'];
             $val['title'] = $data['title'];
             $val['call_to_action'] = $data['call_to_action'];
+            $val['template'] = $data['template'];
             
             $img = $data['image'];
 

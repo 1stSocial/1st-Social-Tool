@@ -1080,6 +1080,16 @@ class User_model extends CI_Model
         }
     }
     
+    function template_name($id)
+    {
+        $val  =  $this->db->get_where('board',array('id'=>$id));
+        if($val->num_rows())
+        {
+            $val2  = $val->result_array();
+            return $val2[0]['Template'];
+        }
+    }
+    
 }
 
 ?>

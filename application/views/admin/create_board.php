@@ -112,7 +112,18 @@
                             <input type="hidden" value="<?php echo $domain; ?>" id="domain">
                         <?php endif; ?>
                         <div style="clear: both"></div>
-
+                        
+                        <div class="control-group">
+                            <?php echo form_label('Select Theme:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
+                            <div style="margin-left: 33%">
+                                <select class="chosen-select" data-placeholder="Choose a Template..."  tabindex="4" id="templet" name="templet" >
+                                     <option value="">Default</option>
+                                     <option value="Property">Property</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                          <div style="clear: both"></div>
                     </div></div>
                 <div class="modal-footer ">
                     <div class="control-group">

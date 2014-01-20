@@ -114,7 +114,8 @@ Class Board_model extends CI_Model {
             "Filterable_taxo" =>  $val['taxo'],
             "image" => $img,
             "board_title" => $val['title'],
-            "call_to_action"=>$val['call_to_action']
+            "call_to_action"=>$val['call_to_action'],
+            "Template" => $val['template']
         );
         // select clause to check if board is exist
         $query = $this->db->get_where('board', array("name" => $this->_name,
@@ -184,7 +185,7 @@ Class Board_model extends CI_Model {
          $this->db->where('board_id',$data['id']);
          $this->db->update('board_page',$data3);
         $val = implode(',',$data["parentTag"]);
-        $data1 = array('name' => "$data[name]",'parent_tags' => $val,'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]",'board_title'=>"$data[title]",'call_to_action'=>"$data[call_to_action]" );
+        $data1 = array('name' => "$data[name]",'parent_tags' => $val,'Filterable_taxo' =>"$data[filterable_taxo]",'image'=>"$data[image]",'board_title'=>"$data[title]",'call_to_action'=>"$data[call_to_action]",'Template'=>"$data[template]");
 
         $this->db->where(array('id' => $data['id']));
         //print_r($data1);die;

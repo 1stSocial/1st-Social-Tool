@@ -6,7 +6,7 @@
     <div class="" style="margin-top: 2%">
  
 
-        <div <?php if($_SESSION['fb'] != 'fb') echo 'style=margin-left:15%;width:73%'?> id="gallery1" data-toggle="modal-gallery" data-target="#modal-gallery">
+        <div <?php if($fb_val!='fb') echo 'style=margin-left:15%;width:73%'?> id="gallery1" data-toggle="modal-gallery" data-target="#modal-gallery">
          
                     <?php
                     $id = $val->id;
@@ -17,7 +17,7 @@
             if($img_name !='.' && $img_name !='..')
             {
                 {?>
-         <a style="" data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> <?php if($_SESSION['fb'] != 'fb') echo '&width=150'; else echo '&width=143';?>&height=150" ></a>
+         <a style="" data-gallery="gallery" href="<?php echo base_url();?>assets/css/user/content/<?php echo $id."/".$img_name?>" title=""><img class="img_border" src="<?=base_url()?>assets/extra/resize.php?path=<?php echo base_url();?>assets/css/user/content/<?php echo  $id."/".$img_name?> <?php if($fb_val!='fb') echo '&width=150'; else echo '&width=143';?>&height=150" ></a>
             <?} }}
                     ?>
     <br>

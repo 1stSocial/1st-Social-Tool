@@ -62,7 +62,8 @@
         <div id="taddiv">
             <?php
             $selectArr = array();
-
+          if($Tag != "")
+          {
             foreach ($Tag['Parent'] as $data):
                 ?>
                 <div style='magrin-top:33px;padding-top:8px;'>
@@ -96,7 +97,7 @@
                         ?> 
                     </select>
                         </div>
-<?php endforeach; ?> 
+          <?php endforeach;} ?> 
 
              </div>
         </div>

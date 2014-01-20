@@ -8,6 +8,7 @@ jQuery(document).ready(function() {
     jQuery('#theme_chosen').css('width', '69%');
     jQuery('#taxo_chosen').css('width', '49%');
     jQuery('#domain_chosen').css('width', '69%');
+    jQuery('#templet_chosen').css('width', '69%');
 
 //$("select").selectpicker({style: 'active btn-inverse', menuStyle: 'dropdown-inverse'});    
     
@@ -19,6 +20,8 @@ jQuery(document).ready(function() {
  
      jQuery('form').ajaxForm({
         beforeSubmit: function() {
+            var template = jQuery('#templet').val();
+   
              show();
             if(jQuery('#name1').val() =="" && jQuery('#parentTag1').val() =="" && jQuery('#domain').val()=="")
                 {
@@ -102,6 +105,9 @@ function savefun(image)
     var taxo_id = jQuery('#taxo').val();
     var title = jQuery('#title1').val();
     var call_to_action = jQuery('#call_to_action').val();
+    var template = jQuery('#templet').val();
+    
+   
     
     if (name == "")
     {
@@ -154,7 +160,8 @@ function savefun(image)
             theme_id: theme_id,
             filterable_taxo :taxo_id,
             image : image,
-            call_to_action :call_to_action
+            call_to_action :call_to_action,
+            template:template
         };
         var ur = jQuery('#ur').val();
         jQuery.ajax({

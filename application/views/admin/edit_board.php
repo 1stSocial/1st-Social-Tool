@@ -148,7 +148,42 @@
                 <input type="hidden" value="<?php echo $domain;?>" id="domain">
             <?php endif;?> 
             </div>
-
+             <div style="clear: both"></div>
+                        
+                        <div class="control-group">
+                            <?php echo form_label('Select Template:', 'theme', array('class' => "control-label label label-info", 'style' => "float:left;padding: 0.6em 0.7em 0.7em;margin-top: 0.52%;")); ?>
+                            <div style="margin-left: 33%">
+                                <select class="chosen-select" data-placeholder="Choose a Template..."  tabindex="4" id="templet" name="templet" >
+                                    <?php
+                                    if($boardData[0]->Template ==""){
+                                    ?>
+                                    <option selected="" value="">Default</option>
+                                    <?php
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                    <option value="">Default</option>
+                                    <?php
+                                    }
+                                    ?>
+                                     <?php
+                                    if($boardData[0]->Template =="Property"){
+                                    ?>
+                                    <option selected="" value="Property">Property</option>
+                                    <?php
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                     <option value="Property">Property</option>
+                                    <?php
+                                    }
+                                    ?>
+                                     
+                                </select>
+                            </div>
+                        </div>
         </div></div>
     <div class="modal-footer">
         <div class="div_wrapper">

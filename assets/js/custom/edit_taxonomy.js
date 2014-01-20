@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
                 var parentid = $('#parentTag2').val();
                 var check;
                 
-                alert($('#type').val());
+               // alert($('#type').val());
 
                 if(taxonomyname == "")
                     {
@@ -78,7 +78,7 @@ function savefun(data_val)
 {
     var taxonomyname = $('#name').val();
     var type = $('#type').val();
-    alert($('#type').val());
+   // alert($('#type').val());
     var tag_id = $('#parentTag2').val();
     var check;
     

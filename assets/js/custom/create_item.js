@@ -103,11 +103,13 @@ function change_val()
         url: url + '/admin/Item/childtag',
         data: dataval,
         success: function(res) {
-
+                
             var value = "";
             var val2 = "";
             var obj = jQuery.parseJSON(res);
             var j = 0;
+            if(obj['tag'] != "")
+                {
             $.each(obj['tag']['Parent'], function(i, data) {
                 tag_id[j] = data['tag_id'];
                 value = "";
@@ -126,7 +128,7 @@ function change_val()
                 $(".chosen-select").chosen({width: "45%"});
                 j++;
             });
-
+                }   
             hide();
 
         },

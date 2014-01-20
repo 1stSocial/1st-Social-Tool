@@ -26,7 +26,7 @@
                                             <script type="text/javascript" src="<?= base_url(); ?>assets/js/user/jquery-1.js"></script>
 
                                             <script type="text/javascript" src="<?= base_url(); ?>assets/js/user/loader.js"></script>
-                                            <!--<script type="text/javascript" src="<? //=base_url();   ?>assets/js/user/st.js"></script>-->
+                                            <!--<script type="text/javascript" src="<? //=base_url();  ?>assets/js/user/st.js"></script>-->
 
 <!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/user/stcommon.js"></script>-->
 <!--<script type="text/javascript" src="<?= base_url(); ?>assets/js/user/superfish.js"></script>-->
@@ -47,6 +47,7 @@
                                             </style>
                                             <?php
                                             if (isset($fb)) {
+                                                $_SESSION['fb'] = "fb";
                                                 echo '<style>
          .contain { background-size: contain; }
          
@@ -238,40 +239,17 @@ margin-bottom:10px!important;
     width:220px!important;
 }
          </style>';
-                             
-                                            if(isset($template))
-                                            {
-                                                if($template != "")
-                                                {
-                                                    echo '<link rel="stylesheet" href="'.base_url().'assets/css/user/fb_template.css">';
-                                                }
-                                            }
-                                                           
-                                                
-                                                
                                             } else {
-                                                
-                                            if(isset($template))
-                                            {
-                                                if($template != "")
-                                                {
-                                                    echo '<link rel="stylesheet" href="'.base_url().'assets/css/user/template.css">';
-                                                }
-                                            }
-                                           
-                                                
+                                                $_SESSION['fb'] = "";
                                             }
                                             ?>
                                             <style>
 <?php
-
 if (isset($css)) {
     echo $css;
 }
 ?>
                                             </style>
-                                            
-                                            
                                             </head>
 
                                             <body class="home blog">

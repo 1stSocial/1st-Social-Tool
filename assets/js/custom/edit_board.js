@@ -24,7 +24,8 @@ jQuery('.chosen-select').chosen();
      jQuery('#taxo_chosen').css('width', '49%');
 //     change();
      jQuery('#domain_chosen').css('width','69%');
-     
+        jQuery('#templet_chosen').css('width', '69%');
+        
     jQuery('#parentTag1').change(function()
     {
         $('#selected_tag').val(this.value);
@@ -97,6 +98,7 @@ function change()
       var theme_id = jQuery('#theme').val();
        var title = jQuery('#title1').val();
         var call_to_action = jQuery('#call_to_action').val();
+       var template = jQuery('#templet').val();
        
        show();
     if(name=="")
@@ -147,7 +149,8 @@ function change()
         theme_id:theme_id,
          filterable_taxo :taxo_id,
          image:img,
-          call_to_action :call_to_action
+          call_to_action :call_to_action,
+           template:template
        };
     jQuery.ajax({
        type: "POST",

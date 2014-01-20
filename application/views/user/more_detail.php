@@ -20,6 +20,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6000', end
     .title h1 {
     padding-left: 0px !important;
     }
+    
+    
+    .itm_img{
+         margin-right: -50px;
+    margin-top: -39px;
+    }
 </style>
 <script>
     
@@ -82,9 +88,34 @@ if(isset($fb) && $fb == 1)
                                    
                                     
                                   ?>
-                                    <img class="imgdiv_status" src="<?php echo base_url().$post['item'][0]->status;?>" alt="" height="100" width="100">
+<!--                                    <img class="imgdiv_status" src="<?php echo base_url().$post['item'][0]->status;?>" alt="" height="100" width="100">-->
+
+  <div style="float:right; margin:5px;"> <!--start-->
+                            
+                           <?php 
+                                   
+                                  if($post['item'][0]->status != '0')
+                                    {
+                                        if($post['item'][0]->status != ''){
+                                        if($post['item'][0]->status != '1'){     
+                                    ?>
+                                    <img class="imgdiv_status" src="<?php echo base_url().$post['item'][0]->status;?>" alt="" height="50" width="50">
                                     <?php
                                     }}}
+                                    ?>
+                            
+                            <img class="itm_img" src="<?php
+                         if ($post['item'][0]->image != "")
+                             echo base_url() . '/' . $post['item'][0]->image;
+                         else
+                             echo base_url() . '/assets/css/user/itemimage/default.png';
+                         ?>" alt="admin" height="100" width="100">  
+
+                        </div> <!--end-->
+
+
+                                    <?php
+                                        }}}
                                     ?>
 <div>
     <input id="back" type="button" style="margin-left: 5%" class="btn " value="Back" onclick="" />   </div> 
@@ -92,7 +123,7 @@ if(isset($fb) && $fb == 1)
     <?php $loop = 0;
     if (is_array($post) && isset($post['item'])):foreach ($post['item'] as $val): ?>       
 
-            <div class="tuts" id="post-226"> 
+    <div class="tuts" id="post-226" style="border: 0!important;"> 
 
                 <div class="title">
 
@@ -184,10 +215,10 @@ endif;
 ?>
 <style>
    .imgdiv_status {
-    float: right;
-    left: 15px;
+     float: right;
+    left: 0;
     position: relative;
-    top: -57px;
+    top: -39px;
     z-index: 11;
 }
 </style>

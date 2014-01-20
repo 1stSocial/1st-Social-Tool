@@ -25,8 +25,6 @@
         <p class="text-right text-white">Beta 1.0</p>
     </div>
 </div>
-
-
 </div>
 
 
